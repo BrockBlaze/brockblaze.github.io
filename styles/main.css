@@ -1,0 +1,41 @@
+* { margin: 0; box-sizing: border-box; } 
+
+body { 
+    font-size: 16px; 
+    line-height: 32px;
+    font-family: Arial, Helvetica, sans-serif, sans-serif;
+    color: black;
+}
+
+h1 {
+    font-size: 2rem;
+    color: white;
+}
+
+h2 {
+    font-size: 1.2rem;
+    text-align: center;
+    border-bottom: 1px solid #bbb;
+}
+
+header, main, footer {
+    margin: 1.25rem auto;
+    padding: .5rem;
+    max-width: 760px;
+}
+
+header, footer, footer a {
+    text-align: center;
+    background-color: grey;
+    color: whitesmoke;
+}
+
+header img {
+    width: 30%;
+    height: auto;
+    float: right;
+}
+
+footer {
+    font-size: 1rem;
+}
