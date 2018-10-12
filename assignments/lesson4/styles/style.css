@@ -39,9 +39,9 @@ header > img {
 .currentconditions {
     display: inline-block;
     vertical-align: middle;
-    border: 1pt solid #42bff4;
+    background-color: #4e98ff;
+    border: 1pt solid #1d93c5;
     padding: 10px;
-    
 }
 
 .ccimg {
