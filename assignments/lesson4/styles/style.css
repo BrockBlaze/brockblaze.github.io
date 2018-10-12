@@ -4,10 +4,10 @@ body {
 }
 
 header {
-    background-color: #ffffff;
+    background-color:#418cf4;
     text-align: center;
     padding: .5rem;
-    color: #42bff4;
+    color: black;
 }
 
 header > img {
@@ -18,5 +18,37 @@ header > img {
 
 .headertext {
     display: inline-block;
-    
+    vertical-align: middle;
+}
+
+.headertext h1 {
+    font-size: 3rem;
+}
+
+.subheading {
+    font-size: 1.1rem;
+    color: #000000;
+}
+
+.currentconditions {
+    display: inline-block;
+    margin: 1rem 0 1rem 5rem;
+    padding: 1.2rem;
+    vertical-align: middle;
+    color: #ffffff;
+    background-color: #418cf4;
+    border: 1pt solid #42bff4;
+    font-size: 1.1rem;
+}
+
+.currentconditions img {
+    width: 100px;
+    height: auto;
+    display: inline-block;
+}
+
+.currentconditions p {
+    display: inline-block;
+    vertical-align: middle;
+
 }
