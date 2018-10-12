@@ -41,7 +41,8 @@ header > img {
     vertical-align: middle;
     background-color: #4e98ff;
     border: 1pt solid #1d93c5;
-    padding: 10px;
+    padding: 5px;
+    margin-left: 10px;
 }
 
 .ccimg {
@@ -59,4 +60,5 @@ header > img {
 .cctext {
     display: inline-block;
     color: white;
+    padding-right: 5px;
 }
