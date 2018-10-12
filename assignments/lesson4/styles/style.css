@@ -1,3 +1,9 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+}
 body {
     font-family: 'Merriweather Sans', sans-serif;
     font-size: 18px;
@@ -32,23 +38,25 @@ header > img {
 
 .currentconditions {
     display: inline-block;
-    margin: 1rem 0 1rem 5rem;
-    padding: 1.2rem;
     vertical-align: middle;
-    color: #ffffff;
-    background-color: #418cf4;
     border: 1pt solid #42bff4;
-    font-size: 1.1rem;
+    padding: 10px;
+    
 }
 
-.currentconditions img {
+.ccimg {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.ccimg img {
     width: 100px;
     height: auto;
     display: inline-block;
 }
 
-.currentconditions p {
-    display: inline-block;
-    vertical-align: middle;
 
+.cctext {
+    display: inline-block;
+    color: white;
 }
