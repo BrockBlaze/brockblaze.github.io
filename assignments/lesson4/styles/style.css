@@ -62,3 +62,42 @@ header > img {
     color: white;
     padding-right: 5px;
 }
+
+nav {
+    background-color: #1f6fdf;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:visited {
+    color: black;
+}
+
+a:hover {
+    color: grey;
+}
+
+nav ul li {
+    display: inline-block;
+    padding: 20px;
+}
+
+footer {
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 20px;
+    background: grey;
+}
+
+footer a {
+    color: black;
+}
+
+footer a:hover {
+    color: white;
+}
