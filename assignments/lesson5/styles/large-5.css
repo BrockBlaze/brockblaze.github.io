@@ -11,6 +11,35 @@
         margin-left: 10px;
     }
 
+    .city {
+        font-size: 30px;
+        position: absolute;
+        top: 5%;
+        left: 45%;
+        padding: 20px;
+    }
+
+    .hero, img{
+        width:80%;
+        height: 80%;
+        margin: auto;
+        position: relative;
+        text-align: center;
+    }
+
+    .weathersummary {
+        position: absolute;
+        top: 10%;
+        left: 15%;
+        background-color: rgba(58, 58, 211, 0.6);
+        padding: 20px;
+    }
+
+    .article {
+        width: 64%;
+        margin-bottom: 20px;
+    }
+
     .largenav {
         visibility: visible;
         display: inline-block;
@@ -23,6 +52,32 @@
 
     .forecast {
         visibility: visible;
+        display: inline-block;
+    }
+
+    .article p {
+        display: inline-block;
+        width: 65%;
+    }
+    
+    .article img {
+        display: inline-block;
+        width: 30%;
+        height: auto;
+    }
+
+    aside {
+        width: 64%
+    }
+
+    aside .contact {
+        width: 60%;
+        float: right;
+        padding: 50px;
+    }    
+
+    .mapouter {
+        width: 30%;   
     }
     
 }
