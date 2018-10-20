@@ -1,0 +1,28 @@
+@media only screen and (min-width: 1000px) {
+    
+
+    .currentconditions {
+        visibility: visible;
+        display: inline-block;
+        vertical-align: middle;
+        background-color: #4e98ff;
+        border: 1pt solid #1d93c5;
+        padding: 5px;
+        margin-left: 10px;
+    }
+
+    .largenav {
+        visibility: visible;
+        display: inline-block;
+    }
+
+    .smallnav {
+        visibility: hidden;
+        display: none;
+    }
+
+    .forecast {
+        visibility: visible;
+    }
+    
+}

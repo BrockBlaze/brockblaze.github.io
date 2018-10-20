@@ -70,6 +70,7 @@ nav {
 
 a {
     text-decoration: none;
+    color: black;
 }
 
 a:visited {
@@ -83,6 +84,13 @@ a:hover {
 nav ul li {
     display: inline-block;
     padding: 20px;
+}
+
+main {
+    background: blue;
+    text-align: center;
+    width: 10in;
+
 }
 
 footer {
