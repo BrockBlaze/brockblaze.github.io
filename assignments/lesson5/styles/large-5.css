@@ -11,13 +11,7 @@
         margin-left: 10px;
     }
 
-    .city {
-        font-size: 30px;
-        position: absolute;
-        top: 5%;
-        left: 45%;
-        padding: 20px;
-    }
+    
 
     .hero, img{
         width:80%;
