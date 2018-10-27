@@ -1,0 +1,77 @@
+@media only screen and (min-width: 1000px) {
+    
+
+    .currentconditions {
+        visibility: visible;
+        display: inline-block;
+        vertical-align: middle;
+        background-color: #4e98ff;
+        border: 1pt solid #1d93c5;
+        padding: 5px;
+        margin-left: 10px;
+    }
+
+    
+
+    .hero, img{
+        width:80%;
+        height: 80%;
+        margin: auto;
+        position: relative;
+        text-align: center;
+    }
+
+    .weathersummary {
+        position: absolute;
+        top: 10%;
+        left: 15%;
+        background-color: rgba(58, 58, 211, 0.6);
+        padding: 20px;
+    }
+
+    .article {
+        width: 64%;
+        margin-bottom: 20px;
+    }
+
+    .largenav {
+        visibility: visible;
+        display: inline-block;
+    }
+
+    .smallnav {
+        visibility: hidden;
+        display: none;
+    }
+
+    .forecast {
+        visibility: visible;
+        display: inline-block;
+    }
+
+    .article p {
+        display: inline-block;
+        width: 65%;
+    }
+    
+    .article img {
+        display: inline-block;
+        width: 30%;
+        height: auto;
+    }
+
+    aside {
+        width: 64%
+    }
+
+    aside .contact {
+        width: 60%;
+        float: right;
+        padding: 50px;
+    }    
+
+    .mapouter {
+        width: 30%;   
+    }
+    
+}

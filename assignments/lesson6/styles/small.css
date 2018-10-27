@@ -1,0 +1,270 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+}
+body {
+    font-family: 'Merriweather Sans', sans-serif;
+    font-size: 18px;
+}
+
+header {
+    background-color:#418cf4;
+    text-align: center;
+    padding: .5rem;
+    color: black;
+}
+
+header > img {
+    width: 150px;
+    height: auto;
+    vertical-align: middle;
+}
+
+.largenav {
+    width: 100%;
+}
+
+.headertext {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.headertext h1 {
+    font-size: 3rem;
+}
+
+.subheading {
+    font-size: 1.1rem;
+    color: #000000;
+}
+
+.currentconditions {
+    visibility: hidden;
+    display: none;
+    vertical-align: middle;
+    background-color: #4e98ff;
+    border: 1pt solid #1d93c5;
+    padding: 5px;
+    margin-left: 10px;
+}
+
+.ccimg {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.ccimg img {
+    width: 100px;
+    height: auto;
+    display: inline-block;
+}
+
+
+.cctext {
+    display: inline-block;
+    color: white;
+    padding-right: 5px;
+}
+
+.largenav {
+    visibility: hidden;
+    display: none;
+}
+
+.dropdown a {
+    padding: 20px;
+}
+
+.dropdown {
+    text-align: center;
+    background-color: #1f6fdf;
+    padding: 20px;
+}
+
+.dropdown-content {
+    display: none;
+   
+}
+
+.dropdown-content a {
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+nav {
+    background-color: #1f6fdf;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:visited {
+    color: black;
+}
+
+a:hover {
+    color: grey;
+}
+
+nav ul li {
+    display: inline-block;
+    padding: 20px;
+}
+
+
+main {
+    background: white;
+    text-align: center;
+}
+
+.hero, img{
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    position: relative;
+    text-align: center;
+}
+
+.city {
+    padding: 20px;
+    font-size: 2rem;
+}
+
+.weathersummary {
+    position: absolute;
+    top: 30%;
+    left: 20%;
+    background-color: rgba(58, 58, 211, 0.6);
+    padding: 0px;
+}
+
+.weathersummary h3 {
+    text-decoration: underline;
+    padding: 5px;
+    color: white;
+}
+
+.weatherdetails p{
+    display: inline-block;
+    padding: 5px;
+}
+
+.value {
+    color: yellow;
+}
+
+.label {
+    color: white;
+}
+
+.forecast {
+    visibility: hidden;
+    display: none;
+    padding: 20px;
+    background-color: #1f6fdf;
+    width: 64%;
+    margin: auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.forecast h3 {
+    padding: 10px;
+}
+
+.forecast table{
+    margin:auto;
+    border-collapse: collapse;
+}
+
+.forecast th, .forecast td {
+    padding: 5px;
+    border: 1px solid black;
+}
+
+.article h2 {
+    padding: 0;
+    margin: 0;
+}
+
+.article h3 {
+    padding: 0;
+    margin: 0;
+    font-size: 15px;
+}
+
+
+.article {
+    text-align: left;
+    padding: 20px;
+    background-color: #1f6fdf;
+    width: 100%;
+    margin: auto;
+    display: inline-block;
+}
+
+.article p {
+    display: inline-block;
+    width: 100%;
+}
+
+.article img {
+    display: inline-block;
+    width: 100%;
+    height: auto;
+}
+
+aside {
+    background-color: #1f6fdf;
+    width: 100%;
+    margin: auto;
+}
+
+aside .contact {
+    width: 100%;
+    padding: 10px;
+}
+
+
+.gmap_canvas {
+    overflow: hidden;
+    background: none !important;
+    height: 300px;
+    width: 400px;
+}
+
+.mapouter {
+    height: 300px;
+    width: 400px;
+    display: inline-block;
+    width: 100%;
+    padding: 5px;
+}
+
+footer {
+    text-align: center;
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    padding: 20px;
+    background: grey;
+}
+
+footer a {
+    color: black;
+}
+
+footer a:hover {
+    color: white;
+}
