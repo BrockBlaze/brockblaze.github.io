@@ -22,9 +22,6 @@ header > img {
     vertical-align: middle;
 }
 
-.largenav {
-    width: 100%;
-}
 
 .headertext {
     display: inline-block;
@@ -81,13 +78,35 @@ nav button {
     border: none;
  }
 
-.navigation { list-style: none; padding-left: 0; }
-.navigation li { display: none; }
+.navigation { 
+    list-style: none; 
+    padding-left: 0; 
+}
+.navigation li { 
+    display: none; 
+}
 
-.responsive { position: relative; }
-	.responsive li { background-color: #eee;	display: block;	width: 100%; margin: 2px 0;	border: 1px solid #ddd; }
-	.responsive li a {	padding: 1rem; text-align: center;	display: block; text-decoration:none; }
-	.responsive li a:hover { background-color: #ddd; }
+.responsive { 
+    position: relative; 
+}
+
+    .responsive li {
+         background-color: #eee;	
+         display: block;	
+         width: 100%;
+         margin: 2px 0;	
+         border: 1px solid #ddd; 
+    }
+	.responsive li a {	
+        padding: 1rem; 
+        text-align: center;	
+        display: block; 
+        text-decoration:none; 
+    }
+
+	.responsive li a:hover { 
+        background-color: #ddd; 
+    }
 
 
 
