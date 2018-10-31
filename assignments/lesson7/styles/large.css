@@ -1,0 +1,54 @@
+@media only screen and (min-width: 1000px) {
+    
+
+    .currentconditions {
+        visibility: visible;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+
+    .hero, img{
+        width:80%;
+        height: 80%;
+
+    }
+
+    .weathersummary {
+        position: absolute;
+        top: 10%;
+        left: 15%;
+        padding: 20px;
+    }
+
+
+    .hamburger { display: none;	}
+	.navigation {	background-color: #333;	overflow: hidden;	text-align: center;	}
+	.navigation li { display: inline-block; margin-left: .25rem; }
+	.navigation a {	display: block;	color: #eee;	padding: .5rem;	text-align: center;	text-decoration: none;}
+	.navigation a:hover {	color: #000; background-color: #777;	}
+
+    .forecast {
+        visibility: visible;
+        display: inline-block;
+    }
+
+    .article {
+        margin-top: 0px;
+        width: 64%;
+        grid-template-areas: 
+        'title title image image'
+        'author author image image'
+        '. . image image'
+        'para para image image'
+        '. . image image';
+    }
+
+    .contact {
+        width: 64%;
+        grid-template-areas: 
+        'head head map map'
+        'paragraph paragraph map map'
+    }
+    
+}

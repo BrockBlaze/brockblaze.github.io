@@ -1,0 +1,305 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+}
+body {
+    font-family: 'Merriweather Sans', sans-serif;
+    font-size: 18px;
+    height:100%;
+}
+
+header {
+    background-color:#418cf4;
+    text-align: center;
+    padding: .5rem;
+    color: black;
+}
+
+header > img {
+    width: 150px;
+    height: auto;
+    vertical-align: middle;
+}
+
+
+.headertext {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.headertext h1 {
+    font-size: 3rem;
+}
+
+.subheading {
+    font-size: 1.2rem;
+    color: black;
+}
+
+.currentconditions {
+    visibility: hidden;
+    display: none;
+    vertical-align: middle;
+    background-color: #4e98ff;
+    border: 1pt solid #1d93c5;
+    padding: 5px;
+    margin-left: 10px;
+}
+
+.ccimg {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.ccimg img {
+    width: 100px;
+    height: auto;
+}
+
+.cctext {
+    display: inline-block;
+    color: white;
+    padding-right: 5px;
+}
+
+nav button {
+    background-color: #333;
+    width: 100%;
+}
+
+.hamburger { 
+    font-size: 2rem;
+    margin: auto;
+    padding: 10px;
+    background-color: none;
+    border: none;
+ }
+
+.navigation { 
+    list-style: none; 
+    padding-left: 0; 
+}
+.navigation li { 
+    display: none; 
+}
+
+.responsive { 
+    position: relative; 
+}
+
+.responsive li {
+    background-color: #eee;	
+    display: block;	
+    width: 100%;
+    margin: 2px 0;	
+    border: 1px solid #ddd; 
+}
+.responsive li a {	
+    padding: 1rem; 
+    text-align: center;	
+    display: block; 
+    text-decoration:none; 
+}
+
+.responsive li a:hover { 
+    background-color: #ddd; 
+}
+
+
+
+nav {
+    background-color: #1f6fdf;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:visited {
+    color: black;
+}
+
+a:hover {
+    color: grey;
+}
+
+nav ul li {
+    display: inline-block;
+    padding: 20px;
+}
+
+
+main {
+    background: white;
+    text-align: center;
+}
+
+.hero {
+    margin-bottom: 20px;
+}
+
+.hero, img{
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    position: relative;
+    text-align: center;
+}
+
+.city {
+    padding: 10px;
+    font-size: 2rem;
+}
+
+.weathersummary {
+    position: absolute;
+    top: 30%;
+    left: 20%;
+    background-color: rgba(58, 58, 211, 0.6);
+    padding: 0px;
+}
+
+.weathersummary h3 {
+    text-decoration: underline;
+    padding: 5px;
+    color: white;
+}
+
+.weatherdetails p{
+    display: inline-block;
+    padding: 5px;
+}
+
+.value {
+    color: yellow;
+}
+
+.label {
+    color: white;
+}
+
+.forecast {
+    visibility: hidden;
+    display: none;
+    padding: 20px;
+    background-color: #1f6fdf;
+    width: 64%;
+    margin: auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.forecast h3 {
+    padding: 10px;
+}
+
+.forecast table{
+    margin:auto;
+    border-collapse: collapse;
+}
+
+.forecast th, .forecast td {
+    padding: 5px;
+    border: 1px solid black;
+}
+
+.article h2 {
+    font-size: 2rem;
+    grid-area: title;
+}
+
+.article h3 {
+    font-size: 1rem;
+    grid-area: author;
+}
+
+.article p {
+    grid-area: para;
+    text-align: left;
+}
+
+.article img {
+    height: auto;
+    grid-area: image;
+}
+
+.article {
+    display: grid;
+    grid-template-areas: 
+    'image'
+    'title'
+    'author'
+    'para';
+    grid-gap: 5px;
+    background-color: #1f6fdf;
+    padding: 20px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.contact p {
+    grid-area: paragraph;
+    text-align: left;
+    font-size: 1.5rem;
+}
+
+.contact h2 {
+    grid-area: head;
+}
+
+.contact {
+    display: grid;
+    grid-template-areas: 
+    'map'
+    'head'
+    'paragraph';
+    grid-gap: 5px;
+    background-color: #1f6fdf;
+    padding: 20px;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+
+.gmap_canvas {
+    grid-area: map;
+    overflow: hidden;
+    background: none !important;
+    height: 300px;
+    width: 400px;
+}
+
+.mapouter {
+    grid-area: map;
+    height: 300px;
+    width: 400px;
+}
+
+footer {
+    color: white;
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    padding: 20px;
+    background: #1d93c5;
+}
+
+
+footer div {
+    display: inline-block;
+}
+
+footer a {
+    color: white;
+}
+
+footer a:hover {
+    color: grey;
+}
