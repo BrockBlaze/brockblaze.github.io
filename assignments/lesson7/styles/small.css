@@ -8,6 +8,7 @@ body {
     font-family: 'Merriweather Sans', sans-serif;
     font-size: 18px;
     height:100%;
+    background: #ddd;
 }
 
 header {
@@ -65,7 +66,7 @@ header > img {
 }
 
 nav button {
-    background-color: #333;
+    background-color: #1f6fdf;
     width: 100%;
 }
 
@@ -81,7 +82,7 @@ nav button {
     list-style: none; 
     padding-left: 0; 
 }
-.navigation li { 
+.navigation li {
     display: none; 
 }
 
@@ -108,33 +109,8 @@ nav button {
 }
 
 
-
-nav {
-    background-color: #1f6fdf;
-    text-align: center;
-}
-
-a {
-    text-decoration: none;
-    color: black;
-}
-
-a:visited {
-    color: black;
-}
-
-a:hover {
-    color: grey;
-}
-
-nav ul li {
-    display: inline-block;
-    padding: 20px;
-}
-
-
 main {
-    background: white;
+    background: #ddd;
     text-align: center;
 }
 
@@ -288,7 +264,7 @@ footer {
     bottom: 0;
     width: 100%;
     padding: 20px;
-    background: #1d93c5;
+    background: #418cf4;
 }
 
 

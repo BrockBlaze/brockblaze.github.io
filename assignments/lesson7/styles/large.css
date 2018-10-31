@@ -22,11 +22,31 @@
     }
 
 
-    .hamburger { display: none;	}
-	.navigation {	background-color: #333;	overflow: hidden;	text-align: center;	}
-	.navigation li { display: inline-block; margin-left: .25rem; }
-	.navigation a {	display: block;	color: #eee;	padding: .5rem;	text-align: center;	text-decoration: none;}
-	.navigation a:hover {	color: #000; background-color: #777;	}
+    .hamburger { 
+        display: none;	
+    }
+
+	.navigation {	
+        background-color: #1f6fdf;	
+        overflow: hidden;	
+        text-align: center;	
+    }
+
+	.navigation li { 
+        display: inline-flex; 
+    }
+
+    .navigation a {	
+        display: inline-flex;
+        color: white;	
+        padding: 1.2rem;	
+        text-align: center;	
+        text-decoration: none;
+    }
+    
+	.navigation a:hover {	
+        color: grey;	
+    }
 
     .forecast {
         visibility: visible;
