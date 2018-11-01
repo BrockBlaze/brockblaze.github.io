@@ -170,7 +170,7 @@ main {
 }
 
 .weatherdetails p{
-    display: inline-block;
+    display: flex;
     padding: 5px;
 }
 
