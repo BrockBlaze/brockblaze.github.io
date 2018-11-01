@@ -12,47 +12,48 @@ body {
 }
 
 header {
+    display: flex;
+    flex-direction: row;
     background-color:#418cf4;
-    text-align: center;
-    padding: .5rem;
     color: black;
 }
 
-header > img {
-    width: 150px;
-    height: auto;
-    vertical-align: middle;
+.pic {
+    margin-left: 1rem;
+    padding: .5rem;
+    flex: 0 1 100px;
 }
 
+.pic img {
+    width:130px;
+    height: auto;
+}
 
 .headertext {
-    display: inline-block;
-    vertical-align: middle;
+    display: flex;
+    flex: auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .headertext h1 {
-    font-size: 3rem;
+    font-size: 2rem;
 }
 
 .subheading {
-    font-size: 1.2rem;
-    color: black;
+    font-size: .75rem;
 }
 
 .currentconditions {
     visibility: hidden;
     display: none;
-    vertical-align: middle;
+    margin: .5rem;
+    padding: .5rem;
     background-color: #4e98ff;
-    border: 1pt solid #1d93c5;
-    padding: 5px;
-    margin-left: 10px;
+    border: .5pt solid #1d93c5;
 }
 
-.ccimg {
-    display: inline-block;
-    vertical-align: middle;
-}
 
 .ccimg img {
     width: 100px;
@@ -60,9 +61,7 @@ header > img {
 }
 
 .cctext {
-    display: inline-block;
     color: white;
-    padding-right: 5px;
 }
 
 nav button {

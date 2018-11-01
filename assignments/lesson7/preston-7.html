@@ -17,7 +17,9 @@
 
 <body>
     <header>
+        <div class="pic">
         <img src="images/sun.png" alt="logo">
+        </div>
         <div class="headertext">
             <h1>Northwest Weather and Events</h1>
             <div class="subheading">The Info You Need for a Great Trip</div>
@@ -31,12 +33,12 @@
         <button class="hamburger" onclick="toggleHam()">&#x2630;</button>
         <ul class="navigation">
 
-            <li><a href="../lesson4/town-template.html">Home</a></li>
-            <li><a href="preston-5.html">Preston</a></li>
-            <li><a href="sugar.html">Sugar City</a></li>
-            <li><a href="fish.html">Fish Haven</a></li>
-            <li><a href="storm.html">Storm Center</a></li>
-            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="home-7.html">Home</a></li>
+            <li><a href="preston-7.html">Preston</a></li>
+            <li><a href="#">Sugar City</a></li>
+            <li><a href="#">Fish Haven</a></li>
+            <li><a href="#">Storm Center</a></li>
+            <li><a href="gallery-7.html">Gallery</a></li>
         </ul>
     </nav>
 
@@ -54,13 +56,15 @@
                     <p class="label">Currently:</p>
                     <p class="value">Sunny</p><br>
                     <p class="label">Temperature:</p>
-                    <p class="value">76 &deg;F</p><br>
+                    <p class="value"><span id="temperature">76</span> &deg;F</p><br>
                     <p class="label">Humidity:</p>
                     <p class="value">69%</p><br>
                     <p class="label">Precipitation:</p>
                     <p class="value">0 inches</p><br>
                     <p class="label">Wind Speed:</p>
-                    <p class="value">5 mph</p>
+                    <p class="value"><span id="windspeed">5</span> mph</p>
+                    <p class="label">Wind Chill:</p>
+                    <p class="value"><span id="windchill"></span> &deg;F</p>
                 </div>
             </section>
         </div>
@@ -133,6 +137,7 @@
         &copy; Brock Blazzard | <div id="date"></div> | <a href="/index.html">GITHUB</a> | BYU-IDAHO
     </footer>
     <script src="scripts/currentdate.js"></script>
+    <script src="scripts/windchill.js"></script>
 </body>
 
 </html>

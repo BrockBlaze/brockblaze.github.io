@@ -1,0 +1,19 @@
+.gridcontainer {
+    display: grid;
+
+}
+
+
+
+@media only screen and (min-width: 37.5em) {
+    .gridcontainer {
+        grid-template-areas: inherit;
+
+    }
+}
+@media only screen and (min-width: 64em) {
+    .gridcontainer {
+        grid-template-areas: inherit;
+
+    }
+}

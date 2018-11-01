@@ -1,10 +1,26 @@
 @media only screen and (min-width: 1000px) {
     
+    header {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    .headertext h1 {
+        font-size: 3rem;
+    }
+    
+    .subheading {
+        font-size: 1.2rem;
+    }
 
     .currentconditions {
         visibility: visible;
-        display: inline-block;
-        vertical-align: middle;
+        display: flex;
+        flex: 0 1 200px;
+        align-items: center;
+        justify-content: center;
     }
 
 
@@ -37,7 +53,6 @@
     }
 
     .navigation a {	
-        display: inline-flex;
         color: white;	
         padding: 1.2rem;	
         text-align: center;	
