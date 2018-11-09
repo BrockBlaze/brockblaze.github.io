@@ -144,6 +144,10 @@ fieldset {
     padding: 50px;
 }
 
+textarea {
+    padding: 5px;
+}
+
 .hero, img {
     margin-bottom: 20px;
     width: 100%;
