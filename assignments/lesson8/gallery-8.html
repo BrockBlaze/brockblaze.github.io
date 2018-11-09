@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Weather and Event information for Idaho">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>northwestweather</title>
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans%7cRoboto" rel="stylesheet">
+    <link rel="shortcut icon" href="./images/cloudy.png" />
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/small.css">
+    <link rel="stylesheet" href="styles/large.css">
+    <script src="scripts/hamburger.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="pic">
+            <img src="images/sun.png" alt="logo">
+        </div>
+        <div class="headertext">
+            <h1>Northwest Weather and Events</h1>
+            <div class="subheading">The Info You Need for a Great Trip</div>
+        </div>
+        <div class="currentconditions">
+            <div class="ccimg"><img src="images/cloudy.png" alt="weather icon"></div>
+            <div class="cctext">cloudy</div>
+        </div>
+    </header>
+    <nav>
+        <button class="hamburger" onclick="toggleHam()">&#x2630;</button>
+        <ul class="navigation">
+
+            <li><a href="home-8.html">Home</a></li>
+            <li><a href="preston-8.html">Preston</a></li>
+            <li><a href="#">Sugar City</a></li>
+            <li><a href="#">Fish Haven</a></li>
+            <li><a href="stormcenter.html">Storm Center</a></li>
+            <li><a href="gallery-8.html">Gallery</a></li>
+        </ul>
+    </nav>
+
+    <div class="grid-container">
+        <div class="image1">
+            <div class="middle">
+                <div class="text">Saint Paul Trail</div>
+            </div>
+        </div>
+        <div class="image2">
+            <div class="middle">
+                <div class="text">Balance Rock in Castleford, Idaho</div>
+            </div>
+        </div>
+        <div class="image3">
+            <div class="middle">
+                <div class="text">Salmon River in Idaho</div>
+            </div>
+        </div>
+        <div class="image4">
+            <div class="middle">
+                <div class="text">The Palouse near the Washington, Idaho Border</div>
+            </div>
+        </div>
+        <div class="image5">
+            <div class="middle">
+                <div class="text">Borah Peak in Idaho</div>
+            </div>
+        </div>
+        <div class="image6">
+            <div class="middle">
+                <div class="text">The Snake River in Kuna, Idaho</div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer>
+        &copy; Brock Blazzard | <div id="date"></div> | <a href="/index.html">GITHUB</a> | BYU-IDAHO
+    </footer>
+    <script src="scripts/currentdate.js"></script>
+</body>
+
+</html>

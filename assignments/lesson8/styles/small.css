@@ -1,0 +1,455 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+}
+body {
+    font-family: 'Merriweather Sans', sans-serif;
+    font-size: 18px;
+    height:100%;
+    background: #ddd;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    background-color:#418cf4;
+    color: black;
+}
+
+.pic {
+    margin-left: 1rem;
+    padding: .5rem;
+    flex: 0 1 100px;
+}
+
+.pic img {
+    width:130px;
+    height: auto;
+}
+
+.headertext {
+    display: flex;
+    flex: auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.headertext h1 {
+    font-size: 2rem;
+}
+
+.subheading {
+    font-size: .75rem;
+}
+
+.currentconditions {
+    visibility: hidden;
+    display: none;
+    margin: .5rem;
+    padding: .5rem;
+    background-color: #4e98ff;
+    border: .5pt solid #1d93c5;
+}
+
+
+.ccimg img {
+    width: 100px;
+    height: auto;
+}
+
+.cctext {
+    color: white;
+}
+
+nav button {
+    background-color: #1f6fdf;
+    width: 100%;
+}
+
+.hamburger { 
+    font-size: 2rem;
+    margin: auto;
+    padding: 10px;
+    background-color: none;
+    border: none;
+ }
+
+.navigation { 
+    list-style: none; 
+    padding-left: 0; 
+}
+.navigation li {
+    display: none; 
+}
+
+.responsive { 
+    position: relative; 
+}
+
+.responsive li {
+    background-color: #eee;	
+    display: block;	
+    width: 100%;
+    margin: 2px 0;	
+    border: 1px solid #ddd; 
+}
+.responsive li a {	
+    padding: 1rem; 
+    text-align: center;	
+    display: block; 
+    text-decoration:none; 
+}
+
+.responsive li a:hover { 
+    background-color: #ddd; 
+}
+
+
+.form {
+    padding: 10px;
+    width: 90%;
+    text-align: left;
+    margin: auto;
+    background: #1d93c5;
+}
+
+
+main {
+    background: #ddd;
+    text-align: center;
+}
+
+.form label {
+    padding: 10px;
+    margin: 5px;
+}
+
+.form input {
+    padding: 10px;
+    margin: 5px;
+}
+
+fieldset {
+    margin: 2px;
+    border: none;
+    background: #8fcbe7d3;
+}
+
+.thanks {
+    font-size: 2rem;
+    margin: 50px;
+    padding: 50px;
+}
+
+.hero, img {
+    margin-bottom: 20px;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    position: relative;
+    text-align: center;
+}
+
+
+.city {
+    padding: 10px;
+    font-size: 2rem;
+}
+
+.weathersummary {
+    position: absolute;
+    top: 30%;
+    left: 20%;
+    background-color: rgba(58, 58, 211, 0.6);
+    padding: 0px;
+}
+
+.weathersummary h3 {
+    text-decoration: underline;
+    padding: 5px;
+    color: white;
+}
+
+.weatherdetails {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.weatherdetails p{
+    padding: 5px;
+}
+
+.value {
+    color: yellow;
+}
+
+.label {
+    color: white;
+}
+
+.forecast {
+    visibility: hidden;
+    display: none;
+    padding: 20px;
+    background-color: #1f6fdf;
+    width: 64%;
+    margin: auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.forecast h3 {
+    padding: 10px;
+}
+
+.forecast table{
+    margin:auto;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.forecast th {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.forecast td {
+   background-color: rgba(138, 148, 80, 0.4)
+}
+
+.forecast th, .forecast td {
+    padding: 5px;
+    border: 1px solid black;
+}
+
+.article h2 {
+    font-size: 2rem;
+    grid-area: title;
+}
+
+.article h3 {
+    font-size: 1rem;
+    grid-area: author;
+}
+
+.article p {
+    grid-area: para;
+    text-align: left;
+}
+
+.article img {
+    height: auto;
+    grid-area: image;
+}
+
+.article {
+    display: grid;
+    grid-template-areas: 
+    'image'
+    'title'
+    'author'
+    'para';
+    grid-gap: 5px;
+    background-color: #1f6fdf;
+    padding: 20px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.contact p {
+    grid-area: paragraph;
+    text-align: left;
+    font-size: 1.5rem;
+}
+
+.contact h2 {
+    grid-area: head;
+}
+
+.contact {
+    display: grid;
+    grid-template-areas: 
+    'map'
+    'head'
+    'paragraph';
+    grid-gap: 5px;
+    background-color: #1f6fdf;
+    padding: 20px;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+
+.gmap_canvas {
+    grid-area: map;
+    overflow: hidden;
+    background: none !important;
+    height: 300px;
+    width: 400px;
+}
+
+.mapouter {
+    grid-area: map;
+    height: 300px;
+    width: 400px;
+}
+
+.middle {
+    transition: .5s ease;
+    position: relative;
+    opacity: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.text {
+    background-color: #333;
+    color: white;
+    font-size: 16px;
+    padding: 200px;
+  }
+
+.image1:hover .middle {
+   opacity: .5;
+}
+
+.image1:hover {
+    box-shadow: 6px 6px 2px 1px rgb(0, 0, 0, .4);
+}
+
+.image2:hover .middle {
+    opacity: .5;
+ }
+ 
+ .image2:hover {
+     box-shadow: 6px 6px 2px 1px rgb(0, 0, 0, .4);
+ }
+
+ .image3:hover .middle {
+    opacity: .5;
+ }
+ 
+ .image3:hover {
+     box-shadow: 6px 6px 2px 1px rgb(0, 0, 0, .4);
+ }
+
+ .image4:hover .middle {
+    opacity: .5;
+ }
+ 
+ .image4:hover {
+     box-shadow: 6px 6px 2px 1px rgb(0, 0, 0, .4);
+ }
+
+ .image5:hover .middle {
+    opacity: .5;
+ }
+ 
+ .image5:hover {
+     box-shadow: 6px 6px 2px 1px rgb(0, 0, 0, .4);
+ }
+
+ .image6:hover .middle {
+    opacity: .5;
+ }
+ 
+ .image6:hover {
+     box-shadow: 6px 6px 2px 1px rgb(0, 0, 0, .4);
+ }
+
+.image1 {
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Above_Mullan%2C_ID._on_Saint_Paul_Trail_%2810490403624%29.jpg/1280px-Above_Mullan%2C_ID._on_Saint_Paul_Trail_%2810490403624%29.jpg");
+    grid-area: a;
+    transition: .5s ease;
+}
+.image2 {
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Balance_%281%29.jpg/1280px-Balance_%281%29.jpg");
+    grid-area: b;
+    transition: .5s ease;
+}
+.image3 {
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Balance_%285%29.jpg/1280px-Balance_%285%29.jpg");
+    grid-area: c;
+    transition: .5s ease;
+}
+.image4 {
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Between_Palouse%2C_WA._and_Potlatch%2C_ID._%2810489975066%29.jpg/1280px-Between_Palouse%2C_WA._and_Potlatch%2C_ID._%2810489975066%29.jpg");
+    grid-area: d;
+    transition: .5s ease;
+}
+.image5 {
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Borah_Peak_ID_2-22-15.JPG/1280px-Borah_Peak_ID_2-22-15.JPG");
+    grid-area: e;
+    transition: .5s ease;
+}
+.image6 {
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Bridge_in_Kuna%2C_Idaho.jpg/1920px-Bridge_in_Kuna%2C_Idaho.jpg");
+    grid-area: f;
+    transition: .5s ease;
+}
+
+.grid-container div {
+    height: 400px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+.grid-container {
+    background-color: #1f6fdf;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-areas:
+    'a' 
+    'b'
+    'c'
+    'd'
+    'e'
+    'f';
+}
+
+@media only screen and (min-width: 37.5em) {
+    .grid-container {
+    grid-template-areas:
+    'a b ' 
+    'c d'
+    'e f';
+    }
+}
+@media only screen and (min-width: 64em) {
+    .grid-container {
+    grid-template-areas:
+    'a b c' 
+    'd e f';
+    }
+}
+
+footer {
+    color: white;
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    padding: 20px;
+    background: #418cf4;
+}
+
+
+footer div {
+    display: inline-block;
+}
+
+footer a {
+    color: white;
+}
+
+footer a:hover {
+    color: grey;
+}
