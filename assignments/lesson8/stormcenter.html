@@ -51,13 +51,13 @@
                 </fieldset>
 
                 <fieldset>
-                    <label for="emailad">eMail:</label>
-                    <input type="email" name="emailad" placeholder="user@email.org"><br>
+                    <label for="email">eMail:</label>
+                    <input type="email" id="email" name="email" placeholder="user@email.org"><br>
                 </fieldset>
 
                 <fieldset>
                     <label for="p">Phone:</label>
-                    <input type="tel" name="phone" placeholder="###-###-####" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                    <input type="tel" id="p" name="phone" placeholder="###-###-####" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                         required><br>
                 </fieldset>
 
@@ -67,13 +67,13 @@
                 </fieldset>
 
                 <fieldset>
-                    <label for="date">Storm Date:</label>
-                    <input type="date" name="sdate"><br>
+                    <label for="sdate">Storm Date:</label>
+                    <input type="date" id="sdate" name="sdate"><br>
                 </fieldset>
 
                 <fieldset>
                     <label for="stormtype">Storm Type: </label>
-                    <input name="stormtype" list="stormlist">
+                    <input name="stormtype" id="stormtype" list="stormlist">
                     <datalist id="stormlist">
                         <option value="Flash Flood">
                         <option value="Hail">
@@ -93,7 +93,7 @@
 
                 <fieldset>
                     <label for="region">Storm Region: </label>
-                    <input name="regin" list="regionlist" placeholder="Select Region">
+                    <input name="regin" id="region" list="regionlist" placeholder="Select Region">
                     <datalist id="regionlist">
                         <option value="Preston">
                         <option value="Sugar City">
@@ -104,7 +104,7 @@
                 </fieldset>
 
                 <fieldset>
-                    <label for="dangerlvl">Are you in Danger:</label>
+                    <label>Are you in Danger:</label>
                     <div>
                         <input type="radio" id="yes" name="lvl" value="yes">
                         <label for="yes">Yes</label>
@@ -120,7 +120,7 @@
                 </fieldset>
 
                 <fieldset>
-                    <label for="comments">Comments:</label><br>
+                    <label>Comments:</label><br>
                     <textarea rows="6" placeholder="Additional comments here"></textarea> <br>
                 </fieldset>
 
