@@ -5,12 +5,14 @@ html {
   }
   
   body {
-    width: 800px;
+    width: 1000px;
     margin: 0 auto;
+    background: grey;
   }
   
+  
   h1, h2 {
-    font-family: 'Faster One', cursive;
+    font-family: Arial, Helvetica, sans-serif;
   }
   
   /* header styles */
@@ -18,19 +20,29 @@ html {
   h1 {
     font-size: 4rem;
     text-align: center;
+    padding: 20px;
+    margin: 0 auto;
+    margin-top: 50px;
+    background: #418cf4;
   }
   
   header p {
     font-size: 1.3rem;
+    padding: 20px;
+    margin: 0 auto;
     font-weight: bold;
     text-align: center;
+    background: #5398f8;
   }
   
   /* section styles */
   
   section article {
-    width: 33%;
-    float: left;
+    margin: auto;
+    text-align: center;
+    margin-top: 20px;
+    width: 33.3%;
+    display: inline-block;
   }
   
   section p {
@@ -43,6 +55,30 @@ html {
   
   h2 {
     font-size: 2.5rem;
-    letter-spacing: -5px;
     margin-bottom: 10px;
   }
+
+
+  footer {
+    color: white;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: inherit;
+    margin: auto;
+    padding: 20px;
+    background: #418cf4;
+}
+
+
+footer div {
+    display: inline-block;
+}
+
+footer a {
+    color: white;
+}
+
+footer a:hover {
+    color: grey;
+}
