@@ -25,8 +25,8 @@
             <div class="subheading">The Info You Need for a Great Trip</div>
         </div>
         <div class="currentconditions">
-            <div class="ccimg"><img src="images/cloudy.png" alt="weather icon"></div>
-            <div class="cctext">cloudy</div>
+            <div class="ccimg"><span id="weatherimage"></span><img src="" alt="" id="icon"></div>
+            <div class="cctext"><span id="des"></span></div>
         </div>
     </header>
     <nav>
@@ -35,7 +35,7 @@
 
             <li><a href="index-9.html">Home</a></li>
             <li><a href="preston-9.html">Preston</a></li>
-            <li><a href="#">Sugar City</a></li>
+            <li><a href="#">Soda Springs</a></li>
             <li><a href="#">Fish Haven</a></li>
             <li><a href="stormcenter-9.html">Storm Center</a></li>
             <li><a href="gallery-9.html">Gallery</a></li>
@@ -54,15 +54,15 @@
                 <h3>Weather Summary</h3>
                 <div class="weatherdetails">
                     <p class="label">Currently:</p>
-                    <p class="value">Sunny</p>
+                    <p class="value"><span id="des1"></span></p>
                     <p class="label">Temperature:</p>
-                    <p class="value"><span id="temperature">76</span> &deg;F</p>
+                    <p class="value"><span id="temp"></span> &deg;F</p>
                     <p class="label">Humidity:</p>
-                    <p class="value">69%</p>
+                    <p class="value"><span id="hum"></span></p>
                     <p class="label">Precipitation:</p>
                     <p class="value">0 inches</p>
                     <p class="label">Wind Speed:</p>
-                    <p class="value"><span id="windspeed">5</span> mph</p>
+                    <p class="value"><span id="windspeed"></span> mph</p>
                     <p class="label">Wind Chill:</p>
                     <p class="value"><span id="windchill"></span> &deg;F</p>
                 </div>
@@ -74,21 +74,21 @@
                 <thead>
                     <tr>
                         <th>Day</th>
-                        <th>Wed</th>
-                        <th>Thu</th>
-                        <th>Fri</th>
-                        <th>Sat</th>
-                        <th>Sun</th>
+                        <th><span id="day"></span></th>
+                        <th>Day 2</th>
+                        <th>Day 3</th>
+                        <th>Day 4</th>
+                        <th>Day 5</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <th>Forecast</th>
-                        <td>89&deg;F</td>
-                        <td>87&deg;F</td>
-                        <td>78&deg;F</td>
-                        <td>75&deg;F</td>
-                        <td>72&deg;F</td>
+                        <td><span id="forecast1"></span>&deg;F</td>
+                        <td><span id="forecast2"></span>&deg;F</td>
+                        <td><span id="forecast3"></span>&deg;F</td>
+                        <td><span id="forecast4"></span>&deg;F</td>
+                        <td><span id="forecast5"></span>&deg;F</td>
                     </tr>
                 </tbody>
             </table>
@@ -138,6 +138,8 @@
     </footer>
     <script src="scripts/currentdate.js"></script>
     <script src="scripts/windchill.js"></script>
+    <script src="scripts/api.js"></script>
+    <script src="scripts/forecast.js"></script>
 </body>
 
 </html>

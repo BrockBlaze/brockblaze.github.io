@@ -60,6 +60,11 @@ header {
     height: auto;
 }
 
+.ccimg span {
+    visibility: hidden;
+    display: none;
+}
+
 .cctext {
     color: white;
 }
@@ -433,6 +438,85 @@ textarea {
     'd e f';
     }
 }
+
+main .towns article h2 {
+    text-align: center;
+    text-decoration: underline;
+}
+
+main .towns article ul {
+    list-style: none; 
+}
+
+main .towns article ul li {
+    padding: 10px;
+}
+
+main .towns article p {
+    padding: 20px;
+}
+
+main .towns article:nth-child(1) {
+    grid-area: fish;
+    background: #418cf4;
+    box-shadow: 6px 6px 2px 1px rgb(0, 0, 0, .4); 
+    padding: 20px;
+    margin: 20px;
+}
+
+main .towns article:nth-child(2) {
+    grid-area: pres;
+    background: #418cf4;
+    box-shadow: 6px 6px 2px 1px rgb(0, 0, 0, .4);
+    padding: 20px;
+    margin: 20px;
+}
+
+main .towns article:nth-child(3) {
+    grid-area: soda;
+    background: #418cf4;
+    box-shadow: 6px 6px 2px 1px rgb(0, 0, 0, .4);
+    padding: 20px;
+    margin: 20px;
+}
+
+
+main .towns {
+    display: grid;
+    text-align: left;
+    grid-auto-columns: 100%;
+    margin: auto;
+    grid-gap: 10px;
+    grid-template-areas:
+    'fish' 
+    'pres'
+    'soda'
+    ;
+}
+
+.wrap hero picture img {
+    width: 100%;
+}
+
+@media only screen and (min-width: 37.5em) {
+    main .towns {
+    grid-auto-columns: 50%;
+    grid-template-areas:
+    'fish pres ' 
+    'soda .'
+    ;
+    }
+}
+@media only screen and (min-width: 64em) {
+    main .towns {
+    grid-auto-columns: 32%;
+    grid-template-areas:
+    'fish pres soda' 
+    ;
+    }
+}
+
+
 
 footer {
     color: white;

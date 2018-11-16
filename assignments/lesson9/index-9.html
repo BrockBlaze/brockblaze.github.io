@@ -24,10 +24,7 @@
             <h1>Northwest Weather and Events</h1>
             <div class="subheading">The Info You Need for a Great Trip</div>
         </div>
-        <div class="currentconditions">
-            <div class="ccimg"><img src="images/cloudy.png" alt="weather icon"></div>
-            <div class="cctext">cloudy</div>
-        </div>
+        
     </header>
     <nav>
         <button class="hamburger" onclick="toggleHam()">&#x2630;</button>
@@ -35,20 +32,41 @@
 
             <li><a href="index-9.html">Home</a></li>
             <li><a href="preston-9.html">Preston</a></li>
-            <li><a href="#">Sugar City</a></li>
+            <li><a href="#">Soda Springs</a></li>
             <li><a href="#">Fish Haven</a></li>
             <li><a href="stormcenter-9.html">Storm Center</a></li>
             <li><a href="gallery-9.html">Gallery</a></li>
         </ul>
     </nav>
 
-    
-    
+    <main class="wrap">
+        <div class="hero">
+            <picture>
+                <source media="(min-width: 1000px)" srcset="images/hero-home.jpg">
+                <img src="images/hero-home.jpg" alt="Hero Image">
+            </picture>
+            <div class="weathersummary">
+                <h3>Northwest Weather and Events</h3>
+                <div class="weatherdetails">
+                    <p class="label">The Info You Need for a Great Trip</p>
 
-    <footer style="position: absolute;">
+                </div>
+            </div>
+        </div>
+        <section class="towns">
+
+
+        </section>
+    </main>
+
+
+    <footer>
         &copy; Brock Blazzard | <div id="date"></div> | <a href="/index.html">GITHUB</a> | BYU-IDAHO
     </footer>
     <script src="scripts/currentdate.js"></script>
+    <script src="scripts/towndata.js"></script>
+    <script src="scripts/api.js"></script>
+
 </body>
 
 </html>

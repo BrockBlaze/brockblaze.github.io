@@ -21,12 +21,13 @@
         flex: 0 1 200px;
         align-items: center;
         justify-content: center;
+        padding-right: 40px;
     }
 
 
     .hero, img{
         width: 80%;
-        height: 80%;
+        height: auto;
     }
 
     .weathersummary {
@@ -95,5 +96,7 @@
         'head head map map'
         'paragraph paragraph map map'
     }
+
+    
     
 }
