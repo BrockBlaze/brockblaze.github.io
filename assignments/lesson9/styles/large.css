@@ -1,0 +1,99 @@
+@media only screen and (min-width: 1000px) {
+    
+    header {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    .headertext h1 {
+        font-size: 3rem;
+    }
+    
+    .subheading {
+        font-size: 1.2rem;
+    }
+
+    .currentconditions {
+        visibility: visible;
+        display: flex;
+        flex: 0 1 200px;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    .hero, img{
+        width: 80%;
+        height: 80%;
+    }
+
+    .weathersummary {
+        position: absolute;
+        top: 10%;
+        left: 15%;
+        padding: 20px;
+    }
+
+
+    .form {
+        width: 50%;
+    }
+
+    .thanks {
+        font-size: 4rem;
+    }
+
+
+
+    .hamburger { 
+        display: none;	
+    }
+
+	.navigation {	
+        background-color: #1f6fdf;	
+        overflow: hidden;	
+        text-align: center;	
+    }
+
+	.navigation li { 
+        display: inline-flex; 
+    }
+
+    .navigation a {	
+        color: white;	
+        padding: 1.2rem;	
+        text-align: center;	
+        text-decoration: none;
+    }
+    
+	.navigation a:hover {	
+        color: grey;	
+    }
+
+
+    .forecast {
+        visibility: visible;
+        display: inline-block;
+    }
+
+    .article {
+        margin-top: 0px;
+        width: 64%;
+        grid-template-areas: 
+        'title title image image'
+        'author author image image'
+        '. . image image'
+        'para para image image'
+        '. . image image';
+    }
+
+    .contact {
+        width: 64%;
+        grid-template-areas: 
+        'head head map map'
+        'paragraph paragraph map map'
+    }
+    
+}

@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Weather and Event information for Idaho">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>northwestweather</title>
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans%7cRoboto" rel="stylesheet">
+    <link rel="shortcut icon" href="./images/cloudy.png" />
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/small.css">
+    <link rel="stylesheet" href="styles/large.css">
+    <script src="scripts/hamburger.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="pic">
+        <img src="images/sun.png" alt="logo">
+        </div>
+        <div class="headertext">
+            <h1>Northwest Weather and Events</h1>
+            <div class="subheading">The Info You Need for a Great Trip</div>
+        </div>
+        <div class="currentconditions">
+            <div class="ccimg"><img src="images/cloudy.png" alt="weather icon"></div>
+            <div class="cctext">cloudy</div>
+        </div>
+    </header>
+    <nav>
+        <button class="hamburger" onclick="toggleHam()">&#x2630;</button>
+        <ul class="navigation">
+
+            <li><a href="index-9.html">Home</a></li>
+            <li><a href="preston-9.html">Preston</a></li>
+            <li><a href="#">Sugar City</a></li>
+            <li><a href="#">Fish Haven</a></li>
+            <li><a href="stormcenter-9.html">Storm Center</a></li>
+            <li><a href="gallery-9.html">Gallery</a></li>
+        </ul>
+    </nav>
+
+
+    <main>
+        <div class="city">Preston</div>
+        <div class="hero">
+            <picture>
+                <source media="(min-width: 1000px)" srcset="images/preston-hero.jpg">
+                <img src="images/preston-hero-small.jpg" alt="Hero Image">
+            </picture>
+            <section class="weathersummary">
+                <h3>Weather Summary</h3>
+                <div class="weatherdetails">
+                    <p class="label">Currently:</p>
+                    <p class="value">Sunny</p>
+                    <p class="label">Temperature:</p>
+                    <p class="value"><span id="temperature">76</span> &deg;F</p>
+                    <p class="label">Humidity:</p>
+                    <p class="value">69%</p>
+                    <p class="label">Precipitation:</p>
+                    <p class="value">0 inches</p>
+                    <p class="label">Wind Speed:</p>
+                    <p class="value"><span id="windspeed">5</span> mph</p>
+                    <p class="label">Wind Chill:</p>
+                    <p class="value"><span id="windchill"></span> &deg;F</p>
+                </div>
+            </section>
+        </div>
+        <div class="forecast">
+            <h3>High Temperature Forecast</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Day</th>
+                        <th>Wed</th>
+                        <th>Thu</th>
+                        <th>Fri</th>
+                        <th>Sat</th>
+                        <th>Sun</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Forecast</th>
+                        <td>89&deg;F</td>
+                        <td>87&deg;F</td>
+                        <td>78&deg;F</td>
+                        <td>75&deg;F</td>
+                        <td>72&deg;F</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="article">
+            <h2>The Article</h2>
+            <h3>by Moroni</h3>
+            <p>
+                Southern Idaho is a great place to visit and has many activities you can do. You can go fishing,
+                hiking, camping, and play sports.
+                Idaho is truly a gem state. Go hiking to find that perfect view and picture, Go fishing to catch
+                the biggest fish that you have
+                every seen in your life. Go camping to enjoy the escape from the world and that nice fresh air, and
+                finaly play some sports to lose
+                that weight that you told yourself that you would lose a long time ago jack.
+            </p>
+            <img src="images/hikingpic.jpg" alt="hiking picture">
+        </div>
+
+        <div class="contact">
+            <div class="mapouter">
+                <div class="gmap_canvas">
+                    <iframe width="400" height="300" id="gmap_canvas" src="https://maps.google.com/maps?q=preston%2C%20idaho&t=k&z=11&ie=UTF8&iwloc=&output=embed"
+                        frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+                    </iframe>
+                </div>
+    
+            </div>
+            <h2>Contact</h2>
+            <p>
+                Please contact us
+                We would be thrilled to receive a call from you
+                because nobody calls us and we have all the info
+                any tourist would every need. <br><br>
+                Call us at: 208-777-7777 <br><br>
+                Email us at: northwestweather@gmail.com
+            </p>
+        </div>
+
+
+    </main>
+
+    
+
+    <footer>
+        &copy; Brock Blazzard | <div id="date"></div> | <a href="/index.html">GITHUB</a> | BYU-IDAHO
+    </footer>
+    <script src="scripts/currentdate.js"></script>
+    <script src="scripts/windchill.js"></script>
+</body>
+
+</html>
