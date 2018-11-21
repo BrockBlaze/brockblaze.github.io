@@ -25,11 +25,6 @@
     }
 
 
-    .hero, img{
-        width: 80%;
-        height: auto;
-    }
-
     .weathersummary {
         position: absolute;
         top: 10%;
@@ -79,9 +74,9 @@
         display: inline-block;
     }
 
-    .article {
+    article {
         margin-top: 0px;
-        width: 64%;
+        width: 100%;
         grid-template-areas: 
         'title title image image'
         'author author image image'
@@ -91,7 +86,7 @@
     }
 
     .contact {
-        width: 64%;
+        width: 100%;
         grid-template-areas: 
         'head head map map'
         'paragraph paragraph map map'
