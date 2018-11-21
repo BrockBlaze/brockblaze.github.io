@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Weather and Event information for Idaho">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>northwestweather</title>
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans%7cRoboto" rel="stylesheet">
+    <link rel="shortcut icon" href="./images/cloudy.png" />
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/small.css">
+    <link rel="stylesheet" href="styles/large.css">
+    <script src="scripts/hamburger.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="pic">
+            <img src="images/sun.png" alt="logo">
+        </div>
+        <div class="headertext">
+            <h1>Northwest Weather and Events</h1>
+            <div class="subheading">The Info You Need for a Great Trip</div>
+        </div>
+        
+    </header>
+    <nav>
+        <button class="hamburger" onclick="toggleHam()">&#x2630;</button>
+        <ul class="navigation">
+
+            <li><a href="index.html">Home</a></li>
+            <li><a href="preston.html">Preston</a></li>
+            <li><a href="sodasprings.html">Soda Springs</a></li>
+            <li><a href="fishhaven.html">Fish Haven</a></li>
+            <li><a href="stormcenter.html">Storm Center</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+        </ul>
+    </nav>
+
+    <main class="wrap">
+        <div class="hero">
+            <picture>
+                <source media="(min-width: 1000px)" srcset="images/hero-home.jpg">
+                <img src="images/hero-home.jpg" alt="Hero Image">
+            </picture>
+            <div class="weathersummary">
+                <h3>Northwest Weather and Events</h3>
+                <div class="weatherdetails">
+                    <p class="label">The Info You Need for a Great Trip</p>
+
+                </div>
+            </div>
+        </div>
+        <section class="towns">
+
+
+        </section>
+    </main>
+
+
+    <footer>
+        &copy; Brock Blazzard | <div id="date"></div> | <a href="/index.html">GITHUB</a> | BYU-IDAHO
+    </footer>
+    <script src="scripts/currentdate.js"></script>
+    <script src="scripts/towndata.js"></script>
+    <script src="scripts/api.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Weather and Event information for Idaho">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>northwestweather</title>
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans%7cRoboto" rel="stylesheet">
+    <link rel="shortcut icon" href="./images/cloudy.png" />
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/small.css">
+    <link rel="stylesheet" href="styles/large.css">
+    <script src="scripts/hamburger.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="pic">
+            <img src="images/sun.png" alt="logo">
+        </div>
+        <div class="headertext">
+            <h1>Northwest Weather and Events</h1>
+            <div class="subheading">The Info You Need for a Great Trip</div>
+        </div>
+        
+    </header>
+    <nav>
+        <button class="hamburger" onclick="toggleHam()">&#x2630;</button>
+        <ul class="navigation">
+
+            <li><a href="index.html">Home</a></li>
+            <li><a href="preston.html">Preston</a></li>
+            <li><a href="sodasprings.html">Soda Springs</a></li>
+            <li><a href="fishhaven.html">Fish Haven</a></li>
+            <li><a href="stormcenter.html">Storm Center</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+        </ul>
+    </nav>
+    <main>
+        <form action="thanks.html">
+            <div class="form">
+
+                <fieldset>
+                    <label for="fullname">Full Name:</label>
+                    <input type="text" id="fullname" name="fullname" pattern="[A-Za-z].{5,}" required><br>
+                </fieldset>
+
+                <fieldset>
+                    <label for="email">eMail:</label>
+                    <input type="email" id="email" name="email" placeholder="user@email.org"><br>
+                </fieldset>
+
+                <fieldset>
+                    <label for="p">Phone:</label>
+                    <input type="tel" id="p" name="phone" placeholder="###-###-####" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                        required><br>
+                </fieldset>
+
+                <fieldset>
+                    <label for="zip">Zip Code:</label>
+                    <input type="text" id="zip" name="zip" pattern="[0-9]{5}" required><br>
+                </fieldset>
+
+                <fieldset>
+                    <label for="sdate">Storm Date:</label>
+                    <input type="date" id="sdate" name="sdate"><br>
+                </fieldset>
+
+                <fieldset>
+                    <label for="stormtype">Storm Type: </label>
+                    <input name="stormtype" id="stormtype" list="stormlist">
+                    <datalist id="stormlist">
+                        <option value="Flash Flood">
+                        <option value="Hail">
+                        <option value="Hurricane">
+                        <option value="Thunderstorm">
+                        <option value="Tornado">
+                    </datalist><br>
+                </fieldset>
+
+                <fieldset>
+                    <label for="rating">Rating (1 to 10):</label>
+                    <input type="range" id="rating" value="5" min="1" max="10" step="1" oninput="adjustRating(this.value)"
+                        onchange="adjustRating(this.value)">
+                    <span id="ratingvalue">5</span><br>
+                    <script src="scripts/stormrating.js"></script>
+                </fieldset>
+
+                <fieldset>
+                    <label for="region">Storm Region: </label>
+                    <input name="regin" id="region" list="regionlist" placeholder="Select Region">
+                    <datalist id="regionlist">
+                        <option value="Preston">
+                        <option value="Sugar City">
+                        <option value="Fish Haven">
+                        <option value="Winder">
+                        <option value="Mink Creek">
+                    </datalist><br>
+                </fieldset>
+
+                <fieldset>
+                    <label>Are you in Danger:</label>
+                    <div>
+                        <input type="radio" id="yes" name="lvl" value="yes">
+                        <label for="yes">Yes</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="maybe" name="lvl" value="maybe">
+                        <label for="maybe">Maybe</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="no" name="lvl" value="no" checked>
+                        <label for="no">No</label>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <label>Comments:</label><br>
+                    <textarea rows="6" placeholder="Additional comments here"></textarea> <br>
+                </fieldset>
+
+                <input type="submit" value="Report">
+                <input type="hidden" name="redirect" value="thanks.html">
+
+            </div>
+        </form>
+    </main>
+
+    <footer>
+        &copy; Brock Blazzard | <div id="date"></div> | <a href="/index.html">GITHUB</a> | BYU-IDAHO
+    </footer>
+    <script src="scripts/currentdate.js"></script>
+    <script src="scripts/api.js"></script>
+</body>
+
+</html>

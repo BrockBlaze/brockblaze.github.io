@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Weather and Event information for Idaho">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>northwestweather</title>
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans%7cRoboto" rel="stylesheet">
+    <link rel="shortcut icon" href="./images/cloudy.png" />
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/small.css">
+    <link rel="stylesheet" href="styles/large.css">
+    <script src="scripts/hamburger.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="pic">
+            <img src="images/sun.png" alt="logo">
+        </div>
+        <div class="headertext">
+            <h1>Northwest Weather and Events</h1>
+            <div class="subheading">The Info You Need for a Great Trip</div>
+        </div>
+        
+    </header>
+    <nav>
+        <button class="hamburger" onclick="toggleHam()">&#x2630;</button>
+        <ul class="navigation">
+
+            <li><a href="index.html">Home</a></li>
+            <li><a href="preston.html">Preston</a></li>
+            <li><a href="sodasprings.html">Soda Springs</a></li>
+            <li><a href="fishhaven.html">Fish Haven</a></li>
+            <li><a href="stormcenter.html">Storm Center</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="thanks">
+       Thank you for submitting a form
+        </div>
+    </main>
+    
+
+    <footer style="position: absolute;">
+        &copy; Brock Blazzard | <div id="date"></div> | <a href="/index.html">GITHUB</a> | BYU-IDAHO
+    </footer>
+    <script src="scripts/currentdate.js"></script>
+    <script src="scripts/api.js"></script>
+</body>
+
+</html>
