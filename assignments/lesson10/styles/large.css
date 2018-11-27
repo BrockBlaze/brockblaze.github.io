@@ -1,4 +1,4 @@
-@media only screen and (min-width: 1000px) {
+@media only screen and (min-width: 64em) {
     
     header {
         flex-direction: row;
@@ -41,6 +41,10 @@
         font-size: 4rem;
     }
 
+    main {
+        margin-left: auto;
+    }
+
 
 
     .hamburger { 
@@ -51,6 +55,8 @@
         background-color: #1f6fdf;	
         overflow: hidden;	
         text-align: center;	
+        position: relative;
+        width: 100%;
     }
 
 	.navigation li { 

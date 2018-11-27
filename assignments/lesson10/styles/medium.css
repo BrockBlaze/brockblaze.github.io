@@ -1,0 +1,47 @@
+@media only screen and (min-width: 37.5em) {
+
+    main {
+        margin-left: 200px;
+    }
+
+    .hamburger { 
+        display: none;	
+    }
+
+    .currentconditions {
+        visibility: visible;
+        display: flex;
+        flex: 0 1 200px;
+        align-items: center;
+        justify-content: center;
+        padding-right: 40px;
+    }
+
+	.navigation {	
+        background-color: #1f6fdf;	
+        overflow: hidden;	
+        text-align: center;	
+        position: absolute;
+        width: 150px;
+        height: 100%;
+        z-index: 1;
+        overflow-x: hidden;
+        left: 0;
+    }
+
+	.navigation li {
+        display: inline-flex;
+    }
+
+    .navigation a {	
+        color: white;	
+        padding: 1.2rem;	
+        text-align: center;	
+        text-decoration: none;
+    }
+    
+	.navigation a:hover {	
+        color:gold;	
+    }
+
+}
