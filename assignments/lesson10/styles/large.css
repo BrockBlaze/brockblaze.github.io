@@ -65,8 +65,9 @@
     }
     
 	.navigation a:hover {	
-        color: grey;	
+        color:gold;	
     }
+
 
 
     .forecast {
@@ -83,6 +84,11 @@
         '. . image image'
         'para para image image'
         '. . image image';
+    }
+
+    .gmap_canvas {
+        height: 300px;
+        width: 400px;
     }
 
     .contact {

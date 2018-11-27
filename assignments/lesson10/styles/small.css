@@ -109,7 +109,11 @@ nav button {
 }
 
 .responsive li a:hover { 
-    background-color: #ddd; 
+    background-color: gold; 
+}
+
+#active a{
+    color: gold;
 }
 
 
@@ -298,8 +302,8 @@ article {
     grid-area: map;
     overflow: hidden;
     background: none !important;
-    height: 300px;
-    width: 400px;
+    height: 250px;
+    width: 350px;
 }
 
 .mapouter {
