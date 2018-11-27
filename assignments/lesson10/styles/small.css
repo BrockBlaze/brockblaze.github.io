@@ -127,7 +127,6 @@ nav button {
 
 
 main {
-    
     text-align: center;
     max-width: 1080px;
     margin: auto;
@@ -176,7 +175,7 @@ textarea {
 
 .weathersummary {
     position: absolute;
-    top: 30%;
+    top: 20%;
     left: 20%;
     background-color: rgba(58, 58, 211, 0.8);
     padding: 0px;
