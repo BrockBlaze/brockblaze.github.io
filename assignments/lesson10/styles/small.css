@@ -333,7 +333,7 @@ article {
 }
 
 .image1:hover {
-    box-shadow: 6px 6px 2px 1px rgb(0, 0, 0, .4);
+    box-shadow: 6px 6px 2px 1px rgb(0, 0, 0, .400);
 }
 
 .image2:hover .middle {
@@ -341,7 +341,7 @@ article {
  }
  
  .image2:hover {
-     box-shadow: 6px 6px 2px 1px rgb(0, 0, 0, .4);
+     box-shadow: 6px 6px 2px 1px rgb(0, 0, 0, .400);
  }
 
  .image3:hover .middle {
@@ -349,7 +349,7 @@ article {
  }
  
  .image3:hover {
-     box-shadow: 6px 6px 2px 1px rgb(0, 0, 0, .4);
+     box-shadow: 6px 6px 2px 1px rgb(0, 0, 0, .400);
  }
 
  .image4:hover .middle {
@@ -357,7 +357,7 @@ article {
  }
  
  .image4:hover {
-     box-shadow: 6px 6px 2px 1px rgb(0, 0, 0, .4);
+     box-shadow: 6px 6px 2px 1px rgb(0, 0, 0, .400);
  }
 
  .image5:hover .middle {
@@ -365,7 +365,7 @@ article {
  }
  
  .image5:hover {
-     box-shadow: 6px 6px 2px 1px rgb(0, 0, 0, .4);
+     box-shadow: 6px 6px 2px 1px rgb(0, 0, 0, .400);
  }
 
  .image6:hover .middle {
@@ -373,7 +373,7 @@ article {
  }
  
  .image6:hover {
-     box-shadow: 6px 6px 2px 1px rgb(0, 0, 0, .4);
+     box-shadow: 6px 6px 2px 1px rgb(0, 0, 0, .400);
  }
 
 .image1 {
@@ -456,7 +456,7 @@ main .towns aside p {
 main .towns aside:nth-child(1) {
     grid-area: fish;
     background: #418cf4;
-    box-shadow: 6px 6px 2px 1px rgb(0, 0, 0, .4); 
+    box-shadow: 6px 6px 2px 1px rgb(0, 0, 0, .400); 
     padding: 20px;
     margin: 20px;
 }
@@ -464,7 +464,7 @@ main .towns aside:nth-child(1) {
 main .towns aside:nth-child(2) {
     grid-area: pres;
     background: #418cf4;
-    box-shadow: 6px 6px 2px 1px rgb(0, 0, 0, .4);
+    box-shadow: 6px 6px 2px 1px rgb(0, 0, 0, .400);
     padding: 20px;
     margin: 20px;
 }
@@ -472,7 +472,7 @@ main .towns aside:nth-child(2) {
 main .towns aside:nth-child(3) {
     grid-area: soda;
     background: #418cf4;
-    box-shadow: 6px 6px 2px 1px rgb(0, 0, 0, .4);
+    box-shadow: 6px 6px 2px 1px rgb(0, 0, 0, .400);
     padding: 20px;
     margin: 20px;
 }
