@@ -1,0 +1,46 @@
+@media only screen and (min-width: 64em) {
+
+    .sidenav {
+        display: none;
+    }
+
+    #menuicon {
+        display: none;
+    }
+
+    header {
+        margin: auto;
+        max-width: 70vw;
+    }
+    
+    .title {
+        padding-left: 0;
+    }
+
+    nav {
+        margin: auto;
+        max-width: 70vw;
+        display: flex;
+        background: #818181;
+    }
+
+    .wrapper {
+        height: 82vh;
+        width: 70vw;
+        margin: auto;
+    }
+
+    .container {
+        
+        width: 58vw;
+    }
+
+    nav a {
+        display: inline;
+    }
+
+    footer {
+        margin: auto;
+        width: 70vw;
+    }
+}

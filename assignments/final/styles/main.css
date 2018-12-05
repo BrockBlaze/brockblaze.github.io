@@ -1,0 +1,108 @@
+html {
+    height: 100vh;
+    width: 100vw;
+}
+
+body {
+    background: #5967b4;
+}
+
+header {
+    height: 8vh;
+    display: flex;
+    background: #bcbfcf;
+}
+
+
+.title {
+    margin-left: 2vh;
+    margin-top: 1vh;
+    text-align: center;
+    font-size: 4vh;
+    padding-left: 25%;
+}
+
+nav {
+    display: none;
+    font-size: 4vh;
+    height: 5vh;
+    background: #5967b4;
+    vertical-align: middle;
+}
+
+nav a {
+    display: none;
+    text-decoration: none;
+    padding-left: 20px;
+}
+
+.sidenav {
+    display: inline-block;
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+.wrapper {
+    height: 87vh;
+    background: #fff;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.container {
+    padding: 20px;
+    margin: auto;
+    margin-top: 3vh;
+    background: #5967b4;
+    font-size: 1.5rem;
+}
+
+footer {
+    font-size: 2vh;
+    text-align: center;
+    height: 5vh;
+    background: #333;
+}
+
+footer div {
+    margin-top: .75vh;
+    display: inline-block;
+}
+
+footer a:hover {
+    color: grey;
+}
