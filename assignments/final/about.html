@@ -6,77 +6,81 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="Weather and Event information for Idaho">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>northwestweather</title>
+    <title>Temple Inn & Suites</title>
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans%7cRoboto" rel="stylesheet">
     <link rel="shortcut icon" href="images/moronicon.png" />
     <link rel="stylesheet" href="styles/normalize.css">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/large.css">
+
 </head>
 <header>
+    <div class="logo"><a href="index.html"><img src="images/moroni.jpg" alt="logo image"></a></div>
     <div id="menuicon" style="font-size:30px;cursor:pointer;" onclick="openNav()">&#9776;</div>
     <div class="title">
-        about
+        Temple Inn & Suites
         <div>
 
             <div id="mySidenav" class="sidenav">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                <a href="index.html">home</a>
-                <a href="spokane.html">spokane</a>
-                <a href="about.html">about</a>
+                <a href="index.html">Home</a>
+                <a href="temples.html">Temples</a>
+                <a href="reservation.html">Reservations</a>
+                <a href="services.html">Services</a>
+                <a id="active" href="about.html">Contact Us</a>
             </div>
 </header>
 <nav>
-    <a href="index.html">home</a>
-    <a href="spokane.html">spokane</a>
-    <a href="about.html">about</a>
-
-
-
-
+    <a href="index.html">Home</a>
+    <a href="temples.html">Temples</a>
+    <a href="reservation.html">Reservations</a>
+    <a href="services.html">Services</a>
+    <a id="active" href="about.html">Contact Us</a>
 </nav>
 
 <body>
 
+
     <div class="wrapper">
         <div class="container">
-            This website is about Hotels and Suites that are near Temples of the Church of Jesus Christ of Latter-day
-            Saints.
-            This hotels and Suites will be very good and accomidding to people of the faith.
+            Temple Inn & Suites Headquarters<br><br>
+            4830 Montgomery Ln #200, Bethesda, MD 20814
+            <div class="mapouter">
+
+                <div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=4830%20Montgomery%20Ln%20%23200%2C%20Bethesda%2C%20MD%2020814&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                        frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.crocothemes.net">wordpress
+                        themes by crocothemes.net</a></div>
+            </div>
         </div>
         <div class="container">
-            This website is about Hotels and Suites that are near Temples of the Church of Jesus Christ of Latter-day
-            Saints.
-            This hotels and Suites will be very good and accomidding to people of the faith.
-        </div>
-        <div class="container">
-            This website is about Hotels and Suites that are near Temples of the Church of Jesus Christ of Latter-day
-            Saints.
-            This hotels and Suites will be very good and accomidding to people of the faith.
-        </div>
-        <div class="container">
-            This website is about Hotels and Suites that are near Temples of the Church of Jesus Christ of Latter-day
-            Saints.
-            This hotels and Suites will be very good and accomidding to people of the faith.
-        </div>
-        <div class="container">
-            This website is about Hotels and Suites that are near Temples of the Church of Jesus Christ of Latter-day
-            Saints.
-            This hotels and Suites will be very good and accomidding to people of the faith.
-        </div>
-        <div class="container">
-            This website is about Hotels and Suites that are near Temples of the Church of Jesus Christ of Latter-day
-            Saints.
-            This hotels and Suites will be very good and accomidding to people of the faith.
-        </div>
-        <div class="container">
-            This website is about Hotels and Suites that are near Temples of the Church of Jesus Christ of Latter-day
-            Saints.
-            This hotels and Suites will be very good and accomidding to people of the faith.
-        </div>
-        <div class="container">
-            This website is about Hotels and Suites that are near Temples of the Church of Jesus Christ of Latter-day
-            Saints.
-            This hotels and Suites will be very good and accomidding to people of the faith.
+            <form action="confirmation.html">
+                <div class="form">
+                    <fieldset>
+                        <label for="fullname">Full Name:</label>
+                        <input type="text" id="fullname" name="fullname" pattern="[A-Za-z].{5,}" placeholder="John Doe"
+                            required><br>
+                    </fieldset>
+
+                    <fieldset>
+                        <label for="email">eMail:</label>
+                        <input type="email" id="email" name="email" placeholder="user@email.org"><br>
+                    </fieldset>
+
+                    <fieldset>
+                        <label for="p">Phone:</label>
+                        <input type="tel" id="p" name="phone" placeholder="###-###-####" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                            required><br>
+                    </fieldset>
+
+                    <fieldset>
+                        <label>Comments:</label><br>
+                        <textarea rows="6" placeholder="Additional comments here"></textarea> <br>
+                    </fieldset>
+
+                    <input type="submit" value="Submit">
+                    <input type="hidden" name="redirect" value="thanks.html">
+                </div>
+            </form>
         </div>
 
 

@@ -27,7 +27,7 @@
     var n = weekday[d.getDay()];
     var m = month[d.getMonth()];
     var thedate = n + ", " + d.getDate() + " " + m + " " + d.getFullYear();
+    var year = d.getFullYear();
     var day = n;
-    document.getElementById("date").innerHTML = thedate;
-    document.getElementById("day").innerHTML = day;
+    document.getElementById("date").innerHTML = year;
 

@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Weather and Event information for Idaho">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Temple Inn & Suites</title>
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans%7cRoboto" rel="stylesheet">
+    <link rel="shortcut icon" href="images/moronicon.png" />
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/large.css">
+    <link rel="stylesheet" href="styles/temple.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<header>
+    <div class="logo"><a href="index.html"><img src="images/moroni.jpg" alt="logo image"></a></div>
+    <div id="menuicon" style="font-size:30px;cursor:pointer;" onclick="openNav()">&#9776;</div>
+    <div class="title">
+        Temple Inn & Suites
+        <div>
+
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="index.html">Home</a>
+                <a id="active" href="temples.html">Temples</a>
+                <a href="reservation.html">Reservations</a>
+                <a href="services.html">Services</a>
+                <a href="about.html">Contact Us</a>
+            </div>
+</header>
+<nav>
+    <a href="index.html">Home</a>
+    <a id="active" href="temples.html">Temples</a>
+    <a href="reservation.html">Reservations</a>
+    <a href="services.html">Services</a>
+    <a href="about.html">Contact Us</a>
+</nav>
+
+<body>
+    <div class="wrapper">
+
+        <div id="container">
+            <div id="next" alt="Next" title="Next">
+                <div class="arrow-right"></div>
+            </div>
+            <div id="prev" alt="Prev" title="Prev">
+                <div class="arrow-left"></div>
+            </div>
+            <div id="slider">
+                <div class="slide">
+                    <div class="slide-copy">
+                        <h2>Slide One</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae commodo sem. Integer eros
+                            nibh, molestie congue elementum quis, mattis nec tortor. Vivamus sed hendrerit sed vitae
+                            orci convallis.</p>
+                    </div>
+                    <div class="img1"></div>
+                </div>
+
+                <div class="slide">
+                    <div class="slide-copy">
+                        <h2>Slide Two</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae commodo sem. Integer eros
+                            nibh, molestie congue elementum quis, mattis nec tortor. Vivamus sed hendrerit sed vitae
+                            orci convallis.</p>
+                    </div>
+                    <div class="img2"></div>
+                </div>
+
+                <div class="slide">
+                    <div class="slide-copy">
+                        <h2>Slide Three</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae commodo sem. Integer eros
+                            nibh, molestie congue elementum quis, mattis nec tortor. Vivamus sed hendrerit sed vitae
+                            orci convallis.</p>
+                    </div>
+                    <div class="img3"></div>
+                </div>
+
+                <div class="slide">
+                    <div class="slide-copy">
+                        <h2>Slide Four</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae commodo sem. Integer eros
+                            nibh, molestie congue elementum quis, mattis nec tortor. Vivamus sed hendrerit sed vitae
+                            orci convallis.</p>
+                    </div>
+                    <div class="img4"></div>
+                </div>
+
+                <div class="slide">
+                    <div class="slide-copy">
+                        <h2>Slide Five</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae commodo sem. Integer eros
+                            nibh, molestie congue elementum quis, mattis nec tortor. Vivamus sed hendrerit sed vitae
+                            orci convallis.</p>
+                    </div>
+                    <div class="img5"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+<footer>
+    &copy; Brock Blazzard | <div id="date"></div> | <a href="/index.html">GITHUB</a> | BYU-IDAHO
+</footer>
+<script src="scripts/slider.js"></script>
+<script src="scripts/currentdate.js"></script>
+<script src="scripts/sidenav.js"></script>
+
+</html>

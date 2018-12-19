@@ -9,10 +9,22 @@ body {
 }
 
 header {
+    margin: auto;
     color: white;
     height: 8vh;
     display: flex;
-    background: #107896;
+    background: linear-gradient(to right,#3C6478,#107896,#107896,#107896,#3C6478);
+}
+
+.logo {
+    position: absolute;
+    right: 2%;
+    top: 2%;
+}
+
+.logo img {
+    width: 50px;
+    height: auto;
 }
 
 #menuicon {
@@ -20,25 +32,36 @@ header {
 }
 
 .title {
-    margin-left: 2vh;
-    margin-top: 1vh;
-    text-align: center;
-    font-size: 4vh;
-    padding-left: 25%;
+    margin-left: 4vh;
+    margin-top: 2vh;
+    font-size: 3vh;
+    width: 50%;
 }
 
+
 nav {
+    border-radius: 20px;
     display: none;
-    font-size: 4vh;
+    font-size: 2vh;
     height: 5vh;
-    background: #3C6478;
+    background: #424242;
     vertical-align: middle;
 }
 
 nav a {
+    color: white;
     display: none;
     text-decoration: none;
+    margin-top: 1.5vh;
     padding-left: 20px;
+}
+
+#active {
+    color: yellow;
+}
+
+nav a:hover {
+    color: yellow;
 }
 
 .sidenav {
@@ -51,17 +74,17 @@ nav a {
     left: 0;
     background-color: #111;
     overflow-x: hidden;
-    transition: 0.5s;
+    transition: 0.2s;
     padding-top: 60px;
 }
 
 .sidenav a {
-    padding: 8px 8px 8px 32px;
+    padding: 8px 8px 8px 20px;
     text-decoration: none;
     font-size: 25px;
     color: #818181;
     display: block;
-    transition: 0.3s;
+    transition: 0.1s;
 }
 
 .sidenav a:hover {
@@ -83,29 +106,122 @@ nav a {
 
 .wrapper {
     height: 87vh;
-    background: #fff;
+    background: linear-gradient(to right,#3C6478,#107896,#107896,#107896,#3C6478);
     overflow: scroll;
     overflow-x: hidden;
 }
 
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+
 .container {
+    color: white;
     padding: 20px;
     margin: auto;
     margin-top: 3vh;
-    background: #3C6478;
+    background: linear-gradient(to right,#316980,#3C6478,#3C6478,#316980);
     font-size: 1.5rem;
 }
 
+.container a {
+    background: #107896;
+    padding: 5px;
+    border-radius: 10px;
+    border: solid black 1px;
+    color: white;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+.container a:hover {
+    color: yellow;
+}
+
+.container img {
+    width: 350px;
+    height: auto;
+}
+
+.wrap {
+    display: flex;
+}
+
+.content h1 {
+    width: 70%;
+    font-size: 26px;
+}
+
+.content .currentconditions {
+    width: 100px;
+    text-align: center;
+}
+
+.content .ccimg img {
+    margin-bottom: -25px;
+    width: 80px;
+    height: auto;
+}
+
+.content {
+    padding: 10px;
+}
+
+.mapouter {
+    margin: auto;
+    text-align: center;
+    height: 500px;
+    width: 600px;
+}
+
+.gmap_canvas {
+    overflow: hidden;
+    background: none !important;
+    height: 500px;
+    width: 600px;
+}
+
+form {
+    padding: 10px;
+}
+
+fieldset {
+    font-size: 16px;
+    border: none;
+    border-bottom: solid black 1px;
+    padding: 20px;
+}
+
+.form label {
+    padding: 10px;
+    margin: 5px;
+}
+
+
+.form input {
+    
+    padding: 10px;
+    margin: 5px;
+}
+
+
 footer {
+    color: white;
     font-size: 2vh;
     text-align: center;
     height: 5vh;
-    background: #333;
+    background: linear-gradient(to right,#3C6478,#424242,#424242,#424242 ,#424242 ,#424242,#424242,#3C6478);
 }
 
 footer div {
-    margin-top: .75vh;
+    margin-top: 1vh;
     display: inline-block;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
 }
 
 footer a:hover {

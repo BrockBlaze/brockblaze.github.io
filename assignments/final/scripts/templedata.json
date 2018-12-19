@@ -1,0 +1,95 @@
+{
+    "temples": [
+        {
+            "name": "Spokane",
+            "telephone": "(1) 509-926-2824",
+            "email": "spokanetemple@email.net",
+            "services": [
+                "No clothing rental available",
+                "No cafeteria available",
+                "No patron housing available",
+                "Distribution center nearby"
+            ],
+            "schedule": "Every 45min",
+            "closures": [
+                "Tuesday, January 1, 2019",
+                "Monday, April 1, 2019 - Monday, April 22, 2019",
+                "Thursday, July 4, 2019",
+                "Monday, September 30, 2019 - Monday, October 14, 2019",
+                "Wednesday, November 27, 2019 (Limited Hours)",
+                "Thursday, November 28, 2019",
+                "Tuesday, December 24, 2019",
+                "Wednesday, December 25, 2019",
+                "Tuesday, December 31, 2019 (Limited Hours)"
+            ]
+        },
+        {
+            "name": "Columbia River",
+            "telephone": "(1) 509-628-0990",
+            "email": "columbiarivertemple@email.net",
+            "services": [
+                "No clothing rental available",
+                "No cafeteria available",
+                "No patron housing available",
+                "Distribution center nearby"
+            ],
+            "schedule": "Every 30min",
+            "closures": [
+                "Tuesday, March 5, 2019 - Monday, March 18, 2019",
+                "Saturday, April 6, 2019",
+                "Thursday, July 4, 2019",
+                "Tuesday, September 10, 2019 - Monday, October 21, 2019",
+                "Wednesday, November 27, 2019 - Thursday, November 28, 2019",
+                "Tuesday, December 24, 2019 - Wednesday, December 25, 2019",
+                "Tuesday, December 24, 2019",
+                "Tuesday, December 31, 2019 - Wednesday, January 1, 2020"
+            ]
+        },
+        {
+            "name": "Portland",
+            "telephone": "(1) 503-639-7066",
+            "email": "portlandtemple@email.net",
+            "services": [
+                "Clothing rental available",
+                "Cafeteria available",
+                "No patron housing available",
+                "Distribution center nearby"
+            ],
+            "schedule": "Every Hour",
+            "closures": [
+                "Tuesday, January 1, 2019",
+                "Tuesday, January 29, 2019 - Monday, February 18, 2019",
+                "Saturday, April 6, 2019",
+                "Thursday, July 4, 2019",
+                "Monday, July 29, 2019 - Monday, August 12, 2019",
+                "Saturday, October 5, 2019",
+                "Wednesday, November 27, 2019 (Limited Hours)",
+                "Thursday, November 28, 2019",
+                "Tuesday, December 24, 2019",
+                "Wednesday, December 25, 2019"
+            ]
+        },
+        {
+            "name": "Seattle",
+            "telephone": "(1) 425-643-5144",
+            "email": "seattletemple@email.net",
+            "services": [
+                "Clothing rental available",
+                "Cafeteria available",
+                "No patron housing available",
+                "Distribution center nearby"
+            ],
+            "schedule": "Every Hour",
+            "closures": [
+                "Tuesday, January 1, 2019",
+                "Monday, February 11, 2019 - Monday, March 11, 2019",
+                "Saturday, April 6, 2019",
+                "Thursday, July 4, 2019",
+                "Sunday, August 18, 2019 - Monday, September 2, 2019",
+                "Saturday, October 5, 2019",
+                "Wednesday, November 27, 2019 - Thursday, November 28, 2019",
+                "Tuesday, December 24, 2019 - Wednesday, December 25, 2019"
+            ]
+        }
+    ]
+}

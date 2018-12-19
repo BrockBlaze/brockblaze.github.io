@@ -12,16 +12,27 @@
         margin: auto;
         max-width: 70vw;
     }
+
+    .logo {
+        position: absolute;
+        right: 16%;
+        top: 15px;
+    }
+    
+    .logo img {
+        width: 100px;
+        height: auto;
+    }
     
     .title {
-        padding-left: 0;
+        margin-left: 0vh;
+        font-size: 4vh;
     }
 
     nav {
         margin: auto;
         max-width: 70vw;
         display: flex;
-        background: #818181;
     }
 
     .wrapper {
@@ -31,8 +42,23 @@
     }
 
     .container {
-        
+        display: flex;
         width: 58vw;
+    }
+
+    .content {
+        width: 70%;
+        padding: 10px;
+        float: left;
+    }
+    
+    .container img {
+        width: 30%;
+        height: 30%;
+    }
+
+    fieldset {
+        font-size: 26px;
     }
 
     nav a {
