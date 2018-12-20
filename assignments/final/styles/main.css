@@ -228,15 +228,15 @@ nav a:hover {
 .mapouter {
     margin: auto;
     text-align: center;
-    height: 500px;
-    width: 600px;
+    height: 300px;
+    width: 400px;
 }
 
 .gmap_canvas {
     overflow: hidden;
     background: none !important;
-    height: 500px;
-    width: 600px;
+    height: 300px;
+    width: 400px;
 }
 
 .wrapper .temples {

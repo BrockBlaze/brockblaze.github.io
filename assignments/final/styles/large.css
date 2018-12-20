@@ -73,6 +73,16 @@
         border-radius: 10px;
     }
 
+    .mapouter {
+        height: 500px;
+        width: 600px;
+    }
+    
+    .gmap_canvas {
+        height: 500px;
+        width: 600px;
+    }
+
 
     .temples h2 {
         font-size: 22px;
