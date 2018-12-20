@@ -16,6 +16,62 @@ header {
     background: linear-gradient(to right,#3C6478,#107896,#107896,#107896,#3C6478);
 }
 
+#share-wrapper {
+    visibility: hidden;
+	margin-top: 100px;
+	position:fixed;
+	left: 0;
+}
+
+#share-wrapper ul.share-inner-wrp{
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+#share-wrapper li.button-wrap {
+	background: #E4EFF0;
+	padding: 0px 0px 0px 10px;
+	display: block;
+	width: 140px;
+	margin: 0px 0px 1px -117px;
+}
+
+#share-wrapper li.button-wrap > a {
+	padding-right: 60px;
+	height: 32px;
+	display: block;
+	line-height: 32px;
+	font-weight: bold;
+	color: #444;
+	text-decoration: none;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+}
+
+#share-wrapper .facebook > a{
+	background: url(buttons/facebook.jpg) no-repeat right;
+}
+#share-wrapper .twitter > a{
+	background: url(buttons/twitter.jpg) no-repeat right;
+}
+#share-wrapper .digg > a{
+	background: url(buttons/digg.jpg) no-repeat right;
+}
+.stumbleupon > a{
+	background: url(buttons/stumbleupon.jpg) no-repeat right;
+}
+#share-wrapper .delicious > a{
+	background: url(buttons/delicious.jpg) no-repeat right;
+}
+#share-wrapper .google > a{
+	background: url(buttons/google.jpg) no-repeat right;
+}
+#share-wrapper .email > a{
+	background: url(buttons/email.jpg) no-repeat right;
+}
+
+
 .logo {
     position: absolute;
     right: 2%;
@@ -34,7 +90,7 @@ header {
 .title {
     margin-left: 4vh;
     margin-top: 2vh;
-    font-size: 3vh;
+    font-size: 2.5vh;
     width: 50%;
 }
 
@@ -120,7 +176,8 @@ nav a:hover {
     color: white;
     padding: 20px;
     margin: auto;
-    margin-top: 3vh;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
     background: linear-gradient(to right,#316980,#3C6478,#3C6478,#316980);
     font-size: 1.5rem;
 }
@@ -182,25 +239,31 @@ nav a:hover {
     width: 600px;
 }
 
-.wrapper .temples article:nth-child(1) {
-    
+.wrapper .temples {
+    visibility: hidden;
+    color: white;
+    position: absolute;
+    left: 65%;
+    top: 1%;
+    height: 70vh;
+    overflow: scroll;
+    background: #424242;
+    width: 300px;
+    padding: 20px;
+    border-radius: 10px;
 }
 
-.wrapper .temples article:nth-child(2) {
-    
-}
-.wrapper .temples article:nth-child(3) {
-    
-}
-.wrapper  .temples article:nth-child(4) {
-    
+.temples h2 {
+    font-size: 12px;
 }
 
-.wrapper .temple {
-    display: inline-block;
+.temples p {
+    font-size: 12px;
 }
 
-
+.temples aside ul li {
+    font-size: 12px;
+}
 
 
 form {
@@ -224,6 +287,10 @@ fieldset {
     
     padding: 10px;
     margin: 5px;
+}
+
+.form textarea {
+    margin: 10px;
 }
 
 

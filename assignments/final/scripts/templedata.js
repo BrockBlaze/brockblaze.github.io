@@ -17,17 +17,11 @@ request.onload = function () {
             var myH2 = document.createElement('h2');
             var myPara1 = document.createElement('p');
             var myPara2 = document.createElement('p');
-            var myPara3 = document.createElement('p');
-            var myPara4 = document.createElement('p');
-            var myPara5 = document.createElement('p');
             var myList1 = document.createElement('ul');
             var myList2 = document.createElement('ul');
 
             myH2.textContent = temples[i].name;
-            myPara1.textContent = 'Telephone: ' + temples[i].telephone;
-            myPara2.textContent = 'Email: ' + temples[i].email;
-            myPara3.textContent = 'Schedule: ' + temples[i].schedule;
-            myPara4.textContent = 'Services: ';
+            myPara1.textContent = 'Services: ';
 
             var templedata = temples[i].services;
             for (var j = 0; j < templedata.length; j++) {
@@ -36,7 +30,7 @@ request.onload = function () {
                 myList1.appendChild(listItem);
             }
 
-            myPara5.textContent = 'Closures: ';
+            myPara2.textContent = 'Closures: ';
 
 
             var templedata = temples[i].closures;
@@ -51,11 +45,8 @@ request.onload = function () {
 
             myArticle.appendChild(myH2);
             myArticle.appendChild(myPara1);
-            myArticle.appendChild(myPara2);
-            myArticle.appendChild(myPara3);
-            myArticle.appendChild(myPara4);
             myArticle.appendChild(myList1);
-            myArticle.appendChild(myPara5);
+            myArticle.appendChild(myPara2);
             myArticle.appendChild(myList2);
             
 

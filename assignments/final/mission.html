@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="Weather and Event information for Idaho">
+    <meta name="description" content="Temple Inn & Suites Webpage">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Temple Inn & Suites</title>
     <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans%7cRoboto" rel="stylesheet">
@@ -41,9 +41,77 @@
 <body>
 
     <div class="wrapper">
+
+        <div class="container">
+            <div class="content">
+                <div class="wrap">
+                    <h1>King Room</h1>
+                </div>
+                <p>
+                    Bed(s): 1 King Bed<br>
+                    Capacity: 2 people<br>
+                    Accommidations: Dry Cleaning, Pool, Sanua
+                </p>
+            </div>
+            <img src="images/kingroom.png" alt="king room image">
+        </div>
+        <div class="container">
+            <div class="content">
+                <div class="wrap">
+                    <h1>Double Queen</h1>
+                </div>
+                <p>
+                    Bed(s): 2 Queen Beds<br>
+                    Capacity: 4 people<br>
+                    Accommidations: Dry Cleaning, Pool, Sanua
+                </p>
+            </div>
+            <img src="images/doublequeen.jpg" alt="double room image">
+        </div>
+        <div class="container">
+            <div class="content">
+                <div class="wrap">
+                    <h1>Suite</h1>
+                </div>
+                <p>
+                    Bed(s): 2 double Beds/1 King Bed<br>
+                    Capacity: 6 people<br>
+                    Accommidations: Dry Cleaning, Pool, Sanua, Kitchen
+                </p>
+            </div>
+            <img src="images/suite.jpg" alt="suite room image">
+        </div>
     </div>
+    <div class="container">
+        <form action="confirmation.html">
+            <div class="form">
+                <fieldset>
+                    <label for="fullname">Full Name:</label>
+                    <input type="text" id="fullname" name="fullname" pattern="[A-Za-z].{5,}" placeholder="John Doe"
+                        required><br>
+                </fieldset>
 
+                <fieldset>
+                    <label for="email">eMail:</label>
+                    <input type="email" id="email" name="email" placeholder="user@email.org"><br>
+                </fieldset>
 
+                <fieldset>
+                    <label for="p">Phone:</label>
+                    <input type="tel" id="p" name="phone" placeholder="###-###-####" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                        required><br>
+                </fieldset>
+
+                <fieldset>
+                    <label>Comments:</label><br>
+                    <textarea rows="6" placeholder="Additional comments here"></textarea> <br>
+                </fieldset>
+
+                <input type="submit" value="Submit">
+                <input type="hidden" name="redirect" value="thanks.html">
+            </div>
+        </form>
+    </div>
 
 
 </body>
@@ -54,6 +122,5 @@
 </footer>
 <script src="scripts/currentdate.js"></script>
 <script src="scripts/sidenav.js"></script>
-<script src="scripts/spokanecurrentweather.js"></script>
 
 </html>

@@ -13,6 +13,10 @@
         max-width: 70vw;
     }
 
+    #share-wrapper {
+        visibility: visible;
+    }
+
     .logo {
         position: absolute;
         right: 16%;
@@ -57,16 +61,29 @@
         height: 30%;
     }
 
-    .wrapper .temples article {
-        display: grid;
-        text-align: left;
-        grid-auto-columns: 100%;
-        margin: auto;
-        grid-gap: 10px;
-        grid-template-areas:
-        'a b c d' 
-        ;
-        
+    .wrapper .temples {
+        color: white;
+        position: absolute;
+        right: 2%;
+        top: 15%;
+        background: #424242;
+        height: 74vh;
+        visibility: visible;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+
+    .temples h2 {
+        font-size: 22px;
+    }
+
+    .temples p {
+        font-size: 22px;
+    }
+
+    .temples aside ul li {
+        font-size: 22px;
     }
 
     fieldset {
