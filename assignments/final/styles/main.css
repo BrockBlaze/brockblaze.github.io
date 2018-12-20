@@ -182,6 +182,27 @@ nav a:hover {
     width: 600px;
 }
 
+.wrapper .temples article:nth-child(1) {
+    
+}
+
+.wrapper .temples article:nth-child(2) {
+    
+}
+.wrapper .temples article:nth-child(3) {
+    
+}
+.wrapper  .temples article:nth-child(4) {
+    
+}
+
+.wrapper .temple {
+    display: inline-block;
+}
+
+
+
+
 form {
     padding: 10px;
 }

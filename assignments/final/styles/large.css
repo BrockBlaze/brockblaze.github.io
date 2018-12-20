@@ -57,6 +57,18 @@
         height: 30%;
     }
 
+    .wrapper .temples article {
+        display: grid;
+        text-align: left;
+        grid-auto-columns: 100%;
+        margin: auto;
+        grid-gap: 10px;
+        grid-template-areas:
+        'a b c d' 
+        ;
+        
+    }
+
     fieldset {
         font-size: 26px;
     }

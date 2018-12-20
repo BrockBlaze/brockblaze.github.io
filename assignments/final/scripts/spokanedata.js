@@ -12,7 +12,7 @@ request.onload = function () {
 
     for (var i = 0; i < temples.length; i++) {
 
-        if (temples[i].name == 'Spokane' || temples[i].name == 'Seattle' || temples[i].name == 'Columbia River' || temples[i].name == 'Portland') {
+        if (temples[i].name == 'Spokane') {
             var myArticle = document.createElement('aside');
             var myH2 = document.createElement('h2');
             var myPara1 = document.createElement('p');
