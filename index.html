@@ -4,37 +4,45 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="This site contains my work for CIT 230 Web Frontend Development at Brigham Young University - Idaho">
-    <title>CIT 230 Assignment Portal | Brock F. Blazzard | BYU-Idaho</title>
-    <link rel="shortcut icon" href="images/titleicon.ico" />
+    <meta name="description"
+        content="This site contains my work for CIT 230 Web Frontend Development at Brigham Young University - Idaho">
+    <title>blazztech</title>
+    <link rel="shortcut icon" href="images/favicon.ico" />
     <link rel="stylesheet" href="styles/main.css">
 </head>
+
 
 <body>
 
     <header>
-        <a href="assignments/final/index.html"><img src="images/brock.jpg" alt="Brock Blazzard Profile Image"></a>
-        <h1>Brock F. Blazzard</h1>
+        <h1>blazztech</h1>
     </header>
     <nav>
+        <h2>
+            Projects and Works
+        </h2>
 
     </nav>
     <main>
-        <h2>
-            Assignment Portal
-        </h2>
+
         <ul>
-            <li>Lesson 1: <a href="school/index.html">CIT230</a></li>
-            
+            <li><a href="school/index.html">CIT230</a></li>
+            <li><a href="dvdlogo/dvd.html">DVDLOGO</a></li>
+            <li><a href="gameproject/game.html">Game</a></li>
         </ul>
     </main>
 
 
-
     <footer>
-        &copy; 2018 <a href="http://www.byui.edu/online">BYU-Idaho Online Learning</a>
+        &copy; <span id="year"></span> <a href="http://www.byui.edu/online">blazztech projects | Brock F. Blazzard</a>
     </footer>
 
+    <script>
+        var d = new Date();
+        document.getElementById("year").innerHTML = d.getFullYear();
+    </script>
+
 </body>
+
 
 </html>
