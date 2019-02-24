@@ -43,6 +43,15 @@ header, main, nav {
     padding: .5rem;
 }
 
+main img {
+    width: 67vw;
+}
+
+.imgwrapper {
+    height: 75vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
 
 header, footer, footer a {
     color: black;
@@ -65,7 +74,7 @@ li a:hover {
 footer {
     text-align: center;
     width: 70vw;
-    height: 3vh;
+    height: 4vh;
     position: absolute;
     bottom: 0;
     font-size: 1.2rem;
