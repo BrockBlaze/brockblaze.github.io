@@ -9,11 +9,11 @@ html {
 body { 
     background: rgb(202, 202, 202);
     font-size: 16px; 
-    width: 70vw;
-    height: 90vh;
+    width: 95vw;
+    height: 93vh;
     color: black;
     margin: auto;
-    margin-top: 3vh;
+    margin-top: 1vh;
     box-shadow: 10px 10px 30px #383838;
     border-radius: 10px;
 }
@@ -43,12 +43,18 @@ header, main, nav {
     padding: .5rem;
 }
 
+main {
+    margin-bottom: o;
+    padding-bottom: 0;
+    overflow: hidden;
+}
+
 main img {
-    width: 67vw;
+    width: 94vw;
 }
 
 .imgwrapper {
-    height: 75vh;
+    height: 67vh;
     overflow-y: scroll;
     overflow-x: hidden;
 }
@@ -72,9 +78,10 @@ li a:hover {
 }
 
 footer {
+    overflow: hidden;
     text-align: center;
-    width: 70vw;
-    height: 4vh;
+    width: 95vw;
+    height: 5vh;
     position: absolute;
     bottom: 0;
     font-size: 1.2rem;
