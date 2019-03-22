@@ -1,7 +1,7 @@
 * { margin: 0; box-sizing: border-box; }
 
 html {
-    background-image: linear-gradient(to bottom right, rgb(0, 175, 175), rgb(0, 70, 71));
+    background-image: linear-gradient(to bottom right, rgb(41, 47, 100), rgb(0, 70, 71));
     width: 100vw;
     height: 100vh;
 }
@@ -14,7 +14,7 @@ body {
     color: black;
     margin: auto;
     margin-top: 1vh;
-    box-shadow: 10px 10px 30px #383838;
+    box-shadow: 10px 10px 30px #252525;
     border-radius: 10px;
 }
 
