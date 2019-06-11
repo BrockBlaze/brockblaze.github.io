@@ -11,15 +11,39 @@
     <script>
       var unityInstance = UnityLoader.instantiate("unityContainer", "Build/StairwayToHeaven.json", {onProgress: UnityProgress});
     </script>
+    <title>blazztech</title>
+    <link rel="shortcut icon" href="../images/favicon.ico" />
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/large.css">
   </head>
   <body>
-    <div class="webgl-content">
-      <div id="unityContainer" style="width: 960px; height: 600px"></div>
-      <div class="footer">
-        <div class="webgl-logo"></div>
-        <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
-        <div class="title">StairwayToHeaven</div>
-      </div>
-    </div>
+      <header>
+          <h1>blazztech</h1>
+      </header>
+      <nav>
+          <h2>
+              <a href="../index.html">home</a>
+              <a href="gallery.html">gallery</a>
+              <a href="about.html">about</a>
+          </h2>
+      </nav>
+      <main>
+          <div class="webgl-content">
+              <div id="unityContainer" style="width: 960px; height: 600px"></div>
+              <div class="footer">
+                <div class="webgl-logo"></div>
+                <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
+                <div class="title">StairwayToHeaven</div>
+              </div>
+            </div>
+      </main>
   </body>
+  <footer>
+      &copy; <span id="year"></span> <a href="https://brockblaze.github.io/">blazztech projects | Brock F. Blazzard</a>
+  </footer>
+  
+  <script>
+      var d = new Date();
+      document.getElementById("year").innerHTML = d.getFullYear();
+  </script>
 </html>
