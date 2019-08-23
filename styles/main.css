@@ -6,6 +6,16 @@ html {
     height: 100vh;
 }
 
+canvas {
+    border: 1px solid #d3d3d3;
+    background-color: #f1f1f1;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+}
+
 body { 
     background: rgb(165, 164, 164);
     font-size: 16px; 
