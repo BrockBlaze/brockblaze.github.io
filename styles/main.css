@@ -104,6 +104,11 @@ main img {
     grid-gap: 5px;
 }
 
+#unityContainer {
+    width: 100%;
+    height: 100%;
+}
+
 header, footer, footer a {
     padding: 0;
     color: black;
