@@ -5,6 +5,10 @@
 .img1 {grid-area: a;}
 .img2 {grid-area: b;}
 .img3 {grid-area: c;}
+.img4 {grid-area: d;}
+.img5 {grid-area: e;}
+.img6 {grid-area: f;}
+.img7 {grid-area: g;}
 
 html {
     background: rgb(7, 46, 78);
@@ -79,6 +83,24 @@ main img {
     'a a a'
     'b b b'
     'c c c';
+    grid-gap: 5px;
+}
+
+.gamewrapper img {
+    width: 92%;
+}
+
+.gamewrapper {
+    margin: auto;  
+    display: grid;
+    grid-template-areas: 
+    'a'
+    'b'
+    'c'
+    'd'
+    'e'
+    'f'
+    'g';
     grid-gap: 5px;
 }
 

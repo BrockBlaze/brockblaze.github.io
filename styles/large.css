@@ -9,6 +9,12 @@
         'a b c';
     }
 
+    .gamewrapper {
+        grid-template-areas: 
+        'a b c d'
+        'e f g h';
+    }
+
     footer {
         display: inline-block;
         width: 75%;
