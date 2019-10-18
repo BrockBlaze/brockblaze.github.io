@@ -1,14 +1,14 @@
 * { margin: 0; box-sizing: border-box; }
 
 html {
-    background: white;
+    background: rgb(7, 46, 78);
     width: 100vw;
     height: 100vh;
 }
 
 canvas {
-    border: 1px solid #d3d3d3;
-    background-color: #f1f1f1;
+    border: 1px solid #8b8b8b;
+    background-color: #cfcfcf;
     padding-left: 0;
     padding-right: 0;
     margin-left: auto;
