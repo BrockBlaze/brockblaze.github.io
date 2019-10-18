@@ -1,23 +1,17 @@
-@media only screen and (min-width: 1000px) {
+@media only screen and (min-width: 700px) {
 
     body{
-        width: 75vw;
-        height: 92vh;
-        margin-top: 3vh;
+        width: 75%;
     }
     
-
-    main img {
-        width: 74vw;
-    }
-
-    .imgwrapper {
-        height: 77vh;
+    .imgwrapper {   
+        grid-template-areas: 
+        'a b c';
     }
 
     footer {
-        width: 75vw;
-        height: 3vh;
+        display: inline-block;
+        width: 75%;
     }
 
 }

@@ -1,9 +1,14 @@
-* { margin: 0; box-sizing: border-box; }
+::-webkit-scrollbar { 
+    display: none; 
+}
+
+.img1 {grid-area: a;}
+.img2 {grid-area: b;}
+.img3 {grid-area: c;}
 
 html {
     background: rgb(7, 46, 78);
-    width: 100vw;
-    height: 100vh;
+    height: 100%;
 }
 
 canvas {
@@ -17,26 +22,27 @@ canvas {
 }
 
 body { 
-    background: rgb(165, 164, 164);
+    width: 95%;
+    background: rgb(141, 141, 141);
+    border-radius: 5px;
     font-size: 16px; 
-    width: 95vw;
-    height: 92vh;
     color: black;
     margin: auto;
-    margin-top: 1vh;
+    margin-top: 10px;
     box-shadow: 10px 10px 30px #252525;
 }
 
 h1 {
-    background: rgb(165, 164, 164);
+    border-radius: 5px;
+    color: rgb(7, 46, 78);
     padding: 10px;
     margin: 0;
-    font-size: 2rem;
+    font-size: 2.5rem;
 }
 
 h2 {
     font-size: 1.2rem;
-    background: rgb(187, 187, 187);
+    background: rgb(163, 163, 163);
     padding: 10px;
     margin: 0;
 }
@@ -49,27 +55,31 @@ h2 a {
 }
 
 h2 a:hover {
-    color: blue;
+    color: rgb(7, 46, 78);
 }
+
 main {
     padding: 10px;
-}
-
-
-main {
+    height: 95%;
     margin-bottom: o;
     padding-bottom: 0;
     overflow: hidden;
 }
 
 main img {
-    width: 94vw;
+    padding: 20px;
+    width: 92%;
+    margin: auto;
 }
 
 .imgwrapper {
-    height: 67vh;
-    overflow-y: scroll;
-    overflow-x: hidden;
+    margin: auto;  
+    display: grid;
+    grid-template-areas: 
+    'a a a'
+    'b b b'
+    'c c c';
+    grid-gap: 5px;
 }
 
 header, footer, footer a {
@@ -88,15 +98,16 @@ li a {
 }
 
 li a:hover {
-    color: blue
+    color: rgb(7, 46, 78);
 }
 
 footer {
+    padding: 10px;
+    display: none;
     overflow: hidden;
     text-align: center;
-    width: 95vw;
-    height: 5vh;
     position: absolute;
     bottom: 0;
     font-size: 1.2rem;
 }
+
