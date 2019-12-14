@@ -9,6 +9,7 @@
 .img5 {grid-area: e;}
 .img6 {grid-area: f;}
 .img7 {grid-area: g;}
+.img7 {grid-area: h;}
 
 html {
     background: rgb(7, 46, 78);
@@ -114,7 +115,8 @@ main img {
     'd'
     'e'
     'f'
-    'g';
+    'g'
+    'h';
     grid-gap: 5px;
 }
 
