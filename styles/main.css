@@ -86,7 +86,6 @@ main {
 }
 
 main img {
-    padding: 20px;
     width: 92%;
     margin: auto;
 }
@@ -104,6 +103,7 @@ main img {
 .gamewrapper img {
     width: 92%;
 }
+
 
 .gamewrapper {
     margin: auto;  
