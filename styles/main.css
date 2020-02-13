@@ -143,6 +143,7 @@ li a:hover {
 }
 
 footer {
+    color: white;
     padding: 10px;
     display: none;
     overflow: hidden;
@@ -150,5 +151,9 @@ footer {
     position: absolute;
     bottom: 0;
     font-size: 1.2rem;
+}
+
+footer a {
+    color: white;
 }
 
