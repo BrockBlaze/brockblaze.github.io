@@ -120,6 +120,10 @@ main img {
     grid-gap: 5px;
 }
 
+.gamewrapper a:hover {
+    box-shadow:10px 10px 30px #252525
+}
+
 #gamesL {
     border-radius: 5px;
     color: rgb(7, 46, 78);
