@@ -2,15 +2,6 @@
     display: none; 
 }
 
-.img1 {grid-area: a;}
-.img2 {grid-area: b;}
-.img3 {grid-area: c;}
-.img4 {grid-area: d;}
-.img5 {grid-area: e;}
-.img6 {grid-area: f;}
-.img7 {grid-area: g;}
-.img7 {grid-area: h;}
-
 html {
     background: rgb(7, 46, 78);
     height: 100%;
@@ -31,7 +22,7 @@ header {
 }
 
 body { 
-    width: 95%;
+    width: 99%;
     background: rgb(141, 141, 141);
     border-radius: 5px;
     font-size: 16px; 
@@ -85,9 +76,8 @@ main {
     overflow: hidden;
 }
 
-main img {
+.imgwrapper img {
     width: 92%;
-    margin: auto;
 }
 
 .imgwrapper {
