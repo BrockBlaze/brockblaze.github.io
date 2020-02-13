@@ -91,13 +91,14 @@ main img {
 }
 
 .imgwrapper {
+    padding: 20px;
     margin: auto;  
     display: grid;
     grid-template-areas: 
     'a a a'
     'b b b'
     'c c c';
-    grid-gap: 5px;
+    grid-gap: 10px;
 }
 
 .gamewrapper img {
@@ -106,6 +107,7 @@ main img {
 
 
 .gamewrapper {
+    padding: 20px;
     margin: auto;  
     display: grid;
     grid-template-areas: 
@@ -117,7 +119,7 @@ main img {
     'f'
     'g'
     'h';
-    grid-gap: 5px;
+    grid-gap: 10px;
 }
 
 .gamewrapper a img:hover {
