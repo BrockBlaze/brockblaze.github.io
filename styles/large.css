@@ -5,14 +5,11 @@
     }
     
     .imgwrapper {   
-        grid-template-areas: 
-        'a b c';
+        grid-template-columns:  auto auto auto;
     }
 
     .gamewrapper {
-        grid-template-areas: 
-        'a b c d'
-        'e f g h';
+        grid-template-columns:  auto auto auto auto;
     }
 
     footer {

@@ -91,14 +91,13 @@ main img {
 }
 
 .imgwrapper {
+    text-align: center;
     padding: 20px;
     margin: auto;  
     display: grid;
-    grid-template-areas: 
-    'a a a'
-    'b b b'
-    'c c c';
-    grid-gap: 10px;
+    grid-template-columns: auto;
+    grid-gap: 30px 1px;
+    align-items: center;
 }
 
 .gamewrapper img {
@@ -107,19 +106,13 @@ main img {
 
 
 .gamewrapper {
+    text-align: center;
     padding: 20px;
     margin: auto;  
     display: grid;
-    grid-template-areas: 
-    'a'
-    'b'
-    'c'
-    'd'
-    'e'
-    'f'
-    'g'
-    'h';
-    grid-gap: 10px;
+    grid-template-columns: auto;
+    grid-gap: 30px 1px;
+    align-items: center;
 }
 
 .gamewrapper a img:hover {
