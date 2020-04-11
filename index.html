@@ -2,23 +2,24 @@
 <html lang="en-us">
   <head>
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1"
-    />
-    <meta
-      name="description"
-      content="This site contains my personal work"
-    />
+    <meta name="viewport"content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <meta name="description" content="This site contains my personal work" />
     <title>blazztech</title>
     <link rel="shortcut icon" href="images/favicon.ico" />
     <link rel="stylesheet" href="styles/main.css" />
     <link rel="stylesheet" href="styles/large.css" />
+    <script src="js/backup.js"></script>
   </head>
 
   <body>
     <header>
       <h1><a href="../index.html">blazztech</a></h1>
+      <div class="ThemeToggle">
+        <label class="switch">
+          <input type="checkbox" id="checkbox" onclick="checkedToggle()">
+          <span class="slider"></span>
+        </label>
+      </div>
     </header>
     <nav>
       <h2>
@@ -39,11 +40,8 @@
 
   <footer>
     &copy; <span id="year"></span>
-    <a href="https://brockblaze.github.io/"
-      >blazztech projects | Brock F. Blazzard</a
-    >
+    <a href="https://brockblaze.github.io/">blazztech projects | Brock F. Blazzard</a>
   </footer>
-
   <script>
     var d = new Date();
     document.getElementById("year").innerHTML = d.getFullYear();
