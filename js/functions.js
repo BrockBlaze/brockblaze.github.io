@@ -1,19 +1,8 @@
-var c = localStorage.getItem("c");
-var checkBox = document.getElementById("checkbox");
-
 function checkedToggle() {
   var checkBox = document.getElementById("checkbox"); 
+  var root = document.documentElement.style;
   if (checkBox.checked) {
-    localStorage.setItem("c", true);
-  } else {
-    localStorage.setItem("c", false);
-  } 
-}
-
-var root = document.documentElement.style;
-if (c == true)
-{
-  root.setProperty("--bgcolor", "cornflowerblue");
+    root.setProperty("--bgcolor", "cornflowerblue");
     root.setProperty("--bdcolor", "rgb(244, 244, 244)");
     root.setProperty("--fgcolor", "white");
     root.setProperty("--footercolor", "black");
