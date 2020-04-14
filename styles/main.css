@@ -125,6 +125,10 @@ h2 a {
   border-right: 1px solid black;
 }
 
+h2 a:last-child {
+  border-right: none;
+}
+
 h2 a:hover {
   color: rgb(7, 46, 78);
 }
