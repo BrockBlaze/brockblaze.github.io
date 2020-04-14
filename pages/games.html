@@ -10,25 +10,25 @@
     <link rel="shortcut icon" href="../images/favicon.ico" />
     <link rel="stylesheet" href="../styles/main.css">
     <link rel="stylesheet" href="../styles/large.css">
-    <script src="js/functions.js"></script>
+    <script src="../js/functions.js"></script>
 </head>
 
-<body>
+<body onload="checkToggle()">
     <header>
         <h1><a href="../index.html">blazztech</a></h1>
         <div class="ThemeToggle">
             <label class="switch">
-              <input type="checkbox" id="checkbox" onclick="checkedToggle()">
-              <span class="slider"></span>
+                <input type="checkbox" id="checkbox" onclick="checkedToggle()">
+                <span class="slider"></span>
             </label>
         </div>
     </header>
     <nav>
         <h2>
             <a href="../index.html">home</a>
-            <a href="/pages/games.html">games</a>
-            <a href="/pages/gallery.html">gallery</a>
-            <a href="/pages/about.html">about</a>
+            <a href="games.html">games</a>
+            <a href="gallery.html">gallery</a>
+            <a href="about.html">about</a>
         </h2>
     </nav>
     <main>
