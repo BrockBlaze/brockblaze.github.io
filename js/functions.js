@@ -63,7 +63,9 @@ function checkToggle() {
     checkBox.checked = false;
   }
 
-  var newPlayer = document.getElementById("newPlayer");
+  setTimeout(gameStart(),1);
+
+  /*var newPlayer = document.getElementById("newPlayer");
   var gameMenu = document.getElementById("gameMenu");
   var newPlayerCreation = document.getElementById("newPlayerCreation");
   var gamePlay = document.getElementById("gamePlay");
@@ -71,6 +73,7 @@ function checkToggle() {
   var fight = document.getElementById("fight");
   var town = document.getElementById("town");
   var home = document.getElementById("home");
+  var attacking = document.getElementById("attacking");
   if (!localStorage.getItem("name") && !localStorage.getItem("race")) {
     newPlayerCreation.style.display = "none";
     gameMenu.style.display = "none";
@@ -79,6 +82,7 @@ function checkToggle() {
     fight.style.display = "none";
     town.style.display = "none";
     home.style.display = "none";
+    attacking.style.display = "none";
   }
   if (localStorage.getItem("name") && !localStorage.getItem("race")) {
     newPlayer.style.display = "none";
@@ -88,6 +92,7 @@ function checkToggle() {
     fight.style.display = "none";
     town.style.display = "none";
     home.style.display = "none";
+    attacking.style.display = "none";
   }
   if (localStorage.getItem("name") && localStorage.getItem("race")) {
     document.getElementById("output").innerHTML =
@@ -99,10 +104,11 @@ function checkToggle() {
     fight.style.display = "none";
     town.style.display = "none";
     home.style.display = "none";
-  }
+    attacking.style.display = "none";
+  }*/
 }
 
-function EnterName() {
+/*function EnterName() {
   var name = document.getElementById("name").value;
   if (name.value == "") {
     document.getElementById("output").innerHTML = "Please enter a Name";
@@ -158,6 +164,7 @@ function Play() {
   var fight = document.getElementById("fight");
   var town = document.getElementById("town");
   var home = document.getElementById("home");
+  var attacking = document.getElementById("attacking");
   document.getElementById("nameRace").innerHTML = localStorage.getItem("name") + " the " + localStorage.getItem("race");
   document.getElementById("yourHealth").innerHTML = "Your health - " + localStorage.getItem("health");
   document.getElementById("yourLevel").innerHTML = "Your Level - " + localStorage.getItem("level");
@@ -170,6 +177,7 @@ function Play() {
   town.style.display = "none";
   home.style.display = "none";
   gamePlay.style.display = "block";
+  attacking.style.display = "none";
 }
 
 function Stats() {
@@ -181,6 +189,7 @@ function Stats() {
   var fight = document.getElementById("fight");
   var town = document.getElementById("town");
   var home = document.getElementById("home");
+  var attacking = document.getElementById("attacking");
   document.getElementById("nameRace1").innerHTML = localStorage.getItem("name") + " the " + localStorage.getItem("race");
   document.getElementById("yourHealth1").innerHTML = "Your health - " + localStorage.getItem("health");
   document.getElementById("yourLevel1").innerHTML = "Your Level - " + localStorage.getItem("level");
@@ -193,6 +202,7 @@ function Stats() {
   town.style.display = "none";
   home.style.display = "none";
   gamePlay.style.display = "none";
+  attacking.style.display = "none";
 }
 
 function updateGold(gold) {
@@ -210,6 +220,8 @@ function Fight() {
   var fight = document.getElementById("fight");
   var town = document.getElementById("town");
   var home = document.getElementById("home");
+  var actions = document.getElementById("actions");
+  var attacking = document.getElementById("attacking");
   newPlayer.style.display = "none";
   newPlayerCreation.style.display = "none";
   gameMenu.style.display = "none";
@@ -218,27 +230,21 @@ function Fight() {
   town.style.display = "none";
   home.style.display = "none";
   gamePlay.style.display = "none";
+  attacking.style.display = "none";
   var r = Math.round(Math.random() * 10);
   var c = Math.round(Math.random() * 10);
   if (r <= 7)
   {
+    actions.style.display = "block";
     if (c <= 5)
     {
-      document.getElementById("fightoutput").innerHTML = "A Wolf approaches";
-      if (localStorage.getItem("level") > 0)
-      {
-        if (c <= 2) {
-          document.getElementById("fightoutput").innerHTML = "You Slaughter the Wolf and Found " + r + " gold";
-          localStorage.setItem("gold") += r;
-        }else {
-          document.getElementById("fightoutput").innerHTML = "You Slaughter the Wolf and Found nothing";
-        }
-      }
+      document.getElementById("fightoutput").innerHTML = "A Level " + (localStorage.getItem("level") + c) + " Wolf approaches";
     }else {
-      document.getElementById("fightoutput").innerHTML = "An Orc approaches";
+      document.getElementById("fightoutput").innerHTML = "A Level " + (localStorage.getItem("level") + c) + " Orc approaches";
     }
   }else {
-    document.getElementById("fightoutput").innerHTML = "Nothing found";
+    document.getElementById("fightoutput").innerHTML = "You found nothing";
+    actions.style.display = "none";
   }
 }
 
@@ -251,6 +257,7 @@ function Town() {
   var fight = document.getElementById("fight");
   var town = document.getElementById("town");
   var home = document.getElementById("home");
+  var attacking = document.getElementById("attacking");
   newPlayer.style.display = "none";
   newPlayerCreation.style.display = "none";
   gameMenu.style.display = "none";
@@ -259,6 +266,7 @@ function Town() {
   town.style.display = "block";
   home.style.display = "none";
   gamePlay.style.display = "none";
+  attacking.style.display = "none";
   var c = Math.round(Math.random() * 10);
   var r = Math.round(Math.random() * 10);
   if (r <= 7)
@@ -281,6 +289,7 @@ function Home() {
   var fight = document.getElementById("fight");
   var town = document.getElementById("town");
   var home = document.getElementById("home");
+  var attacking = document.getElementById("attacking");
   newPlayer.style.display = "none";
   newPlayerCreation.style.display = "none";
   gameMenu.style.display = "none";
@@ -289,6 +298,7 @@ function Home() {
   town.style.display = "none";
   home.style.display = "block";
   gamePlay.style.display = "none";
+  attacking.style.display = "none";
   var c = Math.round(Math.random() * 10);
   var r = Math.round(Math.random() * 10);
   if (r <= 7)
@@ -300,4 +310,4 @@ function Home() {
   }else {
 
   }
-}
+}*/

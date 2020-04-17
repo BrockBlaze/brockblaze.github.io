@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description"
+        content="This site contains my work for CIT 230 Web Frontend Development at Brigham Young University - Idaho">
+    <title>blazztech | Adventure</title>
+    <link rel="shortcut icon" href="../images/favicon.ico" />
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/large.css">
+    <script src="../js/functions.js"></script>
+    <script src="../js/game.js"></script>
+</head>
+
+<body onload="checkToggle()" onresize="resize()">
+    <header>
+        <h1><a href="../index.html">blazztech</a></h1>
+        <div class="ThemeToggle">
+            <label class="switch">
+                <input type="checkbox" id="checkbox" onclick="checkedToggle()">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </header>
+    <nav>
+        <h2>
+            <div id="navB">
+            <a href="../index.html">home</a>
+            <a href="games.html">games</a>
+            <a href="gallery.html">gallery</a>
+            <a href="adventure.html">adventure</a>
+            <a href="about.html">about</a>
+            </div>
+            <div><input type="button" value="- | | | -" id="Hbutton" onclick="ham()"/></div>
+        </h2>
+    </nav>
+    <main>
+        <div class="hero"><img class="heroImg" src="../images/landscape.png"></div>
+        <div id="newPlayer">
+            <div id="newPlayerText">Enter Your Name:</div>
+            <input type="name" id="name"><br><br>
+            <input type="button" value="Submit" onclick="EnterName()"/>
+        </div>
+        <div id="newPlayerCreation">
+            <div id="newPlayerRace">Select Your Charater</div>
+            <select id="race" name="race">
+                <option value="Human">Human</option>
+                <option value="Elf">Elf</option>
+                <option value="Dwarf">Dwarf</option>
+                <option value="Wizard">Wizard</option>
+              </select><br><br>
+            <input type="button" value="Submit" onclick="EnterRace()"/>
+        </div>
+        <div id="gameMenu">
+            <div id="output"></div>
+            <input type="button" value="Play" onclick="Play()">
+            <input type="button" value="Stats" onclick="Stats()">
+            <input type="button" value="Delete" onclick="DeletePlayer()">
+        </div>
+        <div id="gamePlay">
+            <div id="nameRace"></div>
+            <div id="yourHealth"></div>
+            <div id="yourLevel"></div>
+            <div id="yourGold"></div>
+
+            <br><div>What do you want to do?</div><br>
+            <input type="button" value="Fight" onclick="Fight()">
+            <input type="button" value="Town" onclick="Town()">
+            <input type="button" value="Home" onclick="Home()">
+            <br><br><input type="button" value="Main Menu" onclick="mainMenu()">
+        </div>
+        <div id="stats">
+            <div id="nameRace1"></div>
+            <div id="yourHealth1"></div>
+            <div id="yourLevel1"></div>
+            <div id="yourGold1"></div>
+            <br><div></div><br>
+            <input type="button" value="Main Menu" onclick="mainMenu()">
+        </div>
+        <div id="fight">
+            <div id="fightoutput">fight</div>
+            <p id="fightoutput1"></p>
+            <br><div id="gameText">What do you want to do?</div><br>
+            <div id="actions">
+            <input type="button" value="Attack" id="attack" onclick="Attack()">
+            <input type="button" value="Defend" id="defend" onclick="Defend()">
+            </div>
+            <br><input type="button" value="Leave" id="run" onclick="Play()">
+            <br><br><input type="button" value="Main Menu" onclick="mainMenu()">
+        </div>
+        <div id="town">
+            <div id="townoutput">town</div>
+            <input type="button" value="New Sword" onclick="BuyS()">
+            <input type="button" value="New Armor" onclick="BuyA()">
+            <input type="button" value="Back" onclick="Play()">
+            <br><br><input type="button" value="Main Menu" onclick="mainMenu()">
+        </div>
+        <div id="home">
+            <div id="homeoutput">home</div>
+            <input type="button" value="Train" onclick="Train()">
+            <input type="button" value="Sleep" onclick="Sleep()">
+            <input type="button" value="Back" onclick="Play()">
+            <br><br><input type="button" value="Main Menu" onclick="mainMenu()">
+        </div>
+    </main>
+</body>
+
+<footer>
+    &copy; <span id="year"></span> <a href="https://brockblaze.github.io/">blazztech projects | Brock F. Blazzard</a>
+</footer>
+<script>
+    var d = new Date();
+    document.getElementById("year").innerHTML = d.getFullYear();
+</script>
+
+
+</html>

@@ -265,109 +265,25 @@ footer a {
   background-color: var(--fgcolor);
 }
 
-#newPlayer {
+#newPlayer, #newPlayerCreation, #gameMenu, #gamePlay, #fight, #town, #home, #stats{
   text-align: center;
   padding: 1rem;
 }
 
-#newPlayerText {
+#newPlayerText, #newPlayerRace {
   padding: 1rem;
-  font-size: 1.4rem;
+  font-size: 2rem;
 }
 
-#newPlayerCreation {
-  text-align: center;
-  padding: 1rem;
-}
-#newPlayerRace {
-  padding: 1rem;
-  font-size: 1.4rem;
-}
-
-#gameMenu {
-  text-align: center;
-  padding: 1rem;
-}
-
-#gamePlay {
-  text-align: center;
-  padding: 1rem;
-}
-
-#fight {
-  text-align: center;
-  padding: 1rem;
-}
-
-#town {
-  text-align: center;
-  padding: 1rem;
-}
-
-#home {
-  text-align: center;
-  padding: 1rem;
-}
-
-#nameRace {
+#nameRace, #yourHealth, #yourLevel, #yourGold, #nameRace1, #yourHealth1, #yourLevel1, #yourGold1{
   padding: .5rem;
+  font-size: 1.8rem;
+}
+
+#output, #fightoutput, #townoutput, #townoutput {
+  padding: 1rem;
   font-size: 1.2rem;
 }
-#yourHealth {
-  padding: .5rem;
-  font-size: 1.2rem;
-}
-#yourLevel {
-  padding: .5rem;
-  font-size: 1.2rem;
-}
-#yourGold {
-  padding: .5rem;
-  font-size: 1.2rem;
-}
-
-#stats {
-  text-align: center;
-  padding: 1rem;
-}
-
-#nameRace1 {
-  padding: .5rem;
-  font-size: 1.2rem;
-}
-#yourHealth1 {
-  padding: .5rem;
-  font-size: 1.2rem;
-}
-#yourLevel1 {
-  padding: .5rem;
-  font-size: 1.2rem;
-}
-#yourGold1 {
-  padding: .5rem;
-  font-size: 1.2rem;
-}
-
-#output {
-  padding: 1rem;
-  font-size: 1rem;
-}
-
-#fightoutput {
-  padding: 1rem;
-  font-size: 1rem;
-}
-
-#townoutput {
-  padding: 1rem;
-  font-size: 1rem;
-}
-
-#homeoutput {
-  padding: 1rem;
-  font-size: 1rem;
-}
-
 
 footer {
   padding: 10px;
