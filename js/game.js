@@ -94,14 +94,6 @@ function Play() {
   var fight = document.getElementById("fight");
   var town = document.getElementById("town");
   var home = document.getElementById("home");
-  document.getElementById("nameRace").innerHTML =
-    localStorage.getItem("name") + " the " + localStorage.getItem("race");
-  document.getElementById("yourHealth").innerHTML =
-    "Your health - " + localStorage.getItem("health");
-  document.getElementById("yourLevel").innerHTML =
-    "Your Level - " + localStorage.getItem("level");
-  document.getElementById("yourGold").innerHTML =
-    "Your Gold - " + localStorage.getItem("gold");
   newPlayer.style.display = "none";
   newPlayerCreation.style.display = "none";
   gameMenu.style.display = "none";
@@ -111,6 +103,20 @@ function Play() {
   home.style.display = "none";
   gamePlay.style.display = "block";
   localStorage.removeItem("creature");
+  setInterval(SetHeroInfo, 10);
+}
+
+function SetHeroInfo() {
+  var PlayerInfo = document.getElementById("PlayerInfo")
+  var heroName = document.getElementById("heroName");
+  var heroRace = document.getElementById("heroRace");
+  var heroHealth = document.getElementById("heroHealth");
+  var heroGold = document.getElementById("heroGold");
+  PlayerInfo.style.display = "block";
+  heroName.innerHTML = localStorage.getItem("name");
+  heroRace.innerHTML = localStorage.getItem("race") + " - " + localStorage.getItem("level");
+  heroHealth.innerHTML = "Health - " + localStorage.getItem("health");
+  heroGold.innerHTML = "Gold - " + localStorage.getItem("gold");
 }
 
 function Stats() {
@@ -169,8 +175,8 @@ function Fight() {
     " and found " +
     r + " gold";
     var g = localStorage.getItem("gold");
-    var newgold = g + r;
-    localStorage.setItem("gold",newgold);
+    var gold = parseInt(g);
+    localStorage.setItem("gold", (gold + r));
     actions.style.display = "none";
   } else {
     if (r <= 7) {
@@ -184,7 +190,7 @@ function Fight() {
           " Wolf approaches with " +
           creaturehealth +
           " health";
-        localStorage.setItem("creature", "wolf");
+        localStorage.setItem("creature", "Wolf");
         localStorage.setItem("creaturelevel", creatureLevel);
         localStorage.setItem("creaturehealth", creaturehealth);
       } else {
@@ -196,7 +202,7 @@ function Fight() {
           " Orc approaches with " +
           creaturehealth +
           " health";
-        localStorage.setItem("creature", "orc");
+        localStorage.setItem("creature", "Orc");
         localStorage.setItem("creaturelevel", creatureLevel);
         localStorage.setItem("creaturehealth", creaturehealth);
       }
@@ -218,10 +224,10 @@ function Attack() {
   var attackdamage = localStorage.getItem("level") + r;
 
   document.getElementById("fightoutput").innerHTML =
-    "You dealt " + attackdamage + " damage\n";
+    "You dealt " + attackdamage + " damage";
   var temphealth = creaturehealth - attackdamage;
   document.getElementById("fightoutput1").innerHTML =
-    "You lost " + d + " health\n" +
+    "You lost " + d + " health<br>" +
     creature + " health at " + temphealth;
   localStorage.setItem("creaturehealth", creaturehealth - attackdamage);
   var health = localStorage.getItem("health")
@@ -256,6 +262,7 @@ function Defend() {
 }
 
 function Town() {
+  document.getElementById("townoutput").innerHTML = "Welcome to the Town Center";
   var newPlayer = document.getElementById("newPlayer");
   var gameMenu = document.getElementById("gameMenu");
   var newPlayerCreation = document.getElementById("newPlayerCreation");
@@ -272,16 +279,21 @@ function Town() {
   town.style.display = "block";
   home.style.display = "none";
   gamePlay.style.display = "none";
-  var c = Math.round(Math.random() * 10);
-  var r = Math.round(Math.random() * 10);
-  if (r <= 7) {
-    if (c <= 5) {
-    }
-  } else {
-  }
+  var swordButton = document.getElementById("sword");
+  var swordCost = document.getElementById("swordCost");
+  var armorButton = document.getElementById("armor");
+  var armorCost = document.getElementById("armorCost");
+  swordButton.value = "Bronze Sword"
+  swordCost.innerHTML = " - 10$"
+  armorButton.value = "Leather Armor"
+  armorCost.innerHTML = " - 10$"
 }
 
+
+
+
 function Home() {
+  document.getElementById("homeoutput").innerHTML = "Welcome Home";
   var newPlayer = document.getElementById("newPlayer");
   var gameMenu = document.getElementById("gameMenu");
   var newPlayerCreation = document.getElementById("newPlayerCreation");
@@ -304,5 +316,61 @@ function Home() {
     if (c <= 5) {
     }
   } else {
+  }
+}
+
+function Sleep() {
+  var h = localStorage.getItem("health");
+  var health = parseInt(h);
+  localStorage.setItem("health", health + 10);
+  if (localStorage.getItem("health") < 100)
+  {
+    document.getElementById("homeoutput").innerHTML = "You slept and gain 10 health";
+  }
+  if (localStorage.getItem("health") >= 100)
+  {
+    document.getElementById("homeoutput").innerHTML = "You Don't need to sleep";
+    localStorage.setItem("health", 100);
+  }
+  
+}
+
+function Train() {
+  document.getElementById("homeoutput").innerHTML = "Training|_____|";
+  setTimeout(l0, 1000);
+  setTimeout(l1, 2000);
+  setTimeout(l2, 3000);
+  setTimeout(l3, 4000);
+  setTimeout(l4, 5000);
+
+  setTimeout(trainDone, 5200);
+}
+
+function l0() {
+  document.getElementById("homeoutput").innerHTML = "Training|-____|";
+}
+function l1() {
+  document.getElementById("homeoutput").innerHTML = "Training|--___|";
+}
+function l2() {
+  document.getElementById("homeoutput").innerHTML = "Training|---__|";
+}
+function l3() {
+  document.getElementById("homeoutput").innerHTML = "Training|----_|";
+}
+function l4() {
+  document.getElementById("homeoutput").innerHTML = "Training|-----|";
+}
+
+function trainDone() {
+  var l = localStorage.getItem("level");
+  var level = parseInt(l);
+  var r = Math.round(Math.random() * 10);
+  if (r <= 2)
+  {
+    document.getElementById("homeoutput").innerHTML = "You trained and gain a level";
+    localStorage.setItem("level", level + 1);
+  } else {
+    document.getElementById("homeoutput").innerHTML = "You trained but didn't gain a level";
   }
 }

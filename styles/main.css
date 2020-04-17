@@ -164,7 +164,7 @@ h3 {
 }
 
 main {
-  overflow: scroll;
+  overflow: hidden;
 }
 
 main h3 {
@@ -174,6 +174,11 @@ main h3 {
 
 main p {
   padding: 10px;
+}
+
+.hero {
+  height: 435px;
+  display: block;
 }
 
 .heroImg{
@@ -240,6 +245,24 @@ footer a {
   text-decoration: none;
 }
 
+#PlayerInfo {
+  display: none;
+  position: relative;
+  width: 125px;
+  top: -450px;
+  left: 5px;
+  background-color: rgba(192, 192, 192, 0.5);
+}
+
+#PlayerInfo ul {
+  padding: 0;
+  text-align: center;
+}
+
+#PlayerInfo li {
+  list-style: none;
+}
+
 .button {
   color:white;
   margin: auto;
@@ -255,7 +278,7 @@ footer a {
   text-decoration: none;
   color: white;
 }
-.button a:hover{
+.button:hover a{
   color: var(--bgcolor);
 }
 
@@ -266,6 +289,7 @@ footer a {
 }
 
 #newPlayer, #newPlayerCreation, #gameMenu, #gamePlay, #fight, #town, #home, #stats{
+  margin: auto;
   text-align: center;
   padding: 1rem;
 }
@@ -280,10 +304,33 @@ footer a {
   font-size: 1.8rem;
 }
 
-#output, #fightoutput, #townoutput, #townoutput {
+#output, #fightoutput, #attackoutput, #defendoutput, #homeoutput, #townoutput {
   padding: 1rem;
   font-size: 1.2rem;
 }
+
+#town table {
+    justify-content: space-evenly;
+    margin: auto;
+}
+
+#town table th{
+  border: none;
+  margin: .5rem;
+}
+
+#town table th:first-child {
+  float: left;
+}
+
+#town table th:last-child {
+  float: right;
+}
+
+#town table tr:nth-child(odd) {
+  background-color: var(--fgcolor);
+}
+
 
 footer {
   padding: 10px;

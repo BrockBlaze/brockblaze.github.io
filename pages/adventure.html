@@ -37,10 +37,19 @@
         </h2>
     </nav>
     <main>
-        <div class="hero"><img class="heroImg" src="../images/landscape.png"></div>
+        <div class="hero"><img class="heroImg" src="../images/landscape.png">
+            <div id="PlayerInfo">
+                <ul>
+                    <li id="heroName">Name</li>
+                    <li id="heroRace">Race</li>
+                    <li id="heroHealth">Health</li>
+                    <li id="heroGold">Gold</li>
+                </ul>
+            </div>
+        </div>
         <div id="newPlayer">
             <div id="newPlayerText">Enter Your Name:</div>
-            <input type="name" id="name"><br><br>
+            <input type="text" maxlength="10" id="name"><br><br>
             <input type="button" value="Submit" onclick="EnterName()"/>
         </div>
         <div id="newPlayerCreation">
@@ -60,12 +69,7 @@
             <input type="button" value="Delete" onclick="DeletePlayer()">
         </div>
         <div id="gamePlay">
-            <div id="nameRace"></div>
-            <div id="yourHealth"></div>
-            <div id="yourLevel"></div>
-            <div id="yourGold"></div>
-
-            <br><div>What do you want to do?</div><br>
+            <div>What do you want to do?</div><br>
             <input type="button" value="Fight" onclick="Fight()">
             <input type="button" value="Town" onclick="Town()">
             <input type="button" value="Home" onclick="Home()">
@@ -91,14 +95,25 @@
             <br><br><input type="button" value="Main Menu" onclick="mainMenu()">
         </div>
         <div id="town">
-            <div id="townoutput">town</div>
-            <input type="button" value="New Sword" onclick="BuyS()">
-            <input type="button" value="New Armor" onclick="BuyA()">
-            <input type="button" value="Back" onclick="Play()">
+            <div id="townoutput">Welcome to the Town Center</div>
+            <br><div id="gameText">Items to improve your Stats</div><br>
+            <table>
+                <tr>
+                    <th><input type="button" value="New Sword" id="sword" onclick="BuyS()"></th><th><span id="swordCost"></span><br></th>
+                </tr>
+                <tr>
+                    <th><input type="button" value="New Armor" id="armor" onclick="BuyA()"></th><th><span id="armorCost"></span><br></th>
+                </tr>
+                <tr>
+                    <th><input type="button" value="Health Potion" id="potion" onclick="BuyP()"></th><th><span id="potionCost"> - 50$</span><br></th>
+                </tr>
+            </table>
+            <br><input type="button" value="Back" onclick="Play()">
             <br><br><input type="button" value="Main Menu" onclick="mainMenu()">
         </div>
         <div id="home">
-            <div id="homeoutput">home</div>
+            <div id="homeoutput">Welcome Home</div>
+            <br><div id="gameText">What do you want to do?</div><br>
             <input type="button" value="Train" onclick="Train()">
             <input type="button" value="Sleep" onclick="Sleep()">
             <input type="button" value="Back" onclick="Play()">
