@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="styles/large.css" />
   </head>
 
-  <body onload="checkToggle()">
+  <body onload="checkToggle()" onresize="resize()">
     <header>
       <h1><a href="../index.html">blazztech</a></h1>
       <div class="ThemeToggle">
@@ -23,18 +23,29 @@
     </header>
     <nav>
       <h2>
+        <div id="navB">
         <a href="index.html">home</a>
         <a href="pages/games.html">games</a>
         <a href="pages/gallery.html">gallery</a>
         <a href="pages/about.html">about</a>
+        </div>
+        <div><input type="button" value="- | | | -" id="Hbutton" onclick="ham()"/></div>
       </h2>
     </nav>
     <main>
-      <h3>Projects</h3>
-      <ul>
-        <li><a href="school/index.html">CIT230</a></li>
-        <li><a href="dvdlogo/dvd.html">DVD Screen Saver</a></li>
-      </ul>
+      <div class="hero"><img class="heroImg" src="./images/heroImg.jpg"></div>
+        <div class="wrapper">
+          <div>
+            <h3>Projects</h3>
+            <div class="button"><a href="school/index.html">CIT230</a></div>
+            <div class="button"><a href="dvdlogo/dvd.html">DVD Screen Saver</a></div>
+          </div>
+          <!--<div>
+            <h3>Projects</h3>
+            <div class="button"><a href="school/index.html">CIT230</a></div>
+            <div class="button"><a href="dvdlogo/dvd.html">DVD Screen Saver</a></div>
+          </div>-->
+      </div>
     </main>
   </body>
 

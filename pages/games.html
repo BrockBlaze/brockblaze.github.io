@@ -13,7 +13,7 @@
     <script src="../js/functions.js"></script>
 </head>
 
-<body onload="checkToggle()">
+<body onload="checkToggle()" onresize="resize()">
     <header>
         <h1><a href="../index.html">blazztech</a></h1>
         <div class="ThemeToggle">
@@ -25,22 +25,16 @@
     </header>
     <nav>
         <h2>
+            <div id="navB">
             <a href="../index.html">home</a>
             <a href="games.html">games</a>
             <a href="gallery.html">gallery</a>
             <a href="about.html">about</a>
+            </div>
+            <div><input type="button" value="- | | | -" id="Hbutton" onclick="ham()"/></div>
         </h2>
     </nav>
     <main>
-        <!--<ul>
-            <li><a href="/StairwayToHeaven/StairwayToHeaven.html">Stairway To Heaven</a></li>
-            <li><a href="/TheGauntlet/gauntlet.html">The Gauntlet</a></li>
-            <li><a href="/SpaceAdventure/spaceA.html">Space Adventure</a></li>
-            <li><a href="/GlowFlow/glowf.html">Glow Flow</a></li>
-            <li><a href="/Tron/tron.html">TRON</a></li>
-            <li><a href="/Snake/snake.html">Snake</a></li>
-            <li><a href="/SpaceDefender/spacedefender.html">Space Defender</a></li>
-        </ul>-->
         <div class="gamewrapper">
             <a href="/StairwayToHeaven/StairwayToHeaven.html"><img class="img1" src="../images/STHS.PNG" alt="StairwayToHeaven"></a>
             <a href="/TheGauntlet/gauntlet.html"><img class="img2" src="../images/GS.PNG" alt="TheGauntlet"></a>
@@ -54,7 +48,6 @@
         </div>
     </main>
 </body>
-
 <footer>
     &copy; <span id="year"></span> <a href="https://brockblaze.github.io/">blazztech projects | Brock F. Blazzard</a>
 </footer>

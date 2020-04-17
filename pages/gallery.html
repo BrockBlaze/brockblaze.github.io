@@ -13,7 +13,7 @@
     <script src="../js/functions.js"></script>
 </head>
 
-<body onload="checkToggle()">
+<body onload="checkToggle()" onresize="resize()">
     <header>
         <h1><a href="../index.html">blazztech</a></h1>
         <div class="ThemeToggle">
@@ -25,17 +25,20 @@
     </header>
     <nav>
         <h2>
+            <div id="navB">
             <a href="../index.html">home</a>
             <a href="games.html">games</a>
             <a href="gallery.html">gallery</a>
             <a href="about.html">about</a>
+            </div>
+            <div><input type="button" value="- | | | -" id="Hbutton" onclick="ham()"/></div>
         </h2>
     </nav>
     <main>
         <div class="imgwrapper">
-            <div><img class="img1" src="../images/spiritlake.jpg" alt="Spirit Lake"></div>
-            <div><img class="img2" src="../images/nearkamas.jpg" alt="Kamas Mountains"></div>
-            <div><img class="img3" src="../images/SunDance.jpg" alt="Sun Dance"></div>
+            <div><img src="../images/spiritlake.jpg" alt="Spirit Lake"></div>
+            <div><img src="../images/nearkamas.jpg" alt="Kamas Mountains"></div>
+            <div><img src="../images/SunDance.jpg" alt="Sun Dance"></div>
         </div>
     </main>
 </body>

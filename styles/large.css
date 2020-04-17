@@ -1,21 +1,39 @@
 @media only screen and (min-width: 700px) {
+  body {
+    margin-top: 15px;
+    width: 65%;
+  }
 
-    body{
-        margin-top: 20px;
-        width: 65%;
-    }
-    
-    .imgwrapper {   
-        grid-template-columns:  auto auto auto;
-    }
+  h2 {
+    display: inline-block;
+    flex-direction: none;
+  }
 
-    .gamewrapper {
-        grid-template-columns:  auto auto auto auto;
-    }
+  h2 #navB {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  h2 a {
+    padding: 0.3rem;
+    padding-bottom: 0;
+    border-right: 1px solid black;
+    border-bottom: none;
+  }
 
-    footer {
-        display: inline-block;
-        width: 65%;
-    }
+  h2 a:last-child {
+    border-right: none;
+  }
 
+  #Hbutton {
+    display: none;
+  }
+
+  .imgwrapper {
+    grid-template-columns: auto auto auto;
+  }
+
+  .gamewrapper {
+    grid-template-columns: auto auto auto auto;
+  }
 }
