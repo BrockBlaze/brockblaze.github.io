@@ -309,6 +309,10 @@ footer a {
   font-size: 1.2rem;
 }
 
+#deathMessage {
+  display: none;
+}
+
 #town table {
     justify-content: space-evenly;
     margin: auto;
