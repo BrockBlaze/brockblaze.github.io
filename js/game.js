@@ -32,6 +32,10 @@ function gameStart() {
     town.style.display = "none";
     home.style.display = "none";
   }
+  var health = parseInt(localStorage.getItem("health"));
+  if (health <= 0) {
+    document.getElementById("deathMessage").style.display = "block";
+  }
 }
 
 function EnterName() {
@@ -111,6 +115,10 @@ function mainMenu() {
 }
 
 function Play() {
+  var health = parseInt(localStorage.getItem("health"));
+  if (health <= 0) {
+    Dealth();
+  }
   var newPlayer = document.getElementById("newPlayer");
   var gameMenu = document.getElementById("gameMenu");
   var newPlayerCreation = document.getElementById("newPlayerCreation");
@@ -143,19 +151,10 @@ function SetHeroInfo() {
   heroHealth.innerHTML = "Health : " + localStorage.getItem("health");
   heroGold.innerHTML = "Gold : " + localStorage.getItem("gold");
   heroPotions.innerHTML = "Potions : " + localStorage.getItem("potions");
-  var health = parseInt(localStorage.getItem("health"));
-  if (health <= 0) {
-    Dealth();
-  }
 }
 
 function Dealth() {
-  if (typeof Storage !== "undefined") {
-    localStorage.removeItem("name");
-    localStorage.removeItem("race");
-  }
   location.reload();
-  document.getElementById("deathMessage").style.display = "block";
   return false;
 }
 
