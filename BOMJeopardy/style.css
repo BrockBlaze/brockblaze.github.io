@@ -28,6 +28,7 @@ table th, td {
 }
 
 th, td {
+    user-select: none;
     overflow: hidden;
     height: 100px;
     min-width: 250px;
@@ -36,6 +37,18 @@ th, td {
 td:hover {
     cursor: pointer;
     box-shadow: 5px 10px 18px black;
+}
+
+
+.resetBt {
+    text-align: right;
+    font-size: 12px;
+    position: relative;
+    right: 10px;
+}
+
+.resetBt:hover {
+    color: white;
 }
 
 footer {

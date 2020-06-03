@@ -139,10 +139,10 @@ function SetHeroInfo() {
   PlayerInfo.style.display = "block";
   heroName.innerHTML = localStorage.getItem("name");
   heroRace.innerHTML =
-    localStorage.getItem("race") + " - " + localStorage.getItem("level");
-  heroHealth.innerHTML = "Health - " + localStorage.getItem("health");
-  heroGold.innerHTML = "Gold - " + localStorage.getItem("gold");
-  heroPotions.innerHTML = "Potions - " + localStorage.getItem("potions");
+    localStorage.getItem("race") + " : " + localStorage.getItem("level");
+  heroHealth.innerHTML = "Health : " + localStorage.getItem("health");
+  heroGold.innerHTML = "Gold : " + localStorage.getItem("gold");
+  heroPotions.innerHTML = "Potions : " + localStorage.getItem("potions");
   var health = parseInt(localStorage.getItem("health"));
   if (health <= 0) {
     Dealth();
