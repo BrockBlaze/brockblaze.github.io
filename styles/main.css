@@ -251,7 +251,7 @@ footer a {
   width: 125px;
   top: -450px;
   left: 5px;
-  background-color: rgba(192, 192, 192, 0.5);
+  background-color: rgba(192, 192, 192, 0.75);
 }
 
 #PlayerInfo ul {
