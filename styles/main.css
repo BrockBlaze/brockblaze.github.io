@@ -192,6 +192,24 @@ main p {
   padding: 20px;
 }
 
+.imgdisplay {
+  text-align: center;
+}
+
+.imgdisplay img {
+  width: 65%;
+  padding-bottom: 0;
+}
+
+.imgdisplaybg {
+  border-bottom: solid 5px black;
+}
+
+#Timg {
+  color: var(--bgcolor);
+  font-size: 2rem;
+}
+
 
 .imgwrapper img {
   width: 92%;
@@ -202,9 +220,13 @@ main p {
   padding: 20px;
   margin: auto;
   display: grid;
-  grid-template-columns: auto;
+  grid-template-columns: auto auto auto;
   grid-gap: 30px 1px;
   align-items: center;
+}
+
+.imgwrapper img:hover {
+  box-shadow: 10px 10px 30px #252525;
 }
 
 .gamewrapper img {

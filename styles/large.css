@@ -30,7 +30,7 @@
   }
 
   .imgwrapper {
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto auto auto auto;
   }
 
   .gamewrapper {
