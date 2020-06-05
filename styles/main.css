@@ -227,6 +227,7 @@ main p {
 
 .imgwrapper img:hover {
   box-shadow: 10px 10px 30px #252525;
+  cursor: pointer;
 }
 
 .gamewrapper img {
