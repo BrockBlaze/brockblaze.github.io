@@ -1,8 +1,8 @@
-var n1count = 0;
-var m1count = 0;
-var a1count = 0;
-var h1count = 0;
-var i1count = 0;
+var n1count = 1;
+var m1count = 1;
+var a1count = 1;
+var h1count = 1;
+var i1count = 1;
 
 setInterval(Debug,1000);
 
