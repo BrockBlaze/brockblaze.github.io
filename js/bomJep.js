@@ -81,7 +81,7 @@ function a1() {
     if (a1count == 1)
     {
         document.getElementById("a1").style.fontSize = "1.5rem";
-        document.getElementById("a1").innerHTML = "Doctrine of Jesus Christ.";
+        document.getElementById("a1").innerHTML = "The doctrine of Jesus Christ";
     }
     if (a1count == 2)
     {
@@ -549,11 +549,11 @@ function a5() {
     if (a5count == 1)
     {
         document.getElementById("a5").style.fontSize = "1.5rem";
-        document.getElementById("a5").innerHTML = "This is a Question?";
+        document.getElementById("a5").innerHTML = "According to Pres. Nelson, before the Atonement of Christ we need to understand this doctrine";
     }
     if (a5count == 2)
     {
-        document.getElementById("a5").innerHTML = "Answer";
+        document.getElementById("a5").innerHTML = "What is The Fall of Adam?";
     }
     if (a5count == 3)
     {

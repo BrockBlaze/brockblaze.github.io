@@ -1,12 +1,22 @@
 html {
-    background-color: cornflowerblue;
+    background-image: url("../BOMJeopardy/christ_teaching_nephites.jpeg");
+}
+
+h1 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 20px;
+    text-align: center;
+    margin: auto;
+    color: rgb(202, 193, 62);
+    text-shadow: 5px 5px #2b2b2bd0;
+    font-size: 4rem;
 }
 
 
 .wrapper {
     text-align: center;
     padding: 10px;
-    background-color: lightslategray;
+    background-color: rgba(119, 136, 153, 0.8);
     max-width: 1400px;
     margin: auto;
 }
@@ -19,9 +29,6 @@ table {
     
 }
 
-main {
-    padding-bottom: 60px;
-}
 
 table th, td {
     border: 5px solid black;
@@ -30,8 +37,8 @@ table th, td {
 th, td {
     user-select: none;
     overflow: hidden;
-    height: 100px;
-    width: 250px;
+    height: 150px;
+    width: 300px;
 }
 
 td:hover {
@@ -49,6 +56,7 @@ td span {
     font-size: 12px;
     position: relative;
     right: 10px;
+    top: -30px;
 }
 
 .resetBt:hover {
@@ -58,15 +66,20 @@ td span {
 audio {
     position: absolute;
     right: 0;
-    bottom: 0;
+    top: 0;
     margin: auto;
-    padding: 50px;
+    padding: 25px;
 }
 
 footer {
+    color: white;
     max-width: 500px;
     margin: auto;
     text-align: center;
     padding: 50px;
+}
+
+footer a {
+    color: white;
 }
 
