@@ -56,6 +56,9 @@ td span {
 }
 
 audio {
+    position: absolute;
+    right: 0;
+    bottom: 0;
     margin: auto;
     padding: 50px;
 }
