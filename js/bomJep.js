@@ -104,11 +104,11 @@ function h1() {
     if (h1count == 1)
     {
         document.getElementById("h1").style.fontSize = "1.5rem";
-        document.getElementById("h1").innerHTML = "This is a Question?";
+        document.getElementById("h1").innerHTML = "Alma the Elder Baptized his followers here";
     }
     if (h1count == 2)
     {
-        document.getElementById("h1").innerHTML = "Answer";
+        document.getElementById("h1").innerHTML = "What is Waters of Mormon?";
     }
     if (h1count == 3)
     {
@@ -221,11 +221,11 @@ function h2() {
     if (h2count == 1)
     {
         document.getElementById("h2").style.fontSize = "1.5rem";
-        document.getElementById("h2").innerHTML = "This is a Question?";
+        document.getElementById("h2").innerHTML = "Origin of the people of Zarahemla";
     }
     if (h2count == 2)
     {
-        document.getElementById("h2").innerHTML = "Answer";
+        document.getElementById("h2").innerHTML = "What is Jerusalem?";
     }
     if (h2count == 3)
     {
@@ -315,11 +315,11 @@ function a3() {
     if (a3count == 1)
     {
         document.getElementById("a3").style.fontSize = "1.5rem";
-        document.getElementById("a3").innerHTML = "Bringing two this together";
+        document.getElementById("a3").innerHTML = "To bring two things together";
     }
     if (a3count == 2)
     {
-        document.getElementById("a3").innerHTML = "What is the Atonement?";
+        document.getElementById("a3").innerHTML = "What is Atonement?";
     }
     if (a3count == 3)
     {
@@ -338,11 +338,11 @@ function h3() {
     if (h3count == 1)
     {
         document.getElementById("h3").style.fontSize = "1.5rem";
-        document.getElementById("h3").innerHTML = "This is a Question?";
+        document.getElementById("h3").innerHTML = "The location of the last battle in the Book of Mormon";
     }
     if (h3count == 2)
     {
-        document.getElementById("h3").innerHTML = "Answer";
+        document.getElementById("h3").innerHTML = "What is Cumorah?";
     }
     if (h3count == 3)
     {
@@ -361,11 +361,11 @@ function i3() {
     if (i3count == 1)
     {
         document.getElementById("i3").style.fontSize = "1.5rem";
-        document.getElementById("i3").innerHTML = "Lehi's Wife";
+        document.getElementById("i3").innerHTML = "Brother of Jared's name";
     }
     if (i3count == 2)
     {
-        document.getElementById("i3").innerHTML = "What is Sariah?";
+        document.getElementById("i3").innerHTML = "What is Mahonri Moriancumer?";
     }
     if (i3count == 3)
     {
@@ -459,7 +459,7 @@ function h4() {
     }
     if (h4count == 2)
     {
-        document.getElementById("h4").innerHTML = "Answer";
+        document.getElementById("h4").innerHTML = "What is ";
     }
     if (h4count == 3)
     {
@@ -478,11 +478,11 @@ function i4() {
     if (i4count == 1)
     {
         document.getElementById("i4").style.fontSize = "1.5rem";
-        document.getElementById("i4").innerHTML = "Lehi's Wife";
+        document.getElementById("i4").innerHTML = "From where do the stripling warriors recieve their faith";
     }
     if (i4count == 2)
     {
-        document.getElementById("i4").innerHTML = "What is Sariah?";
+        document.getElementById("i4").innerHTML = "What is the stripling warrior's mothers?";
     }
     if (i4count == 3)
     {
@@ -595,11 +595,11 @@ function i5() {
     if (i5count == 1)
     {
         document.getElementById("i5").style.fontSize = "1.5rem";
-        document.getElementById("i5").innerHTML = "Lehi's Wife";
+        document.getElementById("i5").innerHTML = "The verse of Moroni's Promise";
     }
     if (i5count == 2)
     {
-        document.getElementById("i5").innerHTML = "What is Sariah?";
+        document.getElementById("i5").innerHTML = "What is Moroni 10:4?";
     }
     if (i5count == 3)
     {
