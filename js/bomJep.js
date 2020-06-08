@@ -455,11 +455,11 @@ function h4() {
     if (h4count == 1)
     {
         document.getElementById("h4").style.fontSize = "1.5rem";
-        document.getElementById("h4").innerHTML = "This is a Question?";
+        document.getElementById("h4").innerHTML = "Distance between the City of Nephi and Zarahemla";
     }
     if (h4count == 2)
     {
-        document.getElementById("h4").innerHTML = "What is ";
+        document.getElementById("h4").innerHTML = "What is about 22 to 23 days apart by foot?";
     }
     if (h4count == 3)
     {
@@ -572,11 +572,11 @@ function h5() {
     if (h5count == 1)
     {
         document.getElementById("h5").style.fontSize = "1.5rem";
-        document.getElementById("h5").innerHTML = "This is a Question?";
+        document.getElementById("h5").innerHTML = "Four entry points between the Land of Nephi and Zarahemla; Antionum, Manti, Antiparah and ____";
     }
     if (h5count == 2)
     {
-        document.getElementById("h5").innerHTML = "Answer";
+        document.getElementById("h5").innerHTML = "What is Ammonihah?";
     }
     if (h5count == 3)
     {
