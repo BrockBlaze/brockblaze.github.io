@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>BlazzTech | OutlawsRemake</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <script src="TemplateData/UnityProgress.js"></script>
+    <script src="Build/UnityLoader.js"></script>
+    <script>
+      var unityInstance = UnityLoader.instantiate("unityContainer", "Build/webGL.json", {onProgress: UnityProgress});
+    </script>
+    <link rel="shortcut icon" href="../images/favicon.ico" />
+    <link rel="stylesheet" href="../styles/main.css" />
+    <link rel="stylesheet" href="../styles/large.css" />
+  </head>
+
+  <header>
+    <h1><a href="../index.html">blazztech</a></h1>
+    <a id="gamesL" href="/pages/games.html">Games</a>
+  </header>
+
+  <body>
+    <div class="webgl-content">
+      <div id="unityContainer" style="width: 960px; height: 600px"></div>
+      <div class="footer">
+        <div class="webgl-logo"></div>
+        <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
+        <div class="title">OutlawsRemake</div>
+      </div>
+    </div>
+  </body>
+
+  <footer>
+    &copy; <span id="year"></span> <a href="https://brockblaze.github.io/">blazztech projects | Brock F. Blazzard</a>
+  </footer>
+
+  <script>
+    var d = new Date();
+    document.getElementById("year").innerHTML = d.getFullYear();
+  </script>
+</html>

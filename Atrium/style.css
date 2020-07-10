@@ -1,0 +1,84 @@
+html {
+  background-color: rgb(24, 59, 100);
+}
+
+body {
+  margin: auto;
+  width: 75%;
+  text-align: center;
+}
+
+header {
+  border-radius: 10px;
+  background-color: whitesmoke;
+}
+
+h1 {
+  color: rgb(24, 59, 100);
+  font-size: 3rem;
+}
+
+h2 {
+  color: whitesmoke;
+  display: inline;
+  font-size: 2rem;
+  text-decoration: underline;
+}
+
+main {
+  padding: 20px;
+  font-size: 2rem;
+  color: whitesmoke;
+}
+
+#gameText {
+  padding: 20px;
+  padding-top: 0;
+}
+
+#gameSpace {
+  display: none;
+  margin: auto;
+  border-radius: 10px;
+  background-color: whitesmoke;
+  height: 40vh;
+  width: 50vw;
+  box-shadow: black 5px 5px 15px;
+}
+
+#playBt {
+  display: none;
+}
+
+#deleteBt {
+  display: none;
+}
+
+input[type="text"] {
+  border: none;
+  font-size: 2rem;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+input[type="button"] {
+  background-color: whitesmoke;
+  border-radius: 10px;
+  font-size: 2rem;
+  width: 150px;
+  border: none;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+input[type="button"]:hover {
+  box-shadow: black 5px 5px 15px;
+}
+
+footer {
+  border-radius: 10px;
+  background-color: whitesmoke;
+  font-size: 1.2rem;
+}
