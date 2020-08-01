@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>blazztech | Piano</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body onload="KeyBoardPiano()">
+    <audio src="sounds/c4.mp3" id="c"></audio>
+    <audio src="sounds/d4.mp3" id="d"></audio>
+    <audio src="sounds/e4.mp3" id="e"></audio>
+    <audio src="sounds/f4.mp3" id="f"></audio>
+    <audio src="sounds/g4.mp3" id="g"></audio>
+    <audio src="sounds/a5.mp3" id="a"></audio>
+    <audio src="sounds/b5.mp3" id="b"></audio>
+    <audio src="sounds/c5.mp3" id="cc"></audio>
+
+    <h1>Piano Test</h1>
+    <h2>Press a Key on the Keyboard to play a Note</h2>
+    <!-- <div id="cKey">C</div>
+    <div id="dKey">D</div>
+    <div id="eKey">E</div>
+    <div id="fKey">F</div>
+    <div id="gKey">G</div>
+    <div id="aKey">A</div>
+    <div id="bKey">B</div>
+    <div id="c2Key">C</div> -->
+    <div id="keyContainer">
+      <input type="button" id="cKey" onclick="playC()" value="C" />
+      <input type="button" id="dKey" onclick="playD()" value="D" />
+      <input type="button" id="eKey" onclick="playE()" value="E" />
+      <input type="button" id="fKey" onclick="playF()" value="F" />
+      <input type="button" id="gKey" onclick="playG()" value="G" />
+      <input type="button" id="aKey" onclick="playA()" value="A" />
+      <input type="button" id="bKey" onclick="playB()" value="B" />
+      <input type="button" id="ccKey" onclick="playCC()" value="C" />
+    </div>
+    <div id="keyBoard">
+        <div>A</div>
+        <div>S</div>
+        <div>D</div>
+        <div>F</div>
+        <div>J</div>
+        <div>K</div>
+        <div>L</div>
+        <div>;</div>
+      </div>
+    <script src="piano.js"></script>
+  </body>
+</html>
