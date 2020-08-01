@@ -65,3 +65,17 @@ input:focus {
     background-color: orangered;
     font-size: 2rem;
 }
+
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 42.5vw;
+    padding: 10px;
+    text-align: center;
+    font-size: 1.2rem;
+  }
+  
+  footer a:hover {
+    text-decoration: underline;
+    color: white;
+  }
