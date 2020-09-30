@@ -1,0 +1,38 @@
+html {
+    background-color: rgb(3, 58, 95);
+}
+
+body {
+    background-color: rgb(152, 163, 180);
+    max-width: 75%;
+    margin: auto;
+    padding: 20px;
+}
+
+#title {
+    color: rgb(3, 58, 95);
+    font-size: 4rem;
+    text-align: center;
+}
+
+h1 {
+    border-top: black 1px solid;
+    margin-top: 35px;
+    padding-top: 20px;
+    color: black;
+    margin-bottom: 0;
+}
+
+h2 {
+    margin-top: 0;
+    color: rgb(3, 58, 95);
+}
+
+p {
+    padding: 20px;
+}
+
+img {
+    max-width: 400px;
+    align-content: center;
+}
