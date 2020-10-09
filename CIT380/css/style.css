@@ -1,12 +1,28 @@
 html {
-    background-color: cadetblue;
+    background-image: url(../images/FarShore_50.jpg);
+
+    height: 100%;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     
 }
 
 body {
+    background-color: rgba(220, 220, 220, 0.75);
     margin: auto;
+    width: 1000px;
     text-align: center;
 
+}
+
+h1 {
+    color: darkgreen;
+}
+
+h2 {
+    font-size: 1rem;
 }
 
 .content {
