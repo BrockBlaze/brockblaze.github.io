@@ -1,2 +1,1 @@
-Name: Brock 
-Level: 1
+{"name":"Brock","level":1}
