@@ -5,10 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CIT 380 Project</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 </head>
 <body>
 <h1>Tree Idenifier</h1>
+<div class="content">
+    Hello
+</div>
 <h2>Windows Download: <a href="#">download</a> </h2>
 <h2>Android Download: <a href="#">download</a></h2>
 </body>
+<footer>
+    &copy; <span id="year"></span>
+    <a href="https://brockblaze.github.io/"
+      >blazztech projects | Brock F. Blazzard</a
+    >
+</footer>
+<script>
+    var d = new Date();
+    document.getElementById("year").innerHTML = d.getFullYear();
+  </script>
 </html>

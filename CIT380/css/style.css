@@ -1,3 +1,22 @@
 html {
     background-color: cadetblue;
+    
+}
+
+body {
+    margin: auto;
+    text-align: center;
+
+}
+
+.content {
+    margin: auto;
+    height: 300px;
+}
+
+footer {
+    background-color: white;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
 }
