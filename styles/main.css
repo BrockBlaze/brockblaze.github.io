@@ -298,6 +298,15 @@ footer a {
   height: 40px;
   background-color: var(--bgcolor);
   text-align: center;
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+a .button {
+  line-height: 40px;
 }
 
 .button a{
