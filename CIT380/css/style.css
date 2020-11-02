@@ -12,9 +12,14 @@ html {
 body {
     background-color: rgba(220, 220, 220, 0.75);
     margin: auto;
-    width: 800px;
+    width: 360px;
     text-align: center;
 
+}
+
+canvas {
+    width: 360px;
+    height: 640px;
 }
 
 h1 {
@@ -27,7 +32,6 @@ h2 {
 
 .content {
     margin: auto;
-    height: 300px;
 }
 
 footer {

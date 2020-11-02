@@ -1,0 +1,11 @@
+@media only screen and (min-width: 1280px) {
+    body {
+        width: 1280px;
+    }
+
+    canvas {
+        width: 1280px;
+        height: 720px;
+    }
+
+}

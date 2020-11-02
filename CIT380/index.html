@@ -4,8 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CIT 380 Project</title>
-    <link rel="stylesheet" href="css/style.css" />
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/large.css" />
     <link rel="stylesheet" href="TemplateData/style.css" />
   </head>
   <body>
@@ -21,7 +22,7 @@
       <div id="unity-footer">
         <div id="unity-webgl-logo"></div>
         <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">Tree Identifier</div>
+        <div id="unity-build-title"></div>
       </div>
     </div>
     <script>
@@ -43,13 +44,7 @@
       var progressBarFull = document.querySelector("#unity-progress-bar-full");
       var fullscreenButton = document.querySelector("#unity-fullscreen-button");
 
-      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-        container.className = "unity-mobile";
-        config.devicePixelRatio = 1;
-      } else {
-        canvas.style.width = "1280px";
-        canvas.style.height = "720px";
-      }
+
       loadingBar.style.display = "block";
 
       var script = document.createElement("script");
