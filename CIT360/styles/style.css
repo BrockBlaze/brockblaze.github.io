@@ -12,7 +12,7 @@ body {
 #title {
     color: rgb(3, 58, 95);
     font-size: 4rem;
-    text-align: center;
+    text-align: left;
 }
 
 h1 {
@@ -30,6 +30,10 @@ h2 {
 
 p {
     padding: 20px;
+}
+
+ul {
+    margin: 0;
 }
 
 img {
