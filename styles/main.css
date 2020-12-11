@@ -315,14 +315,12 @@ a .button {
   text-decoration: none;
   color: white;
 }
-.button:hover a{
-  color: var(--bgcolor);
-}
 
 .button:hover{
   box-shadow: 10px 10px 30px #252525;
   cursor: pointer;
   background-color: var(--fgcolor);
+  color: var(--bgcolor);
 }
 
 #newPlayer, #newPlayerCreation, #gameMenu, #gamePlay, #fight, #town, #home, #stats{
