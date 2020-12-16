@@ -9,14 +9,26 @@
   </head>
   <body>
     <div id="title">CIT 360 Journal</div>
-    <h1>WEEK 2</h1>
+    <nav>
+      <a href="#w2">Week 2</a><a href="#w3">Week 3</a><a href="#w4">Week 4</a
+      ><a href="#w5">Week 5</a><a href="#w6">Week 6</a><a href="#w7">Week 7</a>
+      <a href="#w8">Week 8</a><a href="#w9">Week 9</a><a href="#w10">Week 10</a
+      ><a href="#w11">Week 11</a><a href="#w12">Week 12</a
+      ><a href="#w13">Week 13</a>
+    </nav>
+    <h1 id="w2">WEEK 2</h1>
     <h2>Java Collections</h2>
     <p>
       This week in CIT 360 I learned about collections like ArrayList, Queues,
       HashSet, and TreeMap
     </p>
+    <p>
+      Java Collection means a single unit of objects. Java Collection framework
+      provides many interfaces (Set, List, Queue, Deque) and classes (ArrayList,
+      Vector, LinkedList, PriorityQueue, HashSet, LinkedHashSet, TreeSet).
+    </p>
     <img src="./images/CIT360W2.png" />
-    <h1>WEEK 3</h1>
+    <h1 id="w3">WEEK 3</h1>
     <h2>Exception Handling and Data Validation</h2>
     <p>
       This week I enter numbers into my program and divide them and then
@@ -24,7 +36,7 @@
       a catch an Arithmetic Exception to if you tried to divide by zero.
     </p>
     <img src="./images/CIT360W3.png" />
-    <h1>WEEK 4</h1>
+    <h1 id="w4">WEEK 4</h1>
     <h2>JSON and HTTP</h2>
     <p>
       This week I used an HTTP request to get a txt file from the internet and
@@ -32,7 +44,7 @@
       to convert that json into a java object.
     </p>
     <img src="./images/CIT360W4.png" />
-    <h1>WEEK 5</h1>
+    <h1 id="w5">WEEK 5</h1>
     <h2>JUnit</h2>
     <p>
       This week I used Junit to run test on a method that added two numbers
@@ -40,42 +52,42 @@
       test the methods outputs.
     </p>
     <img src="./images/CIT360W5.png" />
-    <h1>WEEK 6</h1>
+    <h1 id="w6">WEEK 6</h1>
     <h2>Use Case Document</h2>
     <p>
       This week I made an Use Case Document for a save system for a text base
       game.
     </p>
     <img src="./images/CIT360W6.png" />
-    <h1>WEEK 7</h1>
+    <h1 id="w7">WEEK 7</h1>
     <h2>Servlet</h2>
     <p>
       This week I used servlets to make web applications for logging in and also
       a servlet to square a number a user entered in.
     </p>
     <img src="./images/CIT360W7.png" />
-    <h1>WEEK 8</h1>
+    <h1 id="w8">WEEK 8</h1>
     <h2>Threads, Runnables, Executors</h2>
     <p>
       This week I executed runnables that I set up, to run on different threads
       at the same time.
     </p>
     <img src="./images/CIT360W8.png" />
-    <h1>WEEK 9</h1>
+    <h1 id="w9">WEEK 9</h1>
     <h2>Hibernate</h2>
     <p>
       This week I used the hibernate packages to connect to a MySQL database to
       pull data from.
     </p>
     <img src="./images/CIT360W9.png" />
-    <h1>WEEK 10</h1>
+    <h1 id="w10">WEEK 10</h1>
     <h2>UML</h2>
     <p>
       This week I made multiple diagrams to help me understand systems that I
       would have in my final project.
     </p>
     <img src="./images/CIT360W10.png" />
-    <h1>WEEK 10</h1>
+    <h1 id="w11">WEEK 11</h1>
     <h2>Final Project Proposal</h2>
     <p>
       This week I wrote a proposal for my final Project which will be a Text
@@ -96,5 +108,32 @@
       <li>Servlets – A website for the player to play the game in.</li>
       <li>Threads, Runnables, and Executors – a gameplay mechanic</li>
     </ul>
+    <p><a href="./files/Object Oriented Development Personal Application Proposal.docx">Proposal Document</a></p>
+    <h1 id="w12">WEEK 12</h1>
+    <h2>UML</h2>
+    <p>
+      This week I work a lot on my final Project and was able to set up a lot of the base functions for my web app game. This is a screenshot of what the player will see when they click play game.
+    </p>
+    <img src="./images/Week12.png" />
+    <h1 id="w13">WEEK 13</h1>
+    <h2>Final Project</h2>
+    <p>
+      This week I finished up my project and Use Case Document. I was able to
+      Create and Delete Players from my Database using methods like
+      session.update(Ojbect) and session.delete(Object) this mehtod for
+      hibernate I found on the internet seem to work a lot better then trying to
+      right mysql statements.
+    </p>
+    <img src="./images/Week13.png" />
   </body>
+  <footer>
+    &copy; <span id="year"></span>
+    <a href="https://brockblaze.github.io/"
+      >blazztech projects | Brock F. Blazzard</a
+    >
+  </footer>
+  <script>
+    var d = new Date();
+    document.getElementById("year").innerHTML = d.getFullYear();
+  </script>
 </html>
