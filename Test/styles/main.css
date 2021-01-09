@@ -1,0 +1,94 @@
+nav {
+    position: fixed;
+    display: none;
+    top: 0;
+    height: 3vh;
+    width: 100vw;
+    z-index: 1;
+    margin: 0;
+    text-align: center;
+    background-color: rgb(44, 85, 119);
+}
+
+nav a {
+    display: inline-block;
+    height: 3vh;
+    width: 75px;
+    line-height: 3vh;
+    background-color: white;
+    text-decoration: none;
+    margin: auto;
+    color: black;
+}
+
+nav a:hover {
+    background-color: skyblue;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    margin: 0;
+}
+
+.page1 {
+    height: 100vh;
+    background-image: url('../../images/FarShore.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+}
+
+.page2 {
+    height: 100vh;
+    background-image: url('../../images/RockTower.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+}
+
+.content {
+    position: relative;
+    top: 5vh;
+    width: 60vw;
+    height: 80vh;
+    margin: auto;
+    background-color: rgba(255, 255, 255, 0.548);
+}
+
+.content h1 {
+    padding: 10px;
+}
+
+.content p {
+    padding: 50px;
+    padding-top: 0;
+}
+
+footer {
+    font-size: 1.2rem;
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    height: 2vh;
+    line-height: 2vh;
+    margin: auto;
+    text-align: center;
+    color: white;
+    background-color: rgb(44, 85, 119);
+}
+
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: darkorange;
+    text-decoration: underline;
+}

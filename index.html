@@ -1,61 +1,71 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-    <meta name="description" content="This site contains my personal work" />
-    <title>blazztech</title>
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <script src="js/functions.js"></script>
-    <link rel="stylesheet" href="styles/main.css" />
-    <link rel="stylesheet" href="styles/large.css" />
-  </head>
 
-  <body onload="checkToggle()" onresize="resize()">
-    <header>
-      <h1><a href="../index.html">blazztech</a></h1>
-      <div class="ThemeToggle">
-        <label class="switch">
-          <input type="checkbox" id="checkbox" onclick="checkedToggle()" />
-          <span class="slider"></span>
-        </label>
-      </div>
-    </header>
-    <nav>
-      <h2>
-        <div id="navB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="description" content="This site contains my personal work" />
+  <title>blazztech</title>
+  <link rel="shortcut icon" href="images/favicon.ico" />
+  <script src="js/functions.js"></script>
+  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/large.css" />
+</head>
+
+<body onload="checkToggle()" onresize="resize()">
+  <header>
+    <h1><a href="../index.html">blazztech</a></h1>
+    <div class="ThemeToggle">
+      <label class="switch">
+        <input type="checkbox" id="checkbox" onclick="checkedToggle()" />
+        <span class="slider"></span>
+      </label>
+    </div>
+  </header>
+  <nav>
+    <h2>
+      <div id="navB">
         <a href="index.html">home</a>
         <a href="pages/games.html">games</a>
         <a href="pages/gallery.html">gallery</a>
         <a href="pages/adventure.html">adventure</a>
         <a href="pages/about.html">about</a>
-        </div>
-        <div><input type="button" value="- | | | -" id="Hbutton" onclick="ham()"/></div>
-      </h2>
-    </nav>
-    <main>
-      <div class="hero"><img class="heroImg" src="./images/heroImg.jpg"></div>
-        <div class="wrapper">
-          <div>
-            <h3>Projects</h3>
-            <a href="school/index.html"><div class="button">CIT230</div></a>
-            <a href="dvdlogo/dvd.html"><div class="button">DVD Screen Saver</div></a>
-            <a href="Piano/index.html"><div class="button">Piano Player</div></a>
-            <a href="CIT360/index.html"><div class="button">CIT 360 Journal</div></a>
-            <a href="CIT380/index.html"><div class="button">CIT 380 Project</div></a>
-          </div>
       </div>
-    </main>
-  </body>
+      <div><input type="button" value="- | | | -" id="Hbutton" onclick="ham()" /></div>
+    </h2>
+  </nav>
+  <main>
+    <div class="hero"><img class="heroImg" src="./images/heroImg.jpg"></div>
+    <div class="wrapper">
+      <div>
+        <h3>Projects</h3>
+        <a href="school/index.html">
+          <div class="button">CIT230</div>
+        </a>
+        <a href="dvdlogo/dvd.html">
+          <div class="button">DVD Screen Saver</div>
+        </a>
+        <a href="Piano/index.html">
+          <div class="button">Piano Player</div>
+        </a>
+        <a href="CIT360/index.html">
+          <div class="button">CIT 360 Journal</div>
+        </a>
+        <a href="CIT380/index.html">
+          <div class="button">CIT 380 Project</div>
+        </a>
+      </div>
+    </div>
+  </main>
+</body>
 
-  <footer>
-    &copy; <span id="year"></span>
-    <a href="https://brockblaze.github.io/"
-      >blazztech projects | Brock F. Blazzard</a
-    >
-  </footer>
-  <script>
-    var d = new Date();
-    document.getElementById("year").innerHTML = d.getFullYear();
-  </script>
+<footer>
+  &copy; <span id="year"></span>
+  <a href="https://brockblaze.github.io/">blazztech projects | Brock F. Blazzard</a>
+</footer>
+<script>
+  var d = new Date();
+  document.getElementById("year").innerHTML = d.getFullYear();
+</script>
+
 </html onload="checkToggle()">
