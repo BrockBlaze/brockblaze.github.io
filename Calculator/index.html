@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="./main.js"></script>
+</head>
+<body>
+    <h1>Calculator</h1>
+    <form action="calculate">
+        <table>
+            <tr>
+                <th colspan="4"><div><p id="history">history</p><p id="output"></p></div></th>
+            </tr>
+            <tr>
+                <th><input type="button" value="7" id="n7" onclick="button('n7')"></th>
+                <th><input type="button" value="8" id="n8" onclick="button('n8')"></th>
+                <th><input type="button" value="9" id="n9" onclick="button('n9')"></th>
+                <th><input type="button" value="c" id="c" onclick="window.location.reload(true)"></th>
+            </tr>
+            <tr>
+                <th><input type="button" value="4" id="n4" onclick="button('n4')"></th>
+                <th><input type="button" value="5" id="n5" onclick="button('n5')"></th>
+                <th><input type="button" value="6" id="n6" onclick="button('n6')"></th>
+                <th><input type="button" value="*" id="o3" onclick="operator('o3')"></th>
+            </tr>
+            <tr>
+                <th><input type="button" value="1" id="n1" onclick="button('n1')"></th>
+                <th><input type="button" value="2" id="n2" onclick="button('n2')"></th>
+                <th><input type="button" value="3" id="n3" onclick="button('n3')"></th>
+                <th><input type="button" value="/" id="o4" onclick="operator('o4')"></th>
+            </tr>
+            <tr>
+                <th><input type="button" value="0" id="n0" onclick="button('n0')"></th>
+                <th><input type="button" value="+" id="o1" onclick="operator('o1')"></th>
+                <th><input type="button" value="-" id="o2" onclick="operator('o2')"></th>
+                <th><input type="button" value="=" onclick="equals()"></th>
+            </tr>
+            
+        </table>
+    </form>
+</body>
+<footer>
+    &copy; <span id="year"></span>
+    <a href="https://brockblaze.github.io/">blazztech projects | Brock F. Blazzard</a>
+  </footer>
+  <script>
+    var d = new Date();
+    document.getElementById("year").innerHTML = d.getFullYear();
+  </script>
+</html>

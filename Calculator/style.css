@@ -1,0 +1,74 @@
+body {
+    background-color: rgb(0, 61, 110);
+}
+
+h1 {
+    font-size: 4rem;
+    color: whitesmoke;
+    text-align: center;
+    text-decoration: underline;
+}
+
+table {
+    margin: auto;
+    border: 3px solid rgb(0, 103, 163);
+    background-color: rgb(0, 124, 207);
+    box-shadow: 5px 5px 15px black;
+    border-radius: 15px;
+}
+
+table input {
+    height: 100px;
+    margin: 5px;
+    margin-top: 25px;
+    width: 100px;
+    background-color: whitesmoke;
+    font-size: 1.75rem;
+    border: 3px solid rgb(0, 103, 163);
+    border-radius: 15px;
+}
+
+table input:hover {
+    background-color: rgb(206, 206, 206);
+    font-size: 2rem;
+    box-shadow: 3px 3px 15px black;
+}
+
+table div {
+    background-color: whitesmoke;
+    margin: 0;
+    margin-bottom: 25px;
+    height: 80px;
+    text-align: right;
+    padding-right: 15px;
+    border: 3px solid rgb(0, 103, 163);
+    font-size: 1.5rem;
+    border-radius: 15px;
+}
+
+table div p{
+    margin: 0;
+}
+
+#output{
+    font-size: 1.75rem;
+    margin-top: 15px;
+}
+
+footer {
+    position: absolute;
+    width: 99.5vw;
+    text-align: center;
+    bottom: 25px;
+    font-size: 1.2rem;
+    color: whitesmoke;
+}
+
+footer a {
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: rgb(1, 154, 243);
+}
