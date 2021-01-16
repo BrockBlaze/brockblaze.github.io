@@ -18,7 +18,7 @@ table {
 }
 
 table input {
-    height: 100px;
+    height: 7.5vh;
     margin: 5px;
     margin-top: 25px;
     width: 100px;
@@ -56,7 +56,8 @@ table div p{
 }
 
 footer {
-    position: absolute;
+    position: fixed;
+    z-index: -1;
     width: 99.5vw;
     text-align: center;
     bottom: 25px;
