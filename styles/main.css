@@ -33,7 +33,7 @@ header {
 }
 
 .ThemeToggle {
-    margin-right: 15px;
+  margin-right: 15px;
 }
 
 .switch {
@@ -59,6 +59,7 @@ header {
   background-color: rgb(163, 163, 163);
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  border-radius: 5px;
 }
 
 .slider:before {
@@ -71,6 +72,7 @@ header {
   background-color: rgb(7, 46, 78);
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  border-radius: 5px;
 }
 
 input:checked + .slider {
@@ -96,6 +98,7 @@ body {
   margin-top: 0;
   margin-bottom: 0;
   box-shadow: 10px 10px 30px #252525;
+  border-radius: 5px;
 }
 
 h1 {
@@ -209,6 +212,11 @@ main p {
   border-bottom: solid 5px black;
 }
 
+#Fimg {
+  margin-top: 10px;
+  border-radius:5px 5px 5px 5px;
+}
+
 #Timg {
   color: var(--bgcolor);
   font-size: 2rem;
@@ -217,6 +225,7 @@ main p {
 
 .imgwrapper img {
   width: 92%;
+  border-radius: 5px;
 }
 
 .imgwrapper {
@@ -236,6 +245,7 @@ main p {
 
 .gamewrapper img {
   width: 92%;
+  border-radius: 5px;
 }
 
 .gamewrapper {
@@ -299,6 +309,7 @@ footer a {
   background-color: var(--bgcolor);
   text-align: center;
   text-decoration: none;
+  border-radius: 5px;
 }
 
 a {
@@ -375,6 +386,7 @@ footer {
   text-align: center;
   font-size: 1.2rem;
   background-color: var(--fgcolor);
+  border-radius: 0 0 5px 5px;
 }
 
 footer a:hover {
