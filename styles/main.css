@@ -192,11 +192,15 @@ main p {
   height: 435px;
 }
 
-.wrapper {
+.wrapper div{
   display: flex;
-  justify-content: space-evenly;
-  flex-direction: row;
+  justify-content: center;
+  flex-direction: column;
   padding: 20px;
+}
+
+.wrapper div a {
+  padding: 10px;
 }
 
 .imgdisplay {
@@ -301,11 +305,12 @@ footer a {
 }
 
 .button {
+  font-size: 1rem;
   color:white;
   margin: auto;
   margin-bottom: 1.5rem;
-  width: 140px;
-  height: 40px;
+  width: 125px;
+  height: 20px;
   background-color: var(--bgcolor);
   text-align: center;
   text-decoration: none;
@@ -317,11 +322,11 @@ a {
 }
 
 a .button {
-  line-height: 40px;
+  line-height: 20px;
 }
 
 .button a{
-  line-height: 40px;
+  line-height: 20px;
   text-decoration: none;
   color: white;
 }

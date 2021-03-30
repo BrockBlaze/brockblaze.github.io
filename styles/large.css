@@ -29,6 +29,10 @@
     display: none;
   }
 
+  .wrapper div{
+    flex-direction: row;
+  }
+
   .imgwrapper {
     grid-template-columns: auto auto auto auto auto;
   }
