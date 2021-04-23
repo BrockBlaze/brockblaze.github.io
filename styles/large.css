@@ -1,7 +1,7 @@
-@media only screen and (min-width: 700px) {
+@media only screen and (min-width: 950px) {
   body {
     margin-top: 15px;
-    width: 65%;
+    width: 85%;
   }
 
   h2 {
@@ -39,6 +39,25 @@
 
   .gamewrapper {
     grid-template-columns: auto auto auto auto;
+  }
+
+  .button {
+    width: 100px;
+    height: 20px;
+    font-size: .75rem;
+  }
+
+}
+
+@media only screen and (min-width: 1450px) {
+  body {
+    width: 65%;
+  }
+
+  .button {
+    width: 125px;
+    height: 20px;
+    font-size: 1rem;
   }
 
 }

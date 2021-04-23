@@ -31,10 +31,10 @@ function ham() {
 
 function resize() {
   var nav = document.getElementById("navB");
-  if (window.outerWidth > 700) {
+  if (window.outerWidth > 950) {
     nav.style.display = "flex";
   }
-  if (window.outerWidth < 700) {
+  if (window.outerWidth <= 950) {
     nav.style.display = "none";
   }
 }
