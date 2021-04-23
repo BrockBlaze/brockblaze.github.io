@@ -1,72 +1,86 @@
-nav {
-    position: fixed;
-    display: none;
-    top: 0;
-    height: 3vh;
-    width: 100vw;
-    z-index: 1;
-    margin: 0;
-    text-align: center;
-    background-color: rgb(44, 85, 119);
-}
-
-nav a {
-    display: inline-block;
-    height: 3vh;
-    width: 75px;
-    line-height: 3vh;
-    background-color: white;
-    text-decoration: none;
-    margin: auto;
-    color: black;
-}
-
-nav a:hover {
-    background-color: skyblue;
-}
-
-body::-webkit-scrollbar {
-    display: none;
+html {
+    background-color: #092631;
+    font-family: 'Roboto', sans-serif;
 }
 
 body {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+    padding: 0;
     margin: 0;
 }
 
-.page1 {
-    height: 100vh;
-    background-image: url('../../images/FarShore.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin: 0;
+header {
+    height: 5vh;
+    line-height: 5vh;
+    text-align: center;
 }
 
-.page2 {
-    height: 100vh;
-    background-image: url('../../images/RockTower.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
+h1 {
+    font-size: 3rem;
+    padding: 0;
     margin: 0;
+    color: #F55702;
 }
 
-.content {
-    position: relative;
-    top: 5vh;
-    width: 60vw;
-    height: 80vh;
+nav {
+    display: inline-flex;
+    justify-content: space-evenly;
+    width: 100%;
+    background-color: #317590;
+}
+
+nav a {
+    text-align: center;
+    width: 100%;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: #F55702;
+    border-right: 3px solid #092631;
+}
+
+nav .active {
+    border-right: 3px solid #092631;
+    color: #317590;
+    background-color: #F55702;
+}
+
+nav a:last-child {
+    border-right: none;
+}
+
+nav a:hover {
+    font-size: 1.75rem;
+    text-decoration: underline;
+    color: #317590;
+    background-color: #F55702;
+}
+
+#hero {
+    width: 100vw;
+}
+
+#hero img{
+    height: 350px;
+    width: 100vw;
+}
+
+main {
+    background-color: #F4D2C0;
+    color: #092631;
+    padding-top: 4.9vh;
     margin: auto;
-    background-color: rgba(255, 255, 255, 0.548);
 }
 
-.content h1 {
-    padding: 10px;
+h2 {
+    color: #092631;
 }
 
-.content p {
-    padding: 50px;
-    padding-top: 0;
+main p {
+    color: #092631;
+}
+
+h2 {
+    font-size: 2rem;
+    text-align: center;
 }
 
 footer {
@@ -74,21 +88,21 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100vw;
-    height: 2vh;
-    line-height: 2vh;
     margin: auto;
     text-align: center;
-    color: white;
-    background-color: rgb(44, 85, 119);
+    height: 3vh;
+    line-height: 3vh;
+    color: #F55702;
+    background-color: #1382AE;
 }
 
 
 footer a {
-    color: white;
+    color: #F55702;
     text-decoration: none;
 }
 
 footer a:hover {
-    color: darkorange;
+    color: #F4D2C0;
     text-decoration: underline;
 }
