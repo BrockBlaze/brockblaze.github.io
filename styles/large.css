@@ -7,7 +7,6 @@
   #navB {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
   }
 
   #navB a {
@@ -19,6 +18,10 @@
 
   #navB a:last-child {
     border-right: none;
+  }
+
+  #hamBtn {
+    padding: 0;
   }
 
   #Hbutton {

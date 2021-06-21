@@ -1,183 +1,140 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1"
-    />
-    <meta
-      name="description"
-      content="This site contains my work for CIT 230 Web Frontend Development at Brigham Young University - Idaho"
-    />
-    <title>blazztech | Adventure</title>
-    <link rel="shortcut icon" href="../images/favicon.ico" />
-    <link rel="stylesheet" href="../styles/main.css" />
-    <link rel="stylesheet" href="../styles/large.css" />
-    <script src="../js/functions.js"></script>
-    <script src="../js/game.js"></script>
-  </head>
 
-  <body>
-    <header>
-      <h1>blazztech</h1>
-      <div class="ThemeToggle">
-        <label class="switch">
-          <input type="checkbox" id="checkbox" onclick="checkedToggle()" />
-          <span class="slider"></span>
-        </label>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="description"
+    content="This site contains my work for CIT 230 Web Frontend Development at Brigham Young University - Idaho" />
+  <title>blazztech | Adventure</title>
+  <link rel="shortcut icon" href="../images/favicon.ico" />
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/large.css" />
+  <script src="../js/functions.js"></script>
+  <script src="../js/game.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1>blazztech</h1>
+    <div class="ThemeToggle">
+      <label class="switch">
+        <input type="checkbox" id="checkbox" onclick="checkedToggle()" />
+        <span class="slider"></span>
+      </label>
+    </div>
+  </header>
+  <nav>
+      <div id="navB">
+        <a href="../index.html">home</a>
+        <a href="games.html">games</a>
+        <a href="gallery.html">gallery</a>
+        <a href="adventure.html">adventure</a>
+        <a href="about.html">about</a>
       </div>
-    </header>
-    <nav>
-      <h2>
-        <div id="navB">
-          <a href="../index.html">home</a>
-          <a href="games.html">games</a>
-          <a href="gallery.html">gallery</a>
-          <a href="adventure.html">adventure</a>
-          <a href="about.html">about</a>
-        </div>
-        <div>
-          <input type="button" value="- | | | -" id="Hbutton" onclick="ham()" />
-        </div>
-      </h2>
-    </nav>
-    <main>
-      <div class="hero">
-        <img class="heroImg" src="../images/AdvenHero.jpg" />
-        <div id="PlayerInfo">
-          <ul>
-            <li id="heroName">Name</li>
-            <li id="heroRace">Race</li>
-            <li id="heroHealth">Health</li>
-            <li id="heroGold">Gold</li>
-            <li id="heroPotions">Potions</li>
-          </ul>
-        </div>
+      <div id="hamBtn">
+        <input type="button" value="- | | | -" id="Hbutton" onclick="ham()" />
       </div>
-      <div id="newPlayer">
-        <div id="newPlayerText">Enter Your Name:</div>
-        <input type="text" maxlength="10" id="name" /><br /><br />
-        <input type="button" value="Submit" onclick="EnterName()" />
+  </nav>
+  <main>
+    <div class="hero">
+      <img class="heroImg" src="../images/AdvenHero.jpg" />
+      <div id="PlayerInfo">
+        <ul>
+          <li id="heroName">Name</li>
+          <li id="heroRace">Race</li>
+          <li id="heroHealth">Health</li>
+          <li id="heroGold">Gold</li>
+          <li id="heroPotions">Potions</li>
+        </ul>
       </div>
-      <div id="newPlayerCreation">
-        <div id="newPlayerRace">Select Your Charater</div>
-        <select id="race" name="race">
-          <option value="Human">Human</option>
-          <option value="Elf">Elf</option>
-          <option value="Dwarf">Dwarf</option>
-          <option value="Wizard">Wizard</option></select
-        ><br /><br />
-        <input type="button" value="Submit" onclick="EnterRace()" />
+    </div>
+    <div id="newPlayer">
+      <div id="newPlayerText">Enter Your Name:</div>
+      <input type="text" maxlength="10" id="name" /><br /><br />
+      <input type="button" value="Submit" onclick="EnterName()" />
+    </div>
+    <div id="newPlayerCreation">
+      <div id="newPlayerRace">Select Your Charater</div>
+      <select id="race" name="race">
+        <option value="Human">Human</option>
+        <option value="Elf">Elf</option>
+        <option value="Dwarf">Dwarf</option>
+        <option value="Wizard">Wizard</option>
+      </select><br /><br />
+      <input type="button" value="Submit" onclick="EnterRace()" />
+    </div>
+    <div id="gameMenu">
+      <div id="output"></div>
+      <div id="deathMessage">You Died<br />Play Again?</div>
+      <input type="button" value="Play" onclick="Play()" />
+      <input type="button" value="Delete" onclick="DeletePlayer()" />
+    </div>
+    <div id="gamePlay">
+      <div>What do you want to do?</div>
+      <br />
+      <input type="button" value="Fight" onclick="Fight()" />
+      <input type="button" value="Town" onclick="Town()" />
+      <input type="button" value="Home" onclick="Home()" />
+      <br /><br /><input type="button" value="Main Menu" onclick="mainMenu()" />
+    </div>
+    <div id="fight">
+      <div id="fightoutput">fight</div>
+      <p id="fightoutput1"></p>
+      <br />
+      <div id="gameText">What do you want to do?</div>
+      <br />
+      <div id="actions">
+        <input type="button" value="Attack" id="attack" onclick="Attack()" />
+        <input type="button" value="Defend" id="defend" onclick="Defend()" />
+        <input type="button" value="Potion" id="potion" onclick="UsePotion()" />
       </div>
-      <div id="gameMenu">
-        <div id="output"></div>
-        <div id="deathMessage">You Died<br />Play Again?</div>
-        <input type="button" value="Play" onclick="Play()" />
-        <input type="button" value="Delete" onclick="DeletePlayer()" />
-      </div>
-      <div id="gamePlay">
-        <div>What do you want to do?</div>
-        <br />
-        <input type="button" value="Fight" onclick="Fight()" />
-        <input type="button" value="Town" onclick="Town()" />
-        <input type="button" value="Home" onclick="Home()" />
-        <br /><br /><input
-          type="button"
-          value="Main Menu"
-          onclick="mainMenu()"
-        />
-      </div>
-      <div id="fight">
-        <div id="fightoutput">fight</div>
-        <p id="fightoutput1"></p>
-        <br />
-        <div id="gameText">What do you want to do?</div>
-        <br />
-        <div id="actions">
-          <input type="button" value="Attack" id="attack" onclick="Attack()" />
-          <input type="button" value="Defend" id="defend" onclick="Defend()" />
-          <input
-            type="button"
-            value="Potion"
-            id="potion"
-            onclick="UsePotion()"
-          />
-        </div>
-        <br /><input type="button" value="Leave" id="run" onclick="Play()" />
-        <br /><br /><input
-          type="button"
-          value="Main Menu"
-          onclick="mainMenu()"
-        />
-      </div>
-      <div id="town">
-        <div id="townoutput">Welcome to the Town Center</div>
-        <br />
-        <div id="townText">Items to improve your Stats</div>
-        <br />
-        <table>
-          <tr>
-            <th>
-              <input
-                type="button"
-                value="New Sword"
-                id="sword"
-                onclick="BuyS()"
-              />
-            </th>
-            <th><span id="swordCost"></span><br /></th>
-          </tr>
-          <tr>
-            <th>
-              <input
-                type="button"
-                value="New Armor"
-                id="armor"
-                onclick="BuyA()"
-              />
-            </th>
-            <th><span id="armorCost"></span><br /></th>
-          </tr>
-          <tr>
-            <th>
-              <input
-                type="button"
-                value="Health Potion"
-                id="potion"
-                onclick="BuyP()"
-              />
-            </th>
-            <th><span id="potionCost"> - 25$</span><br /></th>
-          </tr>
-        </table>
-        <br /><input type="button" value="Back" onclick="Play()" />
-        <br /><br /><input
-          type="button"
-          value="Main Menu"
-          onclick="mainMenu()"
-        />
-      </div>
-      <div id="home">
-        <div id="homeoutput">Welcome Home</div>
-        <br />
-        <div id="gameText">What do you want to do?</div>
-        <br />
-        <input type="button" value="Train" onclick="Train()" />
-        <input type="button" value="Sleep" onclick="Sleep()" />
-        <input type="button" value="Back" onclick="Play()" />
-        <br /><br /><input
-          type="button"
-          value="Main Menu"
-          onclick="mainMenu()"
-        />
-      </div>
-    </main>
-    <footer>
-      &copy; <span id="year"></span> |
-      <a href="https://brockblaze.github.io/"
-        >blazztech projects | Brock F. Blazzard</a
-      >
-    </footer>
-  </body>
+      <br /><input type="button" value="Leave" id="run" onclick="Play()" />
+      <br /><br /><input type="button" value="Main Menu" onclick="mainMenu()" />
+    </div>
+    <div id="town">
+      <div id="townoutput">Welcome to the Town Center</div>
+      <br />
+      <div id="townText">Items to improve your Stats</div>
+      <br />
+      <table>
+        <tr>
+          <th>
+            <input type="button" value="New Sword" id="sword" onclick="BuyS()" />
+          </th>
+          <th><span id="swordCost"></span><br /></th>
+        </tr>
+        <tr>
+          <th>
+            <input type="button" value="New Armor" id="armor" onclick="BuyA()" />
+          </th>
+          <th><span id="armorCost"></span><br /></th>
+        </tr>
+        <tr>
+          <th>
+            <input type="button" value="Health Potion" id="potion" onclick="BuyP()" />
+          </th>
+          <th><span id="potionCost"> - 25$</span><br /></th>
+        </tr>
+      </table>
+      <br /><input type="button" value="Back" onclick="Play()" />
+      <br /><br /><input type="button" value="Main Menu" onclick="mainMenu()" />
+    </div>
+    <div id="home">
+      <div id="homeoutput">Welcome Home</div>
+      <br />
+      <div id="gameText">What do you want to do?</div>
+      <br />
+      <input type="button" value="Train" onclick="Train()" />
+      <input type="button" value="Sleep" onclick="Sleep()" />
+      <input type="button" value="Back" onclick="Play()" />
+      <br /><br /><input type="button" value="Main Menu" onclick="mainMenu()" />
+    </div>
+  </main>
+  <footer>
+    &copy; <span id="year"></span> |
+    <a href="https://brockblaze.github.io/">blazztech projects | Brock F. Blazzard</a>
+  </footer>
+</body>
+
 </html>
