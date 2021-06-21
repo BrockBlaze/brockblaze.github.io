@@ -63,7 +63,7 @@ function checkToggle() {
     checkBox.checked = false;
   }
 
-  setTimeout(gameStart(),1);
+  // setTimeout(gameStart(),1);
 
 }
 
@@ -74,6 +74,6 @@ function changeImg(imgs) {
   Timg.innerHTML = imgs.alt;
 }
 
-function gameStart() {
-  
-}
+document.getElementById("year").textContent = new Date().getFullYear();
+window.addEventListener('resize', resize);
+window.onload = checkedToggle;

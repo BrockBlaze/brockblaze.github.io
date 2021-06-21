@@ -1,72 +1,74 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en-us">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description"
-        content="This site contains my work for CIT 230 Web Frontend Development at Brigham Young University - Idaho">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta
+      name="description"
+      content="This site contains my work for WDD 230 Web Frontend Development at Brigham Young University - Idaho"
+    />
     <title>blazztech | About</title>
     <link rel="shortcut icon" href="../images/favicon.ico" />
-    <link rel="stylesheet" href="../styles/main.css">
-    <link rel="stylesheet" href="../styles/large.css">
+    <link rel="stylesheet" href="../styles/main.css" />
+    <link rel="stylesheet" href="../styles/large.css" />
     <script src="../js/functions.js"></script>
-</head>
+  </head>
 
-<body onload="checkToggle()" onresize="resize()">
+  <body>
     <header>
-        <h1><a href="../index.html">blazztech</a></h1>
-        <div class="ThemeToggle">
-            <label class="switch">
-                <input type="checkbox" id="checkbox" onclick="checkedToggle()">
-                <span class="slider"></span>
-            </label>
-        </div>
+      <h1>blazztech</h1>
+      <div class="ThemeToggle">
+        <label class="switch">
+          <input type="checkbox" id="checkbox" onclick="checkedToggle()" />
+          <span class="slider"></span>
+        </label>
+      </div>
     </header>
     <nav>
-        <h2>
-            <div id="navB">
-                <a href="../index.html">home</a>
-                <a href="games.html">games</a>
-                <a href="gallery.html">gallery</a>
-                <a href="adventure.html">adventure</a>
-                <a href="about.html">about</a>
-            </div>
-            <div><input type="button" value="- | | | -" id="Hbutton" onclick="ham()" /></div>
-        </h2>
+      <div id="navB">
+        <a href="../index.html">home</a>
+        <a href="games.html">games</a>
+        <a href="gallery.html">gallery</a>
+        <a href="adventure.html">adventure</a>
+        <a href="about.html">about</a>
+      </div>
+      <div>
+        <input type="button" value="- | | | -" id="Hbutton" onclick="ham()" />
+      </div>
     </nav>
     <main>
-        <div class="hero"><img class="heroImg" src="../images/heroImg.jpg"></div>
-        <div class="wrapper">
-            <h3>Extras</h3>
-            <div>
-                <a href="../BOMJeopardy/index.html">
-                    <div class="button">BOM Jeopardy</div>
-                </a>
-                <a href="../files/STH3.rar">
-                    <div class="button">STH3</div>
-                </a>
-                <a href="../files/OutlawsRemake.zip">
-                    <div class="button">Outlaws Remake</div>
-                </a>
-                <a href="../files/Solace.zip">
-                    <div class="button">Solace</div>
-                </a>
-                <a href="../Calculator/index.html">
-                    <div class="button">Calculator</div>
-                </a>
-            </div>
+      <div class="hero">
+        <img class="heroImg" src="../images/heroImg.jpg" />
+      </div>
+      <div class="wrapper">
+        <h2>Extras</h2>
+        <div>
+          <a href="../BOMJeopardy/index.html">
+            <div class="button">BOM Jeopardy</div>
+          </a>
+          <a href="../files/STH3.rar">
+            <div class="button">STH3</div>
+          </a>
+          <a href="../files/OutlawsRemake.zip">
+            <div class="button">Outlaws Remake</div>
+          </a>
+          <a href="../files/Solace.zip">
+            <div class="button">Solace</div>
+          </a>
+          <a href="../Calculator/index.html">
+            <div class="button">Calculator</div>
+          </a>
         </div>
+      </div>
     </main>
-</body>
-
-<footer>
-    &copy; <span id="year"></span> <a href="https://brockblaze.github.io/">blazztech projects | Brock F. Blazzard</a>
-</footer>
-<script>
-    var d = new Date();
-    document.getElementById("year").innerHTML = d.getFullYear();
-</script>
-
-
+    <footer>
+      &copy; <span id="year"></span> |
+      <a href="https://brockblaze.github.io/"
+        >blazztech projects | Brock F. Blazzard</a
+      >
+    </footer>
+  </body>
 </html>
