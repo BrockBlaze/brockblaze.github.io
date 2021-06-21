@@ -3,10 +3,10 @@
 }
 
 :root {
-    --bgcolor: rgb(7, 46, 78);
-    --bdcolor: #8b8b8b;
-    --fgcolor: rgb(163, 163, 163);
-    --footercolor: white;
+  --bgcolor: rgb(7, 46, 78);
+  --bdcolor: #8b8b8b;
+  --fgcolor: rgb(163, 163, 163);
+  --footercolor: white;
 }
 
 html {
@@ -14,6 +14,18 @@ html {
   height: 100%;
 }
 
+body {
+  width: 100%;
+  max-width: 1650px;
+  background: var(--bdcolor);
+  font-size: 16px;
+  color: black;
+  margin: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  box-shadow: 10px 10px 30px #252525;
+  border-radius: 5px;
+}
 canvas {
   width: 95%;
   border: 1px solid #8b8b8b;
@@ -64,7 +76,7 @@ header {
 
 .slider:before {
   position: absolute;
-  content: "";
+  content: '';
   height: 26px;
   width: 26px;
   left: 4px;
@@ -79,8 +91,6 @@ input:checked + .slider {
   background-color: rgb(255, 255, 255);
 }
 
-
-
 input:checked + .slider:before {
   background-color: cornflowerblue;
   -webkit-transform: translateX(26px);
@@ -88,35 +98,15 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 
-body {
-  width: 100%;
-  max-width: 1650px;
-  background: var(--bdcolor); 
-  font-size: 16px;
-  color: black;
-  margin: auto;
-  margin-top: 0;
-  margin-bottom: 0;
-  box-shadow: 10px 10px 30px #252525;
-  border-radius: 5px;
-}
-
 h1 {
   color: var(--bgcolor);
-  padding: 10px;
   margin: 0;
-}
-
-h1 a {
   border-radius: 5px;
-  color: var(--bgcolor);
   padding: 10px;
-  text-decoration: none;
-  margin: 0;
   font-size: 3rem;
 }
 
-h1 a:hover {
+h1:hover {
   color: black;
 }
 
@@ -124,46 +114,47 @@ nav {
   background: var(--fgcolor);
 }
 
-h2 {
+#navB {
   font-size: 1.4rem;
   padding: 10px;
   margin: auto;
   text-align: center;
 }
 
-h2 #navB{
+#navB {
   display: none;
   flex-direction: column;
 }
 
-h2 a {
+#navB a {
   padding-bottom: 0.3rem;
   text-decoration: none;
   color: black;
   border-bottom: 1px solid black;
 }
 
-h2 a:last-child {
+#navB a:last-child {
   border-bottom: none;
 }
 
-h2 a:hover {
+#navB a:hover {
   text-decoration: underline;
   color: var(--bgcolor);
 }
 
 #Hbutton {
   font-size: 1rem;
-  padding: .3rem;
+  padding: 0.3rem;
   background-color: var(--bgcolor);
   border: black 1px solid;
+  color: #fff;
 }
 
 #Hbutton:focus {
   border: none;
 }
 
-h3 {
+h2 {
   color: var(--bgcolor);
   text-decoration: underline;
   font-size: 3rem;
@@ -174,9 +165,9 @@ main {
   overflow: hidden;
 }
 
-main h3 {
+main h2 {
   text-align: center;
-  padding: 10px
+  padding: 10px;
 }
 
 main p {
@@ -188,11 +179,11 @@ main p {
   display: block;
 }
 
-.heroImg{
+.heroImg {
   height: 435px;
 }
 
-.wrapper div{
+.wrapper div {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -218,14 +209,13 @@ main p {
 
 #Fimg {
   margin-top: 10px;
-  border-radius:5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
 }
 
 #Timg {
   color: var(--bgcolor);
   font-size: 2rem;
 }
-
 
 .imgwrapper img {
   width: 92%;
@@ -245,6 +235,12 @@ main p {
 .imgwrapper img:hover {
   box-shadow: 10px 10px 30px #252525;
   cursor: pointer;
+}
+
+input[type='text'],
+input[type='button'] {
+  padding: 0.35rem;
+  font-size: larger;
 }
 
 .gamewrapper img {
@@ -306,7 +302,7 @@ footer a {
 
 .button {
   font-size: 1rem;
-  color:white;
+  color: white;
   margin: auto;
   margin-bottom: 1.5rem;
   width: 200px;
@@ -325,36 +321,56 @@ a .button {
   line-height: 20px;
 }
 
-.button a{
+.button a {
   line-height: 20px;
   text-decoration: none;
   color: white;
 }
 
-.button:hover{
+.button:hover {
   box-shadow: 10px 10px 30px #252525;
   cursor: pointer;
   background-color: var(--fgcolor);
   color: var(--bgcolor);
 }
 
-#newPlayer, #newPlayerCreation, #gameMenu, #gamePlay, #fight, #town, #home, #stats{
+#newPlayer,
+#newPlayerCreation,
+#gameMenu,
+#gamePlay,
+#fight,
+#town,
+#home,
+#stats {
   margin: auto;
   text-align: center;
   padding: 1rem;
 }
 
-#newPlayerText, #newPlayerRace {
+#newPlayerText,
+#newPlayerRace {
   padding: 1rem;
   font-size: 2rem;
 }
 
-#nameRace, #yourHealth, #yourLevel, #yourGold, #nameRace1, #yourHealth1, #yourLevel1, #yourGold1{
-  padding: .5rem;
+#nameRace,
+#yourHealth,
+#yourLevel,
+#yourGold,
+#nameRace1,
+#yourHealth1,
+#yourLevel1,
+#yourGold1 {
+  padding: 0.5rem;
   font-size: 1.8rem;
 }
 
-#output, #fightoutput, #attackoutput, #defendoutput, #homeoutput, #townoutput {
+#output,
+#fightoutput,
+#attackoutput,
+#defendoutput,
+#homeoutput,
+#townoutput {
   padding: 1rem;
   font-size: 1.2rem;
 }
@@ -364,13 +380,13 @@ a .button {
 }
 
 #town table {
-    justify-content: space-evenly;
-    margin: auto;
+  justify-content: space-evenly;
+  margin: auto;
 }
 
-#town table th{
+#town table th {
   border: none;
-  margin: .5rem;
+  margin: 0.5rem;
 }
 
 #town table th:first-child {
@@ -385,7 +401,6 @@ a .button {
   background-color: var(--fgcolor);
 }
 
-
 footer {
   padding: 10px;
   text-align: center;
@@ -398,4 +413,3 @@ footer a:hover {
   text-decoration: underline;
   color: var(--bgcolor);
 }
-
