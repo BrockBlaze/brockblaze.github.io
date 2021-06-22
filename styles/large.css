@@ -31,6 +31,11 @@
   .gamewrapper {
     grid-template-columns: auto auto auto auto;
   }
+
+  #PlayerInfo {
+    font-size: 2rem;
+    width: 200px;
+  }
 }
 
 @media only screen and (min-width: 1450px) {

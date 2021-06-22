@@ -307,16 +307,17 @@ input[type='button'] {
 
 #PlayerInfo {
   display: none;
-  position: relative;
+  font-size: 1rem;
+  margin: auto;
   width: 125px;
-  top: -450px;
-  left: 5px;
+  bottom:0px;
+  left: 10px;
   background-color: rgba(192, 192, 192, 0.75);
 }
 
 #PlayerInfo ul {
-  padding: 0;
-  text-align: center;
+  padding: 10px;
+  text-align: left;
 }
 
 #PlayerInfo li {
@@ -331,6 +332,7 @@ input[type='button'] {
 #town,
 #home,
 #stats {
+  display: none;
   margin: auto;
   text-align: center;
   padding: 1rem;

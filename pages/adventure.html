@@ -32,23 +32,21 @@
       <a href="adventure.html">adventure</a>
       <a href="about.html">about</a>
     </div>
-    <div>
+    <div id="hamBtn">
       <input type="button" value="- | | | -" id="Hbutton" onclick="ham()" />
     </div>
   </nav>
   <main>
-    <div class="hero">
-      <img class="heroImg" src="../images/AdvenHero.jpg" alt="Decorative page image of rock trail in Idaho." />
-      <div id="PlayerInfo">
-        <ul>
-          <li id="heroName">Name</li>
-          <li id="heroRace">Race</li>
-          <li id="heroHealth">Health</li>
-          <li id="heroGold">Gold</li>
-          <li id="heroPotions">Potions</li>
-        </ul>
-      </div>
+    <div id="PlayerInfo">
+      <ul>
+        <li id="heroName">Name</li>
+        <li id="heroRace">Race</li>
+        <li id="heroHealth">Health</li>
+        <li id="heroGold">Gold</li>
+        <li id="heroPotions">Potions</li>
+      </ul>
     </div>
+
     <div id="newPlayer">
       <div id="newPlayerText">Enter Your Name:</div>
       <input type="text" maxlength="10" id="name" /><br /><br />
@@ -77,9 +75,6 @@
       <input type="button" value="Town" onclick="Town()" />
       <input type="button" value="Home" onclick="Home()" />
       <br /><br /><input type="button" value="Main Menu" onclick="mainMenu()" />
-    </div>
-    <div id="hamBtn">
-      <input type="button" value="- | | | -" id="Hbutton" onclick="ham()" />
     </div>
     <div id="town">
       <div id="townoutput">Welcome to the Town Center</div>
