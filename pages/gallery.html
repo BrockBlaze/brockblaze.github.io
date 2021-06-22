@@ -1,121 +1,80 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1"
-    />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <meta
-      name="description"
-      content="This site contains my work for CIT 230 Web Frontend Development at Brigham Young University - Idaho"
-    />
-    <title>blazztech | Gallery</title>
-    <link rel="shortcut icon" href="../images/favicon.ico" />
-    <link rel="stylesheet" href="../styles/main.css" />
-    <link rel="stylesheet" href="../styles/large.css" />
-    <script defer src="../js/functions.js"></script>
-  </head>
 
-  <body>
-    <header>
-      <h1>blazztech</h1>
-      <div class="ThemeToggle">
-        <label class="switch">
-          <input type="checkbox" id="checkbox" onclick="checkedToggle()" />
-          <span class="slider"></span>
-        </label>
-      </div>
-    </header>
-    <nav>
-      <div id="navB">
-        <a href="../index.html">home</a>
-        <a href="games.html">games</a>
-        <a href="gallery.html">gallery</a>
-        <a href="adventure.html">adventure</a>
-        <a href="about.html">about</a>
-      </div>
-      <div id="hamBtn">
-        <input type="button" value="- | | | -" id="Hbutton" onclick="ham()" />
-      </div>
-    </nav>
-    <main>
-      <div class="imgdisplay">
-        <div class="imgdisplaybg">
-          <img
-            id="Fimg"
-            src="../images/spiritlake2.jpg"
-            alt="Spirit Lake Idaho | Bronze Bay"
-          />
-          <div id="Timg">Spirit Lake</div>
-        </div>
-      </div>
-      <div class="imgwrapper">
-        <div>
-          <img
-            src="../images/spiritlake.jpg"
-            alt="Spirit Lake"
-            onclick="changeImg(this);"
-          />
-        </div>
-        <div>
-          <img
-            src="../images/nearkamas.jpg"
-            alt="Kamas Mountains"
-            onclick="changeImg(this);"
-          />
-        </div>
-        <div>
-          <img
-            src="../images/SunDance.jpg"
-            alt="Sun Dance"
-            onclick="changeImg(this);"
-          />
-        </div>
-        <div>
-          <img
-            src="../images/Pompei.jpg"
-            alt="Pompei"
-            onclick="changeImg(this);"
-          />
-        </div>
-        <div>
-          <img
-            src="../images/SLIsland.jpg"
-            alt="Spirit Lake Island"
-            onclick="changeImg(this);"
-          />
-        </div>
-        <div>
-          <img
-            src="../images/FarShore.jpg"
-            alt="Spirit Lake Shore"
-            onclick="changeImg(this);"
-          />
-        </div>
-        <div>
-          <img
-            src="../images/PaysonCanyon.jpg"
-            alt="Payson Canyon"
-            onclick="changeImg(this);"
-          />
-        </div>
-        <div>
-          <img
-            src="../images/RockTower.jpg"
-            alt="Rock Tower"
-            onclick="changeImg(this);"
-          />
-        </div>
-      </div>
-    </main>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="description"
+    content="This site contains my work for CIT 230 Web Frontend Development at Brigham Young University - Idaho" />
+  <title>blazztech | Gallery</title>
+  <link rel="shortcut icon" href="../images/favicon.ico" />
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/large.css" />
+  <script defer src="../js/functions.js"></script>
+</head>
 
-    <footer>
-      &copy; <span id="year"></span> |
-      <a href="https://brockblaze.github.io/"
-        >blazztech projects | Brock F. Blazzard</a
-      >
-    </footer>
-  </body>
+<body>
+  <header>
+    <h1>blazztech</h1>
+    <div class="ThemeToggle">
+      <label class="switch">
+        <input type="checkbox" id="checkbox" onclick="checkedToggle()" />
+        <span class="slider"></span>
+      </label>
+    </div>
+  </header>
+  <nav>
+    <div id="navB">
+      <a href="../index.html">home</a>
+      <a href="games.html">games</a>
+      <a href="gallery.html">gallery</a>
+      <a href="adventure.html">adventure</a>
+      <a href="about.html">about</a>
+    </div>
+    <div id="hamBtn">
+      <input type="button" value="- | | | -" id="Hbutton" onclick="ham()" />
+    </div>
+  </nav>
+  <main>
+    <div class="imgdisplay">
+      <div class="imgdisplaybg">
+        <img id="Fimg" src="../images/spiritlake2.jpg" alt="Spirit Lake Idaho | Bronze Bay" />
+        <div id="Timg">Spirit Lake</div>
+      </div>
+    </div>
+    <div class="imgwrapper">
+      <div>
+        <img src="../images/spiritlake.jpg" alt="Spirit Lake" onclick="changeImg(this);" />
+      </div>
+      <div>
+        <img src="../images/nearkamas.jpg" alt="Kamas Mountains" onclick="changeImg(this);" />
+      </div>
+      <div>
+        <img src="../images/SunDance.jpg" alt="Sun Dance" onclick="changeImg(this);" />
+      </div>
+      <div>
+        <img src="../images/Pompei.jpg" alt="Pompei" onclick="changeImg(this);" />
+      </div>
+      <div>
+        <img src="../images/SLIsland.jpg" alt="Spirit Lake Island" onclick="changeImg(this);" />
+      </div>
+      <div>
+        <img src="../images/FarShore.jpg" alt="Spirit Lake Shore" onclick="changeImg(this);" />
+      </div>
+      <div>
+        <img src="../images/PaysonCanyon.jpg" alt="Payson Canyon" onclick="changeImg(this);" />
+      </div>
+      <div>
+        <img src="../images/RockTower.jpg" alt="Rock Tower" onclick="changeImg(this);" />
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    &copy; <span id="year"></span> |
+    <a href="https://brockblaze.github.io/">blazztech projects | Brock F. Blazzard</a>
+  </footer>
+</body>
+
 </html>

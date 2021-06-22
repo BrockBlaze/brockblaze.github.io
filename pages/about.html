@@ -1,64 +1,59 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1"
-    />
-    <meta
-      name="description"
-      content="This site contains my work for WDD 230 Web Frontend Development at Brigham Young University - Idaho"
-    />
-    <title>blazztech | About</title>
-    <link rel="shortcut icon" href="../images/favicon.ico" />
-    <link rel="stylesheet" href="../styles/main.css" />
-    <link rel="stylesheet" href="../styles/large.css" />
-    <script defer src="../js/functions.js"></script>
-  </head>
 
-  <body>
-    <header>
-      <h1>blazztech</h1>
-      <div class="ThemeToggle">
-        <label class="switch">
-          <input type="checkbox" id="checkbox" onclick="checkedToggle()" />
-          <span class="slider"></span>
-        </label>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="description"
+    content="This site contains my work for WDD 230 Web Frontend Development at Brigham Young University - Idaho" />
+  <title>blazztech | About</title>
+  <link rel="shortcut icon" href="../images/favicon.ico" />
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/large.css" />
+  <script defer src="../js/functions.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1>blazztech</h1>
+    <div class="ThemeToggle">
+      <label class="switch">
+        <input type="checkbox" id="checkbox" onclick="checkedToggle()" />
+        <span class="slider"></span>
+      </label>
+    </div>
+  </header>
+  <nav>
+    <div id="navB">
+      <a href="../index.html">home</a>
+      <a href="games.html">games</a>
+      <a href="gallery.html">gallery</a>
+      <a href="adventure.html">adventure</a>
+      <a href="about.html">about</a>
+    </div>
+    <div id="hamBtn">
+      <input type="button" value="- | | | -" id="Hbutton" onclick="ham()" />
+    </div>
+  </nav>
+  <main>
+    <div class="hero">
+      <img class="heroImg" src="../images/heroImg.jpg" />
+    </div>
+    <div class="wrapper">
+      <h2>Extras</h2>
+      <div class="buttons">
+        <a href="../BOMJeopardy/">BOM Jeopardy</a>
+        <a href="../files/STH3.rar">STH3</a>
+        <a href="../files/OutlawsRemake.zip">Outlaws Remake</a>
+        <a href="../files/Solace.zip">Solace</a>
+        <a href="../Calculator/">Calculator</a>
       </div>
-    </header>
-    <nav>
-      <div id="navB">
-        <a href="../index.html">home</a>
-        <a href="games.html">games</a>
-        <a href="gallery.html">gallery</a>
-        <a href="adventure.html">adventure</a>
-        <a href="about.html">about</a>
-      </div>
-      <div id="hamBtn">
-        <input type="button" value="- | | | -" id="Hbutton" onclick="ham()" />
-      </div>
-    </nav>
-    <main>
-      <div class="hero">
-        <img class="heroImg" src="../images/heroImg.jpg" />
-      </div>
-      <div class="wrapper">
-        <h2>Extras</h2>
-        <div class="buttons">
-          <a href="../BOMJeopardy/">BOM Jeopardy</a>
-          <a href="../files/STH3.rar">STH3</a>
-          <a href="../files/OutlawsRemake.zip">Outlaws Remake</a>
-          <a href="../files/Solace.zip">Solace</a>
-          <a href="../Calculator/">Calculator</a>
-        </div>
-      </div>
-    </main>
-    <footer>
-      &copy; <span id="year"></span> |
-      <a href="https://brockblaze.github.io/"
-        >blazztech projects | Brock F. Blazzard</a
-      >
-    </footer>
-  </body>
+    </div>
+  </main>
+  <footer>
+    &copy; <span id="year"></span> |
+    <a href="https://brockblaze.github.io/">blazztech projects | Brock F. Blazzard</a>
+  </footer>
+</body>
+
 </html>
