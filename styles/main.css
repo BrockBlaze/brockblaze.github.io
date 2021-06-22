@@ -144,12 +144,12 @@ input:checked + .slider:before {
   font-size: 1.4rem;
   padding: 10px;
   margin: auto;
-  text-align: center;
 }
 
 #navB {
   display: none;
   flex-direction: column;
+  text-align: center;
 }
 
 #navB a {
@@ -168,12 +168,18 @@ input:checked + .slider:before {
   color: var(--bgcolor);
 }
 
+#hamBtn {
+  text-align: center;
+  padding: .3rem;
+}
+
 #Hbutton {
   font-size: 1rem;
   padding: 0.3rem;
   background-color: var(--bgcolor);
   border: black 1px solid;
   color: #fff;
+  align-self: center;
 }
 
 #Hbutton:focus {
