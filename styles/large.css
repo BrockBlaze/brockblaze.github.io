@@ -25,22 +25,8 @@
     display: none;
   }
 
-  .wrapper div {
-    flex-direction: row;
-  }
-
-  .imgwrapper {
-    grid-template-columns: auto auto auto auto auto;
-  }
-
   .gamewrapper {
     grid-template-columns: auto auto auto auto;
-  }
-
-  .button {
-    width: 100px;
-    height: 20px;
-    font-size: 0.75rem;
   }
 }
 

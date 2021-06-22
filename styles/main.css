@@ -4,9 +4,9 @@
 
 :root {
   --bgcolor: rgb(7, 46, 78);
-  --bdcolor: #8b8b8b;
+  --bdcolor: rgb(139, 139, 139);
   --fgcolor: rgb(163, 163, 163);
-  --footercolor: white;
+  --footercolor: rgb(255, 255, 255);
 }
 
 html {
@@ -20,9 +20,7 @@ body {
   background: var(--bdcolor);
   font-size: 16px;
   color: black;
-  margin: auto;
-  margin-top: 0;
-  margin-bottom: 0;
+  margin: 0 auto;
   box-shadow: 10px 10px 30px #252525;
   border-radius: 5px;
 }
@@ -38,10 +36,54 @@ canvas {
   display: flex;
 }
 
+h1 {
+  color: var(--bgcolor);
+  margin: 0;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 3rem;
+}
+
+h1:hover {
+  color: black;
+}
+
+h2 {
+  color: var(--bgcolor);
+  text-decoration: underline;
+  font-size: 3rem;
+  margin: 1rem auto;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+header,
+footer,
+footer a {
+  padding: 0;
+  color: black;
+  text-decoration: none;
+}
+
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+nav {
+  background: var(--fgcolor);
+}
+
+main {
+  overflow: hidden;
+}
+
+main p {
+  padding: 10px;
 }
 
 .ThemeToggle {
@@ -98,22 +140,6 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 
-h1 {
-  color: var(--bgcolor);
-  margin: 0;
-  border-radius: 5px;
-  padding: 10px;
-  font-size: 3rem;
-}
-
-h1:hover {
-  color: black;
-}
-
-nav {
-  background: var(--fgcolor);
-}
-
 #navB {
   font-size: 1.4rem;
   padding: 10px;
@@ -154,52 +180,18 @@ nav {
   border: none;
 }
 
-h2 {
-  color: var(--bgcolor);
-  text-decoration: underline;
-  font-size: 3rem;
-  margin: 0;
-}
-
-main {
-  overflow: hidden;
-}
-
-main h2 {
-  text-align: center;
-  padding: 10px;
-}
-
-main p {
-  padding: 10px;
-}
-
-.hero {
-  height: 435px;
-  display: block;
-}
-
 .heroImg {
-  height: 435px;
-}
-
-.wrapper div {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  padding: 20px;
-}
-
-.wrapper div a {
-  padding: 10px;
+  width: 100%;
+  height: auto;
 }
 
 .imgdisplay {
+  position: relative;
   text-align: center;
 }
 
 .imgdisplay img {
-  width: 65%;
+  width: 100%;
   padding-bottom: 0;
 }
 
@@ -213,8 +205,14 @@ main p {
 }
 
 #Timg {
+  position: absolute;
+  top: 50%;
+  margin-top: -50%;
+  left: 50%;
   color: var(--bgcolor);
   font-size: 2rem;
+  font-weight: 700;
+  text-shadow: 0 0 10px #111;
 }
 
 .imgwrapper img {
@@ -227,7 +225,7 @@ main p {
   padding: 20px;
   margin: auto;
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   grid-gap: 30px 1px;
   align-items: center;
 }
@@ -274,12 +272,31 @@ input[type='button'] {
   color: black;
 }
 
-header,
-footer,
-footer a {
-  padding: 0;
-  color: black;
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  align-items: center;
+  justify-content: center;
+  grid-gap: 5px;
+}
+
+.buttons a {
+  display: block;
+  margin: 0 auto 1.5rem;
+  padding: 1rem;
+  font-size: 1rem;
+  color: white;
+  background-color: var(--bgcolor);
+  text-align: center;
   text-decoration: none;
+  border-radius: 5px;
+}
+
+.buttons a:hover {
+  box-shadow: 10px 10px 30px #252525;
+  cursor: pointer;
+  background-color: var(--fgcolor);
+  color: var(--bgcolor);
 }
 
 #PlayerInfo {
@@ -298,40 +315,6 @@ footer a {
 
 #PlayerInfo li {
   list-style: none;
-}
-
-.button {
-  font-size: 1rem;
-  color: white;
-  margin: auto;
-  margin-bottom: 1.5rem;
-  width: 200px;
-  height: 20px;
-  background-color: var(--bgcolor);
-  text-align: center;
-  text-decoration: none;
-  border-radius: 5px;
-}
-
-a {
-  text-decoration: none;
-}
-
-a .button {
-  line-height: 20px;
-}
-
-.button a {
-  line-height: 20px;
-  text-decoration: none;
-  color: white;
-}
-
-.button:hover {
-  box-shadow: 10px 10px 30px #252525;
-  cursor: pointer;
-  background-color: var(--fgcolor);
-  color: var(--bgcolor);
 }
 
 #newPlayer,

@@ -6,6 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, maximum-scale=1"
     />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta
       name="description"
       content="This site contains my work for CIT 230 Web Frontend Development at Brigham Young University - Idaho"
@@ -14,8 +15,8 @@
     <link rel="shortcut icon" href="../images/favicon.ico" />
     <link rel="stylesheet" href="../styles/main.css" />
     <link rel="stylesheet" href="../styles/large.css" />
-    <script src="../js/functions.js"></script>
-    <script src="../js/game.js"></script>
+    <script defer src="../js/functions.js"></script>
+    <script defer src="../js/game.js"></script>
   </head>
 
   <body>
@@ -29,22 +30,24 @@
       </div>
     </header>
     <nav>
-      <h2>
-        <div id="navB">
-          <a href="../index.html">home</a>
-          <a href="games.html">games</a>
-          <a href="gallery.html">gallery</a>
-          <a href="adventure.html">adventure</a>
-          <a href="about.html">about</a>
-        </div>
-        <div>
-          <input type="button" value="- | | | -" id="Hbutton" onclick="ham()" />
-        </div>
-      </h2>
+      <div id="navB">
+        <a href="../index.html">home</a>
+        <a href="games.html">games</a>
+        <a href="gallery.html">gallery</a>
+        <a href="adventure.html">adventure</a>
+        <a href="about.html">about</a>
+      </div>
+      <div>
+        <input type="button" value="- | | | -" id="Hbutton" onclick="ham()" />
+      </div>
     </nav>
     <main>
       <div class="hero">
-        <img class="heroImg" src="../images/AdvenHero.jpg" />
+        <img
+          class="heroImg"
+          src="../images/AdvenHero.jpg"
+          alt="Decorative page image of rock trail in Idaho."
+        />
         <div id="PlayerInfo">
           <ul>
             <li id="heroName">Name</li>
@@ -144,7 +147,7 @@
               <input
                 type="button"
                 value="Health Potion"
-                id="potion"
+                id="healthpotion"
                 onclick="BuyP()"
               />
             </th>
