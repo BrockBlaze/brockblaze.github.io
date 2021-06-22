@@ -15,14 +15,8 @@ html {
 }
 
 body {
-  width: 100%;
-  max-width: 1650px;
-  background: var(--bdcolor);
-  font-size: 16px;
-  color: black;
   margin: 0 auto;
-  box-shadow: 10px 10px 30px #252525;
-  border-radius: 5px;
+  font-size: 16px;
 }
 canvas {
   width: 95%;
@@ -37,15 +31,17 @@ canvas {
 }
 
 h1 {
-  color: var(--bgcolor);
-  margin: 0;
+  color: var(--bdcolor);
+  margin: auto;
+  max-width: 1650px;
   border-radius: 5px;
   padding: 10px;
   font-size: 3rem;
 }
 
 h1:hover {
-  color: black;
+  cursor: pointer;
+  color: var(--fgcolor);
 }
 
 h2 {
@@ -75,10 +71,20 @@ header {
 }
 
 nav {
+  margin: auto;
+  max-width: 1650px;
   background: var(--fgcolor);
+  box-shadow: 10px 10px 30px #252525;
+  border-radius: 5px 5px 0 0;
 }
 
 main {
+  color: black;
+  margin: 0 auto;
+  box-shadow: 10px 10px 30px #252525;
+  border-radius: 0 0 5px 5px;
+  background: var(--bdcolor);
+  max-width: 1650px;
   overflow: hidden;
 }
 
@@ -87,7 +93,12 @@ main p {
 }
 
 .ThemeToggle {
-  margin-right: 15px;
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 5px;
+  z-index: 1;
 }
 
 .switch {
@@ -110,7 +121,7 @@ main p {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgb(163, 163, 163);
+  background-color: rgb(139, 139, 139);
   -webkit-transition: 0.4s;
   transition: 0.4s;
   border-radius: 5px;
@@ -130,7 +141,7 @@ main p {
 }
 
 input:checked + .slider {
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(163, 163, 163);
 }
 
 input:checked + .slider:before {
@@ -306,13 +317,12 @@ input[type='button'] {
 }
 
 .dropdown:hover .dropdown-content {
-  
   display: block;
 }
 
 .dropdown-content {
   display: none;
-  position: fixed;
+  position: absolute;
   text-align: center;
   background-color: var(--bdcolor);
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -448,11 +458,13 @@ input[type='button'] {
 }
 
 footer {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
   padding: 10px;
   text-align: center;
   font-size: 1.2rem;
   background-color: var(--fgcolor);
-  border-radius: 0 0 5px 5px;
 }
 
 footer a:hover {
