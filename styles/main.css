@@ -278,15 +278,50 @@ input[type='button'] {
   color: black;
 }
 
-.buttons {
-  display: grid;
+.boxWrapper {
+  display: flex;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   align-items: center;
   justify-content: center;
-  grid-gap: 5px;
 }
 
-.buttons a {
+.boxList {
+  margin: 1rem auto auto auto;
+  width: 40%;
+}
+
+.dropdown {
+  color: var(--fgcolor);
+  background-color: var(--bgcolor);
+  font-size: 2rem;
+  margin: 1rem auto;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.dropdown:hover {
+  cursor: pointer;
+  color: var(--bgcolor);
+  background-color: var(--fgcolor);
+}
+
+.dropdown:hover .dropdown-content {
+  
+  display: block;
+}
+
+.dropdown-content {
+  display: none;
+  position: fixed;
+  text-align: center;
+  background-color: var(--bdcolor);
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 15px 15px 0 15px;
+  z-index: 1;
+  border-radius: 5px;
+}
+
+.dropdown-content a {
   display: block;
   margin: 0 auto 1.5rem;
   padding: 1rem;
@@ -299,6 +334,26 @@ input[type='button'] {
 }
 
 .buttons a:hover {
+  box-shadow: 10px 10px 30px #252525;
+  cursor: pointer;
+  background-color: var(--fgcolor);
+  color: var(--bgcolor);
+}
+
+.buttons a {
+  width: 100px;
+  display: block;
+  margin: 0 auto 1.5rem;
+  padding: 1rem;
+  font-size: 1rem;
+  color: white;
+  background-color: var(--bgcolor);
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.dropdown-content a:hover {
   box-shadow: 10px 10px 30px #252525;
   cursor: pointer;
   background-color: var(--fgcolor);
