@@ -203,7 +203,6 @@ input:checked + .slider:before {
 }
 
 .imgdisplay {
-  position: relative;
   text-align: center;
 }
 
@@ -218,14 +217,11 @@ input:checked + .slider:before {
 
 #Fimg {
   margin-top: 10px;
-  border-radius: 5px 5px 5px 5px;
+  width: 75%;
 }
 
 #Timg {
-  position: absolute;
-  top: 50%;
-  margin-top: -50%;
-  left: 50%;
+  position: block;
   color: var(--bgcolor);
   font-size: 2rem;
   font-weight: 700;
