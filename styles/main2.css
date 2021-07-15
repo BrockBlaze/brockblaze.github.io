@@ -24,6 +24,7 @@ h1 {
     text-shadow: black 3px 3px 5px;
 }
 
+
 nav {
     background-color: #27445f;
     height: 4vh;
@@ -37,6 +38,10 @@ nav a {
     font-size: 1.5rem;
     border-right: #ebebeb 1px solid;
     padding: 0 15px 0 15px;
+}
+
+#active {
+    color: #a7a7a7;
 }
 
 nav a:last-child {
@@ -75,6 +80,11 @@ main {
 
 .sections:last-child {
     border-right: none;
+    padding-bottom: 50px;
+}
+
+#protrait {
+    height: 400px;
 }
 
 main div h2 {
@@ -83,6 +93,58 @@ main div h2 {
     text-shadow: black 3px 3px 5px;
 }
 
+.about {
+    color: #ebebeb;
+    font-size: 1.2rem;
+    text-align: center;
+    margin: auto;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+#leftBt {
+    margin: auto;
+    padding-left: 20vw;
+}
+
+#rightBt {
+    margin: auto;
+    padding-right: 20vw;
+}
+
+#galleryBt {
+    font-size: 2rem;
+    height: 500px;
+    width: 50px;
+    border: none;
+    color: #ebebeb;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#galleryBt:hover {
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+#fullImg {
+    text-align: center;
+}
+
+#fullImg img {
+    width: 90%;
+}
+
+#fullImg p {
+    color: #ebebeb;
+    font-size: 1.5rem;
+}
+
+.hiddenImgs {
+    display: none;
+}
 
 .list a{
     display: block;

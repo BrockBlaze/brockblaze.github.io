@@ -15,5 +15,8 @@
         border-right: 5px solid #27445f;
     }
 
+    .sections:last-child {
+        padding-bottom: 0;
+    }
 
 }
