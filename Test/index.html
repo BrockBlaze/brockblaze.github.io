@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <title>blazztech</title>
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/large.css">
     <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
 </head>
 
@@ -16,21 +17,71 @@
         <h1>
             blazztech
         </h1>
-
+        <nav>
+            <a href="index.html">home</a>
+            <a href="gallery.html">gallery</a>
+            <a href="about.html">about</a>
+        </nav>
+        <div class="hero">
+            <img src="../images/SpiritLakeHeroImg.jpg" alt="Hero Image">
+        </div>
     </header>
 
     <main>
+        <div class="sections">
+            <h2>
+                projects
+            </h2>
+            <div class="list">
+                <a href="#">Weather Site</a>
+                <a href="#">DVD Screen Saver</a>
+                <a href="#">Piano Player</a>
+                <a href="#">Calculator</a>
+                <a href="#">Java Journal</a>
+                <a href="#">Project Management</a>
+            </div>
 
+        </div>
+        <div class="sections">
+            <h2>
+                games
+            </h2>
+            <div class="list">
+                <a href="#">Weather Site</a>
+                <a href="#">DVD Screen Saver</a>
+
+            </div>
+        </div>
+        <div class="sections">
+            <h2>
+                downloads
+            </h2>
+            <div class="list">
+                <a href="#">Stairway to Heaven(Android)</a>
+                <a href="#">Outlaws Remake(PC)</a>
+                <a href="#">Solace(PC)</a>
+            </div>
+        </div>
+        <div class="sections">
+            <h2>
+                extras
+            </h2>
+            <div class="list">
+                <a href="#">BOM Jeopardy</a>
+            </div>
+        </div>
     </main>
-    
+
+    <footer>
+        &copy; <span id="year"></span>
+        <a href="https://brockblaze.github.io/">blazztech | Brock Blazzard</a>
+    </footer>
 </body>
 
-<footer>
-    &copy; <span id="year"></span>
-    <a href="https://brockblaze.github.io/">blazztech projects | Brock F. Blazzard</a>
-</footer>
+
 <script>
     var d = new Date();
     document.getElementById("year").innerHTML = d.getFullYear();
 </script>
+
 </html>

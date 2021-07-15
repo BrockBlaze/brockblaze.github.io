@@ -1,0 +1,19 @@
+@media only screen and (min-width: 950px) {
+    
+    .hero {
+        display: inline-block;
+    }
+
+    /*Main*/
+
+    main {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+    }
+
+    .sections {
+        border-right: 5px solid #27445f;
+    }
+
+
+}

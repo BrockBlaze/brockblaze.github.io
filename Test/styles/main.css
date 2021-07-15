@@ -1,5 +1,5 @@
 html {
-    background-color: #092631;
+    background-color: #275f5f;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -7,27 +7,110 @@ body {
     margin: 0;
 }
 
+/*Header*/
+
 header {
-    margin: auto;
+    margin: 0;
+    width: 100vw;
 }
 
 
 h1 {
-    font-size: 2rem;
+    background-color: #1b3247;
+    font-size: 4rem;
     margin: auto;
+    text-align: center;
+    color: #ebebeb;
+    text-shadow: black 3px 3px 5px;
+}
+
+nav {
+    background-color: #27445f;
+    height: 4vh;
+    line-height: 4.15vh;
     text-align: center;
 }
 
+nav a {
+    text-decoration: none;
+    color: #ebebeb;
+    font-size: 1.5rem;
+    border-right: #ebebeb 1px solid;
+    padding: 0 15px 0 15px;
+}
+
+nav a:last-child {
+    border-right: none;
+}
+
+nav a:hover {
+    color: #885d35;
+    text-decoration: underline;
+}
+
+.hero {
+    display: none;
+    padding: 0;
+    margin: 0;
+}
+
+.hero img {
+    width: 100%;
+}
+
+/*Main*/
+
+main {
+    display: grid;
+    grid-template: auto;
+    margin: 0;
+    width: 100vw;
+}
+
+.sections {
+    margin: 0;
+    text-align: center;
+    border-right: none;
+}
+
+.sections:last-child {
+    border-right: none;
+}
+
+main div h2 {
+    color: #ebebeb;
+    font-size: 2rem;
+    text-shadow: black 3px 3px 5px;
+}
+
+
+.list a{
+    display: block;
+    text-decoration: none;
+    color: #ebebeb;
+    padding: 5px;
+}
+
+.list a:hover {
+    color: #885d35;
+    text-decoration: underline;
+}
+
+
+
+/*Footer*/
+
 footer {
     font-size: 1.2rem;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100vw;
     margin: auto;
     text-align: center;
     height: 3vh;
-    line-height: 3vh;
+    line-height: 3.15vh;
     color: #ebebeb;
+    background-color: #27445f;
 }
 
 footer a {
@@ -36,6 +119,6 @@ footer a {
 }
 
 footer a:hover {
-    color: #b6b6b6;
+    color: #885d35;
     text-decoration: underline;
 }
