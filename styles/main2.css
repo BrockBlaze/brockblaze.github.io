@@ -101,21 +101,23 @@ main div h2 {
 }
 
 .gallery {
-    display: grid;
-    grid-template-columns: auto auto auto;
+    margin: 0;
+    padding: 0;
 }
 
 #leftBt {
-    margin: auto;
-    padding-left: 20vw;
+    position: absolute;
+    left: 0;
+    top: 35%;
 }
 
 #rightBt {
-    margin: auto;
-    padding-right: 20vw;
+    position: absolute;
+    right: 0;
+    top: 35%;
 }
 
-#galleryBt {
+.galleryBt {
     font-size: 2rem;
     height: 500px;
     width: 50px;
@@ -124,7 +126,7 @@ main div h2 {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-#galleryBt:hover {
+.galleryBt:hover {
     color: #ffffff;
     background-color: rgba(0, 0, 0, 0.75);
 }
@@ -133,8 +135,22 @@ main div h2 {
     text-align: center;
 }
 
-#fullImg img {
-    width: 90%;
+#fullImg img{
+    object-fit: cover;
+    height: 85vh;
+    width: 100vw;
+}
+
+#imgDes {
+    position: absolute;
+    text-align: center;
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+    top: 140px;
+    color: white;
+    text-shadow: black 2px 2px 5px;
+    font-size: 2rem;
 }
 
 #fullImg p {
