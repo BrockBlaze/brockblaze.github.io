@@ -1,22 +1,26 @@
-@media only screen and (min-width: 950px) {
-    
-    .hero {
-        display: inline-block;
-    }
+@media only screen and (min-width: 760px) {
+  .hero {
+    display: block;
+  }
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-    /*Main*/
+  nav a {
+    flex: 1 1 auto;
+  }
 
-    main {
-        display: grid;
-        grid-template-columns: auto auto auto auto;
-    }
+  main {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
 
-    .sections {
-        border-right: 5px solid #27445f;
-    }
+  .sections {
+    border-right: 5px solid #27445f;
+  }
 
-    .sections:last-child {
-        padding-bottom: 0;
-    }
-
+  .sections:last-child {
+    border-right: 0;
+  }
 }
