@@ -189,6 +189,8 @@ main p {
 
 #youtubeVideo {
     padding: 25px;
+    width: 560px;
+    height: 315px;
 }
 
 #gameContainer {
@@ -284,6 +286,12 @@ footer a:hover {
 
     #HeroContainer img {
         display: none;
+    }
+
+    #youtubeVideo {
+        padding: 25px;
+        width: 355px;
+        height: 200px;
     }
 
     #gameContainer {
