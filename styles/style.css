@@ -170,6 +170,10 @@ nav {
     right: 10px;
 }
 
+canvas {
+    display: flex;
+    margin: auto;
+}
 
 main {
     position: absolute;
