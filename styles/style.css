@@ -1,5 +1,5 @@
 html {
-    background-color: #2b4d74;
+    background-color: #1a3741;
     font-family: 'Roboto', sans-serif;
     width: 100%;
     height: 100vh;
@@ -13,6 +13,7 @@ body {
     width: 75%;
     margin: auto;
     height: 100vh;
+    box-shadow: 10px 5px 50px black;
 }
 
 
@@ -27,7 +28,7 @@ h1 {
 nav {
     height: 45px;
     font-size: 1.25rem;
-    background-color: #c78f46;
+    background-color: #5f7830;
     color: #000000;
 }
 
@@ -53,7 +54,7 @@ nav {
 
 .navItem a:hover {
     text-decoration: underline;
-    color: #2b4d74;
+    color: #1a3741;
 }
 
 .dropdown {
@@ -71,7 +72,7 @@ nav {
 .dropdownContainer {
     display: none;
     position: absolute;
-    background-color: #c78f46;
+    background-color: #5f7830;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
     padding: .75rem;
     z-index: 1;
@@ -86,12 +87,12 @@ nav {
 
 .dropdownContainer a:hover{
     text-decoration: underline;
-    color: #2b4d74;
+    color: #1a3741;
 }
 
 .dropdown:hover{
     text-decoration: underline;
-    color: #2b4d74;
+    color: #1a3741;
 }
 
 .dropdown:hover .dropdownContainer {
@@ -126,7 +127,7 @@ nav {
 }
 
 #PortraitImage ul a:hover{
-    color: #2b4d74;
+    color: #1a3741;
 }
 
 #mainImageContainer {
@@ -147,7 +148,7 @@ nav {
     right: 5px;
     color: #ffffff;
     font-size: 2rem;
-    text-shadow: #c78f46 2px 2px 2px;
+    text-shadow: #5f7830 2px 2px 2px;
 }
 
 .arrowBtn {
@@ -159,7 +160,7 @@ nav {
 
 .arrowBtn:hover {
     cursor: pointer;
-    color: #2b4d74;
+    color: #1a3741;
 }
 
 #leftGBtn {
@@ -177,7 +178,7 @@ canvas {
 
 main {
     position: absolute;
-    top: 115px;
+    top: 45px;
     bottom: 30px;
     width: 75%;
     background-color: #c5c5c5;
@@ -213,7 +214,7 @@ main p {
 }
 
 .gameItem a:hover {
-    border-bottom: #2b4d74 solid 5px;
+    border-bottom: #1a3741 solid 5px;
 }
 
 #galleryContainer {
@@ -241,7 +242,7 @@ footer {
     bottom: 0;
     text-align: center;
     font-size: 1rem;
-    background-color: #c78f46;
+    background-color: #5f7830;
     color: #000000;
     height: 30px;
     line-height: 30px;
@@ -256,7 +257,7 @@ footer a {
 
 footer a:hover {
     text-decoration: underline;
-    color: #2b4d74;
+    color: #1a3741;
 }
 
 @media only screen and (max-width: 750px) {
