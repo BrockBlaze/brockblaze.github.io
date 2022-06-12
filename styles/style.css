@@ -27,6 +27,7 @@ h1 {
 
 nav {
     height: 45px;
+    text-align: center;
     font-size: 1.25rem;
     background-color: #5f7830;
     color: #000000;
@@ -39,13 +40,6 @@ nav {
     padding: .75rem;
 }
 
-.navItem:last-child {
-    border-right: none;
-}
-
-.navItem:hover {
-    background-color: #c5c5c5;
-}
 
 .navItem a {
     text-decoration: none;
@@ -63,10 +57,6 @@ nav {
     display: inline-block;
     padding: .75rem;
     cursor: pointer;
-}
-
-.dropdown:hover {
-    background-color: #c5c5c5;
 }
 
 .dropdownContainer {
@@ -178,6 +168,7 @@ canvas {
 
 main {
     position: absolute;
+    text-align: center;
     top: 45px;
     bottom: 30px;
     width: 75%;
@@ -190,6 +181,7 @@ main {
 
 main p {
     padding: 25px;
+    font-size: 1.25rem;
 }
 
 #youtubeVideo {
@@ -214,7 +206,7 @@ main p {
 }
 
 .gameItem a:hover {
-    border-bottom: #1a3741 solid 5px;
+    border-bottom: #5f7830 solid 5px;
 }
 
 #galleryContainer {
@@ -230,11 +222,13 @@ main p {
 
 .imgItem img {
     width: 150px;
+    padding-bottom: 10px;
 }
 
 .imgItem img:hover {
     cursor: pointer;
-    border-bottom: #2b4d74 solid 5px;
+    border-bottom: #5f7830 solid 5px;
+    padding-bottom: 5px;
 }
 
 footer {
@@ -285,7 +279,7 @@ footer a:hover {
     }
 
     main {
-        top: 220px;
+        top: 150px;
         width: 100%;
     }
 
