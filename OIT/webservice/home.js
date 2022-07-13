@@ -1,32 +1,29 @@
-const main = document.querySelector('.main');
+const main = document.querySelector(".main");
 let Mname = "";
 let con = document.getElementById("SearchResults");
 
-async function getMovies(Mname)
-{
-    con.innerHTML = ``;
-    let res = await fetch(`${movie_search}?api_key=${api_key}&query=${Mname}`)
-    if (res.ok)
-    {
-        let data = await res.json();
-        let results = data.results;
-        console.log(data);
-        console.log(results[1]);
-        makeSearchResults(results);
-    }
+async function getMovies(Mname) {
+  con.innerHTML = ``;
+  let res = await fetch(`${movie_search}?api_key=${api_key}&query=${Mname}`);
+  if (res.ok) {
+    let data = await res.json();
+    let results = data.results;
+    console.log(data);
+    console.log(results[1]);
+    makeSearchResults(results);
+  }
+  
 }
 
-function getName()
-{
-    let Mname = document.getElementById('Mname').value;
-    getMovies(Mname)
+getMovies(Mname);
+
+function getName() {
+  let Mname = document.getElementById("Mname").value;
+  getMovies(Mname);
 }
 
-
-
-function makeSearchResults(results)
-{
-    con.innerHTML += `
+function makeSearchResults(results) {
+  con.innerHTML += `
     <div class="movie-list">
 
 
@@ -37,22 +34,18 @@ function makeSearchResults(results)
 
     </div>
     `;
-    makeNameCards(results);
+  makeNameCards(results);
 }
 
-function makeNameCards(results)
-{
-    let i = 0;
-    while (i < 10)
-    {
-        con.innerHTML += `
+function makeNameCards(results) {
+  let i = 0;
+  while (i < 10) {
+    con.innerHTML += `
         <div class="movie" onclick="location.href = '/${results[i].id}'">
             <img src="${img_url}${results[i].backdrop_path}" alt="">
             <p class="movie-title">${results[i].title}</p>
         </div>
         `;
-        i++
-    }
-    
-
+    i++;
+  }
 }
