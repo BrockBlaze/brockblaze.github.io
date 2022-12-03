@@ -6,4 +6,6 @@ let original_img_url = "https://image.tmdb.org/t/p/original";
 let genres_list_http = "https://api.themoviedb.org/3/genre/movie/list?";
 let movie_genres_http = "https://api.themoviedb.org/3/discover/movie?";
 let movie_detail_http = "https://api.themoviedb.org/3/movie";
-let movie_search = "https://api.themoviedb.org/3/search/movie";
+let movie_search = "https://api.themoviedb.org/3/search/movie";JSON
+
+let randomWord = "https://random-word-api.herokuapp.com/word"

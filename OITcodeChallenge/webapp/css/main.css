@@ -1,0 +1,204 @@
+*{
+    font-family: "Lucida Console", "Courier New", monospace;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    text-align: center;
+    width: 100vw;
+    position: relative;
+    background: #363f5b;
+    font-family: 'roboto', sans-serif;
+}
+
+
+h1 {
+    font-size: 3rem;
+    padding: 1rem;
+    background-color: #484d5b;
+    border-bottom: #1b1b1b solid 2px;
+}
+
+#start, #game {
+    color: #1b1b1b;
+    font-style:italic;
+    font-size: 2rem;
+    padding: 1rem;
+}
+
+#startInstructions, #gameWord {
+    color: #ffffff;
+    font-size: 1.5rem;
+    padding: 3rem;
+}
+
+#btnStart, #checkGuess, #btnHint, #btnRestart, #againBtn, #webBtn, #itchBtn {
+    background-color: #484d5b;
+    box-shadow: 10px 10px;
+    font-size: 1.5rem;
+    width: 10rem;
+    height: 3rem;
+    margin: 2rem;
+}
+
+#btnStart:hover, #checkGuess:hover, #btnHint:hover, #btnRestart:hover, #againBtn:hover {
+    cursor: pointer;
+    background-color:#7b5c2f;
+    box-shadow: 8px 8px;
+    width: 9.9rem;
+    height: 2.9rem;
+    margin: 2.05rem;
+}
+
+#btnHint {
+    position: absolute;
+    right: 1rem;
+}
+
+#btnRestart {
+    position: absolute;
+    left: 1rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+#webBtn {
+    color: black;
+    border: #000000 solid 2px;
+    position: absolute;
+    font-size: 1.2rem;
+    line-height: 3rem;
+    left: 1rem;
+    top: 80vh;
+}
+
+#webBtn:hover {
+    background-color: #7b5c2f;
+    box-shadow: 8px 8px;
+    top: 80.5vh;
+}
+
+#itchBtn {
+    color: black;
+    border: #000000 solid 2px;
+    position: absolute;
+    font-size: 1.2rem;
+    line-height: 3rem;
+    left: 1rem;
+    top: 87vh;
+}
+
+#itchBtn:hover {
+    background-color: #7b5c2f;
+    box-shadow: 8px 8px;
+    top: 87.5vh;
+}
+
+#againBtn {
+    background-color:#363f5b;
+}
+
+#randomWord {
+    color: #7b5c2f;
+    font-size: 2rem;
+    text-decoration: underline;
+}
+
+
+#guess {
+    background-color: #484d5b;
+    box-shadow: 10px 10px;
+    font-size: 1.5rem;
+    width: 30rem;
+    height: 3rem;
+    margin: 2rem;
+}
+
+#hint {
+    color: #7b5c2f;
+}
+
+#below {
+    width: 90vw;
+    display: flex;
+    flex: auto;
+    margin: auto;
+    padding: 2rem;
+}
+
+#left {
+    width: 40%;
+    min-height: 20vw;
+    box-shadow: 10px 10px;
+    margin: auto;
+    text-align: left;
+    border: #1b1b1b solid 1px;
+}
+
+#left ul{
+    color: rgb(144, 48, 48);
+    list-style-type: none;
+    padding: 1rem;
+}
+
+#right {
+    width: 40%;
+    min-height: 20vw;
+    box-shadow: 10px 10px;
+    margin: auto;
+    border: #1b1b1b solid 1px;
+}
+
+#right ul{
+    color: rgb(48, 144, 50);
+    list-style-type: none;
+    padding: 1rem;
+}
+
+h2 {
+    font-size: 3rem;
+    text-align: center;
+    height: 10vh;
+    line-height: 10vh;
+    color: rgb(48, 144, 50);
+}
+
+#end {
+    position: absolute;
+    left: 41vw;
+    top: 30vh;
+    width: 500px;
+    height: 500px;
+    box-shadow: 10px 10px;
+    background-color: #484d5b;
+    border: #000000 solid 3px;
+}
+
+
+footer {
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    font-size: 1rem;
+    background-color:#484d5b;
+    color: #ffffff;
+    height: 30px;
+    line-height: 30px;
+    margin: auto;
+    width: 100%;
+}
+
+footer a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+footer a:hover {
+    text-decoration: underline;
+    color:#7b5c2f;
+}

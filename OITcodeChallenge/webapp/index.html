@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anagrams</title>
+
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body>
+    <!-- main section -->
+    <header class="main">
+      <h1 class="heading">A Word Game by Brock Blazzard</h1>
+
+      <div id="hintBtn">
+        <input type="button" value="Hint?" id="btnHint" onclick="getHint()" />
+      </div>
+
+      <div id="restartBtn">
+        <input
+          type="button"
+          value="Restart"
+          id="btnRestart"
+          onclick="replay()"
+        />
+      </div>
+
+      <div id="start">
+        <div id="startInstructions">Unscramble the word to Win</div>
+        Would you like to play?
+        <div>
+          <input
+            type="button"
+            value="Play"
+            id="btnStart"
+            onclick="getRandomWord()"
+          />
+        </div>
+      </div>
+
+      <div id="game">
+        <div id="gameWord">
+          The scrambled up word is
+          <span id="randomWord"></span>
+        </div>
+        <div id="instruct">Type your guess Here:</div>
+        <input type="text" id="guess" value="" /><br /><br />
+        <div id="hint">The word starts with the letter:</div>
+        <input
+          type="button"
+          value="Guess"
+          id="checkGuess"
+          onclick="guessWord()"
+        />
+        <div id="below">
+          <div id="left">
+            <ul id="guessedWordsWrong"></ul>
+          </div>
+          <div id="right">
+            <ul id="guessedWordsRight"></ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div id="end">
+      <h2>You Won!</h2>
+      <div id="stats"></div>
+      <input type="button" value="Replay" id="againBtn" onclick="replay()" />
+    </div>
+
+    <a id="webBtn" href="https://brockblaze.github.io/">
+      <div >
+        Github Site
+      </div>
+    </a>
+
+    <a id="itchBtn" href="https://brockblaze.itch.io/">
+      <div >
+        Itch.io Site
+      </div>
+    </a>
+
+    <script src="../webservices/api.js"></script>
+    <script src="../webservices/anagrams.js"></script>
+    <footer>
+      &copy; <span id="year"></span> -
+      <a href="https://brockblaze.github.io/"> blazztech | Brock Blazzard</a>
+    </footer>
+  </body>
+  <script>
+    var d = new Date();
+    document.getElementById("year").innerHTML = d.getFullYear();
+  </script>
+</html>

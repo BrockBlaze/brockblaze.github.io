@@ -15,7 +15,7 @@ async function getMovies(Mname) {
   
 }
 
-getMovies(Mname);
+//getMovies(Mname);
 
 function getName() {
   let Mname = document.getElementById("Mname").value;
@@ -25,10 +25,7 @@ function getName() {
 function makeSearchResults(results) {
   con.innerHTML += `
     <div class="movie-list">
-
-
         <h1 class="movie-category">Search Results</h1>
-
         <div class="movie-container" id="${results.id}">
         </div>
 
