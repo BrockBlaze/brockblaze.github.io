@@ -1,54 +1,81 @@
 <!DOCTYPE html>
 <html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta name="description" content="This site is a portfolio of my work" />
+    <title>blazztech | About</title>
+    <link rel="shortcut icon" href="../images/faviconbt.ico" />
+    <link rel="stylesheet" href="../styles/retro.css" />
+  </head>
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <meta name="description" content="This site contains my personal work" />
-  <title>blazztech | About</title>
-  <link rel="shortcut icon" href="../images/favicon.ico" />
-  <link rel="stylesheet" href="../styles/main.css" />
-  <link rel="stylesheet" href="../styles/large.css" />
-  <script defer src="../js/functions.js"></script>
-</head>
-
-<body>
-  <header>
-    <h1>blazztech</h1>
-    <div class="ThemeToggle">
-      <label class="switch">
-        <input type="checkbox" id="checkbox" onclick="checkedToggle()" />
-        <span class="slider"></span>
-      </label>
-    </div>
-  </header>
-  <nav>
-    <div id="navB">
-      <a href="../index.html">home</a>
-      <a href="games.html">games</a>
-      <a href="gallery.html">gallery</a>
-      <a href="adventure.html">adventure</a>
-      <a href="about.html">about</a>
-    </div>
-    <div id="hamBtn">
-      <input type="button" value="- | | | -" id="Hbutton" onclick="ham()" />
-    </div>
-  </nav>
-  <main>
-    <div class="hero">
-      <img class="heroImg" src="../images/AdvenHero.jpg" alt="Decorative page image of rock trail in Idaho." />
-    </div>
-    <div class="wrapper">
-      <h2>Extras</h2>
-      <div class="buttons">
-        <a href="../BOMJeopardy/">BOM Jeopardy</a>
+  <body>
+    <header>
+      <h1>blazztech | about</h1>
+    </header>
+    <nav>
+      <a id="navA" href="#">
+        <div id="navBtn">home</div>
+      </a>
+      <a id="navA" href="../pages/projects">
+        <div id="navBtn">projects</div>
+      </a>
+      <a id="navA" href="../pages/games.html">
+        <div id="navBtn">games</div>
+      </a>
+      <a id="navA" href="../pages/gallery.html">
+        <div id="navBtn">gallery</div>
+      </a>
+      <a id="navA" href="../pages/about.html">
+        <div id="navBtn">about</div>
+      </a>
+    </nav>
+    <main>
+      <div id="flexWrapper">
+        <div id="flexItem">
+          <h2>about</h2>
+        </div>
+        <div id="flexItem">
+          <h2>Downloads</h2>
+        </div>
+        <div id="flexItem">
+          <h2>Extras</h2>
+        </div>
       </div>
-    </div>
-  </main>
-  <footer>
-    &copy; <span id="year"></span> |
-    <a href="https://brockblaze.github.io/">blazztech projects | Brock F. Blazzard</a>
-  </footer>
-</body>
-
+      <div id="flexWrapper">
+        <div id="flexItem">
+          <a id="btnA" href="../BOMJeopardy/">
+            <div id="btnGeneric">Outlaws Remake (Old)</div>
+          </a>
+        </div>
+        <div id="flexItem">
+          <a id="btnA" href="../BOMJeopardy/">
+            <div id="btnGeneric">Outlaws Remake (Old)</div>
+          </a>
+          <a id="btnA" href="../BOMJeopardy/">
+            <div id="btnGeneric">Solace FPS</div>
+          </a>
+          <a id="btnA" href="../BOMJeopardy/">
+            <div id="btnGeneric">Stairway to Heaven (android)</div>
+          </a>
+        </div>
+        <div id="flexItem">
+          <a id="btnA" href="../BOMJeopardy/">
+            <div id="btnGeneric">BOM Jeopardy</div>
+          </a>
+        </div>
+      </div>
+    </main>
+    <footer>
+      &copy; <span id="year"></span> |
+      <a href="https://brockblaze.github.io/">blazztech | Brock Blazzard</a>
+    </footer>
+  </body>
+  <script>
+    var d = new Date();
+    document.getElementById("year").innerHTML = d.getFullYear();
+  </script>
 </html>
