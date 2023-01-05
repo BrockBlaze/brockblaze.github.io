@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta name="description" content="This site is a portfolio of my work" />
+    <title>blazztech | projects</title>
+    <link rel="shortcut icon" href="/images/favicons/favicon.ico" />
+    <link rel="stylesheet" href="../styles/retro.css" />
+  </head>
+
+  <body>
+
+    <header>
+      <div id="title">BlazzTech - projects</div>
+      <button id="smallHover" onclick="toggleNav()">||</button>
+      <nav id="nav">
+        <a class="navBtn" href="/index.html"> home </a>
+        <a class="navBtn" id="activeNavBtn" href="../pages/projects.html"> projects </a>
+        <a class="navBtn" href="../pages/games.html"> games </a>
+        <a class="navBtn" href="../pages/gallery.html"> gallery </a>
+        <a class="navBtn" href="../pages/about.html"> about </a>
+      </nav>
+    </header>
+
+    <main>
+      <div id="flexWrapper">
+        <div id="flexGroup">
+          <h2>School Projects</h2>
+          <a class="btn" href="/school/index.html">WDD 230 - BYUI (Weather Site)</a>
+          <a class="btn" href="/CIT360/index.html">WDD 360 - BYUI (Class Journal)</a>
+          <a class="btn" href="/CIT380/index.html">WDD 380 - BYUI (Final Project)</a>
+        </div>
+        <div id="flexGroup">
+          <h2>Professional Projects</h2>
+          <a class="btn" href="https://kartchnerengineering.com/">Kartchner Engineering</a>
+          <a class="btn" href="https://brockblaze.itch.io/outlaws-remake">Outlaws Remake</a>
+          <a class="btn" href="https://brockblaze.itch.io/halo-a-spartan-rises">Halo: A Spartan Rises</a>
+        </div>
+        <div id="flexGroup">
+          <h2>Personal Projects</h2>
+          <a class="btn" href="/dvdlogo/dvd.html">DVD Screen Saver</a>
+          <a class="btn" href="/Calculator/index.html">Calculator</a>
+          <a class="btn" href="/Piano/index.html">Piano Player</a>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      &copy; <span id="year"></span> |
+      <a href="https://brockblaze.github.io/">blazztech | Brock Blazzard</a>
+    </footer>
+
+  </body>
+
+  <script>
+    var d = new Date();
+    document.getElementById("year").innerHTML = d.getFullYear();
+  </script>
+  <script src="../js/retro.js"></script>
+</html>

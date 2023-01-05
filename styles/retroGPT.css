@@ -1,0 +1,113 @@
+body {
+    font-family: 'Courier New', monospace;
+    background-color: #333;
+    color: #fff;
+  }
+  
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #222;
+    padding: 1rem;
+  }
+  
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #444;
+    padding: 1rem;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  nav a:hover {
+    color: #999;
+  }
+  
+  nav div {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #222;
+    border: 1px solid #333;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  nav div:hover {
+    background-color: #333;
+  }
+  
+  main {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #555;
+    padding: 1rem;
+  }
+  
+  main div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 30%;
+    background-color: #444;
+    border: 1px solid #333;
+    border-radius: 5px;
+    padding: 1rem;
+    margin: 0.5rem;
+  }
+  
+  main div h2 {
+    margin: 0.5rem 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  main a {
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  main a:hover {
+    color: #999;
+  }
+  
+  main div div {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #222;
+    border: 1px solid #333;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0.5rem;
+  }
+  
+  main div div:hover {
+    background-color: #333;
+  }
+  
+  footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #222;
+    padding: 1rem;
+  }
+  
+  footer a {
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  footer a:hover {
+    color: #999;
+  }

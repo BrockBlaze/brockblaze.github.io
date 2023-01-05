@@ -1,79 +1,55 @@
 <!DOCTYPE html>
 <html lang="en-us">
-
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <meta name="description" content="This site contains my personal work" />
-  <title>blazztech | Gallery</title>
-  <link rel="shortcut icon" href="../images/favicon.ico" />
-  <link rel="stylesheet" href="../styles/main.css" />
-  <link rel="stylesheet" href="../styles/large.css" />
-  <script defer src="../js/functions.js"></script>
-</head>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta name="description" content="This site is a portfolio of my work" />
+    <title>blazztech | gallery</title>
+    <link rel="shortcut icon" href="/images/favicons/favicon.ico" />
+    <link rel="stylesheet" href="../styles/retro.css" />
+  </head>
 
 <body>
   <header>
-    <h1>blazztech</h1>
-    <div class="ThemeToggle">
-      <label class="switch">
-        <input type="checkbox" id="checkbox" onclick="checkedToggle()" />
-        <span class="slider"></span>
-      </label>
-    </div>
-  </header>
-  <nav>
-    <div id="navB">
-      <a href="../index.html">home</a>
-      <a href="games.html">games</a>
-      <a href="gallery.html">gallery</a>
-      <a href="adventure.html">adventure</a>
-      <a href="about.html">about</a>
-    </div>
-    <div id="hamBtn">
-      <input type="button" value="- | | | -" id="Hbutton" onclick="ham()" />
-    </div>
-  </nav>
+    <div id="title">BlazzTech - gallery</div>
+    <button id="smallHover" onclick="toggleNav()">||</button>
+      <nav id="nav">
+        <a class="navBtn" href="/index.html"> home </a>
+        <a class="navBtn" href="../pages/projects.html"> projects </a>
+        <a class="navBtn" href="../pages/games.html"> games </a>
+        <a class="navBtn" id="activeNavBtn" href="../pages/gallery.html"> gallery </a>
+        <a class="navBtn" href="../pages/about.html"> about </a>
+      </nav>
+    </header>
+
   <main>
-    <div class="imgdisplay">
-      <div class="imgdisplaybg">
-        <img id="Fimg" src="../images/spiritlake2.jpg" alt="Spirit Lake Idaho | Bronze Bay" />
-        <div id="Timg">Spirit Lake</div>
-      </div>
+    <div id="largeImgWrapper">
+        <img id="fImg" src="../images/spiritlake.jpg" alt="Spirit Lake" />
+        <div id="imgDesc">Spirit Lake</div>
     </div>
-    <div class="imgwrapper">
-      <div>
-        <img src="../images/spiritlake.jpg" alt="Spirit Lake" onclick="changeImg(this);" />
-      </div>
-      <div>
-        <img src="../images/nearkamas.jpg" alt="Kamas Mountains" onclick="changeImg(this);" />
-      </div>
-      <div>
-        <img src="../images/SunDance.jpg" alt="Sun Dance" onclick="changeImg(this);" />
-      </div>
-      <div>
-        <img src="../images/Pompei.jpg" alt="Pompei" onclick="changeImg(this);" />
-      </div>
-      <div>
-        <img src="../images/SLIsland.jpg" alt="Spirit Lake Island" onclick="changeImg(this);" />
-      </div>
-      <div>
-        <img src="../images/FarShore.jpg" alt="Spirit Lake Shore" onclick="changeImg(this);" />
-      </div>
-      <div>
-        <img src="../images/PaysonCanyon.jpg" alt="Payson Canyon" onclick="changeImg(this);" />
-      </div>
-      <div>
-        <img src="../images/RockTower.jpg" alt="Rock Tower" onclick="changeImg(this);" />
-      </div>
+    <div id="imgwrapper">
+        <img id="gImg" src="../images/spiritlake.jpg" alt="Spirit Lake" onclick="changeImg(this)" />
+        <img id="gImg" src="../images/nearkamas.jpg" alt="Kamas Mountains" onclick="changeImg(this);" />
+        <img id="gImg" src="../images/SunDance.jpg" alt="Sun Dance" onclick="changeImg(this);" />
+        <img id="gImg" src="../images/Pompei.jpg" alt="Pompei" onclick="changeImg(this);" />
+        <img id="gImg" src="../images/SLIsland.jpg" alt="Spirit Lake Island" onclick="changeImg(this);" />
+        <img id="gImg" src="../images/FarShore.jpg" alt="Spirit Lake Shore" onclick="changeImg(this);" />
+        <img id="gImg" src="../images/PaysonCanyon.jpg" alt="Payson Canyon" onclick="changeImg(this);" />
+        <img id="gImg" src="../images/RockTower.jpg" alt="Rock Tower" onclick="changeImg(this);" />
     </div>
   </main>
 
   <footer>
     &copy; <span id="year"></span> |
-    <a href="https://brockblaze.github.io/">blazztech projects | Brock F. Blazzard</a>
+    <a href="https://brockblaze.github.io/">blazztech | Brock Blazzard</a>
   </footer>
 </body>
-
+<script>
+  var d = new Date();
+  document.getElementById("year").innerHTML = d.getFullYear();
+</script>
+<script src="../js/retro.js"></script>
 </html>

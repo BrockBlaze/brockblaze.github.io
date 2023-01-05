@@ -1,64 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content="This site is a portfolio of my work" />
     <title>blazztech</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet" />
-    <link rel="shortcut icon" href="../images/favicon2.ico" />
-    <link rel="stylesheet" href="../styles/style.css" />
-</head>
+    <link rel="shortcut icon" href="/images/favicons/favicon.ico" />
+    <link rel="stylesheet" href="../styles/retro.css" />
+  </head>
 
 <body>
+
     <header>
-        <nav>
-            <div class="navItem"><a href="../index.html">home</a></div>
-            <div class="dropdown">
-                <span>projects</span>
-                <div class="dropdownContainer">
-                    <a href="/school/index.html">Weather Site</a>
-                    <a href="/dvdlogo/dvd.html">DVD Screen Saver</a>
-                    <a href="/Piano/index.html">Piano Player</a>
-                    <a href="/Calculator/">Calculator</a>
-                    <a href="/CIT360/index.html">Java Journal</a>
-                    <a href="/CIT380/index.html">Project Management</a>
-                    <a href="https://brockblaze.itch.io/">Itch.io Site</a>
-                </div>
-            </div>
-            <div class="navItem"><a href="../pages/gamesNew.html">games</a></div>
-            <div class="navItem">
-                <a href="../pages/galleryNew.html">gallery</a>
-            </div>
-            <div class="navItem"><a href="../pages/aboutNew.html">about</a></div>
+        <div id="title">BlazzTech - home</div>
+        <button id="smallHover" onclick="toggleNav()">||</button>
+        <nav id="nav">
+          <a class="navBtn" id="activeNavBtn" href="/index.html"> home </a>
+          <a class="navBtn" href="../pages/projects.html"> projects </a>
+          <a class="navBtn" href="../pages/games.html"> games </a>
+          <a class="navBtn" href="../pages/gallery.html"> gallery </a>
+          <a class="navBtn" href="../pages/about.html"> about </a>
         </nav>
     </header>
+
     <main>
-        <div id="HeroContainer"><img src="../images/AdvenHero.jpg" alt="" /></div>
-        <p>
-            This site is a portfolio of my work, it includes: university class work
-            and projects, personal projects and games I've made, and also a gallery
-            of images I have taken.
-        </p>
-        <iframe id="youtubeVideo" src="https://www.youtube.com/embed/CdEUFklWPxQ" title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe>
-        <iframe id="youtubeVideo" src="https://youtube.com/embed/LMDZY2rpDsM" title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe>
+        <div id="Wrapper">
+        <img id="hero" src="/images/SpiritLakeHeroImg.jpg" alt="heroImage" />
+            <p>
+                This site is a portfolio of my work, it includes: Professional work, University class work
+                and projects, personal projects and games I've made, and also a gallery
+                of images I have taken.
+            </p>
+        </div>
+        <h2>Highlights</h2>
+        <div id="gameWrapper">
+            <iframe id="youtubeVideo" src="https://www.youtube.com/embed/CdEUFklWPxQ" title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+            <iframe id="youtubeVideo" src="https://youtube.com/embed/LMDZY2rpDsM" title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+        <h2>Development</h2>
+        <div id="gameWrapper">
+            <img id="dImg" src="/images/Development/Outlaws.png" alt="d1">
+            <img id="dImg" src="/images/Development/pixeSoul1.png" alt="d2">
+            <img id="dImg" src="/images/Development/pixeSoul2.png" alt="d3">
+            <img id="dImg" src="/images/Development/pixeSoul3.png" alt="d4">
+            <img id="dImg" src="/images/Development/pixeSoul4.png" alt="d5">
+        </div>
     </main>
     <footer>
         &copy; <span id="year"></span> -
         <a href="https://brockblaze.github.io/"> blazztech | Brock Blazzard</a>
     </footer>
 </body>
-<script>
-    var d = new Date();
-    document.getElementById("year").innerHTML = d.getFullYear();
-</script>
+    <script>
+        var d = new Date();
+        document.getElementById("year").innerHTML = d.getFullYear();
+    </script>
+    <script src="../js/retro.js"></script>
 </html>
