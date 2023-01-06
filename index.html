@@ -2,67 +2,92 @@
 <html lang="en-us">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="This site is a portfolio of my work" />
     <title>blazztech</title>
     <link rel="shortcut icon" href="/images/favicons/favicon.ico" />
     <link rel="stylesheet" href="../styles/retro.css" />
   </head>
 
-<body>
-
+  <body>
     <header>
-        <div id="title">BlazzTech - home</div>
-        <button id="smallHover" onclick="toggleNav()">||</button>
-        <nav id="nav">
-          <a class="navBtn" id="activeNavBtn" href="/index.html"> home </a>
-          <a class="navBtn" href="/pages/projects.html"> projects </a>
-          <a class="navBtn" href="/pages/games.html"> games </a>
-          <a class="navBtn" href="/pages/gallery.html"> gallery </a>
-          <a class="navBtn" href="/pages/adventure.html"> adventure </a>
-          <a class="navBtn" href="/pages/about.html"> about </a>
-        </nav>
+      <div id="title">BlazzTech - home</div>
+      <button id="smallHover" onclick="toggleNav()">||</button>
+      <nav id="nav">
+        <a class="navBtn" id="activeNavBtn" href="/index.html"> home </a>
+        <a class="navBtn" href="/pages/projects.html"> projects </a>
+        <a class="navBtn" href="/pages/games.html"> games </a>
+        <a class="navBtn" href="/pages/gallery.html"> gallery </a>
+        <a class="navBtn" href="/pages/adventure.html"> adventure </a>
+        <a class="navBtn" href="/pages/about.html"> about </a>
+      </nav>
     </header>
 
     <main>
-        <div id="Wrapper">
+      <div id="Wrapper">
         <img id="hero" src="/images/SpiritLakeHeroImg.jpg" alt="heroImage" />
-            <p>
-                This site is a portfolio of my work, it includes: Professional work, University class work
-                and projects, personal projects and games I've made, and also a gallery
-                of images I have taken.
-            </p>
-        </div>
-        <h2>Highlights</h2>
-        <div id="gameWrapper">
-            <iframe id="youtubeVideo" src="https://www.youtube.com/embed/CdEUFklWPxQ" title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen>
-            </iframe>
-            <iframe id="youtubeVideo" src="https://youtube.com/embed/LMDZY2rpDsM" title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen>
-            </iframe>
-        </div>
-        <h2>Development</h2>
-        <div id="gameWrapper">
-            <img id="dImg" src="/images/Development/Outlaws.png" alt="d1">
-            <img id="dImg" src="/images/Development/pixeSoul1.png" alt="d2">
-            <img id="dImg" src="/images/Development/pixeSoul2.png" alt="d3">
-            <img id="dImg" src="/images/Development/pixeSoul3.png" alt="d4">
-            <img id="dImg" src="/images/Development/pixeSoul4.png" alt="d5">
-        </div>
+        <p>
+          This site is a portfolio of my work, it includes: Professional work,
+          University class work and projects, personal projects and games I've
+          made, and also a gallery of images I have taken.
+        </p>
+      </div>
+      <h2>Highlights</h2>
+      <div id="gameWrapper">
+        <iframe
+          id="youtubeVideo"
+          src="https://www.youtube.com/embed/CdEUFklWPxQ"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        >
+        </iframe>
+        <iframe
+          id="youtubeVideo"
+          src="https://youtube.com/embed/LMDZY2rpDsM"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        >
+        </iframe>
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/VaisA4Bp4uM"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/vhHA38rt5Jo"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <h2>Development</h2>
+      <div id="gameWrapper">
+        <img id="dImg" src="/images/Development/Outlaws.png" alt="d1" />
+        <img id="dImg" src="/images/Development/pixeSoul1.png" alt="d2" />
+        <img id="dImg" src="/images/Development/pixeSoul2.png" alt="d3" />
+        <img id="dImg" src="/images/Development/pixeSoul3.png" alt="d4" />
+        <img id="dImg" src="/images/Development/pixeSoul4.png" alt="d5" />
+      </div>
     </main>
     <footer>
-        &copy; <span id="year"></span> -
-        <a href="https://brockblaze.github.io/"> blazztech | Brock Blazzard</a>
+      &copy; <span id="year"></span> -
+      <a href="https://brockblaze.github.io/"> blazztech | Brock Blazzard</a>
     </footer>
-</body>
-    <script>
-        var d = new Date();
-        document.getElementById("year").innerHTML = d.getFullYear();
-    </script>
-    <script src="../js/retro.js"></script>
+  </body>
+  <script>
+    var d = new Date();
+    document.getElementById("year").innerHTML = d.getFullYear();
+  </script>
+  <script src="../js/retro.js"></script>
 </html>
