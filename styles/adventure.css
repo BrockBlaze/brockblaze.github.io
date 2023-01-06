@@ -1,0 +1,145 @@
+#adventureWrapper {
+    position: fixed;
+    background-image: url(/images/gameImages/BackGround.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-color: #2e3a43;
+    top: 100px;
+    left: 250px;
+    right: 0;
+    bottom: 50px;
+}
+
+#aStats {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    background-color: #282828e3;
+    width: 250px;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1.5rem;
+    color: #F1E0C5;
+}
+
+#aStats div:nth-child(even){
+    background-color: #313131e3;
+}
+
+#aStats span {
+    float: right;
+}
+
+.aGame {
+    background-color: #282828e3;
+    color: #F1E0C5;
+    padding: 10px;
+    text-align: center;
+    position: absolute;
+    top: 250px;
+    left: 50px;
+    width: 750px;
+    border-radius: 5px;
+    font-size: 1.25rem;
+    margin: auto;
+}
+
+.aGame div{
+    margin: 20px;
+}
+
+#aNewGame {
+    display: none;
+}
+
+#aStartGame {
+    display: none;
+}
+
+#aContinueGame {
+    display: none;
+}
+
+#aChoiceGame {
+    display: none;
+}
+
+#aWelcome {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+#aMessage {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+
+#aBtn {
+    text-align: center;
+    background-color: #C9B79C;
+    color:#71816D;
+    width: 150px;
+    height: 30px;
+    line-height: 30px;
+    font-weight: bold;
+    font-size: 1.25rem;
+    border-radius: 5px;
+    margin: 10px auto 10px auto;
+}
+
+#aBtn:hover {
+    background-color:#342A21;
+    border: #71816D solid 2px;
+    cursor: pointer;
+}
+
+.right {
+    position: relative;
+    left: 50px;
+    width: 200px;
+    height: 30px;
+    font-size: 1.25rem;
+}
+
+.left {
+    position: absolute;
+    left: 75px;
+}
+
+#aGrass {
+    background-color: #213a1a;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+}
+
+@media only screen and (max-width: 750px) {
+    #adventureWrapper {
+        left: 0;
+        width: 100%;
+    }
+
+    #aNewGame {
+        left: 0;
+        width: 100%;
+    }
+
+    #aStartGame {
+        left: 0;
+        width: 100%;
+    }
+
+    #aContinueGame {
+        left: 0;
+        width: 100%;
+    }
+
+    #aGame {
+        left: 0;
+        width: 100%;
+    }
+}
