@@ -215,6 +215,7 @@ main {
 #gImg:hover {
     border-bottom: #C9B79C solid 5px;
     margin-bottom: 5px;
+    cursor: pointer;
 }
 
 footer {
