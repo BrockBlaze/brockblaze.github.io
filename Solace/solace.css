@@ -1,0 +1,98 @@
+@import url('https://fonts.cdnfonts.com/css/pf-tempesta-seven');
+* {
+  font-family: "Courier New", monospace;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #2e3a43;
+  height: 100vh;
+  width: 100vw;
+}
+
+#StartScreen {
+  background-image: url(/Solace/Images/214384.gif);
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#StartTitle {
+  font-family: 'PF Tempesta Seven', sans-serif;
+  position: absolute;
+  top: 10rem;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 10rem;
+  color: #2e3a43;
+  font-style: italic;
+}
+
+#StartButton {
+  margin: 10px;
+  background-color: #2e3a43;
+  text-align: center;
+  width: 16rem;
+  height: 4.5rem;
+  line-height: 4.5rem;
+  color: #d1d1d1;
+  font-size: 2rem;
+  border-radius: 5px;
+  border: #d1d1d1 2px solid;
+}
+
+#StartButton:hover {
+    width: 16.8rem;
+    height: 4.725rem;
+    line-height: 4.725rem;
+    font-size: 2.1rem;
+    background-color: #d1d1d1;
+    color: #2e3a43;
+    border: #2e3a43 3px solid;
+    cursor: pointer;
+}
+
+audio {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+}
+
+footer {
+  text-align: center;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 50px;
+  line-height: 50px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin: auto;
+  margin-top: 1vh;
+}
+
+footer span {
+  color: #ffffff;
+}
+
+footer a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+footer a:hover {
+  text-decoration: underline;
+  color: #c9b79c;
+}

@@ -22,6 +22,9 @@ var WoodsMenu = document.getElementById("aWoods");
 var HomeMenu = document.getElementById("aHome");
 var ShopMenu = document.getElementById("aShop");
 
+var homeMessage = document.getElementById("aHomeMessage");
+var Buttons = document.getElementById("aBtn");
+
 function Start() {
   if (localStorage.getItem("name") != null) {
     GetSave();
@@ -140,4 +143,63 @@ function Home() {
 function Shop() {
     CloseAllMenues();
     ShopMenu.style.display = "block";
+}
+
+function Train() {
+  Health -= 1;
+  Level ++;
+}
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function Rest() {
+  if (Health < 100)
+  {
+    Buttons.style.display = "none";
+    homeMessage.innerHTML = "Sleeping <br> |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|"
+    Update();
+    await sleep(1000);
+    homeMessage.innerHTML = "Sleeping <br> |_&nbsp;&nbsp;&nbsp;&nbsp;|"
+    Update();
+    await sleep(1000);
+    homeMessage.innerHTML = "Sleeping <br> |__&nbsp;&nbsp;&nbsp;|"
+    Update();
+    await sleep(1000);
+    homeMessage.innerHTML = "Sleeping <br> |___&nbsp;&nbsp;|"
+    Update();
+    await sleep(1000);
+    homeMessage.innerHTML = "Sleeping <br> |____&nbsp;|"
+    Update();
+    await sleep(1000);
+    homeMessage.innerHTML = "Sleeping <br> |_____|"
+    Update();
+    await sleep(250);
+    homeMessage.innerHTML = "Game Saved <br> Health Restored"
+    if ((Health + 25) < 100)
+    {
+      Health += 25;
+    }
+    else
+    {
+      Health = 100;
+    }
+    Save();
+    Buttons.style.display = "block";
+    Update();
+    await sleep(2000);
+    homeMessage.innerHTML = " "
+  }
+  else
+  {
+    homeMessage.innerHTML = "You don't need to Sleep"
+    Update();
+    await sleep(1000);
+    Save();
+    homeMessage.innerHTML = "Game Saved <br> Health Restored"
+    Update();
+    await sleep(2000);
+    homeMessage.innerHTML = " "
+  }
 }
