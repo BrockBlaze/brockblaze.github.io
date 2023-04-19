@@ -12,6 +12,11 @@ html {
   width: 100vw;
 }
 
+canvas {
+  position: absolute;
+  background-color: #f1f1f100;
+}
+
 #StartScreen {
   background-image: url(/Solace/Images/214384.gif);
   background-repeat: no-repeat;
@@ -33,32 +38,43 @@ html {
   right: 0;
   text-align: center;
   font-size: 10rem;
-  color: #2e3a43;
+  color: #672fb5;
   font-style: italic;
 }
 
+#StartButton:first-child {
+  margin-top: 60vh;
+}
+
 #StartButton {
+  font-family: 'PF Tempesta Seven', sans-serif;
+  font-weight:400;
   margin: 10px;
-  background-color: #2e3a43;
+  background-color: #672fb5;
   text-align: center;
   width: 16rem;
   height: 4.5rem;
-  line-height: 4.5rem;
+  line-height: 4rem;
   color: #d1d1d1;
   font-size: 2rem;
   border-radius: 5px;
-  border: #d1d1d1 2px solid;
+  border: #7D7FF1 2px solid;
 }
 
 #StartButton:hover {
-    width: 16.8rem;
-    height: 4.725rem;
-    line-height: 4.725rem;
-    font-size: 2.1rem;
-    background-color: #d1d1d1;
-    color: #2e3a43;
-    border: #2e3a43 3px solid;
+    background-color: #7D7FF1;
+    color: #d1d1d1;
+    border: #672fb5 3px solid;
     cursor: pointer;
+}
+
+#MainGameScreen {
+  background-image: url(/Solace/Images/GameBG.png);
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
 }
 
 audio {
