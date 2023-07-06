@@ -5,9 +5,9 @@
 </head>
 <body>
   <h1>Upload a Photo</h1>
-  <form action="/upload" method="POST" enctype="multipart/form-data">
-    <input type="file" name="photo" accept="image/*" capture>
-    <button type="submit">Upload</button>
-  </form>
+  <input type="file" id="photoInput" accept="image/*" capture>
+  <button onclick="uploadPhoto()">Upload</button>
+
+  <script src="/js/wedding.js"></script>
 </body>
 </html>
