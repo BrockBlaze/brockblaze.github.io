@@ -1,64 +1,49 @@
-const express = require('express');
-const multer = require('multer');
-const fs = require('fs');
-const axios = require('axios');
+function uploadPhoto() {
+  const photoInput = document.getElementById("photoInput");
+  const file = photoInput.files[0];
 
-const app = express();
-const upload = multer({ dest: 'uploads/' });
-
-// Serve the index.html file
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
-});
-
-// Handle the photo upload
-app.post('/upload', upload.single('photo'), async (req, res) => {
-  try {
-    const { path, originalname } = req.file;
-
-    // Read the photo file
-    const photoData = fs.readFileSync(path);
-
-    // Delete the temporary file
-    fs.unlinkSync(path);
-
-    // Upload the photo to GitHub
-    const uploadResult = await uploadToGitHub(photoData, originalname);
-
-    res.send('Photo uploaded successfully!');
-  } catch (error) {
-    console.error('Error uploading photo:', error);
-    res.status(500).send('An error occurred while uploading the photo.');
+  if (!file) {
+    console.error("No file selected");
+    return;
   }
-});
 
-// Upload photo to GitHub repository using GitHub's REST API
-async function uploadToGitHub(photoData, filename) {
-  const accessToken = 'YOUR_GITHUB_ACCESS_TOKEN';
-  const repoOwner = 'BrockBlaze';
-  const repoName = 'brockblaze.github.io';
-  const uploadUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filename}`;
+  const accessToken =
+    "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";
+  const repoOwner = "BrockBlaze";
+  const repoName = "brockblaze.github.io";
+  const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/images/WeddingPhotos/${file.name}`;
 
-  const headers = {
-    Authorization: `Bearer ${accessToken}`,
-    'Content-Type': 'application/json',
-    Accept: 'application/vnd.github.v3+json',
+  const reader = new FileReader();
+
+  reader.onload = function (event) {
+    const photoData = event.target.result.split(",")[1]; // Extract the base64-encoded content
+
+    const data = {
+      message: "Upload photo",
+      content: photoData,
+    };
+
+    fetch(apiUrl, {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        "Content-Type": "application/json",
+        Accept: "application/vnd.github.v3+json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => {
+        if (response.ok) {
+          console.log("Photo uploaded successfully!");
+          window.location.href = "success.html"; // Redirect to the success page
+        } else {
+          console.error("Error uploading photo:", response.statusText);
+        }
+      })
+      .catch((error) => {
+        console.error("Error uploading photo:", error);
+      });
   };
 
-  const encodedContent = photoData.toString('base64');
-
-  const data = {
-    message: 'Upload photo',
-    content: encodedContent,
-  };
-
-  const response = await axios.put(uploadUrl, data, { headers });
-
-  return response.data;
+  reader.readAsDataURL(file);
 }
-
-// Start the server
-const port = 3000;
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
