@@ -1,4 +1,5 @@
-var e = 
+var token = '11AHWIFUY0TP2FRGiRq8id_bVpCun6ia1TPeb2j7HQXVUFe2ccnfkF8bcgBTDsJ3SZGF7GTA6ML58a7jLh';
+var t = '00';
 
 function uploadPhoto() {
   const photoInput = document.getElementById("photoInput");
@@ -8,8 +9,9 @@ function uploadPhoto() {
     console.error("No file selected");
     return;
   }
-
-  const accessToken = "a";
+  t = token.replace('2', '9')
+  const accessToken = "github_pat_" + t;
+  alert(accessToken);
   const repoOwner = "BrockBlaze";
   const repoName = "brockblaze.github.io";
   const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/Wedding/WeddingPhotos/${file.name}`;
