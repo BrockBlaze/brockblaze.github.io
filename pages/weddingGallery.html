@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Gallery</title>
+  <style>
+    .image {
+      display: inline-block;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Image Gallery</h1>
+  <div id="imageContainer"></div>
+
+  <script>
+    async function fetchImages() {
+      const repoOwner = 'BrockBlaze';
+      const repoName = 'brockblaze.github.io';
+      const folderPath = 'images/WeddingPhotos';
+
+      const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${folderPath}`;
+
+      try {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+
+        if (response.ok) {
+          const imageContainer = document.getElementById('imageContainer');
+
+          data.forEach(item => {
+            if (item.type === 'file' && item.name.match(/\.(jpg|jpeg|png|gif)$/i)) {
+              const imageUrl = item.download_url;
+              const imageElement = document.createElement('img');
+              imageElement.src = imageUrl;
+              imageElement.classList.add('image');
+              imageContainer.appendChild(imageElement);
+            }
+          });
+        } else {
+          console.error('Error fetching images:', response.statusText);
+        }
+      } catch (error) {
+        console.error('Error fetching images:', error);
+      }
+    }
+
+    fetchImages();
+  </script>
+</body>
+</html>

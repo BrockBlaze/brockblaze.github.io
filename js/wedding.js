@@ -7,8 +7,7 @@ function uploadPhoto() {
     return;
   }
 
-  const accessToken =
-    "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";
+  const accessToken = "a";
   const repoOwner = "BrockBlaze";
   const repoName = "brockblaze.github.io";
   const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/images/WeddingPhotos/${file.name}`;
