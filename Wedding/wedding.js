@@ -9,13 +9,13 @@ async function uploadPhoto() {
     console.error("No file selected");
     return;
   }
-  
+
   t = token.replace('2', '9')
   const accessToken = "github_pat_" + t;
   console.log(accessToken);
   const repoOwner = "BrockBlaze";
   const repoName = "brockblaze.github.io";
-  const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/Wedding/WeddingPhotos/${file.name}`;
+  const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${file.name}`;
 
   const reader = new FileReader();
 
@@ -26,6 +26,8 @@ async function uploadPhoto() {
       message: "Upload photo",
       content: photoData,
     };
+
+    console.log("Hey");
 
     const response = await fetch(apiUrl, {
       method: 'PUT',
