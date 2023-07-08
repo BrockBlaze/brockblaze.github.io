@@ -15,7 +15,7 @@ function uploadPhoto() {
   const accessToken = 'github_pat_' + t;
   const repoOwner = 'BrockBlaze';
   const repoName = 'brockblaze.github.io';
-  const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/WeddingPhotos${file.name}`;
+  const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/WeddingPhotos/${file.name}`;
 
   const reader = new FileReader();
 
