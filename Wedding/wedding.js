@@ -9,6 +9,7 @@ async function uploadPhoto() {
     console.error("No file selected");
     return;
   }
+  
   t = token.replace('2', '9')
   const accessToken = "github_pat_" + t;
   console.log(accessToken);
