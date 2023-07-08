@@ -1,16 +1,67 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Photo Upload</title>
-  <link rel="stylesheet" href="wedding.css">
-</head>
-<body>
-  <h1>Upload a Photo</h1>
-  <input type="file" id="photoInput" accept="image/*" capture>
-  <button onclick="uploadPhoto()">Upload</button>
 
-  <script src="wedding.js"></script>
+<head>
+    <title>Brock & Brittany</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="wedding.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+</head>
+
+<body>
+    <h1>Brock & Brittany</h1>
+    <nav><a href="index.html">Home</a><a href="weddingGallery.html">Gallery</a></nav>
+    <div id="hero"><img src="Hero1_50.jpg" alt=""></div>
+
+
+    <h2>If you would like you can upload a Photo here:</h2>
+    <div id="uploadStuff">
+        <input type="file" id="photoInput" accept="image/*" capture>
+        <button onclick="uploadPhoto()">Upload</button>
+    </div>
+
+    <div id="content">
+        <div id="divider"></div>
+        <h3>Countdown</h3>
+        <p id="countDown"></p>
+        <div id="divider"></div>
+        <h3>How we met</h3>
+        <p id="textWall">adfajdlkfjakldjfklajdfklajkldfjadsklfjakldsjfkajdslf;adkljfkldajfklj</p>
+    </div>
+
+    <script>
+        // Set the date we're counting down to
+        var countDownDate = new Date("Aug 25, 2023 14:0:0").getTime();
+
+        // Update the count down every 1 second
+        var x = setInterval(function () {
+
+            // Get today's date and time
+            var now = new Date().getTime();
+
+            // Find the distance between now and the count down date
+            var distance = countDownDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Output the result in an element with id="demo"
+            document.getElementById("countDown").innerHTML = days + "day(s) " + hours + "hour(s) "
+                + minutes + "minute(s) " + seconds + "second(s) ";
+
+            // If the count down is over, write some text 
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countDown").innerHTML = "Married";
+            }
+        }, 1000);
+    </script>
+    <script src="wedding.js"></script>
 </body>
+
 </html>
 
 </html>
