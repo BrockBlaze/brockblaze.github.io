@@ -1,0 +1,76 @@
+/* wedding.css */
+
+body {
+    font-family: 'Sofia', sans-serif;
+    background-color: rgba(183, 123, 130, 0.1);
+  }
+  
+  h1 {
+    color: rgba(183, 123, 130, 1);
+    text-align: center;
+  }
+  
+  nav a {
+    color: rgba(183, 123, 130, 1);
+    text-decoration: none;
+    margin-right: 10px;
+  }
+
+  #imageContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .image {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    margin: 10px;
+  }
+  
+  .image:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+  
+  #hero img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+  }
+  
+  h2 {
+    color: rgba(183, 123, 130, 1);
+    text-align: center;
+  }
+  
+  #uploadStuff {
+    text-align: center;
+  }
+  
+  #content {
+    margin: 20px;
+  }
+  
+  #divider {
+    height: 2px;
+    background-color: rgba(183, 123, 130, 1);
+    margin: 20px 0;
+  }
+  
+  h3 {
+    color: rgba(183, 123, 130, 1);
+  }
+  
+  #textWall {
+    color: rgba(183, 123, 130, 1);
+  }
+  
+  #countDown {
+    text-align: center;
+    font-size: 24px;
+    color: rgba(183, 123, 130, 1);
+  }
+  
