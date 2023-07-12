@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Brock & Brittany - Gallery Slideshow</title>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="wedding2.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia" />
+  <link rel="stylesheet" href="wedding.css">
+</head>
+
+<body>
+  <nav><a href="index.html">Home</a><a href="weddingGallery.html">Gallery</a><a href="weddingslideshowg.html">Gallery
+    Slideshow</a><a href="weddingslideshow.html">Slideshow</a></nav>
+  <div class="slideshow-container" id="slideshowContainer"></div>
+
+  <script>
+    var t = 0;
+    var currentSlideIndex = 0;
+    var c = 0;
+
+    async function fetchImages() {
+      const repoOwner = "BrockBlaze";
+      const repoName = "brockblaze.github.io";
+      const folderPath = "WeddingPhotos/";
+
+      const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${folderPath}`;
+
+      try {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+
+        if (response.ok) {
+          const slideshowContainer =
+            document.getElementById("slideshowContainer");
+
+          data.forEach((item) => {
+            if (
+              item.type === "file" &&
+              item.name.match(/\.(jpg|jpeg|png|gif)$/i)
+            ) {
+              const imageUrl = item.download_url;
+              const slide = document.createElement("div");
+              slide.classList.add("slide");
+              slide.innerHTML = `<img src="${imageUrl}" alt="">`;
+              slideshowContainer.appendChild(slide);
+            }
+          });
+
+          showSlides();
+        } else {
+          console.error("Error fetching images:", response.statusText);
+        }
+      } catch (error) {
+        console.error("Error fetching images:", error);
+      }
+    }
+
+    function showSlides() {
+      const slides = document.getElementsByClassName("slide");
+
+      async function showSlide(n) {
+        //console.log(n);
+        if (n > slides.length - 1) {
+          currentSlideIndex = 0;
+        } else if (n < 0) {
+          currentSlideIndex = slides.length - 1;
+        }
+        else {
+          currentSlideIndex = n;
+        }
+
+        for (let i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+
+        //console.log(currentSlideIndex);
+        slides[currentSlideIndex].style.display = "block";
+      }
+
+      function nextSlide() {
+        c = currentSlideIndex + 1;
+        console.log(c);
+        showSlide(c);
+        t = 0;
+      }
+
+      function prevSlide() {
+        c = currentSlideIndex - 1;
+        showSlide(c);
+        t = 0;
+      }
+
+      showSlide(0);
+
+      setInterval(() => {
+        if (t > 3000) {
+          nextSlide();
+        }
+      }, 10);
+
+      setInterval(() => {
+        t += 1000;
+      }, 1000);
+
+      const prevButton = document.createElement("span");
+      prevButton.classList.add("prev");
+      prevButton.innerText = "Previous";
+      prevButton.addEventListener("click", prevSlide);
+      slideshowContainer.appendChild(prevButton);
+
+      const nextButton = document.createElement("span");
+      nextButton.classList.add("next");
+      nextButton.innerText = "Next";
+      nextButton.addEventListener("click", nextSlide);
+      slideshowContainer.appendChild(nextButton);
+    }
+
+    fetchImages();
+  </script>
+</body>
+
+</html>

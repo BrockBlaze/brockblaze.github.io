@@ -1,98 +1,148 @@
 /* wedding.css */
 
 body {
-    font-family: 'Sofia', sans-serif;
-    background-color: rgba(183, 123, 130, 0.1);
-  }
+  font-family: "Sofia", sans-serif;
+  background-color: rgba(183, 123, 130, 0.1);
+}
+
+h1 {
+  position: absolute;
+  top: 30px;
+  left: 20px;
+  font-size: 4rem;
+  color: rgba(183, 123, 130, 1);
+  background-color: rgba(255, 255, 255, 0.685);
+  padding: 5px;
+}
+
+nav {
+  font-size: 2rem;
   
+}
+
+nav a {
+  color: rgba(183, 123, 130, 1);
+  text-decoration: none;
+  margin-right: 30px;
+  padding-right: 5px;
+  border-right: solid 2px rgba(183, 123, 130, 0.2);
+}
+
+nav a:hover {
+  color: rgb(126, 84, 89);
+}
+
+#imageContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.image {
+  max-width: 800px;
+  max-height: 400px;
+  object-fit: cover;
+  margin: 10px;
+}
+
+.image:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+#hero img {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+}
+
+h2 {
+  font-size: 2rem;
+  color: rgba(183, 123, 130, 1);
+  text-align: center;
+}
+
+#uploadStuff {
+  text-align: center;
+}
+
+#content {
+  margin: 20px;
+}
+
+#divider {
+  height: 2px;
+  background-color: rgba(183, 123, 130, 1);
+  margin: 20px 0;
+}
+
+h3 {
+  font-size: 1.5rem;
+  color: rgba(183, 123, 130, 1);
+}
+
+#textWall {
+  color: rgba(183, 123, 130, 1);
+}
+
+#countDown {
+  text-align: center;
+  font-size: 24px;
+  color: rgba(183, 123, 130, 1);
+}
+
+.slideshow-container {
+  position: relative;
+  height: 90vh;
+  width: 100%;
+}
+
+.slide {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.slide img {
+  margin: auto;
+  max-width: 100vw;
+  max-height: 100vh;
+}
+
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.25rem;
+  font-weight: bold;
+  padding: 10px;
+  background-color: rgba(183, 123, 130, 1);
+  color: #333;
+  cursor: pointer;
+}
+
+.prev:hover,
+.next:hover {
+  background-color: rgb(126, 84, 89);
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+@media only screen and (max-width: 750px) {
   h1 {
-    position: absolute;
-    top: 30px;
-    left: 20px;
-    font-size: 4rem;
-    color: rgba(183, 123, 130, 1);
-    background-color: rgba(255, 255, 255, 0.685);
-    padding: 5px;
-  }
-
-  nav {
-    font-size: 2rem;
-  }
-  
-  nav a {
-    color: rgba(183, 123, 130, 1);
-    text-decoration: none;
-    margin-right: 30px;
-  }
-
-  nav a:hover {
-    color: rgb(126, 84, 89);
-  }
-
-  #imageContainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 20px;
-  }
-
-  .image {
-    max-width: 800px;
-    max-height: 400px;
-    object-fit: cover;
-    margin: 10px;
-  }
-  
-  .image:hover {
-    opacity: 0.8;
-    cursor: pointer;
-  }
-  
-  #hero img {
-    display: block;
-    margin: 0 auto;
-    width: 100%;
-  }
-  
-  h2 {
-    font-size: 2rem;
-    color: rgba(183, 123, 130, 1);
-    text-align: center;
-  }
-  
-  #uploadStuff {
-    text-align: center;
-  }
-  
-  #content {
-    margin: 20px;
-  }
-  
-  #divider {
-    height: 2px;
-    background-color: rgba(183, 123, 130, 1);
-    margin: 20px 0;
-  }
-  
-  h3 {
+    top: 50px;
     font-size: 1.5rem;
-    color: rgba(183, 123, 130, 1);
   }
-  
-  #textWall {
-    color: rgba(183, 123, 130, 1);
-  }
-  
-  #countDown {
-    text-align: center;
-    font-size: 24px;
-    color: rgba(183, 123, 130, 1);
-  }
-  
-
-  @media only screen and (max-width: 750px) {
-    h1 {
-      top: 50px;
-      font-size: 1.5rem;
-    }
-  }
+}
