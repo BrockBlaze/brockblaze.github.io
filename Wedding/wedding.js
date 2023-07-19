@@ -42,6 +42,7 @@ function uploadPhoto() {
         if (response.ok) {
           console.log('Photo uploaded successfully!');
           window.location.href = 'weddingGallery.html'; // Redirect to the success page
+          alert('Photo uploaded successfully!');
         } else {
           console.error('Error uploading photo:', response.statusText);
         }
