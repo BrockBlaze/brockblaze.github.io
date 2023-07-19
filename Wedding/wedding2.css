@@ -1,11 +1,11 @@
 /* wedding.css */
 
 body {
-  font-family: "Sofia", sans-serif;
   background-color: rgba(183, 123, 130, 0.1);
 }
 
 h1 {
+  font-family: "Sofia", sans-serif;
   position: absolute;
   top: 30px;
   left: 20px;
@@ -71,6 +71,18 @@ h2 {
   margin: 20px;
 }
 
+#nButton {
+  text-decoration: none;
+  background-color: rgba(183, 123, 130, 1);
+  color: white;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+#nButton:hover {
+  background-color: rgb(126, 84, 89);
+}
+
 #divider {
   height: 2px;
   background-color: rgba(183, 123, 130, 1);
@@ -87,9 +99,8 @@ h3 {
 }
 
 #countDown {
-  text-align: center;
-  font-size: 24px;
-  color: rgba(183, 123, 130, 1);
+  font-size: 1.25rem;
+  color: black;
 }
 
 .slideshow-container {

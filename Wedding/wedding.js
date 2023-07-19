@@ -5,6 +5,8 @@ function uploadPhoto() {
   const photoInput = document.getElementById('photoInput');
   const file = photoInput.files[0];
 
+  photoInput.setAttribute('value', 'Take Photo');
+
   if (!file) {
     console.error('No file selected');
     return;
