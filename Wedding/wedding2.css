@@ -7,12 +7,13 @@ body {
 h1 {
   font-family: "Sofia", sans-serif;
   position: absolute;
-  top: 30px;
+  top: 20px;
   left: 20px;
   font-size: 4rem;
   color: rgba(183, 123, 130, 1);
   background-color: rgba(255, 255, 255, 0.685);
-  padding: 5px;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 nav {
@@ -153,7 +154,7 @@ h3 {
 
 @media only screen and (max-width: 750px) {
   h1 {
-    top: 50px;
+    top: 80px;
     font-size: 1.5rem;
   }
 }
