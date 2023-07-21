@@ -79,7 +79,7 @@ h2 {
   background-color: rgba(183, 123, 130, 1);
   color: white;
   border-radius: 5px;
-  padding: 5px;
+  padding: 10px;
 }
 
 #nButton:hover {
@@ -97,7 +97,7 @@ h2 {
   background: rgba(183, 123, 130, 1);
   color: white;
   border-radius: 5px;
-  padding: 5px 8px;
+  padding: 10px 8px;
   margin: auto;
   margin-right: 0;
   outline: none;
@@ -133,7 +133,8 @@ h3 {
 }
 
 #textWall {
-  color: rgba(183, 123, 130, 1);
+  font-size: 1rem;
+  color: rgb(0, 0, 0);
 }
 
 #countDown {
