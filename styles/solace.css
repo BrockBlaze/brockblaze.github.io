@@ -1,0 +1,113 @@
+html {
+    background-color: rgb(60, 65, 70);
+}
+
+body {
+    width: 75%;
+    margin: auto;
+    font-size: 1.5rem;
+}
+
+header, #hero, main, footer {
+    background-color: rgb(190, 190, 190);
+    color: rgb(60, 65, 70);
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+}
+
+header {
+    display: flex;
+    flex-grow: 1;
+}
+
+h1 {
+    text-align: right;
+    font-size: 3rem;
+    padding: 0px;
+    margin: auto;
+    margin-right: 2px;
+}
+
+nav a {
+    font-size: 2rem;
+    text-decoration: none;
+    line-height: 55px;
+    color: rgb(60, 65, 70);
+    padding: 0px 5px 0px 5px;
+    margin: 0px 5px 0px 0px;
+    border-right: 1px solid rgb(60, 65, 70);
+}
+
+nav a:last-child {
+    border-right: none;
+}
+
+nav a:hover {
+    color: rgb(180, 75, 15);
+}
+
+main {
+    display: flex;
+    flex-grow: 1;
+}
+
+.articleL, .relativeR {
+    padding: 10px;
+    margin: 2px;
+}
+
+.articleL {
+    border-right: 1px solid rgb(60, 65, 70);
+}
+
+.relativeR {
+    width: 20%;
+    margin: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+iframe {
+    width: 100%;
+    padding: 5px;
+    margin: auto;
+}
+
+footer {
+    text-align: center;
+    color: rgb(60, 65, 70);
+}
+
+@media only screen and (max-width: 1200px) {
+    body {
+        width: 99.9%;
+        font-size: 1rem;
+    }
+
+    h1 {
+        display: none;
+    }
+
+    nav a {
+        font-size: 1rem;
+    }
+
+    main {
+        flex-direction: column;
+    }
+
+    .relativeR {
+        width: 100%;
+        text-align: left;
+        display: inline-block;
+        flex-direction: row;
+    }
+
+    iframe {
+        width: 40%;
+        padding: 5px;
+        margin: auto;
+    }
+}

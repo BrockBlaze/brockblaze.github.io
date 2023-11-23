@@ -5,14 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="This site is a portfolio of my work" />
     <title>blazztech</title>
-    <link rel="shortcut icon" href="/images/favicons/favicon.ico" />
-    <link rel="stylesheet" href="./styles/retro.css" />
+    <link rel="shortcut icon" href="/images/faviconbt.ico" />
+    <link rel="stylesheet" href="./styles/solace.css" />
   </head>
 
   <body>
     <header>
-      <div id="title">BlazzTech - home</div>
-      <button id="smallHover" onclick="toggleNav()">||</button>
       <nav id="nav">
         <a class="navBtn" id="activeNavBtn" href="/index.html"> home </a>
         <a class="navBtn" href="/pages/projects.html"> projects </a>
@@ -21,19 +19,19 @@
         <a class="navBtn" href="/pages/adventure.html"> adventure </a>
         <a class="navBtn" href="/pages/about.html"> about </a>
       </nav>
+      <h1>blazztech</h1>
     </header>
-
     <main>
-      <div id="Wrapper">
-        <img id="hero" src="/images/SpiritLakeHeroImg.jpg" alt="heroImage" />
+      <div class="articleL">
+        <h2>Intro</h2>
         <p>
           This site is a portfolio of my work, it includes: Professional work,
           University class work and projects, personal projects and games I've
           made, and also a gallery of images I have taken.
         </p>
       </div>
-      <h2>Highlights</h2>
-      <div id="gameWrapper">
+      <div class="relativeR">
+        <h2>Highlights</h2>
         <iframe
           id="youtubeVideo"
           src="https://www.youtube.com/embed/CdEUFklWPxQ"
@@ -53,8 +51,7 @@
         >
         </iframe>
         <iframe
-          width="560"
-          height="315"
+          id="youtubeVideo"
           src="https://www.youtube.com/embed/VaisA4Bp4uM"
           title="YouTube video player"
           frameborder="0"
@@ -62,8 +59,7 @@
           allowfullscreen
         ></iframe>
         <iframe
-          width="560"
-          height="315"
+          id="youtubeVideo"
           src="https://www.youtube.com/embed/vhHA38rt5Jo"
           title="YouTube video player"
           frameborder="0"
@@ -71,23 +67,19 @@
           allowfullscreen
         ></iframe>
       </div>
-      <h2>Development</h2>
+      <!--<h2>Development</h2>
       <div id="gameWrapper">
         <img id="dImg" src="/images/Development/Outlaws.png" alt="d1" />
         <img id="dImg" src="/images/Development/pixeSoul1.png" alt="d2" />
         <img id="dImg" src="/images/Development/pixeSoul2.png" alt="d3" />
         <img id="dImg" src="/images/Development/pixeSoul3.png" alt="d4" />
         <img id="dImg" src="/images/Development/pixeSoul4.png" alt="d5" />
-      </div>
+      </div>-->
     </main>
-    <footer>
-      &copy; <span id="year"></span> -
-      <a href="https://brockblaze.github.io/"> blazztech | Brock Blazzard</a>
-    </footer>
+    <footer>&copy; <span id="year"></span> - blazztech | Brock Blazzard</footer>
   </body>
   <script>
     var d = new Date();
     document.getElementById("year").innerHTML = d.getFullYear();
   </script>
-  <script src="../js/retro.js"></script>
 </html>
