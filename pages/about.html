@@ -1,70 +1,61 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1"
-    />
-    <meta name="description" content="This site is a portfolio of my work" />
-    <title>blazztech | about</title>
-    <link rel="shortcut icon" href="/images/favicons/favicon.ico" />
-    <link rel="stylesheet" href="../styles/retro.css" />
-  </head>
 
-  <body>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="This site is a portfolio of my work">
+  <title>blazztech | about</title>
+  <link rel="shortcut icon" href="/images/faviconbt.ico">
+  <link rel="stylesheet" href="../styles/solace.css">
+</head>
 
-    <header>
-      <div id="title">BlazzTech - about</div>
-      <button id="smallHover" onclick="toggleNav()">||</button>
-      <nav id="nav">
-        <a class="navBtn" href="/index.html"> home </a>
-        <a class="navBtn" href="/pages/projects.html"> projects </a>
-        <a class="navBtn" href="/pages/games.html"> games </a>
-        <a class="navBtn" href="/pages/gallery.html"> gallery </a>
-        <a class="navBtn" href="/pages/adventure.html"> adventure </a>
-        <a class="navBtn" id="activeNavBtn" href="/pages/about.html"> about </a>
-      </nav>
-    </header>
+<body>
+  <header>
+    <nav id="nav">
+      <a class="navBtn" href="/index.html"> home </a>
+      <a class="navBtn" href="/pages/projects.html"> projects </a>
+      <a class="navBtn" href="/pages/games.html"> games </a>
+      <a class="navBtn" href="/pages/gallery.html"> gallery </a>
+      <a class="navBtn" href="/pages/adventure.html"> adventure </a>
+      <a class="navBtn" id="activeNavBtn" href="/pages/about.html"> about </a>
+    </nav>
+    <h1>blazztech</h1>
+  </header>
 
-    <main>
-      <div id="Wrapper">
-        <img id="PortraitImage" src="../images/portrait2.jpg" alt="" /> 
-        <p>Here are some links to my socials and some downloads of projects I have done.</p>
-        <a class="btn" href="../files/Brock Blazzard Resume 2023.docx.pdf">Resume (PDF)</a>
+  <main>
+    <div id="Wrapper">
+      <img id="PortraitImage" src="../images/portrait2.jpg" alt="" />
+      <p>Here are some links to my socials and some downloads of projects I have done.</p>
+      <a class="btn" href="../files/Brock Blazzard Resume 2023.docx.pdf">Resume (PDF)</a>
+    </div>
+    <div id="flexWrapper">
+      <div id="flexGroup">
+        <h2>Links</h2>
+        <a class="btn" href="https://www.brockblazzard@gmail.com">Email(brockblazzard@gmail.com)</a>
+        <a class="btn" href="https://www.linkedin.com/in/brock-blazzard-b7b68065/">LinkedIn</a>
+        <a class="btn" href="https://brockblaze.github.io/">GitHub</a>
+        <a class="btn" href="https://brockblaze.itch.io/">Itch</a>
       </div>
-      <div id="flexWrapper">
-        <div id="flexGroup">
-          <h2>Links</h2>
-          <a class="btn" href="https://www.brockblazzard@gmail.com">Email(brockblazzard@gmail.com)</a>
-          <a class="btn" href="https://www.linkedin.com/in/brock-blazzard-b7b68065/">LinkedIn</a>
-          <a class="btn" href="https://brockblaze.github.io/">GitHub</a>
-          <a class="btn" href="https://brockblaze.itch.io/">Itch</a>
-        </div>
-        <div id="flexGroup">
-          <h2>Downloads</h2>
-          <a class="btn" href="../files/OutlawsRemake.zip">Outlaws Remake (old)</a>
-          <a class="btn" href="../files/Solace5.zip">Solace (fps)</a>
-          <a class="btn" href="../files/STH3.rar">Stairway to Heaven (android)</a>
-        </div>
-        <div id="flexGroup">
-          <h2>Extras</h2>
-          <a class="btn" href="../BOMJeopardy/">BOM Jeopardy</a>
-          <a class="btn" href="../Wedding/">Wedding Site</a>
-        </div>
+      <div id="flexGroup">
+        <h2>Downloads</h2>
+        <a class="btn" href="../files/OutlawsRemake.zip">Outlaws Remake (old)</a>
+        <a class="btn" href="../files/Solace5.zip">Solace (fps)</a>
+        <a class="btn" href="../files/STH3.rar">Stairway to Heaven (android)</a>
       </div>
-    </main>
+      <div id="flexGroup">
+        <h2>Extras</h2>
+        <a class="btn" href="../BOMJeopardy/">BOM Jeopardy</a>
+        <a class="btn" href="../Wedding/">Wedding Site</a>
+      </div>
+    </div>
+  </main>
 
-    <footer>
-      &copy; <span id="year"></span> |
-      <a href="https://brockblaze.github.io/">blazztech | Brock Blazzard</a>
-    </footer>
+  <footer>&copy; <span id="year"></span> - blazztech | Brock Blazzard</footer>
+</body>
+<script>
+  var d = new Date();
+  document.getElementById("year").innerHTML = d.getFullYear();
+</script>
 
-  </body>
-
-  <script>
-    var d = new Date();
-    document.getElementById("year").innerHTML = d.getFullYear();
-  </script>
-  <script src="../js/retro.js"></script>
 </html>

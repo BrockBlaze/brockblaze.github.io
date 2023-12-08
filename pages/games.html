@@ -1,58 +1,62 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1"
-    />
-    <meta name="description" content="This site is a portfolio of my work" />
-    <title>blazztech | games</title>
-    <link rel="shortcut icon" href="/images/favicons/favicon.ico" />
-    <link rel="stylesheet" href="../styles/retro.css" />
-  </head>
 
-  <body>
-    <header>
-      <div id="title">BlazzTech - games</div>
-      <button id="smallHover" onclick="toggleNav()">||</button>
-      <nav id="nav">
-        <a class="navBtn" href="/index.html"> home </a>
-        <a class="navBtn" href="/pages/projects.html"> projects </a>
-        <a class="navBtn" id="activeNavBtn" href="/pages/games.html">games</a>
-        <a class="navBtn" href="/pages/gallery.html"> gallery </a>
-        <a class="navBtn" href="/pages/adventure.html"> adventure </a>
-        <a class="navBtn" href="/pages/about.html"> about </a>
-      </nav>
-    </header>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="This site is a portfolio of my work">
+  <title>blazztech | games</title>
+  <link rel="shortcut icon" href="/images/faviconbt.ico">
+  <link rel="stylesheet" href="../styles/solace.css">
+</head>
 
-    <main>
-      <div id="gameWrapper">
-        <a href="/Games/PixeSoulWBSurvival/index.html"><img id="gameImg" src="../images/PixeSoul.png" alt="PixeSoul"/></a>
-        <a href="/Games/SolaceWeb/index.html"><img id="gameImg" src="../images/gameImages/BackGround.png" alt="Solace"/></a>
-        <a href="/Games/StairwayToHeaven/StairwayToHeaven.html"><img id="gameImg" src="../images/STHS.PNG" alt="StairwayToHeaven"/></a>
-        <a href="/Games/TheGauntlet/gauntlet.html"><img id="gameImg" src="../images/GS.PNG" alt="TheGauntlet"/></a>
-        <a href="/Games/SpaceAdventure/spaceA.html"><img id="gameImg" src="../images/SAS.PNG" alt="SpaceAdventure"/></a>
-        <a href="/Games/GlowFlow/glowf.html"><img id="gameImg" src="../images/GFS.PNG" alt="GlowFlow"/></a>
-        <a href="/Games/Tron/tron.html"><img id="gameImg" src="../images/TS.PNG" alt="Tron"/></a>
-        <a href="/Games/Snake/snake.html"><img id="gameImg" src="../images/SS.PNG" alt="Snake"/></a>
-        <a href="/Games/SpaceDefender/spacedefender.html"><img id="gameImg" src="../images/SDS.PNG" alt="SpaceDefender"/></a>
-        <a href="/Games/PlinkoAI/plinkoAI.html"><img id="gameImg" src="../images/PAI.PNG" alt="PlinkoAI"/></a>
-        <a href="/Games/StairwayToHeaven2/STH2.html"><img id="gameImg" src="../images/STH2.PNG" alt="StiarwayToHeaven2"/></a>
-        <a href="/Games/OutlawsRemake/outlaws.html"><img id="gameImg" src="../images/Out.jpg" alt="OutlawsRemake"/></a>
-        <a href="/Games/TheGauntlet2/index.html"><img id="gameImg" src="../images/TheGauntlet2.png" alt="TheGauntlet2"/></a>
-        <a href="/Games/OutlawsWeb/index.html"><img id="gameImg" src="../images/Out2.jpg" alt="OutlawsRemake2"/></a>
-      </div>
-    </main>
+<body>
+  <header>
+    <nav id="nav">
+      <a class="navBtn" href="/index.html"> home </a>
+      <a class="navBtn" href="/pages/projects.html"> projects </a>
+      <a class="navBtn" id="activeNavBtn" href="/pages/games.html"> games </a>
+      <a class="navBtn" href="/pages/gallery.html"> gallery </a>
+      <a class="navBtn" href="/pages/adventure.html"> adventure </a>
+      <a class="navBtn" href="/pages/about.html"> about </a>
+    </nav>
+    <h1>blazztech</h1>
+  </header>
 
-    <footer>
-      &copy; <span id="year"></span> |
-      <a href="https://brockblaze.github.io/">blazztech | Brock Blazzard</a>
-    </footer>
-  </body>
-  <script>
-    var d = new Date();
-    document.getElementById("year").innerHTML = d.getFullYear();
-  </script>
-  <script src="../js/retro.js"></script>
+  <main>
+    <div id="gameWrapper">
+      <a href="/Games/PixeSoulWBSurvival/index.html"><img id="gameImg" src="../images/PixeSoul.png"
+          alt="PixeSoul" />PixeSoul Survival</a>
+      <a href="/Games/SolaceWeb/index.html"><img id="gameImg" src="../images/gameImages/BackGround.png"
+          alt="Solace" />Solace</a>
+      <a href="/Games/StairwayToHeaven/StairwayToHeaven.html"><img id="gameImg" src="../images/STHS.PNG"
+          alt="StairwayToHeaven">Stairway To Heaven</a>
+      <a href="/Games/TheGauntlet/gauntlet.html"><img id="gameImg" src="../images/GS.PNG" alt="TheGauntlet">The
+        Gauntlet</a>
+      <a href="/Games/SpaceAdventure/spaceA.html"><img id="gameImg" src="../images/SAS.PNG" alt="SpaceAdventure">Space
+        Adventure</a>
+      <a href="/Games/GlowFlow/glowf.html"><img id="gameImg" src="../images/GFS.PNG" alt="GlowFlow" />Glow Flow</a>
+      <a href="/Games/Tron/tron.html"><img id="gameImg" src="../images/TS.PNG" alt="Tron" />Tron</a>
+      <a href="/Games/Snake/snake.html"><img id="gameImg" src="../images/SS.PNG" alt="Snake" />Snake</a>
+      <a href="/Games/SpaceDefender/spacedefender.html"><img id="gameImg" src="../images/SDS.PNG"
+          alt="SpaceDefender" />Space Defender</a>
+      <a href="/Games/PlinkoAI/plinkoAI.html"><img id="gameImg" src="../images/PAI.PNG" alt="PlinkoAI" />Plinko AI</a>
+      <a href="/Games/StairwayToHeaven2/STH2.html"><img id="gameImg" src="../images/STH2.PNG"
+          alt="StiarwayToHeaven2" />Stairway To Heaven 2</a>
+      <a href="/Games/OutlawsRemake/outlaws.html"><img id="gameImg" src="../images/Out.jpg"
+          alt="OutlawsRemake" />Outlaws Remake 1</a>
+      <a href="/Games/TheGauntlet2/index.html"><img id="gameImg" src="../images/TheGauntlet2.png"
+          alt="TheGauntlet2" />The Gauntlet 2</a>
+      <a href="/Games/OutlawsWeb/index.html"><img id="gameImg" src="../images/Out2.jpg" alt="OutlawsRemake2" />Outlaws
+        Remake 2</a>
+    </div>
+  </main>
+
+  <footer>&copy; <span id="year"></span> - blazztech | Brock Blazzard</footer>
+</body>
+<script>
+  var d = new Date();
+  document.getElementById("year").innerHTML = d.getFullYear();
+</script>
+
 </html>
