@@ -1,0 +1,76 @@
+/* Reset some default styles */
+body,
+h1,
+h2,
+h3,
+p,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* Set a base font size and family */
+body {
+  font-family: "Arial", sans-serif;
+  font-size: 16px;
+}
+
+/* Global styles */
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+/* Unity canvas styles */
+#unity-canvas {
+  height: 90vh;
+  width: 90vw;
+  border-radius: 5px;
+}
+
+/* Warning banner styles */
+#unity-warning {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  background: yellow;
+  padding: 10px;
+  display: none;
+}
+
+/* Footer styles */
+#unity-footer {
+  border-radius: 5px;
+  height: 39px;
+  background-color: #333;
+  color: #fff;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 600px) {
+  #unity-container {
+    margin: 10px;
+  }
+
+  #unity-canvas {
+    width: auto;
+    height: auto;
+  }
+}
+
+/* Mobile styles */
+.unity-mobile {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Background image for canvas */
+#unity-canvas {
+  background: url("Build/OutlawsWeb.jpg") center / cover;
+}
