@@ -1,39 +1,39 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
+
+<head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="This site is a portfolio of my work" />
     <title>blazztech | adventure</title>
     <link rel="shortcut icon" href="/images/favicons/favicon.ico" />
-    <link rel="stylesheet" href="/styles/retro.css" />
+    <link rel="stylesheet" href="/styles/solace.css" />
     <link rel="stylesheet" href="/styles/adventure.css" />
-  </head>
+</head>
 
 <body>
 
     <header>
-        <div id="title">BlazzTech - adventure</div>
-        <button id="smallHover" onclick="toggleNav()">||</button>
         <nav id="nav">
-          <a class="navBtn" href="/index.html"> home </a>
-          <a class="navBtn" href="/pages/projects.html"> projects </a>
-          <a class="navBtn" href="/pages/games.html"> games </a>
-          <a class="navBtn" href="/pages/gallery.html"> gallery </a>
-          <a class="navBtn" id="activeNavBtn" href="/pages/adventure.html"> adventure </a>
-          <a class="navBtn" href="/pages/about.html"> about </a>
+            <a class="navBtn" href="/index.html"> home </a>
+            <a class="navBtn" href="/pages/projects.html"> projects </a>
+            <a class="navBtn" href="/pages/games.html"> games </a>
+            <a class="navBtn" href="/pages/gallery.html"> gallery </a>
+            <a class="navBtn" href="/pages/adventure.html"> adventure </a>
+            <a class="navBtn" id="activeNavBtn" href="/pages/about.html"> about </a>
         </nav>
+        <h1>blazztech</h1>
     </header>
 
     <main>
         <div id="adventureWrapper">
             <div id="aStats">
                 <div>Name: <span id="aName">Brock</span></div>
-                <div>Race: <span id="aCharacter">Wizard</span></div> 
-                <div>Level: <span id="aLevel">1</span></div>     
+                <div>Race: <span id="aCharacter">Wizard</span></div>
+                <div>Level: <span id="aLevel">1</span></div>
                 <div>Health: <span id="aHealth">80</span></div>
-                <div>Potions: <span id="aPotions">10</span></div>    
-                <div>Coins: <span id="aCoins">20</span></div>       
+                <div>Potions: <span id="aPotions">10</span></div>
+                <div>Coins: <span id="aCoins">20</span></div>
             </div>
             <div class="aGame" id="aNewGame">
                 <div id="aWelcome">Welcome to Adventure</div>
@@ -52,18 +52,18 @@
                 </div>
                 <div id="aBtn" onclick="StartGame()">Start</div>
             </div>
-            <div  class="aGame" id="aContinueGame">
+            <div class="aGame" id="aContinueGame">
                 <div id="aWelcome">Welcome back <span id="aGreetName"> </span></div>
                 <div id="aBtn" onclick="StartChoiceGame()">Continue</div>
                 <div id="aBtn" onclick="DeletePlayer()">Delete</div>
             </div>
-            <div  class="aGame" id="aChoiceGame">
+            <div class="aGame" id="aChoiceGame">
                 <div id="aMessage">What would you like to do?</div>
                 <div id="aBtn" onclick="Woods()">Woods</div>
                 <div id="aBtn" onclick="Home()">Home</div>
                 <div id="aBtn" onclick="Shop()">Shop</div>
             </div>
-            <div  class="aGame" id="aWoods">
+            <div class="aGame" id="aWoods">
                 <div id="aMessage">Woods</div>
                 <div>&#127794;</div>
                 <div id="aWoodsMessage"> | | | | | | | |</div>
@@ -71,7 +71,7 @@
                 <div id="aBtn">Home</div>
                 <div id="aBtn" onclick="StartChoiceGame()">Back</div>
             </div>
-            <div  class="aGame" id="aHome">
+            <div class="aGame" id="aHome">
                 <div id="aMessage">Home</div>
                 <div>&#9978;</div>
                 <div id="aHomeMessage">/\</div>
@@ -79,7 +79,7 @@
                 <div id="aBtn" onclick="Train()">Train</div>
                 <div id="aBtn" onclick="StartChoiceGame()">Back</div>
             </div>
-            <div  class="aGame" id="aShop">
+            <div class="aGame" id="aShop">
                 <div id="aMessage">Shop</div>
                 <div>&#128176;</div>
                 <div id="aShopMessage">[] /\ []</div>
@@ -94,16 +94,13 @@
         </div>
     </main>
 
-    <footer>
-        &copy; <span id="year"></span> -
-        <a href="https://brockblaze.github.io/"> blazztech | Brock Blazzard</a>
-    </footer>
-
+    <footer>&copy; <span id="year"></span> - blazztech | Brock Blazzard</footer>
 </body>
-    <script>
-        var d = new Date();
-        document.getElementById("year").innerHTML = d.getFullYear();
-    </script>
-    <script src="/js/retro.js"></script>
-    <script src="/js/adventure.js"></script>
+<script>
+    var d = new Date();
+    document.getElementById("year").innerHTML = d.getFullYear();
+</script>
+<script src="/js/retro.js"></script>
+<script src="/js/adventure.js"></script>
+
 </html>
