@@ -12,7 +12,7 @@ header,
 main,
 footer {
   position: absolute;
-  background-color: rgb(190, 190, 190);
+  background-color: rgb(195, 180, 165);
   color: rgb(60, 65, 70);
   border-radius: 2px;
   box-shadow: 0px 0px 10px black;
@@ -46,7 +46,7 @@ nav {
 }
 
 nav a {
-  background-color: rgb(180, 180, 180);
+  background-color: rgb(205, 190, 165);
   font-size: 1.5rem;
   text-decoration: none;
   line-height: 4vh;
@@ -56,19 +56,21 @@ nav a {
   min-width: 30%;
   text-align: center;
   border-radius: 2px;
+  border-right: 1px solid rgb(60, 65, 70);
 }
 
 #activeNavBtn {
-  background-color: rgb(160, 160, 160);
+  background-color: rgb(175, 155, 130);
 }
 
 #activeNavBtn:hover {
-  background-color: rgb(136, 136, 136);
+  background-color: rgb(160, 132, 98);
+  box-shadow: inset 0 0 2px black;
 }
 
 nav a:hover {
-  background-color: rgb(136, 136, 136);
-  color: rgb(180, 75, 15);
+  background-color: rgb(160, 132, 98);
+  box-shadow: inset 0 0 2px black;
 }
 
 #container {
@@ -78,7 +80,7 @@ nav a:hover {
 }
 
 .btn {
-  background-color: rgb(180, 180, 180);
+  background-color: rgb(205, 190, 165);
   font-size: 1.25rem;
   text-decoration: none;
   line-height: 50px;
@@ -88,13 +90,12 @@ nav a:hover {
   flex-grow: 1;
   max-width: 300px;
   text-align: center;
-  border: 1px solid rgb(60, 65, 70);
   border-radius: 2px;
+  box-shadow: 0 0 5px black;
 }
 
 .btn:hover {
-  color: rgb(180, 75, 15);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.65) inset;
+  box-shadow: inset 0 0 5px black;
 }
 
 @font-face {
@@ -145,13 +146,19 @@ iframe {
 }
 
 #gameWrapper a {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   text-decoration: none;
-  color: rgb(60, 65, 70);
-  margin: 10px;
-  flex-grow: 1;
+  color: rgb(221, 221, 221);
+  margin: 10px auto;
   max-width: 275px;
   text-align: center;
+  text-shadow: 0 0 5px rgb(0, 0, 0);
+}
+
+#gameName {
+  position: relative;
+  bottom: 35px;
+  pointer-events: none;
 }
 
 #gameWrapper a img {
@@ -159,7 +166,7 @@ iframe {
   margin: 0;
   width: 275px;
   height: 175px;
-  box-shadow: 0 0 10px black;
+  box-shadow: 0 0 5px black;
   border-radius: 2px;
 }
 
@@ -180,22 +187,24 @@ iframe {
   flex-wrap: wrap;
 }
 
+
 #imgwrapper img {
   flex-grow: 1;
   margin: 5px;
   min-width: 100px;
   max-width: 200px;
-  box-shadow: 0 0 10px black;
+  box-shadow: 0 0 5px black;
   border-radius: 2px;
 }
 
 #imgwrapper img:hover {
-  box-shadow: 0 0 1px black inset;
+  box-shadow: inset 0 0 2px black;
   cursor: pointer;
 }
 
-#gameWrapper a img:hover {
-  box-shadow: 0 0 1px black inset;
+#gameWrapper a img:hover{
+  box-shadow: inset 0 0 2px black;
+  cursor: pointer;
 }
 
 #wrapper {
