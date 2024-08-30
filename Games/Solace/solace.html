@@ -1,39 +1,131 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta name="description" content="This site is a portfolio of my work" />
-    <title>blazztech | solace</title>
-    <link rel="shortcut icon" href="/images/favicons/favicon.ico" />
-    <link rel="stylesheet" href="./solace.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>blazztech | game</title>
+    <link
+      rel="shortcut icon"
+      href="/images/favicon512.png"
+      type="image/x-icon"
+    />
+    <link rel="shortcut icon" href="/images/faviconbt.ico">
+    <link rel="stylesheet" href="/styles/solace.css" />
+    <link rel="stylesheet" href="solace.css">
   </head>
 
-<body>
-    <main> 
-        <div id="StartScreen">
-            <div id="StartTitle">Solace</div>
-            <div id="StartButton" onclick="startGame()">Play</div>
-            <div id="StartButton">Quit</div>
+  <body>
+    <header>
+    <nav id="nav">
+      <a class="navBtn" id="activeNavBtn" href="/index.html"> home </a>
+      <a class="navBtn" href="/pages/projects.html"> projects </a>
+      <a class="navBtn" href="/pages/games.html"> games </a>
+      <a class="navBtn" href="/pages/gallery.html"> gallery </a>
+      <a class="navBtn" href="/pages/about.html"> about </a>
+    </nav>
+    <h1>blazztech</h1>
+  </header>
+    <div id="hero">
+      <img src="Images/BannerB.png" alt="heroImage" />
+      <div id="gPlayerStats">
+        <h3>Player Stats</h3>
+        <div id="gSubStats">
+          <p>Name: <span id="playerName"></span></p>
+          <p>Level: <span id="playerLevel"></span></p>
+          <p>Health: <span id="playerHealth"></span></p>
+          <p>Mana: <span id="playerMana"></span></p>
+          <p>Armor: <span id="playerArmor"></span></p>
+          <p>Weapon: <span id="playerWeapon"></span></p>
+          <p>Staff: <span id="playerStaff"></span></p>
+          <p>Attack: <span id="playerAttack"></span></p>
+          <p>Magic: <span id="playerMagic"></span></p>
+          <p>Defence: <span id="playerDefence"></span></p>
+          <p>Gold: <span id="playerGold"></span></p>
+          <p>Potion: <span id="playerPotion"></span></p>
         </div>
-        <div id="MainGameScreen">
-
+      </div>
+      <div id="gEnemyStats">
+        <h3>Enemy Stats</h3>
+        <div id="gSubStats">
+          <p>Name: <span id="enemyName"></span></p>
+          <p>Health: <span id="enemyHealth"></span></p>
+          <p>Attack: <span id="enemyAttack"></span></p>
         </div>
+      </div>
+    </div>
+    <main>
+      <div id="gStart">
+        <h4>Atrium</h4>
+        <button onclick="NewGame()" id="StartBtn">New Game</button>
+        <button onclick="LoadGame()" id="gButton">Load Game</button>
+      </div>
+      <div id="gNewPlayer">
+        <h4>New Player</h4>
+        <input
+          class="gTextInput"
+          id="nameInput"
+          type="text"
+          placeholder="Name"
+        />
+        <button onclick="CreatePlayer()" id="PlayBtn">Play</button>
+        <button onclick="MainMenu()" id="gButton">Cancel</button>
+      </div>
+      <div id="gLoadPlayer">
+        <h4>Load Player</h4>
+        <input
+          class="gTextInput"
+          id="loadnameInput"
+          type="text"
+          placeholder="Saved Name"
+        />
+        <button onclick="LoadPlayer()" id="LoadBtn">Load</button>
+        <button onclick="MainMenu()" id="gButton">Cancel</button>
+      </div>
+      <div id="gGame">
+        <h4>Home</h4>
+        <div class="gMessages" id="gGameM">You are in the home</div>
+        <button onclick="LevelUp()" id="gButton">Level Up</button>
+        <button onclick="sleep()" id="gButton">Sleep</button>
+        <button onclick="WoodsMenu()" id="gButton">Go To Woods</button>
+        <button onclick="StoreMenu()" id="gButton">Go To Store</button>
+        <button onclick="SaveGame()" id="gButton">Save Game</button>
+        <button onclick="MainMenu()" id="gButton">Quit</button>
+      </div>
+      <div id="gStore">
+        <h4>Store</h4>
+        <div class="gMessages" id="gStoreM">Welcome to the store</div>
+        <button onclick="UpgradeWeapon()" id="gWButton">
+          Buy <span id="weaponInfo"></span>
+        </button>
+        <button onclick="UpgradeMagic()" id="gMButton">
+          Buy <span id="magicInfo"></span>
+        </button>
+        <button onclick="UpgradeDefence()" id="gDButton">
+          Buy <span id="defenceInfo"></span>
+        </button>
+        <button onclick="BuyPotion()" id="gButton">Buy Potion</button>
+        <button onclick="ReturnHome()" id="gButton">Home</button>
+      </div>
+      <div id="gWoods">
+        <h4>Woods</h4>
+        <div class="gMessages" id="gWoodsM">You arrive at the Woods</div>
+        <button onclick="BattleMenu()" id="gButton">Look Around</button>
+        <button onclick="ReturnHome()" id="gButton">Home</button>
+      </div>
+      <div id="gBattle">
+        <h4>Battle</h4>
+        <div class="gMessages" id="gBattleM">You encounter an enemy</div>
+        <button onclick="useAttack()" id="gButton">Use Attack</button>
+        <button onclick="useMagic()" id="gButton">Use Spell</button>
+        <button onclick="usePotion()" id="gButton">Use Potion</button>
+        <button onclick="fleeBattle()" id="gButton">Flee</button>
+      </div>
     </main>
-
-    <audio id="StartAudio" controls loop preload="auto">
-        <source src="./Ludovico Einaudi - Nuvole Bianche.mp3" type="audio/mpeg">
-      </audio>
-
-    <footer>
-        &copy; <span id="year"></span> -
-        <a href="https://brockblaze.github.io/"> blazztech | Brock Blazzard</a>
-    </footer>
-
-</body>
+    <footer>&copy; <span id="year"></span> | blazztech | Brock Blazzard</footer>
     <script>
-        var d = new Date();
-        document.getElementById("year").innerHTML = d.getFullYear();
-    </script>
-    <script src="./solace.js"></script>
+  var d = new Date();
+  document.getElementById("year").innerHTML = d.getFullYear();
+</script>
+    <script src="solace.js"></script>
+  </body>
 </html>

@@ -1,114 +1,122 @@
-@import url('https://fonts.cdnfonts.com/css/pf-tempesta-seven');
-* {
-  font-family: "Courier New", monospace;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  background-color: #2e3a43;
-  height: 100vh;
-  width: 100vw;
-}
-
-canvas {
-  position: absolute;
-  background-color: #f1f1f100;
-}
-
-#StartScreen {
-  background-image: url(/Solace/Images/214384.gif);
-  background-repeat: no-repeat;
-  background-position: bottom left;
-  background-size: cover;
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-#StartTitle {
-  font-family: 'PF Tempesta Seven', sans-serif;
-  position: absolute;
-  top: 10rem;
-  left: 0;
-  right: 0;
+h4 {
+  padding: 5px;
+  margin: 5px;
   text-align: center;
-  font-size: 10rem;
-  color: #672fb5;
-  font-style: italic;
+  font-size: 2em;
+  text-shadow: rgb(65, 75, 85) 2px 2px 5px;
 }
 
-#StartButton:first-child {
-  margin-top: 60vh;
+button {
+  padding: 5px;
+  margin: 5px;
+  width: 250px;
+  height: 30px;
+  background-color: rgb(65, 75, 85);
+  color: rgb(165, 145, 125);
+  text-shadow: rgb(165, 145, 125) 0 0 2px;
+  font-size: 1.1em;
+  box-shadow: 0 0 5px black;
+  border: none;
 }
 
-#StartButton {
-  font-family: 'PF Tempesta Seven', sans-serif;
-  font-weight:400;
-  margin: 10px;
-  background-color: #672fb5;
-  text-align: center;
-  width: 16rem;
-  height: 4.5rem;
-  line-height: 4rem;
-  color: #d1d1d1;
-  font-size: 2rem;
-  border-radius: 5px;
-  border: #7D7FF1 2px solid;
+.gTextInput {
+  width: 150px;
+  height: 20px;
 }
 
-#StartButton:hover {
-    background-color: #7D7FF1;
-    color: #d1d1d1;
-    border: #672fb5 3px solid;
-    cursor: pointer;
+button:hover {
+  box-shadow: inset 0 0 5px;
+  text-shadow: none;
 }
 
-#MainGameScreen {
-  background-image: url(/Solace/Images/GameBG.png);
-  background-repeat: no-repeat;
-  background-position: bottom left;
-  background-size: cover;
-  height: 100vh;
-  width: 100vw;
-}
-
-audio {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  z-index: 2;
-}
-
-footer {
-  text-align: center;
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 50px;
-  line-height: 50px;
-  font-size: 1rem;
-  font-weight: bold;
-  color: #ffffff;
+#gStart,
+#gNewPlayer,
+#gLoadPlayer,
+#gGame,
+#gWoods,
+#gBattle,
+#gStore {
+  padding: 10px;
   margin: auto;
   margin-top: 1vh;
+  width: 50%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
-footer span {
-  color: #ffffff;
+.hero {
+  position: relative;
 }
 
-footer a {
-  text-decoration: none;
-  color: #ffffff;
+h3 {
+  padding: 3px;
+  margin: 0;
+  text-align: center;
+  border-bottom: 1px solid rgb(165, 145, 125);
 }
 
-footer a:hover {
-  text-decoration: underline;
-  color: #c9b79c;
+#gPlayerStats,
+#gEnemyStats {
+  background-color: rgb(65, 75, 85);
+  color: rgb(165, 145, 125);
+  font-size: 0.8em;
+  padding: 5px;
+  margin: 0;
+  border-radius: 2px;
+  border: 1px solid rgb(165, 145, 125);
+  position: absolute;
+  display: block;
+  left: 15%;
+  top: .5vh;
+  width: 370px;
+  z-index: 1;
+}
+
+#gSubStats {
+  padding: 0;
+  margin: 0;
+  padding-top: 5px;
+  flex-direction: column;
+  column-count: 2;
+}
+
+#gEnemyStats {
+  left: 65%;
+  width: 200px;
+}
+
+#gPlayerStats p,
+#gEnemyStats p {
+  padding: 0;
+  margin: 0;
+}
+
+#gPlayerStats p span,
+#gEnemyStats p span {
+  color: rgb(165, 145, 125);
+}
+
+.gMessages {
+  padding: 40px;
+  font-size: 1.25em;
+}
+
+
+main {
+  top: 24.5vh;
+}
+
+#hero {
+  position: absolute;
+  top: 6vh;
+  left: 10%;
+  right: 10%;
+  padding: 0;
+  height: 18vh;
+  overflow: hidden;
+}
+
+#hero img {
+  width: 100%;
 }
