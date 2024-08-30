@@ -191,7 +191,7 @@ iframe {
 
 #imgwrapper img {
   flex-grow: 1;
-  margin: 5px;
+  margin: 5px auto;
   min-width: 100px;
   max-width: 200px;
   box-shadow: 0 0 5px black;
