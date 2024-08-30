@@ -86,7 +86,7 @@ nav a:hover {
   line-height: 50px;
   color: rgb(60, 65, 70);
   padding: 2px;
-  margin: 0px 5px 0px 0px;
+  margin: 5px 5px 0px 0px;
   flex-grow: 1;
   max-width: 300px;
   text-align: center;
