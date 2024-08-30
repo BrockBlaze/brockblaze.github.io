@@ -254,8 +254,11 @@ footer {
     left: 1%;
     right: 1%;
   }
+  main {
+    bottom: 5.5vh;
+  }
   nav a {
-    font-size: .85rem;
+    font-size: .6rem;
   }
   h1 {
     display: none;
