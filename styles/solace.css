@@ -236,6 +236,20 @@ iframe:hover {
   margin: 10px;
 }
 
+#siteLink {
+  color: rgb(60, 65, 70);
+  text-decoration: none;
+}
+
+#siteLink:hover {
+  text-decoration: underline;
+}
+
+#siteLink:active {
+  color: rgb(60, 65, 70);
+  text-decoration: none;
+}
+
 footer {
   bottom: .25vh;
   left: 10%;
