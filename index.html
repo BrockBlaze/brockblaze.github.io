@@ -52,19 +52,16 @@
       </div>
       <h2>Dev Pictures</h2>
       <div id="FlexContainer">
-        <img id="dImg" src="/images/Development/Outlaws.png" alt="d1" />
-        <img id="dImg" src="/images/Development/pixeSoul1.png" alt="d2" />
-        <img id="dImg" src="/images/Development/pixeSoul2.png" alt="d3" />
-        <img id="dImg" src="/images/Development/pixeSoul3.png" alt="d4" />
-        <img id="dImg" src="/images/Development/pixeSoul4.png" alt="d5" />
+        <img id="dImg" src="/images/Development/Outlaws.png" alt="d1" onclick="window.open(this.src, 'blank')" />
+        <img id="dImg" src="/images/Development/pixeSoul1.png" alt="d2" onclick="window.open(this.src, 'blank')" />
+        <img id="dImg" src="/images/Development/pixeSoul2.png" alt="d3" onclick="window.open(this.src, 'blank')" />
+        <img id="dImg" src="/images/Development/pixeSoul3.png" alt="d4" onclick="window.open(this.src, 'blank')" />
+        <img id="dImg" src="/images/Development/pixeSoul4.png" alt="d5" onclick="window.open(this.src, 'blank')" />
       </div>
     </div>
   </main>
   <footer>&copy; <span id="year"></span> | blazztech | Brock Blazzard</footer>
 </body>
-<script>
-  var d = new Date();
-  document.getElementById("year").innerHTML = d.getFullYear();
-</script>
+<script src="/js/main.js"></script>
 
 </html>
