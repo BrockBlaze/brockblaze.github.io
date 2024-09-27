@@ -41,7 +41,11 @@ function calculateDifference(inputDateTime) {
     const money = diffInDaysFloat * 20;
 
     resultDiv.innerHTML = `
-                Difference: ${diffInDays} days, ${diffInHours} hours, ${diffInMinutes} minutes, and ${diffInSeconds} seconds.
+                Hours: ${diffInHours}
+                <br>
+                Minutes: ${diffInMinutes}
+                <br>
+                Seconds: ${diffInSeconds}
                 <br>
                 Difference as float: ${diffInDaysFloat} hours.
                 <br>
