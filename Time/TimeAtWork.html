@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Date Difference Calculator</title>
+    <link rel="shortcut icon" href="/images/faviconbt.ico" />
+    <link rel="stylesheet" href="../styles/solace.css" />
+    <link rel="stylesheet" href="work.css" />
+  </head>
+  <body>
+    <header>
+    <nav id="nav">
+      <a class="navBtn" href="/index.html"> home </a>
+      <a class="navBtn" href="/pages/projects.html"> projects </a>
+      <a class="navBtn" href="/pages/games.html"> games </a>
+      <a class="navBtn" href="/pages/gallery.html"> gallery </a>
+      <a class="navBtn" href="/pages/about.html"> about </a>
+    </nav>
+    <h1>blazztech</h1>
+  </header>
+  <main>
+    <div class="container">
+      <h2>Date & Time Difference Calculator</h2>
+      <label for="inputDateTime">Enter a date and time:</label>
+      <br />
+      <input type="datetime-local" id="inputDateTime" />
+      <br />
+      <button onclick="saveDate()">Save Date & Calculate Difference</button>
+
+      <div class="result" id="result"></div>
+      <div class="mresult" id="mresult"></div>
+    </div>
+    </main>
+    <footer>
+      &copy; <span id="year"></span> | <a onmouseover="showMoney()" onmouseout="hideMoney()" id="siteLink" href="/">blazztech</a> |
+      Brock Blazzard
+    </footer>
+  </body>
+  <script src="work.js"></script>
+  <script src="/js/main.js"></script>
+</html>
