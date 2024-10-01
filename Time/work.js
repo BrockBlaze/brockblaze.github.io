@@ -48,6 +48,10 @@ function calculateDifference(inputDateTime) {
     const diffInMinutes = Math.floor((diffInMs % (1000 * 60 * 60)) / (1000 * 60));
     const diffInSeconds = Math.floor((diffInMs % (1000 * 60)) / 1000);
 
+    const diffInHoursString = diffInHours.toString().padStart(2, '0');
+    const diffInMinutesString = diffInMinutes.toString().padStart(2, '0');
+    const diffSecString = diffInSeconds.toString().padStart(2, '0');
+
     // Calculate the total difference in days as a float
     const diffInHoursFloat = (diffInMs / (1000 * 60 * 60)).toFixed(2);
 
@@ -55,7 +59,7 @@ function calculateDifference(inputDateTime) {
 
 
     resultDiv.innerHTML = `
-                Time At Work: ${diffInHours}:${diffInMinutes}:${diffInSeconds}
+                Time At Work: ${diffInHoursString}:${diffInMinutesString}:${diffSecString}
                 <br>
                 ${diffInHoursFloat} - hours
             `;

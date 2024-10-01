@@ -153,6 +153,8 @@ iframe {
   margin: 5px;
   min-width: 200px;
   max-width: 300px;
+  max-height: 175px;
+  min-height: 165px;
   border-radius: 2px;
   box-shadow: 0 0 5px black;
 }
