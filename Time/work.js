@@ -8,7 +8,7 @@ window.onload = function () {
         const cdate = new Date();
         saveDate = new Date(savedDate);
         const diff = cdate - saveDate;
-        Hours = (diffInMs / (1000 * 60 * 60)).toFixed(2);
+        Hours = (diff / (1000 * 60 * 60)).toFixed(2);
     }
 
     if (Hours < 12) {
