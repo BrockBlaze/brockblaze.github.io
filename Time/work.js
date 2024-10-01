@@ -53,9 +53,10 @@ function calculateDifference(inputDateTime) {
     const diffSecString = diffInSeconds.toString().padStart(2, '0');
 
     // Calculate the total difference in days as a float
+    const diffInHoursFloating = (diffInMs / (1000 * 60 * 60));
     const diffInHoursFloat = (diffInMs / (1000 * 60 * 60)).toFixed(2);
 
-    const money = diffInHoursFloat * 20;
+    const money = diffInHoursFloating * 20;
 
 
     resultDiv.innerHTML = `
