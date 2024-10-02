@@ -317,11 +317,14 @@ footer {
     left: 1%;
     right: 1%;
   }
+  header {
+    height: 5vh;
+  }
   main {
-    bottom: 5.5vh;
+    bottom: 5vh;
   }
   nav a {
-    font-size: .8rem;
+    font-size: .85rem;
   }
   h1 {
     display: none;
