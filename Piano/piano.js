@@ -1,122 +1,66 @@
-var cNote = document.getElementById("c");
-var dNote = document.getElementById("d");
-var eNote = document.getElementById("e");
-var fNote = document.getElementById("f");
-var gNote = document.getElementById("g");
-var aNote = document.getElementById("a");
-var bNote = document.getElementById("b");
-var ccNote = document.getElementById("cc");
+// Map the note IDs to their corresponding audio elements
+const notes = {
+  c: document.getElementById("c"),
+  d: document.getElementById("d"),
+  e: document.getElementById("e"),
+  f: document.getElementById("f"),
+  g: document.getElementById("g"),
+  a: document.getElementById("a"),
+  b: document.getElementById("b"),
+  cc: document.getElementById("cc"),
+};
 
-function playC() {
-  var cNote = document.getElementById("c");
-  cNote.currentTime = 0;
-  cNote.play();
-}
-function playD() {
-  var dNote = document.getElementById("d");
-  dNote.currentTime = 0;
-  dNote.play();
-}
-function playE() {
-  var eNote = document.getElementById("e");
-  eNote.currentTime = 0;
-  eNote.play();
-}
-function playF() {
-  var fNote = document.getElementById("f");
-  fNote.currentTime = 0;
-  fNote.play();
-}
-function playG() {
-  var gNote = document.getElementById("g");
-  gNote.currentTime = 0;
-  gNote.play();
-}
-function playA() {
-  var aNote = document.getElementById("a");
-  aNote.currentTime = 0;
-  aNote.play();
-}
-function playB() {
-  var bNote = document.getElementById("b");
-  bNote.currentTime = 0;
-  bNote.play();
-}
-function playCC() {
-  var ccNote = document.getElementById("cc");
-  ccNote.currentTime = 0;
-  ccNote.play();
+// Map key codes to their corresponding notes and button IDs
+const keyMappings = {
+  65: { note: "c", key: "cKey" },    // A key
+  83: { note: "d", key: "dKey" },    // S key
+  68: { note: "e", key: "eKey" },    // D key
+  70: { note: "f", key: "fKey" },    // F key
+  74: { note: "g", key: "gKey" },    // J key
+  75: { note: "a", key: "aKey" },    // K key
+  76: { note: "b", key: "bKey" },    // L key
+  186: { note: "cc", key: "ccKey" }, // ; key
+};
+
+// Object to track keys that are currently being held down
+const activeKeys = {};
+
+// Function to play a given note
+function playNote(noteId) {
+  const note = notes[noteId];
+  if (note && note.paused) {
+    note.play(); // Start playing the note if it's not already playing
+  }
 }
 
+// Function to stop a note
+function stopNote(noteId) {
+  const note = notes[noteId];
+  if (note && !note.paused) {
+    note.pause(); // Pause the note
+    note.currentTime = 0; // Reset to the beginning to prepare for next play
+  }
+}
+
+// Main function to handle keyboard inputs
 function KeyBoardPiano() {
-  document.addEventListener("keydown", function (k) {
-    if (k.keyCode == 65) {
-      cNote.currentTime = 0;
-      cNote.play();
-      document.getElementById("cKey").classList.add("pressed");
-    }
-    if (k.keyCode == 83) {
-      dNote.currentTime = 0;
-      dNote.play();
-      document.getElementById("dKey").classList.add("pressed");
-    }
-    if (k.keyCode == 68) {
-      eNote.currentTime = 0;
-      eNote.play();
-      document.getElementById("eKey").classList.add("pressed");
-    }
-    if (k.keyCode == 70) {
-      fNote.currentTime = 0;
-      fNote.play();
-      document.getElementById("fKey").classList.add("pressed");
-    }
-    if (k.keyCode == 74) {
-      gNote.currentTime = 0;
-      gNote.play();
-      document.getElementById("gKey").classList.add("pressed");
-    }
-    if (k.keyCode == 75) {
-      aNote.currentTime = 0;
-      aNote.play();
-      document.getElementById("aKey").classList.add("pressed");
-    }
-    if (k.keyCode == 76) {
-      bNote.currentTime = 0;
-      bNote.play();
-      document.getElementById("bKey").classList.add("pressed");
-    }
-    if (k.keyCode == 186) {
-      ccNote.currentTime = 0;
-      ccNote.play();
-      document.getElementById("ccKey").classList.add("pressed");
+  // Event listener for keydown
+  document.addEventListener("keydown", function (event) {
+    const mapping = keyMappings[event.keyCode];
+    if (mapping && !activeKeys[event.keyCode]) {
+      playNote(mapping.note); // Play the associated note
+      document.getElementById(mapping.key).classList.add("pressed"); // Highlight the button
+      activeKeys[event.keyCode] = true; // Mark the key as active
     }
   });
 
-  document.addEventListener("keyup", function (k) {
-    if (k.keyCode == 65) {
-      document.getElementById("cKey").classList.remove("pressed");
-    }
-    if (k.keyCode == 83) {
-      document.getElementById("dKey").classList.remove("pressed");
-    }
-    if (k.keyCode == 68) {
-      document.getElementById("eKey").classList.remove("pressed");
-    }
-    if (k.keyCode == 70) {
-      document.getElementById("fKey").classList.remove("pressed");
-    }
-    if (k.keyCode == 74) {
-      document.getElementById("gKey").classList.remove("pressed");
-    }
-    if (k.keyCode == 75) {
-      document.getElementById("aKey").classList.remove("pressed");
-    }
-    if (k.keyCode == 76) {
-      document.getElementById("bKey").classList.remove("pressed");
-    }
-    if (k.keyCode == 186) {
-      document.getElementById("ccKey").classList.remove("pressed");
+  // Event listener for keyup
+  document.addEventListener("keyup", function (event) {
+    const mapping = keyMappings[event.keyCode];
+    if (mapping) {
+      stopNote(mapping.note); // Stop the associated note
+      document.getElementById(mapping.key).classList.remove("pressed"); // Remove highlight
+      delete activeKeys[event.keyCode]; // Mark the key as inactive
     }
   });
-
 }

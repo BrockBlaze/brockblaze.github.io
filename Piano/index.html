@@ -18,43 +18,38 @@
     <audio src="sounds/c5.mp3" id="cc"></audio>
 
     <h1>Piano Player</h1>
-    <h2>press a key on the keyboard to play a note or just click a note</h2>
-    <!-- <div id="cKey">C</div>
-    <div id="dKey">D</div>
-    <div id="eKey">E</div>
-    <div id="fKey">F</div>
-    <div id="gKey">G</div>
-    <div id="aKey">A</div>
-    <div id="bKey">B</div>
-    <div id="c2Key">C</div> -->
+    <h2>Press a key on the keyboard to play a note or click a note button</h2>
+    
     <div id="keyContainer">
-      <input type="button" id="cKey" onclick="playC()" value="C" />
-      <input type="button" id="dKey" onclick="playD()" value="D" />
-      <input type="button" id="eKey" onclick="playE()" value="E" />
-      <input type="button" id="fKey" onclick="playF()" value="F" />
-      <input type="button" id="gKey" onclick="playG()" value="G" />
-      <input type="button" id="aKey" onclick="playA()" value="A" />
-      <input type="button" id="bKey" onclick="playB()" value="B" />
-      <input type="button" id="ccKey" onclick="playCC()" value="C" />
+      <input type="button" id="cKey" onclick="playNote('c')" value="C" />
+      <input type="button" id="dKey" onclick="playNote('d')" value="D" />
+      <input type="button" id="eKey" onclick="playNote('e')" value="E" />
+      <input type="button" id="fKey" onclick="playNote('f')" value="F" />
+      <input type="button" id="gKey" onclick="playNote('g')" value="G" />
+      <input type="button" id="aKey" onclick="playNote('a')" value="A" />
+      <input type="button" id="bKey" onclick="playNote('b')" value="B" />
+      <input type="button" id="ccKey" onclick="playNote('cc')" value="C" />
     </div>
+    
     <div id="keyBoard">
-        <div>A</div>
-        <div>S</div>
-        <div>D</div>
-        <div>F</div>
-        <div>J</div>
-        <div>K</div>
-        <div>L</div>
-        <div>;</div>
-      </div>
+      <div class="key-label">A</div>
+      <div class="key-label">S</div>
+      <div class="key-label">D</div>
+      <div class="key-label">F</div>
+      <div class="key-label">J</div>
+      <div class="key-label">K</div>
+      <div class="key-label">L</div>
+      <div class="key-label">;</div>
+    </div>
+    
     <script src="piano.js"></script>
   </body>
+  
   <footer>
     &copy; <span id="year"></span>
-    <a href="https://brockblaze.github.io/"
-      >blazztech projects | Brock F. Blazzard</a
-    >
+    <a href="https://brockblaze.github.io/">blazztech projects | Brock F. Blazzard</a>
   </footer>
+  
   <script>
     var d = new Date();
     document.getElementById("year").innerHTML = d.getFullYear();
