@@ -56,7 +56,7 @@ function calculateDifference(inputDateTime) {
     const diffInHoursFloating = (diffInMs / (1000 * 60 * 60));
     const diffInHoursFloat = (diffInMs / (1000 * 60 * 60)).toFixed(2);
 
-    const money = diffInHoursFloating * 20;
+    const money = diffInHoursFloating * 21;
 
 
     resultDiv.innerHTML = `
