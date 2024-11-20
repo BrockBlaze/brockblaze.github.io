@@ -1,7 +1,7 @@
 html {
   margin: 0;
   padding: 0;
-  background-color: rgb(60, 65, 70);
+  background-color: rgb(9, 0, 19);
 }
 
 body {
@@ -12,10 +12,10 @@ header,
 main,
 footer {
   position: absolute;
-  background-color: rgb(195, 180, 165);
-  color: rgb(60, 65, 70);
+  background-color: rgb(45, 50, 55);
+  color: rgb(215, 215, 215);
   border-radius: 2px;
-  box-shadow: 0px 0px 10px black;
+  border: 1px solid rgb(125, 125, 125);
 }
 
 header {
@@ -37,7 +37,7 @@ h1 {
 h2 {
   padding: 0;
   margin: 5px;
-  border-bottom: 1px solid rgb(60, 65, 70);
+  border-bottom: 1px solid rgb(125, 125, 125);
 }
 
 nav {
@@ -46,31 +46,29 @@ nav {
 }
 
 nav a {
-  background-color: rgb(205, 190, 165);
+  background-color: rgb(45, 50, 55);
   font-size: 1.5rem;
   text-decoration: none;
   line-height: 4vh;
-  color: rgb(60, 65, 70);
+  color: rgb(215, 215, 215);
   flex-grow: 1;
   padding: 5px;
   min-width: 30%;
   text-align: center;
   border-radius: 2px;
-  border-right: 1px solid rgb(60, 65, 70);
+  border-right: 1px solid rgb(125, 125, 125);
 }
 
 #activeNavBtn {
-  background-color: rgb(175, 155, 130);
+  background-color: rgb(50, 55, 60);
 }
 
 #activeNavBtn:hover {
-  background-color: rgb(160, 132, 98);
-  box-shadow: inset 0 0 2px black;
+  background-color: rgb(40, 45, 50);
 }
 
 nav a:hover {
-  background-color: rgb(160, 132, 98);
-  box-shadow: inset 0 0 2px black;
+  background-color: rgb(40, 45, 50);
 }
 
 #container {
@@ -80,11 +78,11 @@ nav a:hover {
 }
 
 .btn {
-  background-color: rgb(205, 190, 165);
+  background-color: rgb(50, 55, 60);
   font-size: 1.25rem;
   text-decoration: none;
   line-height: 50px;
-  color: rgb(60, 65, 70);
+  color: rgb(215, 215, 215);
   padding: 2px 0 2px 0;
   margin: 5px 5px 0px 0px;
   flex-grow: 1;
@@ -92,12 +90,11 @@ nav a:hover {
   min-width: 250px;
   text-align: center;
   border-radius: 2px;
-  box-shadow: 0 0 5px black;
+  border: 1px solid rgb(125, 125, 125);
 }
 
 .btn:hover {
-  background-color: rgb(160, 132, 98);
-  box-shadow: inset 0 0 5px black;
+  background-color: rgb(40, 45, 50);
 }
 
 @font-face {
@@ -156,7 +153,7 @@ iframe {
   max-height: 175px;
   min-height: 165px;
   border-radius: 2px;
-  box-shadow: 0 0 5px black;
+  border: 1px solid rgb(125, 125, 125);
 }
 
 iframe:hover {
@@ -178,7 +175,7 @@ iframe:hover {
   min-width: 200px;
   max-width: 300px;
   border-radius: 2px;
-  box-shadow: 0 0 5px black;
+  border: 1px solid rgb(125, 125, 125);
 }
 
 #dImg:hover {
@@ -213,14 +210,14 @@ iframe:hover {
   margin: 0;
   width: 275px;
   height: 175px;
-  box-shadow: 0 0 5px black;
+  border: 1px solid rgb(125, 125, 125);
   border-radius: 2px;
 }
 
 #largeImgWrapper {
   text-align: center;
   border-radius: 2px;
-  border-bottom: 1px solid rgb(60, 65, 70);
+  border-bottom: 1px solid rgb(125, 125, 125);
 }
 
 #largeImgWrapper img {
@@ -240,7 +237,7 @@ iframe:hover {
   margin: 5px auto;
   min-width: 100px;
   max-width: 200px;
-  box-shadow: 0 0 5px black;
+  border: 1px solid rgb(125, 125, 125);
   border-radius: 2px;
 }
 
@@ -268,7 +265,7 @@ iframe:hover {
 }
 
 #siteLink {
-  color: rgb(60, 65, 70);
+  color: rgb(215, 215, 215);
   text-decoration: none;
 }
 
@@ -277,7 +274,7 @@ iframe:hover {
 }
 
 #siteLink:active {
-  color: rgb(60, 65, 70);
+  color: rgb(215, 215, 215);
   text-decoration: none;
 }
 
@@ -289,7 +286,7 @@ footer {
   height: 2vh;
   line-height: 2vh;
   text-align: center;
-  color: rgb(60, 65, 70);
+  color: rgb(215, 215, 215);
 }
 
 ::-webkit-scrollbar {
