@@ -7,3 +7,13 @@ function changeImg(imgs) {
   Fimg.src = imgs.src;
   imgD.innerHTML = imgs.alt;
 }
+
+
+function ham() {
+  var nav = document.getElementById("navb");
+  if (nav.style.display === "none") {
+    nav.style.display = "flex";
+  } else {
+    nav.style.display = "none";
+  }
+}

@@ -20,11 +20,35 @@ footer {
 }
 
 header {
-  top: .5vh;
+  display: block;
+  top: .25vh;
   left: 10%;
   right: 10%;
   height: 5vh;
   display: flex;
+}
+
+.hMenu {
+  display: none;
+  position: absolute;
+  z-index: 2;
+  background-color: rgb(45, 50, 55);
+  color: rgb(215, 215, 215);
+  text-align: center;
+  right: 5%;
+  top: .5%;
+  font-size: 1.5em;
+  border-radius: 2px;
+  border: 1px solid rgb(125, 125, 125);
+  width: 35px;
+  height: 35px;
+  padding: 0;
+  line-height: 34px;
+}
+
+.hMenu:hover {
+  background-color: rgb(40, 45, 50);
+  cursor: pointer;
 }
 
 h1 {
@@ -42,9 +66,37 @@ h2 {
   border-bottom: 1px solid rgb(125, 125, 125);
 }
 
+#navb {
+  position: absolute;
+  display: none;
+  background: rgb(45, 50, 55);
+  flex-direction: column;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  padding: 10px;
+  width: 50%;
+  z-index: 1;
+  border-radius: 2px;
+  border-left: 1px solid rgb(125, 125, 125);
+  border-bottom: 1px solid rgb(125, 125, 125);
+  border-top: 1px solid rgb(125, 125, 125);
+}
+
+#navb a {
+  text-decoration: none;
+  color: rgb(215, 215, 215);
+  padding: 5px;
+  margin: 5px;
+  font-size: 1.5rem;
+  border-radius: 2px;
+  width: 120px;
+  text-align: center;
+  border: 1px solid rgb(125, 125, 125);
+}
+
 nav {
   display: flex;
-  
 }
 
 nav a {
@@ -77,19 +129,19 @@ nav a:hover {
   display: flex;
   flex-wrap: wrap;
   padding: 10px;
+  width: 90%;
 }
 
 .btn {
   background-color: rgb(50, 55, 60);
-  font-size: 1.25rem;
+  font-size: 1em;
   text-decoration: none;
   line-height: 50px;
   color: rgb(215, 215, 215);
   padding: 2px 0 2px 0;
   margin: 5px 5px 0px 0px;
   flex-grow: 1;
-  width: 400px;
-  max-width: 400px;
+  width: 350px;
   text-align: center;
   border-radius: 2px;
   border: 1px solid rgb(125, 125, 125);
@@ -109,7 +161,7 @@ nav a:hover {
 }
 
 main {
-  top: 6vh;
+  top: 5.75vh;
   left: 10%;
   right: 10%;
   bottom: 5vh;
@@ -309,23 +361,44 @@ footer {
   background: #979797;
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-aspect-ratio: 15/9) { 
   header, 
   main,
   footer {
-    left: 1%;
-    right: 1%;
+    left: 0;
+    right: 0;
+  }
+  .hMenu {
+  display: block;
   }
   header {
     height: 5vh;
+    display: none;
   }
   main {
-    bottom: 5vh;
+    top: 0vh;
+    bottom: 5.25vh;
   }
   nav a {
     font-size: .85rem;
   }
   h1 {
     display: none;
+  }
+  .btn {
+  font-size: .8em;
+  }
+}
+
+@media only screen and (min-aspect-ratio: 20/9) { 
+  header {
+    height: 8vh;
+  }
+  main {
+    top: 9vh;
+    bottom: 5.75vh;
+  }
+  nav a{
+    line-height: 7vh;
   }
 }
