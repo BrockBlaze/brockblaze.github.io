@@ -95,6 +95,10 @@ h2 {
   border: 1px solid rgb(125, 125, 125);
 }
 
+#navb a:hover {
+  background-color: rgb(40, 45, 50);
+}
+
 nav {
   display: flex;
 }
