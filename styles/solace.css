@@ -1,7 +1,7 @@
 html {
   margin: 0;
   padding: 0;
-  background-color: rgb(9, 0, 19);
+  background-color: rgb(16, 18, 20);
   font-family: "Monaco", monospace;
 }
 
@@ -21,7 +21,7 @@ footer {
 
 header {
   display: block;
-  top: .25vh;
+  top: 0.25vh;
   left: 10%;
   right: 10%;
   height: 5vh;
@@ -36,7 +36,7 @@ header {
   color: rgb(215, 215, 215);
   text-align: center;
   right: 5%;
-  top: .5%;
+  top: 0.5%;
   font-size: 1.5em;
   border-radius: 2px;
   border: 1px solid rgb(125, 125, 125);
@@ -173,16 +173,15 @@ main {
   overflow-y: auto;
 }
 
-.Content2 p{
+.Content2 p {
   padding: 0 10px;
 }
 
-.Content1{
+.Content1 {
   display: grid;
   grid-template-columns: 2fr 1fr;
   grid-gap: 10px;
 }
-
 
 #MainContainer p {
   padding: 0 10px;
@@ -218,8 +217,6 @@ iframe:hover {
   filter: sepia(50%) saturate(200%) brightness(50%);
   box-shadow: inset 0 0 2px black;
 }
-
-
 
 #FlexContainer {
   display: flex;
@@ -289,7 +286,6 @@ iframe:hover {
   flex-wrap: wrap;
 }
 
-
 #imgwrapper img {
   flex-grow: 1;
   margin: 5px auto;
@@ -305,7 +301,7 @@ iframe:hover {
   cursor: pointer;
 }
 
-#gameWrapper a img:hover{
+#gameWrapper a img:hover {
   filter: sepia(50%) saturate(200%) brightness(50%);
   box-shadow: inset 0 0 2px black;
   cursor: pointer;
@@ -337,9 +333,9 @@ iframe:hover {
 }
 
 footer {
-  bottom: .25vh;
+  bottom: 0.25vh;
   left: 10%;
-  right: 10%; 
+  right: 10%;
   padding: 10px;
   height: 2vh;
   line-height: 2vh;
@@ -365,15 +361,15 @@ footer {
   background: #979797;
 }
 
-@media only screen and (max-aspect-ratio: 15/9) { 
-  header, 
+@media only screen and (max-aspect-ratio: 15/9) {
+  header,
   main,
   footer {
     left: 0;
     right: 0;
   }
   .hMenu {
-  display: block;
+    display: block;
   }
   header {
     height: 5vh;
@@ -384,17 +380,17 @@ footer {
     bottom: 5.25vh;
   }
   nav a {
-    font-size: .85rem;
+    font-size: 0.85rem;
   }
   h1 {
     display: none;
   }
   .btn {
-  font-size: .8em;
+    font-size: 0.8em;
   }
 }
 
-@media only screen and (min-aspect-ratio: 20/9) { 
+@media only screen and (min-aspect-ratio: 20/9) {
   header {
     height: 8vh;
   }
@@ -402,7 +398,7 @@ footer {
     top: 9vh;
     bottom: 5.75vh;
   }
-  nav a{
+  nav a {
     line-height: 7vh;
   }
 }
