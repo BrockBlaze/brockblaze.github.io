@@ -65,26 +65,31 @@ button:hover {
 .horizontal-label {
   padding: 5px 10px;
   font-weight: bold;
-  background-color: #f0f0f0;
+  background-color: #ffffff;
   border: 1px solid #ccc;
   border-radius: 4px;
+  min-width: 200px;
+  min-height: 35px;
   color: #555;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
+
 #vertical-label {
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-  letter-spacing: 2px;
+  display: flex;
+  justify-content: center;
   height: 200px;
   padding: 10px 10px;
-  font-size: 32px;
-  font-weight: bold;
   background-color: #1F2937;
   border: 1px solid #ccc;
   border-radius: 4px;
   color: #fff;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+#vertical-label img {
+  transform: rotate(270deg);
+  width: 250%;
 }
 
 /* Style the QR Code canvas */
@@ -97,7 +102,7 @@ button:hover {
   height: 200px;
   background-color: #ffffff;
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 4px;
 }
 
 
