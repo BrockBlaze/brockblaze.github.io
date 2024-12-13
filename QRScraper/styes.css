@@ -1,0 +1,106 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #f4f4f9;
+  color: #333;
+}
+
+.container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+input {
+  width: 80%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+
+button {
+  padding: 10px 20px;
+  background: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+/* General container layout */
+#result {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* Horizontal labels container */
+.labels-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 37.5px;
+  font-size: 32px;
+  color: #333;
+  height: 220px;
+}
+
+/* Style for each individual horizontal label */
+.horizontal-label {
+  padding: 5px 10px;
+  font-weight: bold;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #555;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+#vertical-label {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  letter-spacing: 2px;
+  height: 200px;
+  padding: 10px 10px;
+  font-size: 32px;
+  font-weight: bold;
+  background-color: #1F2937;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #fff;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the QR Code canvas */
+.canvas-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ccc;
+  width: 200px;
+  height: 200px;
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+
+canvas {
+  margin-top: 10px;
+}

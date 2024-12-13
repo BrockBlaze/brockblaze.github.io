@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>URL Scraper & QR Code Generator</title>
+  <link rel="stylesheet" href="styes.css">
+</head>
+<body>
+  <div class="container">
+    <h1 id="fTitle">Rithm QR Code Labeler</h1>
+    <form id="urlForm">
+      <input type="url" id="urlInput" placeholder="Enter a URL" required>
+      <input type="text" id="labelName" placeholder="Name" required>
+      <input type="text" id="labelIP" placeholder="IP Address" required>
+      <input type="text" id="labelEvironment" placeholder="Environment" required>
+      <br><button type="submit">Process</button>
+    </form>
+    <div id="result">
+    <!-- Horizontal Labels Section -->
+        <div class="labels-container">
+            <div class="horizontal-label" id="labelIPText"></div>
+            <div class="horizontal-label" id="labelNameText"></div>
+            <div class="horizontal-label" id="labelEnvironmentText"></div>
+        </div>
+        <div class="vertical-container">
+            <div id="vertical-label" id="labelIPText">Rithm</div>
+        </div>
+        <!-- QR Code Canvas Section -->
+         <div class="canvas-container">
+            <canvas id="qrcode"></canvas>
+        </div>
+    </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
