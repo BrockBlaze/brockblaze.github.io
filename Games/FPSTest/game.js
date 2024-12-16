@@ -17,8 +17,8 @@ const player = {
 const map = [
     [1, 1, 1, 1, 1, 1, 1],
     [1, 0, 0, 0, 0, 0, 1],
-    [1, 0, 1, 0, 1, 0, 1],
-    [1, 0, 1, 0, 1, 0, 1],
+    [1, 0, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 1],
     [1, 0, 0, 0, 0, 0, 1],
     [1, 1, 1, 1, 1, 1, 1],
 ];
@@ -94,21 +94,60 @@ function castRay(rayAngle) {
 }
 
 // Render the scene
+const wallTexture = document.getElementById('wallTexture'); // Reference the texture image
+
 function draw() {
+    // Clear the screen
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Draw ceiling
+    ctx.fillStyle = 'lightblue';
+    ctx.fillRect(0, 0, canvas.width, canvas.height / 2);
+
+    // Draw floor
+    ctx.fillStyle = 'darkgray';
+    ctx.fillRect(0, canvas.height / 2, canvas.width, canvas.height / 2);
 
     // Draw walls using raycasting
     for (let i = 0; i < numRays; i++) {
         const rayAngle = player.angle - fov / 2 + (i / numRays) * fov;
-        const { distance } = castRay(rayAngle);
+        const ray = castRay(rayAngle);
 
-        const wallHeight = (canvas.height / distance) * 50;
-        const shade = Math.max(0, 255 - distance * 5);
+        // Wall height based on distance
+        const wallHeight = (canvas.height / ray.distance) * 50;
 
-        ctx.fillStyle = `rgb(${shade}, ${shade}, ${shade})`;
-        ctx.fillRect(i * (canvas.width / numRays), canvas.height / 2 - wallHeight / 2, canvas.width / numRays, wallHeight);
+        // Adjust shading for depth
+        const shade = Math.max(0.3, 1 - ray.distance / maxDepth); // Closer walls are brighter
+
+        // Slice the texture vertically
+        const textureX = Math.floor((ray.hitX % 50) * (wallTexture.width / 50)); // Horizontal texture position
+
+        // Draw the wall slice with the texture
+        ctx.globalAlpha = shade; // Apply shading
+        ctx.drawImage(
+            wallTexture, // Source image
+            textureX, 0, // Source position on the texture
+            1, wallTexture.height, // Source width and height
+            i * (canvas.width / numRays), // Destination X position
+            canvas.height / 2 - wallHeight / 2, // Destination Y position
+            canvas.width / numRays, // Destination width (1 slice)
+            wallHeight // Destination height
+        );
+        ctx.globalAlpha = 1; // Reset alpha
+
+        ctx.strokeStyle = `rgba(0, 0, 0, ${1 - shade})`; // Border color based on distance
+        ctx.lineWidth = 1;
+        ctx.strokeRect(
+            i * (canvas.width / numRays),
+            canvas.height / 2 - wallHeight / 2,
+            canvas.width / numRays,
+            wallHeight
+        );
+
     }
 }
+
+
 
 // Game loop
 function gameLoop() {
