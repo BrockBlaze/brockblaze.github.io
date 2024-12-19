@@ -1,0 +1,23 @@
+html {
+    background-color: black;
+    margin: 0;
+    padding: 0;
+}
+canvas {
+  display: block;
+  background-color: black;
+}
+#crosshair {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 4px;
+  height: 4px;
+}
+#crosshair img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

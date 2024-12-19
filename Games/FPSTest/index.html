@@ -3,56 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <title>FPS Game</title>
-  <style>
-    canvas {
-      display: block;
-      background-color: black;
-    }
-    #crosshair1 {
-      position: absolute;
-      background-color: rgba(0, 0, 0, 0.75);
-      top: 52%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 3px;
-      height: 10px;
-    }
-    #crosshair2 {
-      position: absolute;
-      background-color: rgba(0, 0, 0, 0.75);
-      top: 48%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 3px;
-      height: 10px;
-    }
-    #crosshair3 {
-      position: absolute;
-      background-color: rgba(0, 0, 0, 0.75);
-      top: 50%;
-      left: 49%;
-      transform: translate(-50%, -50%);
-      width: 10px;
-      height: 3px;
-    }
-    #crosshair4 {
-      position: absolute;
-      background-color: rgba(0, 0, 0, 0.75);
-      top: 50%;
-      left: 51%;
-      transform: translate(-50%, -50%);
-      width: 10px;
-      height: 3px;
-    }
-  </style>
+  <link rel="stylesheet" href="./styles/style.css">
 </head>
 <body>
   <canvas id="gameCanvas"></canvas>
-  <div id="crosshair1"></div>
-  <div id="crosshair2"></div>
-  <div id="crosshair3"></div>
-  <div id="crosshair4"></div>
-  <img id="wallTexture" src="wallTexture1.jpg" style="display:none;">
+  <div id="crosshair"><img src="./images/crosshair.png"></div>
+  <img id="wallTexture" src="./images/wall.png" style="display:none;">
   <script src="game.js"></script>
+  <!-- <script type="module" src="./js/main.js"></script> -->
 </body>
 </html>
