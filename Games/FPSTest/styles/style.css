@@ -6,6 +6,7 @@ html {
 canvas {
   display: block;
   background-color: black;
+  border-radius: 5px;
 }
 #crosshair {
   position: absolute;

@@ -3,8 +3,8 @@ const ctx = canvas.getContext('2d');
 const wallTexture = document.getElementById('wallTexture');
 
 // Set canvas size
-canvas.width = window.innerWidth - 50;
-canvas.height = window.innerHeight - 50;
+canvas.width = window.innerWidth - 16;
+canvas.height = window.innerHeight - 16;
 
 // Player properties
 const player = {
