@@ -16,6 +16,14 @@ const player = {
     speed: 1.5, // Movement speed
 };
 
+// Gun properties
+const gun = {
+    fireRate: 300, // Milliseconds between shots
+    lastShotTime: 0, // Timestamp of the last shot
+    bulletSpeed: 10, // Speed of bullets
+    bullets: [], // Array to store active bullets
+};
+
 // Map (a simple grid of walls and empty spaces)
 const map = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -35,7 +43,7 @@ const map = [
 ];
 
 // Raycasting settings
-const fov = Math.PI / 3.9; // Field of view (45 degrees)
+const fov = Math.PI / 3.75; // Field of view (45 degrees)
 const numRays = 750; // Number of rays for rendering
 const maxDepth = 750; // Max depth for rays
 
@@ -43,7 +51,7 @@ const maxDepth = 750; // Max depth for rays
 const keys = {};
 let mouseDeltaX = 0;
 // Maximum pitch (up and down limits)
-const maxPitch = Math.PI / 4; // 45 degrees up/down
+const maxPitch = Math.PI / 3; // 45 degrees up/down
 
 canvas.addEventListener('click', () => {
     canvas.requestPointerLock();
@@ -63,6 +71,100 @@ document.addEventListener('mousemove', (e) => {
         // Clamp pitch to the maximum limits
         player.pitch = Math.max(-maxPitch, Math.min(maxPitch, player.pitch));
     }
+});
+
+// Shoot a bullet
+function shoot() {
+    const now = Date.now();
+    if (now - gun.lastShotTime >= gun.fireRate) {
+        gun.lastShotTime = now;
+
+        // Calculate initial bullet position slightly in front of the player
+        const bulletStartX = player.x + Math.cos(player.angle) * 20; // Offset by 20 units
+        const bulletStartY = player.y + Math.sin(player.angle) * 20;
+
+        gun.bullets.push({
+            x: bulletStartX,
+            y: bulletStartY,
+            angle: player.angle,
+            distanceTraveled: 0, // Track how far the bullet has traveled
+        });
+    }
+}
+
+// Update bullets
+function updateBullets() {
+    const tileSize = 50;
+
+    for (let i = gun.bullets.length - 1; i >= 0; i--) {
+        const bullet = gun.bullets[i];
+
+        // Move the bullet forward
+        bullet.x += Math.cos(bullet.angle) * gun.bulletSpeed;
+        bullet.y += Math.sin(bullet.angle) * gun.bulletSpeed;
+        bullet.distanceTraveled += gun.bulletSpeed;
+
+        // Check for collision with walls
+        const mapX = Math.floor(bullet.x / tileSize);
+        const mapY = Math.floor(bullet.y / tileSize);
+        if (map[mapY] && map[mapY][mapX] === 1) {
+            // Bullet hits a wall, remove it
+            gun.bullets.splice(i, 1);
+            continue;
+        }
+
+        // Remove bullets that exceed a certain range
+        const maxRange = 500;
+        if (bullet.distanceTraveled > maxRange) {
+            gun.bullets.splice(i, 1);
+        }
+    }
+}
+
+// Draw bullets
+function drawBullets() {
+    for (const bullet of gun.bullets) {
+        const dx = bullet.x - player.x;
+        const dy = bullet.y - player.y;
+        const distance = Math.sqrt(dx ** 2 + dy ** 2);
+
+        // Perspective scaling
+        const maxVisibleDistance = 500; // Maximum range for perspective effect
+        const scale = Math.max(0.1, 1 - distance / maxVisibleDistance); // Scale based on distance
+
+        // Project to screen space
+        const screenX = canvas.width / 2 + Math.tan(bullet.angle - player.angle) * canvas.width / fov;
+        const screenY = canvas.height / 2 - player.pitch * canvas.height; // Account for pitch
+
+        // Draw bullet as a scaled circle
+        const bulletRadius = 5 * scale; // Scale size dynamically
+        ctx.fillStyle = 'yellow';
+        ctx.beginPath();
+        ctx.arc(screenX, screenY, bulletRadius, 0, Math.PI * 2);
+        ctx.fill();
+    }
+}
+
+// Load the gun image
+const gunImage = new Image();
+gunImage.src = './images/Pistol.png'; // Replace with the path to your image
+
+// Draw the gun on the screen
+function drawGun() {
+    const gunWidth = 300; // Set the gun image width
+    const gunHeight = 300; // Set the gun image height
+    const gunX = canvas.width / 2 - gunWidth / 2 + 150; // Center the gun horizontally
+    const gunY = canvas.height - gunHeight; // Position the gun near the bottom
+
+    // Wait until the image is fully loaded before drawing
+    if (gunImage.complete) {
+        ctx.drawImage(gunImage, gunX, gunY, gunWidth, gunHeight);
+    }
+}
+
+// Update player input for shooting
+canvas.addEventListener('mousedown', () => {
+    shoot();
 });
 
 // Update player position and angle
@@ -228,10 +330,13 @@ function getAmbientOcclusion(x, y) {
 
 function fixedGameLoop() {
     update();
+    updateBullets();
 }
 // Game loop
 function gameLoop() {
     draw();
+    drawBullets();
+    drawGun();
     requestAnimationFrame(gameLoop);
 }
 const intervalId = setInterval(fixedGameLoop, 16.67);
