@@ -17,11 +17,12 @@ footer {
   color: rgb(192, 210, 168);
   border-radius: 2px;
   border: 1px solid rgb(100, 82, 70);
+  box-shadow: 0 0 10px black;
 }
 
 header {
   display: block;
-  top: 0.25vh;
+  top: 1vh;
   left: 10%;
   right: 10%;
   height: 5vh;
@@ -142,14 +143,13 @@ nav a:hover {
 
 .btn {
   background-color: rgb(75, 85, 80);
-  font-size: 1em;
+  font-size: .85em;
   text-decoration: none;
-  line-height: 50px;
+  line-height: 40px;
   color: rgb(200, 200, 150);
-  padding: 2px 0 2px 0;
-  margin: 5px 5px 0px 0px;
-  flex-grow: 1;
-  width: 350px;
+  margin: 10px 10px 0px 0px;
+  flex-grow: 0;
+  width: 325px;
   text-align: center;
   border-radius: 2px;
   border: 1px solid rgb(100, 82, 70);
@@ -157,7 +157,7 @@ nav a:hover {
 }
 
 .btn:hover {
-  font-size: .95em;
+  font-size: .8em;
   background-color: rgb(60, 70, 65);
   box-shadow: inset 0 0 15px black;
   border: 1px solid rgb(42, 42, 42);
@@ -173,10 +173,10 @@ nav a:hover {
 }
 
 main {
-  top: 5.75vh;
+  top: 7.25vh;
   left: 10%;
   right: 10%;
-  bottom: 5vh;
+  bottom: 6.5vh;
   padding: 20px;
   overflow-y: auto;
 }
@@ -341,7 +341,7 @@ iframe:hover {
 }
 
 footer {
-  bottom: 0.25vh;
+  bottom: 1vh;
   left: 10%;
   right: 10%;
   padding: 10px;
@@ -356,17 +356,27 @@ footer {
 }
 
 ::-webkit-scrollbar-track {
-  background: #3a3a3a;
+  background: rgb(60, 70, 65);
   border-radius: 2px;
+  border-left: 1px solid rgb(100, 82, 70);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #e0e0e0;
+  background: rgb(200, 200, 150);
   border-radius: 2px;
+  box-shadow: 0 0 5px black;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #979797;
+  background: rgb(180, 180, 135);
+  cursor: grab;
+  box-shadow: 0 0 0 black;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: rgb(160, 160, 115);
+  cursor: grabbing;
+  box-shadow: 0 0 0 black;
 }
 
 @media only screen and (max-aspect-ratio: 15/9) {
@@ -385,7 +395,7 @@ footer {
   }
   main {
     top: 0vh;
-    bottom: 5.25vh;
+    bottom: 4.5vh;
   }
   nav a {
     font-size: 0.85rem;
@@ -398,16 +408,17 @@ footer {
   }
   footer {
     font-size: 0.8em;
+    bottom: 0;
   }
 }
 
 @media only screen and (min-aspect-ratio: 20/9) {
   header {
-    height: 8vh;
+    height: 7vh;
   }
   main {
     top: 9vh;
-    bottom: 5.75vh;
+    bottom: 6.5vh;
   }
   nav a {
     line-height: 7vh;
