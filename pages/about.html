@@ -8,6 +8,7 @@
   <title>blazztech | about</title>
   <link rel="shortcut icon" href="/images/favicons/faviconbt.ico">
   <link rel="stylesheet" href="../styles/solace.css">
+  <script src="/js/theme.js" defer></script>
 </head>
 
 <body onload="ham()">
@@ -58,8 +59,33 @@
     </div>
   </main>
 
-  <footer>&copy; <span id="year"></span> | <a id="siteLink" href="/">blazztech</a> | Brock Blazzard</footer>
+  <footer>
+    &copy; <span id="year"></span> | <a id="siteLink" href="/">blazztech</a> | Brock Blazzard
+    <button class="theme-toggle" onclick="toggleTheme()">🌓 Theme</button>
+  </footer>
+
+  <script>
+    // Theme toggle functionality
+    function toggleTheme() {
+      const html = document.documentElement;
+      if (html.classList.contains('light-theme')) {
+        html.classList.remove('light-theme');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        html.classList.add('light-theme');
+        localStorage.setItem('theme', 'light');
+      }
+    }
+
+    // Apply saved theme on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'light') {
+        document.documentElement.classList.add('light-theme');
+      }
+    });
+  </script>
+  <script src="/js/main.js"></script>
 </body>
-<script src="/js/main.js"></script>
 
 </html>

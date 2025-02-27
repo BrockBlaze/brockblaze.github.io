@@ -1,8 +1,87 @@
+:root {
+  /* Color Variables - Dark Theme (default) */
+  --bg-primary: rgb(5, 5, 5);
+  --bg-secondary: rgb(55, 65, 70);
+  --text-primary: rgb(192, 210, 168);
+  --text-secondary: rgb(200, 200, 150);
+  --border-color: rgb(100, 82, 70);
+  --btn-bg: rgb(75, 85, 80);
+  --btn-hover: rgb(60, 70, 65);
+  --menu-bg: rgb(110, 65, 25);
+  --menu-hover: rgb(215, 120, 35);
+  
+  /* Spacing Variables */
+  --spacing-sm: 5px;
+  --spacing-md: 10px;
+  --spacing-lg: 20px;
+  
+  /* Border Radius */
+  --border-radius: 2px;
+  
+  /* Shadow */
+  --shadow-default: 0 0 10px black;
+
+  /* Transitions */
+  --transition-speed: 0.3s;
+}
+
+/* Light theme class */
+.light-theme {
+  --bg-primary: rgb(240, 240, 240);
+  --bg-secondary: rgb(220, 225, 230);
+  --text-primary: rgb(50, 55, 45);
+  --text-secondary: rgb(60, 60, 45);
+  --border-color: rgb(180, 170, 160);
+  --btn-bg: rgb(200, 205, 200);
+  --btn-hover: rgb(190, 195, 190);
+  --menu-bg: rgb(215, 120, 35);
+  --menu-hover: rgb(235, 140, 55);
+  --shadow-default: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* System preference still works if no theme class is applied */
+@media (prefers-color-scheme: light) {
+  :root:not(.dark-theme):not(.light-theme) {
+    --bg-primary: rgb(240, 240, 240);
+    --bg-secondary: rgb(220, 225, 230);
+    --text-primary: rgb(50, 55, 45);
+    --text-secondary: rgb(60, 60, 45);
+    --border-color: rgb(180, 170, 160);
+    --btn-bg: rgb(200, 205, 200);
+    --btn-hover: rgb(190, 195, 190);
+    --menu-bg: rgb(215, 120, 35);
+    --menu-hover: rgb(235, 140, 55);
+    --shadow-default: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* Theme toggle button styles */
+.theme-toggle {
+  position: absolute;
+  right: var(--spacing-lg);
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 4px 8px;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  background-color: var(--btn-bg);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all var(--transition-speed) ease-in-out;
+  font-size: 0.9em;
+}
+
+.theme-toggle:hover {
+  background-color: var(--btn-hover);
+  box-shadow: inset 0 0 15px black;
+}
+
 html {
   margin: 0;
   padding: 0;
-  background-color: rgb(5, 5, 5);
+  background-color: var(--bg-primary);
   font-family: "Monaco", monospace;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -13,11 +92,11 @@ header,
 main,
 footer {
   position: absolute;
-  background-color: rgb(55, 65, 70);
-  color: rgb(192, 210, 168);
-  border-radius: 2px;
-  border: 1px solid rgb(100, 82, 70);
-  box-shadow: 0 0 10px black;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-default);
 }
 
 header {
@@ -33,14 +112,14 @@ header {
   display: none;
   position: absolute;
   z-index: 2;
-  background-color: rgb(110, 65, 25);
-  color: rgb(192, 210, 168);
+  background-color: var(--menu-bg);
+  color: var(--text-primary);
   text-align: center;
   right: 5%;
   top: 0.5%;
   font-size: 1.5em;
-  border-radius: 2px;
-  border: 1px solid rgb(100, 82, 70);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
   width: 35px;
   height: 35px;
   padding: 0;
@@ -48,13 +127,13 @@ header {
 }
 
 .hMenu:hover {
-  background-color: rgb(215, 120, 35);
+  background-color: var(--menu-hover);
   cursor: pointer;
 }
 
 h1 {
   text-align: right;
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 5vw, 2rem);
   padding: 0px;
   margin: auto;
   margin-right: 5px;
@@ -64,13 +143,13 @@ h2 {
   font-size: 1.25rem;
   padding: 0 0 5px 0;
   margin: 5px;
-  border-bottom: 1px solid rgb(100, 82, 70);
+  border-bottom: 1px solid var(--border-color);
 }
 
 #navb {
   position: absolute;
   display: none;
-  background: rgb(55, 65, 70);
+  background: var(--bg-secondary);
   flex-direction: column;
   top: 0;
   right: 0;
@@ -78,31 +157,31 @@ h2 {
   padding: 10px;
   width: 50%;
   z-index: 1;
-  border-radius: 2px;
-  border-left: 1px solid rgb(100, 82, 70);
-  border-bottom: 1px solid rgb(100, 82, 70);
-  border-top: 1px solid rgb(100, 82, 70);
+  border-radius: var(--border-radius);
+  border-left: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  border-top: 1px solid var(--border-color);
 }
 
 #navb a {
   text-decoration: none;
-  color: rgb(200, 200, 150);
+  color: var(--text-secondary);
   padding: 5px;
   margin: 5px;
   font-size: 1.5rem;
-  border-radius: 2px;
+  border-radius: var(--border-radius);
   width: 120px;
   text-align: center;
-  border: 1px solid rgb(100, 82, 70);
+  border: 1px solid var(--border-color);
 }
 
 .navBtn {
-  background-color: rgb(75, 85, 80);
-  color: rgb(200, 200, 150);
+  background-color: var(--btn-bg);
+  color: var(--text-secondary);
 }
 
 .navBtn:hover {
-  background-color: rgb(60, 70, 65);
+  background-color: var(--btn-hover);
   box-shadow: inset 0 0 15px black;
 }
 
@@ -118,16 +197,18 @@ nav a {
   padding: 5px;
   min-width: 30%;
   text-align: center;
-  border-radius: 2px;
-  border-right: 1px solid rgb(100, 82, 70);
+  border-radius: var(--border-radius);
+  border-right: 1px solid var(--border-color);
 }
 
 #activeNavBtn {
-  background-color: rgb(50, 55, 60);
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 #activeNavBtn:hover {
-  background-color: rgb(40, 45, 50);
+  background-color: var(--btn-hover);
 }
 
 nav a:hover {
@@ -137,28 +218,31 @@ nav a:hover {
 #container {
   display: flex;
   flex-wrap: wrap;
-  padding: 10px;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
   width: 90%;
 }
 
 .btn {
-  background-color: rgb(75, 85, 80);
+  background-color: var(--btn-bg);
   font-size: .85em;
   text-decoration: none;
   line-height: 40px;
-  color: rgb(200, 200, 150);
+  color: var(--text-secondary);
   margin: 10px 10px 0px 0px;
   flex-grow: 0;
   width: 325px;
   text-align: center;
-  border-radius: 2px;
-  border: 1px solid rgb(100, 82, 70);
-  box-shadow: 0 0 10px black;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-default);
+  content-visibility: auto;
+  contain-intrinsic-size: 0 40px;
 }
 
 .btn:hover {
   font-size: .8em;
-  background-color: rgb(60, 70, 65);
+  background-color: var(--btn-hover);
   box-shadow: inset 0 0 15px black;
   border: 1px solid rgb(42, 42, 42);
 }
@@ -217,8 +301,8 @@ iframe {
   max-width: 300px;
   max-height: 175px;
   min-height: 165px;
-  border-radius: 2px;
-  border: 1px solid rgb(100, 82, 70);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
 }
 
 iframe:hover {
@@ -237,8 +321,8 @@ iframe:hover {
   margin: 5px;
   min-width: 200px;
   max-width: 300px;
-  border-radius: 2px;
-  border: 1px solid rgb(100, 82, 70);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
 }
 
 #dImg:hover {
@@ -269,23 +353,22 @@ iframe:hover {
 }
 
 #gameWrapper a img {
-  padding: 0;
-  margin: 0;
+  aspect-ratio: 16/9;
   width: 275px;
-  height: 175px;
-  border: 1px solid rgb(100, 82, 70);
-  border-radius: 2px;
+  height: auto;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
 }
 
 #largeImgWrapper {
   text-align: center;
-  border-radius: 2px;
-  border-bottom: 1px solid rgb(100, 82, 70);
+  border-radius: var(--border-radius);
+  border-bottom: 1px solid var(--border-color);
 }
 
 #largeImgWrapper img {
   max-width: 50vw;
-  border-radius: 2px;
+  border-radius: var(--border-radius);
 }
 
 #imgwrapper {
@@ -299,8 +382,8 @@ iframe:hover {
   margin: 5px auto;
   min-width: 100px;
   max-width: 200px;
-  border: 1px solid rgb(100, 82, 70);
-  border-radius: 2px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
 }
 
 #imgwrapper img:hover {
@@ -327,7 +410,7 @@ iframe:hover {
 }
 
 #siteLink {
-  color: rgb(192, 210, 168);
+  color: var(--text-primary);
   text-decoration: none;
 }
 
@@ -336,7 +419,7 @@ iframe:hover {
 }
 
 #siteLink:active {
-  color: rgb(192, 210, 168);
+  color: var(--text-primary);
   text-decoration: none;
 }
 
@@ -348,7 +431,7 @@ footer {
   height: 2vh;
   line-height: 2vh;
   text-align: center;
-  color: rgb(192, 210, 168);
+  color: var(--text-primary);
 }
 
 ::-webkit-scrollbar {
@@ -356,14 +439,14 @@ footer {
 }
 
 ::-webkit-scrollbar-track {
-  background: rgb(60, 70, 65);
-  border-radius: 2px;
-  border-left: 1px solid rgb(100, 82, 70);
+  background: var(--btn-bg);
+  border-radius: var(--border-radius);
+  border-left: 1px solid var(--border-color);
 }
 
 ::-webkit-scrollbar-thumb {
   background: rgb(200, 200, 150);
-  border-radius: 2px;
+  border-radius: var(--border-radius);
   box-shadow: 0 0 5px black;
 }
 
@@ -423,4 +506,55 @@ footer {
   nav a {
     line-height: 7vh;
   }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Improved focus states */
+a:focus,
+button:focus,
+.btn:focus,
+.hMenu:focus {
+  outline: 2px solid var(--text-primary);
+  outline-offset: 2px;
+}
+
+/* Modern responsive typography */
+h1 {
+  font-size: clamp(1.5rem, 5vw, 2rem);
+}
+
+/* Improved container layout */
+#container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  width: 90%;
+}
+
+/* Performance optimization for long pages */
+.btn {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 40px;
+}
+
+/* Use modern aspect-ratio */
+#gameWrapper a img {
+  aspect-ratio: 16/9;
+  width: 275px;
+  height: auto;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+}
+
+/* Add transitions to interactive elements */
+a, button, .btn, .hMenu {
+  transition: all var(--transition-speed) ease-in-out;
 }

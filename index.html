@@ -3,11 +3,12 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="This site is a portfolio of my work">
-  <title>blazztech</title>
+  <title>blazztech | home</title>
   <link rel="shortcut icon" href="/images/favicons/faviconbt.ico">
   <link rel="stylesheet" href="./styles/solace.css">
+  <script src="/js/theme.js" defer></script>
 </head>
 
 <body onload="ham()">
@@ -68,8 +69,12 @@
       </div>
     </div>
   </main>
-  <footer>&copy; <span id="year"></span> | <a id="siteLink" href="/">blazztech</a> | Brock Blazzard</footer>
+
+  <footer>
+    &copy; <span id="year"></span> | <a id="siteLink" href="/">blazztech</a> | Brock Blazzard
+    <button class="theme-toggle" onclick="toggleTheme()">🌓 Theme</button>
+  </footer>
+  <script src="/js/main.js"></script>
 </body>
-<script src="/js/main.js"></script>
 
 </html>
