@@ -1,5 +1,5 @@
 # <span style="color:DarkBlue">blazztech</span>
-### <span style="color:red">Brock Blazzard</span>
+### **Brock Blazzard**
 This repository contains the source code for my personal website.
 
 ## Links
