@@ -4,6 +4,8 @@ This repository contains the source code for my personal website.
 
 ## Links
 
+* [Features](FEATURES.md)
+
 * [GitHub Website](https://brockblaze.github.io)
 
 * [Itch Website](https://brockblaze.itch.io)
