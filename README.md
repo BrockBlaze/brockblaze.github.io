@@ -1,7 +1,7 @@
 # blazztech | Brock Blazzard
 This repository contains the source code for my personal website.
 
-## Links
+### Links
 
 [My GitHub Website](https://brockblaze.github.io)
 
