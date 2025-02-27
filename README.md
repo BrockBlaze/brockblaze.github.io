@@ -1,7 +1,8 @@
-# blazztech | Brock Blazzard
+# <span style="color:DarkBlue">blazztech</span>
+### <span style="color:red">Brock Blazzard</span>
 This repository contains the source code for my personal website.
 
-### Links
+## Links
 
 * [GitHub Website](https://brockblaze.github.io)
 
