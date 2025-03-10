@@ -1,10 +1,74 @@
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 const wallTexture = document.getElementById('wallTexture');
+const wallTextureFallback = document.getElementById('wallTextureFallback');
+const crosshairElement = document.getElementById('crosshair');
+const loadingScreen = document.getElementById('loadingScreen');
+const progressBar = document.querySelector('.progress');
+
+// At the top of the file, add a fallback wall color
+const FALLBACK_WALL_COLOR = '#555555';
+const WALL_EDGE_COLOR = 'rgba(0, 0, 0, 0.25)';  // Slightly darker for edges
 
 // Set canvas size
 canvas.width = window.innerWidth - 16;
 canvas.height = window.innerHeight - 16;
+
+// Ensure crosshair is positioned in the center of the screen
+crosshairElement.style.top = `${canvas.height / 2}px`;
+crosshairElement.style.left = `${canvas.width / 2}px`;
+
+// Track resource loading
+const resources = [
+    { element: wallTexture, loaded: false },
+    { element: wallTextureFallback, loaded: false },
+    { element: document.getElementById('gunTexture'), loaded: false }
+];
+
+// Loading status
+let allResourcesLoaded = false;
+let gameStarted = false;
+
+// Update loading progress
+function updateLoadingProgress() {
+    const loadedCount = resources.filter(resource => resource.loaded).length;
+    const progress = (loadedCount / resources.length) * 100;
+    progressBar.style.width = `${progress}%`;
+
+    if (loadedCount === resources.length) {
+        allResourcesLoaded = true;
+        // Hide loading screen with fade effect
+        loadingScreen.style.opacity = '0';
+        setTimeout(() => {
+            loadingScreen.style.display = 'none';
+            // Start the game
+            if (!gameStarted) {
+                gameStarted = true;
+                gameLoop();
+            }
+        }, 500);
+    }
+}
+
+// Add event listeners to track resource loading
+resources.forEach(resource => {
+    if (resource.element.complete) {
+        resource.loaded = true;
+        updateLoadingProgress();
+    } else {
+        resource.element.addEventListener('load', () => {
+            resource.loaded = true;
+            updateLoadingProgress();
+        });
+
+        resource.element.addEventListener('error', () => {
+            console.error(`Failed to load resource: ${resource.element.src}`);
+            // Mark as loaded anyway to prevent hanging
+            resource.loaded = true;
+            updateLoadingProgress();
+        });
+    }
+});
 
 // Player properties
 const player = {
@@ -22,6 +86,11 @@ const gun = {
     lastShotTime: 0, // Timestamp of the last shot
     bulletSpeed: 10, // Speed of bullets
     bullets: [], // Array to store active bullets
+    recoil: 0, // Current recoil amount
+    maxRecoil: 20, // Maximum recoil displacement
+    recoilRecovery: 0.2, // How quickly recoil recovers
+    muzzleFlash: null, // Muzzle flash effect
+    impacts: null, // Impact effects
 };
 
 // Map (a simple grid of walls and empty spaces)
@@ -53,6 +122,14 @@ let mouseDeltaX = 0;
 // Maximum pitch (up and down limits)
 const maxPitch = Math.PI / 3; // 45 degrees up/down
 
+// Textures loaded flag
+let texturesLoaded = false;
+
+// Wait for textures to load
+window.addEventListener('load', () => {
+    texturesLoaded = true;
+});
+
 canvas.addEventListener('click', () => {
     canvas.requestPointerLock();
 });
@@ -73,99 +150,329 @@ document.addEventListener('mousemove', (e) => {
     }
 });
 
-// Shoot a bullet
+// Shoot a bullet with proper trajectory from gun
 function shoot() {
     const now = Date.now();
     if (now - gun.lastShotTime >= gun.fireRate) {
         gun.lastShotTime = now;
 
-        // Calculate initial bullet position slightly in front of the player
-        const bulletStartX = player.x + Math.cos(player.angle) * 20; // Offset by 20 units
-        const bulletStartY = player.y + Math.sin(player.angle) * 20;
+        // Add recoil effect
+        gun.recoil = gun.maxRecoil;
 
+        // Calculate gun barrel position in 3D space
+        const forwardOffsetDistance = 30; // Distance in front of player
+
+        // For the vertical position, we need a negative value that corresponds to the gun barrel height
+        // The gun barrel is positioned at a height slightly below the vertical center of the screen
+        const bulletStartZ = -10; // Adjusted to match the gun barrel height
+
+        // Get the initial bullet position
+        const bulletStartX = player.x + Math.cos(player.angle) * forwardOffsetDistance;
+        const bulletStartY = player.y + Math.sin(player.angle) * forwardOffsetDistance;
+
+        // Create muzzle flash effect
+        createMuzzleFlash();
+
+        // Create the bullet with proper initial position
         gun.bullets.push({
             x: bulletStartX,
             y: bulletStartY,
+            z: bulletStartZ, // Fixed z position that matches gun barrel height
             angle: player.angle,
-            distanceTraveled: 0, // Track how far the bullet has traveled
+            pitch: 0, // Start with horizontal trajectory (no pitch)
+            distanceTraveled: 0,
+            createdTime: now
         });
     }
 }
 
-// Update bullets
+// Add a tracer function to draw bullets
+function drawTracerFromGun(from, to) {
+    // Parameters define the screen coordinates of gun barrel and bullet
+    const gradient = ctx.createLinearGradient(from.x, from.y, to.x, to.y);
+    gradient.addColorStop(0, 'rgba(255, 255, 120, 0.9)'); // Brighter at the gun barrel
+    gradient.addColorStop(0.3, 'rgba(255, 200, 50, 0.6)');
+    gradient.addColorStop(1, 'rgba(255, 150, 0, 0.1)');
+
+    // Draw a wider line for more visibility
+    ctx.strokeStyle = gradient;
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(from.x, from.y);
+    ctx.lineTo(to.x, to.y);
+    ctx.stroke();
+
+    // Add a small glow at the barrel point
+    ctx.fillStyle = 'rgba(255, 255, 150, 0.6)';
+    ctx.beginPath();
+    ctx.arc(from.x, from.y, 4, 0, Math.PI * 2);
+    ctx.fill();
+}
+
+// Add a muzzle flash effect
+function createMuzzleFlash() {
+    // If we don't have muzzle flash property, create it
+    if (!gun.muzzleFlash) {
+        gun.muzzleFlash = {
+            active: false,
+            duration: 0,
+            maxDuration: 100 // milliseconds
+        };
+    }
+
+    // Activate the muzzle flash
+    gun.muzzleFlash.active = true;
+    gun.muzzleFlash.duration = gun.muzzleFlash.maxDuration;
+}
+
+// Modify drawGun to position the muzzle flash correctly at the front barrel
+function drawGun() {
+    // Update recoil recovery
+    if (gun.recoil > 0) {
+        gun.recoil -= gun.recoilRecovery;
+        if (gun.recoil < 0) gun.recoil = 0;
+    }
+
+    const gunWidth = 300; // Set the gun image width
+    const gunHeight = 300; // Set the gun image height
+
+    // Add recoil effect to gun position
+    const recoilOffsetY = gun.recoil;
+
+    const gunX = canvas.width / 2 - gunWidth / 2 + 150; // Center the gun horizontally
+    const gunY = canvas.height - gunHeight + recoilOffsetY; // Position with recoil offset
+
+    // Use the preloaded gun texture
+    const gunTexture = document.getElementById('gunTexture');
+    if (gunTexture && gunTexture.complete) {
+        ctx.drawImage(gunTexture, gunX, gunY, gunWidth, gunHeight);
+
+        // Draw muzzle flash if active
+        if (gun.muzzleFlash && gun.muzzleFlash.active) {
+            // Update muzzle flash duration
+            gun.muzzleFlash.duration -= 16.67; // Approximate time between frames
+            if (gun.muzzleFlash.duration <= 0) {
+                gun.muzzleFlash.active = false;
+            }
+
+            // Draw muzzle flash
+            if (gun.muzzleFlash.active) {
+                // Muzzle flash position relative to gun - CORRECTED to align with front barrel
+                // The pistol barrel is near the front right of the image
+                const flashX = gunX + 250; // Adjusted to the front barrel
+                const flashY = gunY + 110; // Adjusted to the correct height
+
+                // Flash size with some randomness for effect
+                const flashSize = 30 + Math.random() * 10;
+
+                // Create gradient for the flash
+                const gradient = ctx.createRadialGradient(
+                    flashX, flashY, 0,
+                    flashX, flashY, flashSize
+                );
+                gradient.addColorStop(0, 'rgba(255, 255, 200, 0.9)');
+                gradient.addColorStop(0.2, 'rgba(255, 200, 50, 0.8)');
+                gradient.addColorStop(0.4, 'rgba(255, 100, 0, 0.4)');
+                gradient.addColorStop(1, 'rgba(255, 50, 0, 0)');
+
+                ctx.fillStyle = gradient;
+                ctx.beginPath();
+                ctx.arc(flashX, flashY, flashSize, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+    }
+}
+
+// Update the bullet physics
 function updateBullets() {
     const tileSize = 50;
+    const now = Date.now();
 
     for (let i = gun.bullets.length - 1; i >= 0; i--) {
         const bullet = gun.bullets[i];
 
-        // Move the bullet forward
-        bullet.x += Math.cos(bullet.angle) * gun.bulletSpeed;
-        bullet.y += Math.sin(bullet.angle) * gun.bulletSpeed;
-        bullet.distanceTraveled += gun.bulletSpeed;
+        // Calculate time-based speed factor (bullets accelerate over time)
+        const speedFactor = 1 + bullet.distanceTraveled / 500; // Speed up slightly over distance
+        const effectiveSpeed = gun.bulletSpeed * speedFactor;
+
+        // Move the bullet forward in a straight line (ignoring pitch)
+        bullet.x += Math.cos(bullet.angle) * effectiveSpeed;
+        bullet.y += Math.sin(bullet.angle) * effectiveSpeed;
+
+        // Keep z position constant for a horizontal trajectory
+        // This makes bullets appear to come straight from the gun
+
+        bullet.distanceTraveled += effectiveSpeed;
 
         // Check for collision with walls
         const mapX = Math.floor(bullet.x / tileSize);
         const mapY = Math.floor(bullet.y / tileSize);
         if (map[mapY] && map[mapY][mapX] === 1) {
-            // Bullet hits a wall, remove it
+            // Bullet hits a wall, create impact effect
+            createImpactEffect(bullet.x, bullet.y, bullet.z);
+
+            // Remove the bullet
             gun.bullets.splice(i, 1);
             continue;
         }
 
-        // Remove bullets that exceed a certain range
-        const maxRange = 500;
-        if (bullet.distanceTraveled > maxRange) {
+        // Remove bullets that exceed range or have been alive too long
+        const maxRange = 1000;
+        const maxLifetime = 3000; // 3 seconds max bullet lifetime
+        if (bullet.distanceTraveled > maxRange || (now - bullet.createdTime > maxLifetime)) {
             gun.bullets.splice(i, 1);
         }
     }
 }
 
-// Draw bullets
+// Add a bullet impact effect
+function createImpactEffect(x, y, z) {
+    // If we don't have an impacts array, create it
+    if (!gun.impacts) {
+        gun.impacts = [];
+    }
+
+    // Add a new impact
+    gun.impacts.push({
+        x: x,
+        y: y,
+        z: z,
+        size: 10,
+        alpha: 1.0,
+        duration: 300, // milliseconds
+        createdTime: Date.now()
+    });
+}
+
+// Add impact drawing to drawBullets
 function drawBullets() {
+    // Reset drawing settings
+    ctx.globalAlpha = 1.0;
+    ctx.globalCompositeOperation = 'source-over';
+
+    // Gun barrel screen position (CORRECTED to match the updated muzzle flash position)
+    const gunBarrelX = canvas.width / 2 + 100; // Adjusted to match the front barrel
+    const gunBarrelY = canvas.height - 190;   // Adjusted to match the barrel height
+
+    // Draw bullets
     for (const bullet of gun.bullets) {
+        // Vector from player to bullet
         const dx = bullet.x - player.x;
         const dy = bullet.y - player.y;
-        const distance = Math.sqrt(dx ** 2 + dy ** 2);
+        const dz = bullet.z - player.z;
 
-        // Perspective scaling
-        const maxVisibleDistance = 500; // Maximum range for perspective effect
-        const scale = Math.max(0.1, 1 - distance / maxVisibleDistance); // Scale based on distance
+        // Distance to bullet
+        const distance = Math.sqrt(dx * dx + dy * dy);
 
-        // Project to screen space
-        const screenX = canvas.width / 2 + Math.tan(bullet.angle - player.angle) * canvas.width / fov;
-        const screenY = canvas.height / 2 - player.pitch * canvas.height; // Account for pitch
+        // Angle to bullet relative to player view
+        const angleToPlayer = Math.atan2(dy, dx);
+        const relativeAngle = angleToPlayer - player.angle;
 
-        // Draw bullet as a scaled circle
-        const bulletRadius = 5 * scale; // Scale size dynamically
-        ctx.fillStyle = 'yellow';
+        // Adjust for 2π wrapping
+        const normalizedAngle = ((relativeAngle + Math.PI * 3) % (Math.PI * 2)) - Math.PI;
+
+        // If bullet is outside FOV, don't render it
+        if (Math.abs(normalizedAngle) > fov / 2) continue;
+
+        // Projection calculations
+        const screenX = canvas.width / 2 + (normalizedAngle / (fov / 2)) * (canvas.width / 2);
+
+        // Calculate vertical position - adjust for bullet's height and player pitch
+        const verticalAngle = Math.atan2(dz, distance);
+        const screenY = canvas.height / 2 - (verticalAngle - player.pitch) * canvas.height;
+
+        // Determine if bullet is very close to player (just fired)
+        const isNewBullet = bullet.distanceTraveled < 50;
+
+        // If it's a new bullet, draw a tracer effect from gun to bullet position
+        if (isNewBullet) {
+            // Use our tracer function to draw a line from gun to bullet
+            drawTracerFromGun(
+                { x: gunBarrelX, y: gunBarrelY },
+                { x: screenX, y: screenY }
+            );
+        }
+
+        // Size based on distance (smaller at distance, larger up close)
+        const bulletSize = Math.max(2, 12 / (1 + distance * 0.02));
+
+        // Draw bullet with a glowing effect
+        // Central bright part
+        ctx.fillStyle = 'rgba(255, 255, 100, 0.9)';
         ctx.beginPath();
-        ctx.arc(screenX, screenY, bulletRadius, 0, Math.PI * 2);
+        ctx.arc(screenX, screenY, bulletSize, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Outer glow
+        const bulletGradient = ctx.createRadialGradient(
+            screenX, screenY, bulletSize * 0.5,
+            screenX, screenY, bulletSize * 2.5
+        );
+        bulletGradient.addColorStop(0, 'rgba(255, 200, 50, 0.7)');
+        bulletGradient.addColorStop(0.5, 'rgba(255, 150, 0, 0.3)');
+        bulletGradient.addColorStop(1, 'rgba(255, 100, 0, 0)');
+
+        ctx.fillStyle = bulletGradient;
+        ctx.beginPath();
+        ctx.arc(screenX, screenY, bulletSize * 2.5, 0, Math.PI * 2);
         ctx.fill();
     }
-}
 
-// Load the gun image
-const gunImage = new Image();
-gunImage.src = './images/Pistol.png'; // Replace with the path to your image
+    // Draw impact effects
+    if (gun.impacts) {
+        const now = Date.now();
+        for (let i = gun.impacts.length - 1; i >= 0; i--) {
+            const impact = gun.impacts[i];
 
-// Draw the gun on the screen
-function drawGun() {
-    const gunWidth = 300; // Set the gun image width
-    const gunHeight = 300; // Set the gun image height
-    const gunX = canvas.width / 2 - gunWidth / 2 + 150; // Center the gun horizontally
-    const gunY = canvas.height - gunHeight; // Position the gun near the bottom
+            // Calculate elapsed time
+            const elapsed = now - impact.createdTime;
 
-    // Wait until the image is fully loaded before drawing
-    if (gunImage.complete) {
-        ctx.drawImage(gunImage, gunX, gunY, gunWidth, gunHeight);
+            // Remove expired impacts
+            if (elapsed > impact.duration) {
+                gun.impacts.splice(i, 1);
+                continue;
+            }
+
+            // Calculate impact position on screen
+            const dx = impact.x - player.x;
+            const dy = impact.y - player.y;
+            const dz = impact.z - player.z;
+
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            const angleToPlayer = Math.atan2(dy, dx);
+            const relativeAngle = angleToPlayer - player.angle;
+            const normalizedAngle = ((relativeAngle + Math.PI * 3) % (Math.PI * 2)) - Math.PI;
+
+            // Skip if outside FOV
+            if (Math.abs(normalizedAngle) > fov / 2) continue;
+
+            const screenX = canvas.width / 2 + (normalizedAngle / (fov / 2)) * (canvas.width / 2);
+            const verticalAngle = Math.atan2(dz, distance);
+            const screenY = canvas.height / 2 - (verticalAngle - player.pitch) * canvas.height;
+
+            // Calculate fade-out based on elapsed time
+            const progress = elapsed / impact.duration;
+            const alpha = 1.0 - progress;
+            const size = impact.size * (1 + progress * 2); // Grow more as it fades
+
+            // Draw impact
+            const impactGradient = ctx.createRadialGradient(
+                screenX, screenY, 0,
+                screenX, screenY, size
+            );
+            impactGradient.addColorStop(0, `rgba(255, 220, 150, ${alpha * 0.9})`);
+            impactGradient.addColorStop(0.3, `rgba(200, 120, 50, ${alpha * 0.7})`);
+            impactGradient.addColorStop(0.7, `rgba(100, 50, 20, ${alpha * 0.3})`);
+            impactGradient.addColorStop(1, `rgba(50, 20, 0, 0)`);
+
+            ctx.fillStyle = impactGradient;
+            ctx.beginPath();
+            ctx.arc(screenX, screenY, size, 0, Math.PI * 2);
+            ctx.fill();
+        }
     }
 }
-
-// Update player input for shooting
-canvas.addEventListener('mousedown', () => {
-    shoot();
-});
 
 // Update player position and angle
 function update() {
@@ -176,6 +483,12 @@ function update() {
     // Normalize angle
     if (player.angle < 0) player.angle += Math.PI * 2;
     if (player.angle >= Math.PI * 2) player.angle -= Math.PI * 2;
+
+    // Update light source position if it follows the player
+    if (lightSource.followPlayer) {
+        lightSource.x = player.x;
+        lightSource.y = player.y;
+    }
 
     // Movement
     const moveStep = keys['w'] ? player.speed : keys['s'] ? -player.speed : 0;
@@ -205,110 +518,125 @@ function update() {
 const lightSource = {
     x: 300, // Light source position
     y: 300,
-    intensity: 1.0, // Brightness factor
+    intensity: 2.0, // Increased from 1.0 for brighter lighting
+    followPlayer: true, // Make light follow the player
 };
 
-// Cast a single ray
-function castRay(rayAngle) {
-    let x = player.x;
-    let y = player.y;
-
-    const sin = Math.sin(rayAngle);
-    const cos = Math.cos(rayAngle);
-
-    for (let depth = 0; depth < maxDepth; depth++) {
-        x += cos;
-        y += sin;
-
-        const mapX = Math.floor(x / 50);
-        const mapY = Math.floor(y / 50);
-
-        if (map[mapY] && map[mapY][mapX] === 1) {
-            const rawDistance = Math.sqrt((x - player.x) ** 2 + (y - player.y) ** 2);
-
-            // Correct the distance for fish-eye effect
-            const correctedDistance = rawDistance * Math.cos(rayAngle - player.angle);
-
-            // Determine texture offset based on hit side
-            const hitX = x % 50;
-            const hitY = y % 50;
-            const isVerticalHit = Math.abs(cos) < Math.abs(sin);
-            const textureX = isVerticalHit ? hitY : hitX;
-
-            // Directional lighting calculation
-            const dx = lightSource.x - x;
-            const dy = lightSource.y - y;
-            const distanceToLight = Math.sqrt(dx ** 2 + dy ** 2);
-            const lightAngle = Math.atan2(dy, dx);
-            const angleToLight = Math.abs(rayAngle - lightAngle);
-
-            // Light intensity fades with distance and angle
-            const lightEffect = lightSource.intensity / (1 + distanceToLight / 50) * Math.max(0, Math.cos(angleToLight));
-
-            return { distance: correctedDistance, textureX, lightEffect };
-        }
+// Add a function to check if texture is valid
+function isTextureValid() {
+    // Try primary texture first
+    if (wallTexture && wallTexture.complete && wallTexture.naturalWidth > 0) {
+        return { valid: true, texture: wallTexture };
     }
 
-    return { distance: maxDepth, lightEffect: 0 }; // If no wall hit, no light effect
+    // Try fallback texture
+    if (wallTextureFallback && wallTextureFallback.complete && wallTextureFallback.naturalWidth > 0) {
+        return { valid: true, texture: wallTextureFallback };
+    }
+
+    // No valid texture found
+    return { valid: false, texture: null };
 }
 
-// Render the scene
+// Modify the draw function to eliminate the gray vertical lines
 function draw() {
+    if (!allResourcesLoaded) return;
+
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     // Calculate the pitch offset
     const pitchOffset = player.pitch * canvas.height;
 
-    // Draw the ceiling and floor with gradients
-    addCeilingAndFloorGradient(pitchOffset);
+    // Check texture validity 
+    const textureResult = isTextureValid();
+    const textureValid = textureResult.valid;
+    const activeTexture = textureResult.texture;
 
-    const sliceWidth = canvas.width / numRays;
+    // First render pass - draw the ceiling and floor
+    // Draw ceiling
+    const ceilingGradient = ctx.createLinearGradient(0, 0, 0, canvas.height / 2 + pitchOffset);
+    ceilingGradient.addColorStop(0, '#3a3a3a');
+    ceilingGradient.addColorStop(1, '#1a1a1a');
+    ctx.fillStyle = ceilingGradient;
+    ctx.fillRect(0, 0, canvas.width, canvas.height / 2 + pitchOffset);
 
+    // Draw floor
+    const floorGradient = ctx.createLinearGradient(0, canvas.height / 2 + pitchOffset, 0, canvas.height);
+    floorGradient.addColorStop(0, '#5f615a');
+    floorGradient.addColorStop(1, '#3e3f37');
+    ctx.fillStyle = floorGradient;
+    ctx.fillRect(0, canvas.height / 2 + pitchOffset, canvas.width, canvas.height - (canvas.height / 2 + pitchOffset));
+
+    // Second render pass - draw the walls
+    // Reset for wall drawing
+    ctx.globalAlpha = 1.0;
+
+    // Cast rays and draw walls
     for (let i = 0; i < numRays; i++) {
         const screenX = (2 * i) / numRays - 1; // Normalized screen coordinate
         const rayAngle = player.angle + Math.atan(screenX * Math.tan(fov / 2));
         const ray = castRay(rayAngle);
 
+        // Skip rays that don't hit walls
+        if (ray.distance >= maxDepth) continue;
+
         const wallHeight = (canvas.height / ray.distance) * 50;
 
-        const textureX = Math.floor((ray.textureX / 50) * wallTexture.width);
+        // Calculate slice position
+        const sliceX = Math.floor(i * (canvas.width / numRays));
+        const sliceWidth = Math.ceil(canvas.width / numRays) + (i === numRays - 1 ? 1 : 0);
 
-        if (textureX >= 0 && textureX < wallTexture.width) {
-            ctx.drawImage(
-                wallTexture,
-                textureX, 0, 1, wallTexture.height,
-                Math.floor(i * sliceWidth),
-                Math.floor(canvas.height / 2 - wallHeight / 2 + pitchOffset),
-                Math.ceil(sliceWidth),
-                Math.floor(wallHeight)
-            );
+        // Calculate wall top and bottom positions
+        const wallTop = Math.floor(canvas.height / 2 - wallHeight / 2 + pitchOffset);
+        const wallHeightCeil = Math.ceil(wallHeight);
+
+        // Apply the light effect and ambient occlusion
+        const brightness = Math.max(0.6, Math.min(1, ray.lightEffect * ray.aoFactor * 3));
+
+        // Draw wall slice with texture
+        if (textureValid && activeTexture) {
+            // Calculate texture X coordinate
+            const texturePosition = Math.abs(ray.textureX % 50);
+            const textureX = Math.floor((texturePosition / 50) * activeTexture.width);
+
+            if (textureX >= 0 && textureX < activeTexture.width) {
+                // First draw the full texture
+                ctx.drawImage(
+                    activeTexture,
+                    textureX, 0, 1, activeTexture.height,
+                    sliceX, wallTop, sliceWidth, wallHeightCeil
+                );
+
+                // Then apply shading based on distance and lighting
+                if (brightness < 1.0) {
+                    // Apply darkness with a transparent overlay
+                    const shade = 1 - brightness;
+                    ctx.fillStyle = `rgba(0, 0, 0, ${shade * 0.7})`;
+                    ctx.fillRect(sliceX, wallTop, sliceWidth, wallHeightCeil);
+                }
+            }
+        } else {
+            // Use fallback solid color
+            ctx.fillStyle = FALLBACK_WALL_COLOR;
+            ctx.fillRect(sliceX, wallTop, sliceWidth, wallHeightCeil);
         }
     }
 }
 
+// Remove the old ceiling/floor gradient function since it's now handled within draw()
+// function addCeilingAndFloorGradient(pitchOffset) { ... }
+// Instead, add a utility function to get ceiling/floor colors:
 
-// Function to add gradient for ceiling and floor for a smoother look
-function addCeilingAndFloorGradient(pitchOffset) {
-    // Clamp pitch offset to ensure gradients don't draw out of bounds
-    const clampedPitchOffset = Math.max(-canvas.height / 2, Math.min(canvas.height / 2, pitchOffset));
+function getCeilingColor(position) {
+    // position is between 0 (top of screen) and 1 (horizon)
+    const shade = 0.15 + position * 0.1; // darker at top, lighter near horizon
+    return `rgb(${Math.floor(shade * 58)}, ${Math.floor(shade * 58)}, ${Math.floor(shade * 58)})`;
+}
 
-    // Ceiling gradient
-    const ceilingGradient = ctx.createLinearGradient(0, 0 + clampedPitchOffset, 0, canvas.height / 2 + clampedPitchOffset);
-    ceilingGradient.addColorStop(0, '#242424');
-    ceilingGradient.addColorStop(1, 'black');
-    ctx.fillStyle = ceilingGradient;
-
-    // Draw ceiling
-    ctx.fillRect(0, 0, canvas.width, canvas.height / 2 + clampedPitchOffset);
-
-    // Floor gradient
-    const floorGradient = ctx.createLinearGradient(0, canvas.height / 2 + clampedPitchOffset, 0, canvas.height);
-    floorGradient.addColorStop(0, '#4b4d43');
-    floorGradient.addColorStop(1, '#2d2e27');
-    ctx.fillStyle = floorGradient;
-
-    // Draw the floor
-    ctx.fillRect(0, canvas.height / 2 + clampedPitchOffset, canvas.width, canvas.height / 2 - clampedPitchOffset);
+function getFloorColor(position) {
+    // position is between 0 (horizon) and 1 (bottom of screen)
+    const shade = 0.24 + position * 0.08; // lighter at horizon, darker at bottom
+    return `rgb(${Math.floor(shade * 95)}, ${Math.floor(shade * 97)}, ${Math.floor(shade * 90)})`;
 }
 
 function getAmbientOcclusion(x, y) {
@@ -324,20 +652,128 @@ function getAmbientOcclusion(x, y) {
     ].filter(Boolean).length; // Count walls
 
     // Scale ambient occlusion based on adjacent walls
-    return Math.max(0, 1 - adjacentWalls / 8);
+    // Increased minimum light level to 0.7 (from 0.4)
+    return Math.max(0.7, 1 - adjacentWalls / 16);
 }
 
+// Handle window resize
+window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth - 16;
+    canvas.height = window.innerHeight - 16;
 
-function fixedGameLoop() {
+    // Update crosshair position after resize
+    crosshairElement.style.top = `${canvas.height / 2}px`;
+    crosshairElement.style.left = `${canvas.width / 2}px`;
+});
+
+// Game loop with fixed timestep for physics
+function gameLoop() {
+    if (!allResourcesLoaded) return; // Don't run until resources are loaded
+
+    // Update game logic
     update();
     updateBullets();
-}
-// Game loop
-function gameLoop() {
+
+    // Render
     draw();
     drawBullets();
     drawGun();
+
+    // Continue the loop
     requestAnimationFrame(gameLoop);
 }
-const intervalId = setInterval(fixedGameLoop, 16.67);
-gameLoop();
+
+// Check if resources are already loaded (cached)
+if (resources.every(resource => resource.loaded)) {
+    allResourcesLoaded = true;
+    loadingScreen.style.display = 'none';
+    gameStarted = true;
+    gameLoop();
+} else {
+    // Resources still loading, will start via the updateLoadingProgress function
+    updateLoadingProgress();
+}
+
+// Cast a single ray
+function castRay(rayAngle) {
+    let x = player.x;
+    let y = player.y;
+
+    // Normalize angle
+    rayAngle = rayAngle % (Math.PI * 2);
+    if (rayAngle < 0) rayAngle += Math.PI * 2;
+
+    const sin = Math.sin(rayAngle);
+    const cos = Math.cos(rayAngle);
+
+    // Use a consistent step size
+    const stepSize = 1.0;
+
+    for (let depth = 0; depth < maxDepth; depth += stepSize) {
+        // Increment position
+        x += cos * stepSize;
+        y += sin * stepSize;
+
+        // Convert to map coordinates
+        const mapX = Math.floor(x / 50);
+        const mapY = Math.floor(y / 50);
+
+        // Check if we've hit a wall
+        if (map[mapY] && map[mapY][mapX] === 1) {
+            // Calculate exact hit position for texture mapping
+            const tileSize = 50;
+
+            // Determine texture coordinates
+            const hitX = x % tileSize;
+            const hitY = y % tileSize;
+
+            // Determine which side of the wall we hit (vertical or horizontal)
+            const isVerticalHit = Math.abs(hitX) < Math.abs(hitY);
+
+            // Choose texture X based on hit side
+            let textureX;
+            if (isVerticalHit) {
+                textureX = hitY;
+            } else {
+                textureX = hitX;
+            }
+
+            // Calculate distance (correct for fisheye effect)
+            const rayDistance = Math.sqrt((x - player.x) ** 2 + (y - player.y) ** 2);
+            const correctedDistance = rayDistance * Math.cos(rayAngle - player.angle);
+
+            // Lighting calculations
+            const dx = lightSource.x - x;
+            const dy = lightSource.y - y;
+            const distanceToLight = Math.sqrt(dx ** 2 + dy ** 2);
+
+            // Simplified lighting calculation
+            const lightEffect = 0.7 + (lightSource.intensity / (1 + distanceToLight / 200)) * 0.3;
+
+            // Add ambient occlusion
+            const aoFactor = getAmbientOcclusion(mapX, mapY);
+
+            return {
+                distance: correctedDistance,
+                textureX,
+                lightEffect,
+                aoFactor,
+                mapX,
+                mapY
+            };
+        }
+    }
+
+    return {
+        distance: maxDepth,
+        lightEffect: 0.5,
+        aoFactor: 1
+    };
+}
+
+// Add back the mouse event listener for shooting
+canvas.addEventListener('mousedown', (e) => {
+    if (e.button === 0) { // Left mouse button
+        shoot();
+    }
+});

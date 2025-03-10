@@ -7,8 +7,36 @@
 </head>
 <body>
   <canvas id="gameCanvas"></canvas>
-  <div id="crosshair"><img src="./images/crosshair.png"></div>
-  <img id="wallTexture" src="./images/wall.png" style="display:none;">
+  <div id="crosshair"><img src="./images/crosshair.png" alt="+" width="20" height="20"></div>
+  
+  <!-- Preload all textures with explicit dimensions to avoid scaling issues -->
+  <div style="display:none;">
+    <!-- Use both PNG and JPG textures in case one format fails -->
+    <img id="wallTexture" src="./images/wall.png" alt="Wall texture">
+    <img id="wallTextureFallback" src="./images/wallTexture.jpg" alt="Wall texture fallback">
+    <img id="gunTexture" src="./images/Pistol.png" alt="Gun texture">
+  </div>
+  
+  <!-- Game loading UI -->
+  <div id="loadingScreen">
+    <div class="loading-text">Loading Game...</div>
+    <div class="progress-bar">
+      <div class="progress"></div>
+    </div>
+  </div>
+  
+  <script>
+    // Ensure texture loading by trying multiple formats
+    window.addEventListener('load', function () {
+      const wallTexture = document.getElementById('wallTexture');
+      const wallTextureFallback = document.getElementById('wallTextureFallback');
+
+      // If the primary texture fails, use the fallback
+      if (!wallTexture.complete || wallTexture.naturalWidth === 0) {
+        document.getElementById('wallTexture').src = wallTextureFallback.src;
+      }
+    });
+  </script>
   <script src="js/game.js"></script>
   <!-- <script type="module" src="./js/main.js"></script> -->
 </body>
