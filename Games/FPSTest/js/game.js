@@ -150,7 +150,79 @@ document.addEventListener('mousemove', (e) => {
     }
 });
 
-// Shoot a bullet with proper trajectory from gun
+// Update the bullet physics to account for pitch correctly
+function updateBullets() {
+    const tileSize = 50;
+    const now = Date.now();
+
+    for (let i = gun.bullets.length - 1; i >= 0; i--) {
+        const bullet = gun.bullets[i];
+
+        // Calculate time-based speed factor
+        const speedFactor = 1 + bullet.distanceTraveled / 500;
+        const effectiveSpeed = gun.bulletSpeed * speedFactor;
+
+        // Calculate the 3D direction vector components
+        const dirX = Math.cos(bullet.angle) * Math.cos(bullet.pitch);
+        const dirY = Math.sin(bullet.angle) * Math.cos(bullet.pitch);
+        const dirZ = Math.sin(bullet.pitch);
+
+        // Move the bullet in 3D space
+        bullet.x += dirX * effectiveSpeed;
+        bullet.y += dirY * effectiveSpeed;
+        bullet.z += dirZ * effectiveSpeed;
+
+        bullet.distanceTraveled += effectiveSpeed;
+
+        // Wall collision check (using map boundaries for simplicity)
+        const mapX = Math.floor(bullet.x / tileSize);
+        const mapY = Math.floor(bullet.y / tileSize);
+        if (map[mapY] && map[mapY][mapX] === 1) {
+            createImpactEffect(bullet.x, bullet.y, bullet.z);
+            gun.bullets.splice(i, 1);
+            continue;
+        }
+
+        // Bullet lifetime
+        const maxRange = 1000;
+        const maxLifetime = 3000;
+        if (bullet.distanceTraveled > maxRange || (now - bullet.createdTime > maxLifetime)) {
+            gun.bullets.splice(i, 1);
+        }
+    }
+}
+
+// Helper function to create screen coordinates for 3D points
+function worldToScreen(x, y, z) {
+    // Calculate vector from player to point
+    const dx = x - player.x;
+    const dy = y - player.y;
+    const dz = z - player.z;
+
+    // Distance to point
+    const flatDistance = Math.sqrt(dx * dx + dy * dy);
+
+    // Angle calculations
+    const angleToPoint = Math.atan2(dy, dx);
+    const relativeAngle = angleToPoint - player.angle;
+    const normalizedAngle = ((relativeAngle + Math.PI * 3) % (Math.PI * 2)) - Math.PI;
+
+    // Vertical angle calculation
+    const verticalAngle = Math.atan2(dz, flatDistance);
+
+    // Screen coordinates
+    const screenX = canvas.width / 2 + (normalizedAngle / (fov / 2)) * (canvas.width / 2);
+    const screenY = canvas.height / 2 - (verticalAngle - player.pitch) * canvas.height;
+
+    return {
+        x: screenX,
+        y: screenY,
+        visible: Math.abs(normalizedAngle) <= fov / 2,
+        distance: flatDistance
+    };
+}
+
+// Fix shoot function to spawn bullets correctly
 function shoot() {
     const now = Date.now();
     if (now - gun.lastShotTime >= gun.fireRate) {
@@ -159,27 +231,27 @@ function shoot() {
         // Add recoil effect
         gun.recoil = gun.maxRecoil;
 
-        // Calculate gun barrel position in 3D space
-        const forwardOffsetDistance = 30; // Distance in front of player
-
-        // For the vertical position, we need a negative value that corresponds to the gun barrel height
-        // The gun barrel is positioned at a height slightly below the vertical center of the screen
-        const bulletStartZ = -10; // Adjusted to match the gun barrel height
-
-        // Get the initial bullet position
-        const bulletStartX = player.x + Math.cos(player.angle) * forwardOffsetDistance;
-        const bulletStartY = player.y + Math.sin(player.angle) * forwardOffsetDistance;
-
         // Create muzzle flash effect
         createMuzzleFlash();
 
-        // Create the bullet with proper initial position
+        // Forward offset from player position
+        const forwardDistance = 20;
+
+        // Calculate the gun barrel world position - using player's direction
+        const bulletStartX = player.x + Math.cos(player.angle) * forwardDistance;
+        const bulletStartY = player.y + Math.sin(player.angle) * forwardDistance;
+
+        // Calculate Z position based on pitch
+        // This ensures bullets appear to come from the center of the screen
+        const bulletStartZ = player.z; // Start at player eye level
+
+        // Create the bullet
         gun.bullets.push({
             x: bulletStartX,
             y: bulletStartY,
-            z: bulletStartZ, // Fixed z position that matches gun barrel height
+            z: bulletStartZ,
             angle: player.angle,
-            pitch: 0, // Start with horizontal trajectory (no pitch)
+            pitch: player.pitch,
             distanceTraveled: 0,
             createdTime: now
         });
@@ -225,7 +297,7 @@ function createMuzzleFlash() {
     gun.muzzleFlash.duration = gun.muzzleFlash.maxDuration;
 }
 
-// Modify drawGun to position the muzzle flash correctly at the front barrel
+// Modify drawGun to draw muzzle flash behind gun
 function drawGun() {
     // Update recoil recovery
     if (gun.recoil > 0) {
@@ -245,9 +317,7 @@ function drawGun() {
     // Use the preloaded gun texture
     const gunTexture = document.getElementById('gunTexture');
     if (gunTexture && gunTexture.complete) {
-        ctx.drawImage(gunTexture, gunX, gunY, gunWidth, gunHeight);
-
-        // Draw muzzle flash if active
+        // First, draw muzzle flash if active (BEFORE drawing the gun)
         if (gun.muzzleFlash && gun.muzzleFlash.active) {
             // Update muzzle flash duration
             gun.muzzleFlash.duration -= 16.67; // Approximate time between frames
@@ -255,12 +325,11 @@ function drawGun() {
                 gun.muzzleFlash.active = false;
             }
 
-            // Draw muzzle flash
+            // Draw muzzle flash BEHIND the gun
             if (gun.muzzleFlash.active) {
-                // Muzzle flash position relative to gun - CORRECTED to align with front barrel
-                // The pistol barrel is near the front right of the image
-                const flashX = gunX + 250; // Adjusted to the front barrel
-                const flashY = gunY + 110; // Adjusted to the correct height
+                // Muzzle flash position relative to gun - you can adjust these values
+                const flashX = gunX + 60; // Adjust this value to position the flash horizontally
+                const flashY = gunY + 40; // Adjust this value to position the flash vertically
 
                 // Flash size with some randomness for effect
                 const flashSize = 30 + Math.random() * 10;
@@ -281,48 +350,9 @@ function drawGun() {
                 ctx.fill();
             }
         }
-    }
-}
 
-// Update the bullet physics
-function updateBullets() {
-    const tileSize = 50;
-    const now = Date.now();
-
-    for (let i = gun.bullets.length - 1; i >= 0; i--) {
-        const bullet = gun.bullets[i];
-
-        // Calculate time-based speed factor (bullets accelerate over time)
-        const speedFactor = 1 + bullet.distanceTraveled / 500; // Speed up slightly over distance
-        const effectiveSpeed = gun.bulletSpeed * speedFactor;
-
-        // Move the bullet forward in a straight line (ignoring pitch)
-        bullet.x += Math.cos(bullet.angle) * effectiveSpeed;
-        bullet.y += Math.sin(bullet.angle) * effectiveSpeed;
-
-        // Keep z position constant for a horizontal trajectory
-        // This makes bullets appear to come straight from the gun
-
-        bullet.distanceTraveled += effectiveSpeed;
-
-        // Check for collision with walls
-        const mapX = Math.floor(bullet.x / tileSize);
-        const mapY = Math.floor(bullet.y / tileSize);
-        if (map[mapY] && map[mapY][mapX] === 1) {
-            // Bullet hits a wall, create impact effect
-            createImpactEffect(bullet.x, bullet.y, bullet.z);
-
-            // Remove the bullet
-            gun.bullets.splice(i, 1);
-            continue;
-        }
-
-        // Remove bullets that exceed range or have been alive too long
-        const maxRange = 1000;
-        const maxLifetime = 3000; // 3 seconds max bullet lifetime
-        if (bullet.distanceTraveled > maxRange || (now - bullet.createdTime > maxLifetime)) {
-            gun.bullets.splice(i, 1);
-        }
+        // Then draw the gun on top of the muzzle flash
+        ctx.drawImage(gunTexture, gunX, gunY, gunWidth, gunHeight);
     }
 }
 
@@ -345,42 +375,24 @@ function createImpactEffect(x, y, z) {
     });
 }
 
-// Add impact drawing to drawBullets
+// Fix bullet trajectory when looking up or down using the worldToScreen helper
 function drawBullets() {
     // Reset drawing settings
     ctx.globalAlpha = 1.0;
     ctx.globalCompositeOperation = 'source-over';
 
-    // Gun barrel screen position (CORRECTED to match the updated muzzle flash position)
-    const gunBarrelX = canvas.width / 2 + 100; // Adjusted to match the front barrel
-    const gunBarrelY = canvas.height - 190;   // Adjusted to match the barrel height
+    // Gun barrel screen position - CONSTANT in screen space regardless of view direction
+    // These values represent where the gun barrel appears on screen
+    const gunBarrelX = canvas.width / 2 + 60; // Aligned with the flash position
+    const gunBarrelY = canvas.height - 250;   // Constant position on screen
 
     // Draw bullets
     for (const bullet of gun.bullets) {
-        // Vector from player to bullet
-        const dx = bullet.x - player.x;
-        const dy = bullet.y - player.y;
-        const dz = bullet.z - player.z;
+        // Convert bullet world position to screen position using our helper
+        const bulletScreen = worldToScreen(bullet.x, bullet.y, bullet.z);
 
-        // Distance to bullet
-        const distance = Math.sqrt(dx * dx + dy * dy);
-
-        // Angle to bullet relative to player view
-        const angleToPlayer = Math.atan2(dy, dx);
-        const relativeAngle = angleToPlayer - player.angle;
-
-        // Adjust for 2π wrapping
-        const normalizedAngle = ((relativeAngle + Math.PI * 3) % (Math.PI * 2)) - Math.PI;
-
-        // If bullet is outside FOV, don't render it
-        if (Math.abs(normalizedAngle) > fov / 2) continue;
-
-        // Projection calculations
-        const screenX = canvas.width / 2 + (normalizedAngle / (fov / 2)) * (canvas.width / 2);
-
-        // Calculate vertical position - adjust for bullet's height and player pitch
-        const verticalAngle = Math.atan2(dz, distance);
-        const screenY = canvas.height / 2 - (verticalAngle - player.pitch) * canvas.height;
+        // If bullet is not visible, skip rendering
+        if (!bulletScreen.visible) continue;
 
         // Determine if bullet is very close to player (just fired)
         const isNewBullet = bullet.distanceTraveled < 50;
@@ -389,25 +401,24 @@ function drawBullets() {
         if (isNewBullet) {
             // Use our tracer function to draw a line from gun to bullet
             drawTracerFromGun(
-                { x: gunBarrelX, y: gunBarrelY },
-                { x: screenX, y: screenY }
+                { x: gunBarrelX, y: gunBarrelY }, 
+                { x: bulletScreen.x, y: bulletScreen.y }
             );
         }
 
         // Size based on distance (smaller at distance, larger up close)
-        const bulletSize = Math.max(2, 12 / (1 + distance * 0.02));
+        const bulletSize = Math.max(2, 12 / (1 + bulletScreen.distance * 0.02));
 
-        // Draw bullet with a glowing effect
-        // Central bright part
+        // Draw bullet with a glowing effect - central bright part
         ctx.fillStyle = 'rgba(255, 255, 100, 0.9)';
         ctx.beginPath();
-        ctx.arc(screenX, screenY, bulletSize, 0, Math.PI * 2);
+        ctx.arc(bulletScreen.x, bulletScreen.y, bulletSize, 0, Math.PI * 2);
         ctx.fill();
 
         // Outer glow
         const bulletGradient = ctx.createRadialGradient(
-            screenX, screenY, bulletSize * 0.5,
-            screenX, screenY, bulletSize * 2.5
+            bulletScreen.x, bulletScreen.y, bulletSize * 0.5,
+            bulletScreen.x, bulletScreen.y, bulletSize * 2.5
         );
         bulletGradient.addColorStop(0, 'rgba(255, 200, 50, 0.7)');
         bulletGradient.addColorStop(0.5, 'rgba(255, 150, 0, 0.3)');
@@ -415,11 +426,11 @@ function drawBullets() {
 
         ctx.fillStyle = bulletGradient;
         ctx.beginPath();
-        ctx.arc(screenX, screenY, bulletSize * 2.5, 0, Math.PI * 2);
+        ctx.arc(bulletScreen.x, bulletScreen.y, bulletSize * 2.5, 0, Math.PI * 2);
         ctx.fill();
     }
 
-    // Draw impact effects
+    // Draw impact effects using worldToScreen
     if (gun.impacts) {
         const now = Date.now();
         for (let i = gun.impacts.length - 1; i >= 0; i--) {
@@ -434,22 +445,11 @@ function drawBullets() {
                 continue;
             }
 
-            // Calculate impact position on screen
-            const dx = impact.x - player.x;
-            const dy = impact.y - player.y;
-            const dz = impact.z - player.z;
+            // Convert impact world position to screen position
+            const impactScreen = worldToScreen(impact.x, impact.y, impact.z);
 
-            const distance = Math.sqrt(dx * dx + dy * dy);
-            const angleToPlayer = Math.atan2(dy, dx);
-            const relativeAngle = angleToPlayer - player.angle;
-            const normalizedAngle = ((relativeAngle + Math.PI * 3) % (Math.PI * 2)) - Math.PI;
-
-            // Skip if outside FOV
-            if (Math.abs(normalizedAngle) > fov / 2) continue;
-
-            const screenX = canvas.width / 2 + (normalizedAngle / (fov / 2)) * (canvas.width / 2);
-            const verticalAngle = Math.atan2(dz, distance);
-            const screenY = canvas.height / 2 - (verticalAngle - player.pitch) * canvas.height;
+            // Skip if outside view
+            if (!impactScreen.visible) continue;
 
             // Calculate fade-out based on elapsed time
             const progress = elapsed / impact.duration;
@@ -458,8 +458,8 @@ function drawBullets() {
 
             // Draw impact
             const impactGradient = ctx.createRadialGradient(
-                screenX, screenY, 0,
-                screenX, screenY, size
+                impactScreen.x, impactScreen.y, 0,
+                impactScreen.x, impactScreen.y, size
             );
             impactGradient.addColorStop(0, `rgba(255, 220, 150, ${alpha * 0.9})`);
             impactGradient.addColorStop(0.3, `rgba(200, 120, 50, ${alpha * 0.7})`);
@@ -468,7 +468,7 @@ function drawBullets() {
 
             ctx.fillStyle = impactGradient;
             ctx.beginPath();
-            ctx.arc(screenX, screenY, size, 0, Math.PI * 2);
+            ctx.arc(impactScreen.x, impactScreen.y, size, 0, Math.PI * 2);
             ctx.fill();
         }
     }
