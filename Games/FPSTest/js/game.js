@@ -44,6 +44,7 @@ function updateLoadingProgress() {
             // Start the game
             if (!gameStarted) {
                 gameStarted = true;
+                spawnEnemies(); // Spawn enemies when game starts
                 gameLoop();
             }
         }, 500);
@@ -111,6 +112,78 @@ const map = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1]
 ];
 
+// Enemy data structure
+const ENEMY_TYPES = {
+    SOLDIER: {
+        maxHealth: 100,
+        speed: 0.5,
+        damage: 10,
+        size: 20,
+        texture: null, // Will be loaded later
+        color: 'red'
+    }
+};
+
+// Create enemies array
+let enemies = [];
+
+// Function to spawn enemies
+function spawnEnemies() {
+    // Spawn 5 enemies in random valid positions
+    for (let i = 0; i < 5; i++) {
+        spawnEnemy();
+    }
+}
+
+// Function to spawn a single enemy
+function spawnEnemy(type = 'SOLDIER') {
+    // Find a valid position (not in a wall and not too close to player)
+    let x, y, isValid;
+    const tileSize = 50;
+    const minDistanceToPlayer = 200; // Minimum distance from player
+
+    do {
+        // Choose a random map position
+        const mapWidth = map[0].length;
+        const mapHeight = map.length;
+
+        const mapX = Math.floor(Math.random() * mapWidth);
+        const mapY = Math.floor(Math.random() * mapHeight);
+
+        // Convert to world coordinates (center of tile)
+        x = mapX * tileSize + tileSize / 2;
+        y = mapY * tileSize + tileSize / 2;
+
+        // Check if position is valid (not in a wall)
+        isValid = map[mapY] && map[mapY][mapX] === 0;
+
+        // Check distance to player
+        const distToPlayer = Math.sqrt(
+            Math.pow(x - player.x, 2) +
+            Math.pow(y - player.y, 2)
+        );
+
+        isValid = isValid && distToPlayer > minDistanceToPlayer;
+    } while (!isValid);
+
+    // Create enemy object
+    const enemy = {
+        type: type,
+        x: x,
+        y: y,
+        z: 0, // Same height as player
+        health: ENEMY_TYPES[type].maxHealth,
+        angle: Math.random() * Math.PI * 2, // Random initial direction
+        state: 'idle', // idle, chasing, attacking, hurt, dead
+        lastUpdate: Date.now(),
+        hitTime: 0,
+        size: ENEMY_TYPES[type].size
+    };
+
+    enemies.push(enemy);
+    return enemy;
+}
+
 // Raycasting settings
 const fov = Math.PI / 3.75; // Field of view (45 degrees)
 const numRays = 750; // Number of rays for rendering
@@ -150,7 +223,7 @@ document.addEventListener('mousemove', (e) => {
     }
 });
 
-// Update the bullet physics to account for pitch correctly
+// Update the bullet physics to include enemy collision
 function updateBullets() {
     const tileSize = 50;
     const now = Date.now();
@@ -173,6 +246,41 @@ function updateBullets() {
         bullet.z += dirZ * effectiveSpeed;
 
         bullet.distanceTraveled += effectiveSpeed;
+
+        // Check for enemy collisions first
+        let hitEnemy = false;
+        for (let j = 0; j < enemies.length; j++) {
+            const enemy = enemies[j];
+
+            // Skip dead enemies
+            if (enemy.state === 'dead') continue;
+
+            // Calculate distance from bullet to enemy
+            const dx = bullet.x - enemy.x;
+            const dy = bullet.y - enemy.y;
+            const dz = bullet.z - enemy.z;
+
+            // Check for collision (simple distance check)
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < enemy.size) {
+                // Hit enemy!
+                hitEnemy = true;
+
+                // Damage enemy
+                damageEnemy(enemy, 25); // 25 damage per bullet
+
+                // Create impact effect at bullet position
+                createImpactEffect(bullet.x, bullet.y, bullet.z);
+
+                // Remove bullet
+                gun.bullets.splice(i, 1);
+                break;
+            }
+        }
+
+        // Skip wall check if we already hit an enemy
+        if (hitEnemy) continue;
 
         // Wall collision check (using map boundaries for simplicity)
         const mapX = Math.floor(bullet.x / tileSize);
@@ -513,6 +621,9 @@ function update() {
     if (map[mapY2] && map[mapY2][mapX2] === 0) {
         player.y = nextY; // Update Y position only if there's no collision
     }
+
+    // Update enemies
+    updateEnemies();
 }
 
 const lightSource = {
@@ -676,6 +787,7 @@ function gameLoop() {
 
     // Render
     draw();
+    drawEnemies(); // Draw enemies before bullets and gun for correct z-ordering
     drawBullets();
     drawGun();
 
@@ -683,11 +795,13 @@ function gameLoop() {
     requestAnimationFrame(gameLoop);
 }
 
+// Spawn enemies when the game starts
 // Check if resources are already loaded (cached)
 if (resources.every(resource => resource.loaded)) {
     allResourcesLoaded = true;
     loadingScreen.style.display = 'none';
     gameStarted = true;
+    spawnEnemies(); // Spawn enemies when game starts
     gameLoop();
 } else {
     // Resources still loading, will start via the updateLoadingProgress function
@@ -777,3 +891,246 @@ canvas.addEventListener('mousedown', (e) => {
         shoot();
     }
 });
+
+// Function to damage an enemy
+function damageEnemy(enemy, damage) {
+    enemy.health -= damage;
+    enemy.state = 'hurt';
+    enemy.hitTime = Date.now();
+
+    // Check if enemy is dead
+    if (enemy.health <= 0) {
+        enemy.health = 0;
+        enemy.state = 'dead';
+    }
+}
+
+// Function to update enemy behavior
+function updateEnemies() {
+    const now = Date.now();
+    const tileSize = 50;
+
+    for (let i = 0; i < enemies.length; i++) {
+        const enemy = enemies[i];
+
+        // Skip dead enemies
+        if (enemy.state === 'dead') continue;
+
+        // Calculate time since last update
+        const elapsed = now - enemy.lastUpdate;
+        enemy.lastUpdate = now;
+
+        // Reset state if no longer hurt
+        if (enemy.state === 'hurt' && now - enemy.hitTime > 200) {
+            enemy.state = 'idle';
+        }
+
+        // Determine if enemy can see player (simple line of sight check)
+        const dx = player.x - enemy.x;
+        const dy = player.y - enemy.y;
+        const distToPlayer = Math.sqrt(dx * dx + dy * dy);
+
+        // Direction to player
+        const angleToPlayer = Math.atan2(dy, dx);
+
+        // Check if player is within detection range
+        const detectionRange = 500; // How far enemies can see
+
+        if (distToPlayer < detectionRange && !isWallBetween(enemy.x, enemy.y, player.x, player.y)) {
+            // Player is visible, chase them!
+            enemy.state = 'chasing';
+            enemy.angle = angleToPlayer;
+
+            // Move toward player
+            const speed = ENEMY_TYPES[enemy.type].speed * (elapsed / 16.67); // Adjust for frame time
+
+            // Calculate next position
+            const nextX = enemy.x + Math.cos(enemy.angle) * speed;
+            const nextY = enemy.y + Math.sin(enemy.angle) * speed;
+
+            // Check for wall collisions
+            const nextMapX = Math.floor(nextX / tileSize);
+            const nextMapY = Math.floor(nextY / tileSize);
+
+            // Only move if not going to hit a wall
+            if (map[nextMapY] && map[nextMapY][nextMapX] === 0) {
+                enemy.x = nextX;
+                enemy.y = nextY;
+            }
+
+            // Check if close enough to attack
+            const attackRange = 80;
+            if (distToPlayer < attackRange) {
+                enemy.state = 'attacking';
+                // Attack logic would go here
+            }
+        } else {
+            // Player not visible, go back to idle
+            if (enemy.state === 'chasing' || enemy.state === 'attacking') {
+                enemy.state = 'idle';
+            }
+
+            // Idle behavior - maybe patrol or stand still
+            // For now, just stand still
+        }
+    }
+}
+
+// Function to check if there's a wall between two points
+function isWallBetween(x1, y1, x2, y2) {
+    // Simple line-tracing algorithm to check for walls
+    const dx = x2 - x1;
+    const dy = y2 - y1;
+    const distance = Math.sqrt(dx * dx + dy * dy);
+
+    // Direction
+    const dirX = dx / distance;
+    const dirY = dy / distance;
+
+    // Step size for checking
+    const tileSize = 50;
+    const stepSize = tileSize / 2;
+
+    // Check along the line
+    let currentX = x1;
+    let currentY = y1;
+
+    for (let i = 0; i < distance; i += stepSize) {
+        currentX += dirX * stepSize;
+        currentY += dirY * stepSize;
+
+        // Check if point is in a wall
+        const mapX = Math.floor(currentX / tileSize);
+        const mapY = Math.floor(currentY / tileSize);
+
+        if (map[mapY] && map[mapY][mapX] === 1) {
+            return true; // Wall found!
+        }
+    }
+
+    return false; // No wall found
+}
+
+// Draw enemies in the 3D world
+function drawEnemies() {
+    // Reset drawing settings
+    ctx.globalAlpha = 1.0;
+
+    // Sort enemies by distance (render far to near)
+    const sortedEnemies = [...enemies].sort((a, b) => {
+        const distA = Math.sqrt(Math.pow(a.x - player.x, 2) + Math.pow(a.y - player.y, 2));
+        const distB = Math.sqrt(Math.pow(b.x - player.x, 2) + Math.pow(b.y - player.y, 2));
+        return distB - distA; // Far to near
+    });
+
+    // Draw each enemy
+    for (const enemy of sortedEnemies) {
+        // Skip dead enemies for now
+        // Later we could add death animations
+        if (enemy.state === 'dead') continue;
+
+        // Calculate distance and angle to enemy
+        const dx = enemy.x - player.x;
+        const dy = enemy.y - player.y;
+        const distToEnemy = Math.sqrt(dx * dx + dy * dy);
+
+        // Check if enemy is behind a wall using raycasting
+        if (isOccluded(player.x, player.y, enemy.x, enemy.y)) {
+            continue; // Skip rendering this enemy as it's occluded by a wall
+        }
+
+        // Convert to screen space
+        const screenPos = worldToScreen(enemy.x, enemy.y, enemy.z);
+
+        // If not visible in view frustum, skip
+        if (!screenPos.visible) continue;
+
+        // Calculate size based on distance
+        const scaleFactor = 900 / screenPos.distance; // Adjust this value to change enemy size
+        const width = enemy.size * scaleFactor;
+        const height = enemy.size * 2 * scaleFactor; // Enemies are twice as tall as wide
+
+        // Determine enemy color based on state
+        let color = ENEMY_TYPES[enemy.type].color;
+        if (enemy.state === 'hurt') {
+            // Flash white when hit
+            color = 'white';
+        } else if (enemy.state === 'chasing') {
+            // Slightly different color when chasing
+            color = '#ff3030';
+        } else if (enemy.state === 'attacking') {
+            // Different color when attacking
+            color = '#ff0000';
+        }
+
+        // Draw enemy as a rectangle
+        ctx.fillStyle = color;
+        ctx.fillRect(
+            screenPos.x - width / 2,
+            screenPos.y - height / 2,
+            width,
+            height
+        );
+
+        // Draw health bar above enemy
+        const healthPct = enemy.health / ENEMY_TYPES[enemy.type].maxHealth;
+        const healthBarWidth = width;
+        const healthBarHeight = 5 * scaleFactor;
+
+        // Background (red)
+        ctx.fillStyle = 'red';
+        ctx.fillRect(
+            screenPos.x - healthBarWidth / 2,
+            screenPos.y - height / 2 - healthBarHeight * 2,
+            healthBarWidth,
+            healthBarHeight
+        );
+
+        // Foreground (green)
+        ctx.fillStyle = 'green';
+        ctx.fillRect(
+            screenPos.x - healthBarWidth / 2,
+            screenPos.y - height / 2 - healthBarHeight * 2,
+            healthBarWidth * healthPct,
+            healthBarHeight
+        );
+    }
+}
+
+// New function to check if an enemy is occluded by a wall
+function isOccluded(x1, y1, x2, y2) {
+    // Simple line-tracing algorithm to check for walls between player and enemy
+    const dx = x2 - x1;
+    const dy = y2 - y1;
+    const distance = Math.sqrt(dx * dx + dy * dy);
+
+    // Direction
+    const dirX = dx / distance;
+    const dirY = dy / distance;
+
+    // Step size for checking - smaller step size for better precision
+    const tileSize = 50;
+    const stepSize = tileSize / 4;
+
+    // Check along the line, stopping just short of the enemy
+    let currentX = x1;
+    let currentY = y1;
+
+    // Check up to 95% of the distance to prevent self-occlusion issues
+    const checkDistance = distance * 0.95;
+
+    for (let i = 0; i < checkDistance; i += stepSize) {
+        currentX += dirX * stepSize;
+        currentY += dirY * stepSize;
+
+        // Check if point is in a wall
+        const mapX = Math.floor(currentX / tileSize);
+        const mapY = Math.floor(currentY / tileSize);
+
+        if (map[mapY] && map[mapY][mapX] === 1) {
+            return true; // Wall found between player and enemy
+        }
+    }
+
+    return false; // No wall found between player and enemy
+}
