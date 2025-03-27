@@ -74,6 +74,14 @@ header {
   top: 12px;
 }
 
+#heroImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-default);
+}
+
 nav {
   z-index: 1;
   background-color: var(--primary);
@@ -368,9 +376,8 @@ iframe:focus,
     height: 125px;
   }
   #smallImgContainer a {
-  font-size: .75em;
-
-}
+    font-size: 0.75em;
+  }
 }
 
 /* Add transitions to interactive elements */
