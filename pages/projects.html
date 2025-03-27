@@ -1,72 +1,122 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="This site is a portfolio of my work" />
+    <title>blazztech | projects</title>
+    <link rel="icon" href="../images/favicons/thunderbolt1.png" />
+    <link rel="stylesheet" href="../styles/style.css" />
+  </head>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="This site is a portfolio of my work">
-  <title>blazztech | projects</title>
-  <link rel="shortcut icon" href="/images/favicons/faviconbt.ico">
-  <link rel="stylesheet" href="../styles/solace.css">
-  <script src="/js/theme.js" defer></script>
-</head>
+  <body>
+    <header>
+      <div id="hamButton" onclick="toggleHam()">&#9776;</div>
+      <div id="title">blazztech | Projects</div>
+    </header>
 
-<body onload="ham()">
-  <header>
-    <nav id="nav">
-      <a class="navBtn" href="/index.html"> home </a>
-      <a class="navBtn" id="activeNavBtn" href="/pages/projects.html"> projects </a>
-      <a class="navBtn" href="/pages/games.html"> games </a>
-      <a class="navBtn" href="/pages/gallery.html"> gallery </a>
-      <a class="navBtn" href="/pages/about.html"> about </a>
+    <nav id="hamMenu">
+      <ul>
+        <li><a id="button" href="/">Home</a></li>
+        <li><a id="button" href="../pages/projects.html">Projects</a></li>
+        <li><a id="button" href="../pages/games.html">Games</a></li>
+        <li><a id="button" href="../pages/gallery.html">Gallery</a></li>
+        <li><a id="button" href="../pages/about.html">About</a></li>
+      </ul>
     </nav>
-    <h1>blazztech</h1>
-  </header>
-  <div class="hMenu" onclick="ham()">≡</div>
-  <div id="navb">
-      <a class="navBtn" href="/index.html"> home </a>
-      <a class="navBtn" href="/pages/projects.html"> projects </a>
-      <a class="navBtn" href="/pages/games.html"> games </a>
-      <a class="navBtn" href="/pages/gallery.html"> gallery </a>
-      <a class="navBtn" href="/pages/about.html"> about </a>
-  </div>
-  <main>
-    <h2>School Projects</h2>
-    <div id="container">
-      <a class="btn" href="/School Projects/CIT230/index.html">CIT 230 - BYUI (Weather Site)</a>
-      <a class="btn" href="/School Projects/CIT360/index.html">WDD 360 - BYUI (Class Journal)</a>
-      <a class="btn" href="/School Projects/CIT380/index.html">WDD 380 - BYUI (Final Project)</a>
-    </div>
-    <h2>Professional Projects</h2>
-    <div id="container">
-      <a class="btn" href="https://github.com/BrockBlaze/zabbixAgent">Custom Zabbix Agent Installer</a>
-      <a class="btn" href="/Projects/QRScraper/index.html">Rithm Labeler</a>
-      <a class="btn" href="https://brockblaze.itch.io/outlaws-remake">Outlaws Remake</a>
-      <a class="btn" href="https://brockblaze.itch.io/halo-a-spartan-rises">Halo: A Spartan Rises</a>
-    </div>
-    <h2>Personal Projects</h2>
-    <div id="container">
-      <a class="btn" href="/Projects/Time/TimeAtWork.html">WorkTime</a>
-      <a class="btn" href="/Games/Atrium/atrium.html">Atrium</a>
-      <a class="btn" href="/Games/Guess/Guess.html">Guess</a>
-      <a class="btn" href="/Games/FPSTest/">Classic FPS</a>
-      <a class="btn" href="/Projects/dvdlogo/dvd.html">DVD Screen Saver</a>
-      <a class="btn" href="/Projects/Calculator/index.html">Calculator</a>
-      <a class="btn" href="/Projects/Piano/index.html">Piano Player</a>
-    </div>
-    <h2>Unity Projects</h2>
-    <div id="container">
-      <a class="btn" href="https://drive.google.com/file/d/1q0hqjcSo4KL7VFNpU99qaaOYS3b0jCZB/view?usp=drive_link">Outlaws Remake Unity Source</a>
-      <a class="btn" href="https://drive.google.com/file/d/1tWqbBFphukIDPHqRPIQp1EtFs_Na29wN/view?usp=drive_link">Halo: A Spartan Rises Unity Source</a>
-      <a class="btn" href="https://drive.google.com/file/d/110ulgaFF7wskpezYpcqpjQkQLz_8t3Lm/view?usp=drive_link">Train Man Unity Source</a>
-    </div>
-  </main>
+    <main>
+      <div id="container">
+        <div
+          class="collapseButton"
+          id="collapseButtonActive"
+          onclick="setCollapseButtonActive(this)"
+        >
+          School
+        </div>
+        <div
+          class="collapseButton"
+          id="a"
+          onclick="setCollapseButtonActive(this)"
+        >
+          Professional
+        </div>
+        <div
+          class="collapseButton"
+          id="a"
+          onclick="setCollapseButtonActive(this)"
+        >
+          Personal
+        </div>
+        <div
+          class="collapseButton"
+          id="a"
+          onclick="setCollapseButtonActive(this)"
+        >
+          Unity
+        </div>
+        <div class="collapseButtonLast"></div>
+      </div>
 
-  <footer>
-    &copy; <span id="year"></span> | <a id="siteLink" href="/">blazztech</a> | Brock Blazzard
-    <button class="theme-toggle" onclick="toggleTheme()">🌓 Theme</button>
-  </footer>
-  <script src="/js/main.js"></script>
-</body>
+      <div id="collapseTab">
+        <a id="button" href="/School Projects/CIT230/index.html" target="_blank"
+          >CIT 230 - BYUI (Weather Site)</a
+        >
+        <a id="button" href="/School Projects/CIT360/index.html" target="_blank"
+          >WDD 360 - BYUI (Class Journal)</a
+        >
+        <a id="button" href="/School Projects/CIT380/index.html" target="_blank"
+          >WDD 380 - BYUI (Final Project)</a
+        >
+      </div>
 
+      <div id="collapseTab">
+        <a id="button" href="https://github.com/BrockBlaze/zabbixAgent" target="_blank"
+          >Custom Zabbix Agent Installer</a
+        >
+        <a id="button" href="/Projects/QRScraper/index.html" target="_blank">Rithm Labeler</a>
+        <a id="button" href="https://brockblaze.itch.io/outlaws-remake" target="_blank"
+          >Outlaws Remake</a
+        >
+        <a id="button" href="https://brockblaze.itch.io/halo-a-spartan-rises" target="_blank"
+          >Halo: A Spartan Rises</a
+        >
+      </div>
+
+      <div id="collapseTab">
+        <a id="button" href="/Projects/Time/TimeAtWork.html" target="_blank">WorkTime</a>
+        <a id="button" href="/Games/Atrium/atrium.html" target="_blank">Atrium</a>
+        <a id="button" href="/Games/Guess/Guess.html" target="_blank">Guess</a>
+        <a id="button" href="/Games/FPSTest/" target="_blank">Classic FPS</a>
+        <a id="button" href="/Projects/dvdlogo/dvd.html" target="_blank">DVD Screen Saver</a>
+        <a id="button" href="/Projects/Calculator/index.html" target="_blank">Calculator</a>
+        <a id="button" href="/Projects/Piano/index.html" target="_blank">Piano Player</a>
+      </div>
+
+      <div id="collapseTab">
+        <a
+          id="button"
+          href="https://drive.google.com/file/d/1q0hqjcSo4KL7VFNpU99qaaOYS3b0jCZB/view?usp=drive_link" target="_blank"
+          >Outlaws Remake Unity Source</a
+        >
+        <a
+          id="button"
+          href="https://drive.google.com/file/d/1tWqbBFphukIDPHqRPIQp1EtFs_Na29wN/view?usp=drive_link" target="_blank"
+          >Halo: A Spartan Rises Unity Source</a
+        >
+        <a
+          id="button"
+          href="https://drive.google.com/file/d/110ulgaFF7wskpezYpcqpjQkQLz_8t3Lm/view?usp=drive_link" target="_blank"
+          >Train Man Unity Source</a
+        >
+      </div>
+    </main>
+
+    <footer>
+      <p>
+        &copy; <span id="year"></span> | <a id="link" href="/">blazztech</a> |
+        Brock Blazzard
+      </p>
+    </footer>
+    <script src="../js/main.js"></script>
+  </body>
 </html>

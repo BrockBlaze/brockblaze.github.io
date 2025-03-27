@@ -1,91 +1,106 @@
 <!DOCTYPE html>
 <html lang="en-us">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="This site is a portfolio of my work">
-  <title>blazztech | about</title>
-  <link rel="shortcut icon" href="/images/favicons/faviconbt.ico">
-  <link rel="stylesheet" href="../styles/solace.css">
-  <script src="/js/theme.js" defer></script>
-</head>
-
-<body onload="ham()">
-  <header>
-    <nav id="nav">
-      <a class="navBtn" href="/index.html"> home </a>
-      <a class="navBtn" href="/pages/projects.html"> projects </a>
-      <a class="navBtn" href="/pages/games.html"> games </a>
-      <a class="navBtn" href="/pages/gallery.html"> gallery </a>
-      <a class="navBtn" id="activeNavBtn" href="/pages/about.html"> about </a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="This site is a portfolio of my work" />
+    <title>blazztech | about</title>
+    <link rel="icon" href="../images/favicons/thunderbolt1.png" />
+    <link rel="stylesheet" href="../styles/style.css" />
+  </head>
+  <body onload="toggleHam()">
+    <header>
+      <div id="hamButton" onclick="toggleHam()">&#9776;</div>
+      <div id="title">blazztech | About</div>
+    </header>
+    <nav id="hamMenu">
+      <ul>
+        <li><a id="button" href="/">Home</a></li>
+        <li><a id="button" href="../pages/projects.html">Projects</a></li>
+        <li><a id="button" href="../pages/games.html">Games</a></li>
+        <li><a id="button" href="../pages/gallery.html">Gallery</a></li>
+        <li><a id="button" href="../pages/about.html">About</a></li>
+      </ul>
     </nav>
-    <h1>blazztech</h1>
-  </header>
-  <div class="hMenu" onclick="ham()">≡</div>
-  <div id="navb">
-      <a class="navBtn" href="/index.html"> home </a>
-      <a class="navBtn" href="/pages/projects.html"> projects </a>
-      <a class="navBtn" href="/pages/games.html"> games </a>
-      <a class="navBtn" href="/pages/gallery.html"> gallery </a>
-      <a class="navBtn" href="/pages/about.html"> about </a>
-  </div>
-  <main>
-    <div id="Wrapper">
-      <img id="PortraitImage" src="../images/portrait2.jpg" alt="" />
-      <p>Here are some links to my socials and some downloads of projects I have done.</p>
+    <main>
+      <img
+        id="standardImg"
+        src="../images/portrait2.jpg"
+        alt=""
+        onclick="window.open(this.src, 'blank')"
+      />
+      <p>
+        Here are some links to my socials and some downloads of projects I have
+        done.
+      </p>
+      <a id="button" href="/files/Resume - Brock Blazzard.pdf" target="_blank">Resume (PDF)</a>
       <div id="container">
-        <a class="btn" href="/files/Resume - Brock Blazzard.pdf">Resume (PDF)</a>
+        <div
+          class="collapseButton"
+          id="collapseButtonActive"
+          onclick="setCollapseButtonActive(this)"
+        >
+          Links
+        </div>
+        <div
+          class="collapseButton"
+          id="a"
+          onclick="setCollapseButtonActive(this)"
+        >
+          Downloads
+        </div>
+        <div
+          class="collapseButton"
+          id="a"
+          onclick="setCollapseButtonActive(this)"
+        >
+          Extras
+        </div>
+        <div class="collapseButtonLast"></div>
       </div>
-    </div>
-    <h2>Links</h2>
-    <div id="container">
-      <a class="btn" href="https://www.brockblazzard@gmail.com">Email (brockblazzard@gmail.com)</a>
-      <a class="btn" href="https://www.linkedin.com/in/brock-blazzard-b7b68065/">LinkedIn</a>
-      <a class="btn" href="https://brockblaze.github.io/">GitHub</a>
-      <a class="btn" href="https://brockblaze.itch.io/">Itch</a>
-    </div>
-    <h2>Downloads</h2>
-    <div id="container">
-      <a class="btn" href="/files/OutlawsRemake.zip">Outlaws Remake (old)</a>
-      <a class="btn" href="/files/Solace5.zip">Solace (fps)</a>
-      <a class="btn" href="/files/STH3.rar">Stairway to Heaven (android)</a>
-      <a class="btn" id="OLBtn" href="/files/Outlaws-Regular.ttf">Outlaws Font</a>
-    </div>
-    <h2>Extras</h2>
-    <div id="container">
-      <a class="btn" href="../Projects/BOMJeopardy/index.html">BOM Jeopardy</a>
-      <!---<a class="btn" href="../Wedding/">Wedding Site</a>--->
-    </div>
-  </main>
+      <div id="collapseTab">
+        <a id="button" href="https://www.brockblazzard@gmail.com" target="_blank"
+          >Email (brockblazzard@gmail.com)</a
+        >
+        <a
+          id="button"
+          href="https://www.linkedin.com/in/brock-blazzard-b7b68065/" target="_blank"
+          >LinkedIn</a
+        >
+        <a id="button" href="https://brockblaze.github.io/" target="_blank">GitHub</a>
+        <a id="button" href="https://brockblaze.itch.io/" target="_blank">Itch</a>
+      </div>
+      <div id="collapseTab">
+        <a id="button" href="/files/OutlawsRemake.zip" target="_blank"
+          >Outlaws Remake (old)</a
+        >
+        <a id="button" href="/files/Solace5.zip" target="_blank"
+          >Solace (fps)</a
+        >
+        <a id="button" href="/files/STH3.rar" target="_blank"
+          >Stairway to Heaven (android)</a
+        >
+        <a
+          id="button"
+          class="OLBtn"
+          href="/files/Outlaws-Regular.ttf"
+          target="_blank"
+          >Outlaws Font</a
+        >
+      </div>
+      <div id="collapseTab">
+        <a id="button" href="../Projects/BOMJeopardy/index.html" target="_blank"
+          >BOM Jeopardy</a
+        >
+      </div>
+    </main>
 
-  <footer>
-    &copy; <span id="year"></span> | <a id="siteLink" href="/">blazztech</a> | Brock Blazzard
-    <button class="theme-toggle" onclick="toggleTheme()">🌓 Theme</button>
-  </footer>
-
-  <script>
-    // Theme toggle functionality
-    function toggleTheme() {
-      const html = document.documentElement;
-      if (html.classList.contains('light-theme')) {
-        html.classList.remove('light-theme');
-        localStorage.setItem('theme', 'dark');
-      } else {
-        html.classList.add('light-theme');
-        localStorage.setItem('theme', 'light');
-      }
-    }
-
-    // Apply saved theme on page load
-    document.addEventListener('DOMContentLoaded', () => {
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme === 'light') {
-        document.documentElement.classList.add('light-theme');
-      }
-    });
-  </script>
-  <script src="/js/main.js"></script>
-</body>
-
+    <footer>
+      <p>
+        &copy; <span id="year"></span> | <a id="link" href="/">blazztech</a> |
+        Brock Blazzard
+      </p>
+    </footer>
+    <script src="../js/main.js"></script>
+  </body>
 </html>

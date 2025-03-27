@@ -1,37 +1,29 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="This site is a portfolio of my work" />
+    <title>blazztech</title>
+    <link rel="icon" href="../images/favicons/thunderbolt1.png" />
+    <link rel="stylesheet" href="../styles/style.css" />
+  </head>
+  <body onload="toggleHam()">
+    <header>
+      <div id="hamButton" onclick="toggleHam()">&#9776;</div>
+      <div id="title">blazztech</div>
+    </header>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="This site is a portfolio of my work">
-  <title>blazztech | home</title>
-  <link rel="shortcut icon" href="/images/favicons/faviconbt.ico">
-  <link rel="stylesheet" href="./styles/solace.css">
-  <script src="/js/theme.js" defer></script>
-</head>
-
-<body onload="ham()">
-  <header>
-    <nav id="nav">
-      <a class="navBtn" id="activeNavBtn" href="/index.html"> home </a>
-      <a class="navBtn" href="/pages/projects.html"> projects </a>
-      <a class="navBtn" href="/pages/games.html"> games </a>
-      <a class="navBtn" href="/pages/gallery.html"> gallery </a>
-      <a class="navBtn" href="/pages/about.html"> about </a>
+    <nav id="hamMenu">
+      <ul>
+        <li><a id="button" href="/">Home</a></li>
+        <li><a id="button" href="../pages/projects.html">Projects</a></li>
+        <li><a id="button" href="../pages/games.html">Games</a></li>
+        <li><a id="button" href="../pages/gallery.html">Gallery</a></li>
+        <li><a id="button" href="../pages/about.html">About</a></li>
+      </ul>
     </nav>
-    <h1>blazztech</h1>
-  </header>
-  <div class="hMenu" onclick="ham()">≡</div>
-  <div id="navb">
-    <a class="navBtn" href="/index.html"> home </a>
-    <a class="navBtn" href="/pages/projects.html"> projects </a>
-    <a class="navBtn" href="/pages/games.html"> games </a>
-    <a class="navBtn" href="/pages/gallery.html"> gallery </a>
-    <a class="navBtn" href="/pages/about.html"> about </a>
-  </div>
-  <main>
-    <div class="Content2">
+    <main>
       <h2>Intro</h2>
       <p>
         This site is a portfolio of my work, it includes: Professional work,
@@ -39,42 +31,83 @@
         made, and also a gallery of images I have taken.
       </p>
       <h2>Videos</h2>
-      <div id="FlexContainer">
-        <iframe id="youtubeVideo" src="https://www.youtube.com/embed/CdEUFklWPxQ" title="YouTube video player"
+      <div id="smallImgContainer">
+        <iframe
+          id="youtubeVideo"
+          src="https://www.youtube.com/embed/CdEUFklWPxQ"
+          title="YouTube video player"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen>
+          allowfullscreen
+        >
         </iframe>
-        <iframe id="youtubeVideo" src="https://youtube.com/embed/LMDZY2rpDsM" title="YouTube video player"
+        <iframe
+          id="youtubeVideo"
+          src="https://youtube.com/embed/LMDZY2rpDsM"
+          title="YouTube video player"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen>
+          allowfullscreen
+        >
         </iframe>
-        <iframe id="youtubeVideo" src="https://www.youtube.com/embed/VaisA4Bp4uM" title="YouTube video player"
+        <iframe
+          id="youtubeVideo"
+          src="https://www.youtube.com/embed/VaisA4Bp4uM"
+          title="YouTube video player"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen></iframe>
-        <iframe id="youtubeVideo" src="https://www.youtube.com/embed/vhHA38rt5Jo" title="YouTube video player"
+          allowfullscreen
+        ></iframe>
+        <iframe
+          id="youtubeVideo"
+          src="https://www.youtube.com/embed/vhHA38rt5Jo"
+          title="YouTube video player"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen></iframe>
+          allowfullscreen
+        ></iframe>
       </div>
       <h2>Dev Pictures</h2>
-      <div id="FlexContainer">
-        <img id="dImg" src="/images/Development/Outlaws.png" alt="d1" onclick="window.open(this.src, 'blank')" />
-        <img id="dImg" src="/images/Development/pixeSoul1.png" alt="d2" onclick="window.open(this.src, 'blank')" />
-        <img id="dImg" src="/images/Development/pixeSoul2.png" alt="d3" onclick="window.open(this.src, 'blank')" />
-        <img id="dImg" src="/images/Development/pixeSoul3.png" alt="d4" onclick="window.open(this.src, 'blank')" />
-        <img id="dImg" src="/images/Development/pixeSoul4.png" alt="d5" onclick="window.open(this.src, 'blank')" />
+      <div id="smallImgContainer">
+        <img
+          id="standardImg"
+          src="/images/Development/Outlaws.png"
+          alt="d1"
+          onclick="window.open(this.src, 'blank')"
+        />
+        <img
+          id="standardImg"
+          src="/images/Development/pixeSoul1.png"
+          alt="d2"
+          onclick="window.open(this.src, 'blank')"
+        />
+        <img
+          id="standardImg"
+          src="/images/Development/pixeSoul2.png"
+          alt="d3"
+          onclick="window.open(this.src, 'blank')"
+        />
+        <img
+          id="standardImg"
+          src="/images/Development/pixeSoul3.png"
+          alt="d4"
+          onclick="window.open(this.src, 'blank')"
+        />
+        <img
+          id="standardImg"
+          src="/images/Development/pixeSoul4.png"
+          alt="d5"
+          onclick="window.open(this.src, 'blank')"
+        />
       </div>
-    </div>
-  </main>
+    </main>
 
-  <footer>
-    &copy; <span id="year"></span> | <a id="siteLink" href="/">blazztech</a> | Brock Blazzard
-    <button class="theme-toggle" onclick="toggleTheme()">🌓 Theme</button>
-  </footer>
-  <script src="/js/main.js"></script>
-</body>
-
+    <footer>
+      <p>
+        &copy; <span id="year"></span> | <a id="link" href="/">blazztech</a> |
+        Brock Blazzard
+      </p>
+    </footer>
+    <script src="../js/main.js"></script>
+  </body>
 </html>

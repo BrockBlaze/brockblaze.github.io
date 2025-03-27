@@ -1,57 +1,87 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="This site is a portfolio of my work" />
+    <title>blazztech</title>
+    <link rel="icon" href="../images/favicons/thunderbolt1.png" />
+    <link rel="stylesheet" href="../styles/style.css" />
+  </head>
+  <body onload="toggleHam()">
+    <header>
+      <div id="hamButton" onclick="toggleHam()">&#9776;</div>
+      <div id="title">blazztech | Gallery</div>
+    </header>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="This site is a portfolio of my work">
-  <title>blazztech | gallery</title>
-  <link rel="shortcut icon" href="/images/favicons/faviconbt.ico">
-  <link rel="stylesheet" href="../styles/solace.css">
-  <script src="/js/theme.js" defer></script>
-</head>
-
-<body onload="ham()">
-  <header>
-    <nav id="nav">
-      <a class="navBtn" href="/index.html"> home </a>
-      <a class="navBtn" href="/pages/projects.html"> projects </a>
-      <a class="navBtn" href="/pages/games.html"> games </a>
-      <a class="navBtn" id="activeNavBtn" href="/pages/gallery.html"> gallery </a>
-      <a class="navBtn" href="/pages/about.html"> about </a>
+    <nav id="hamMenu">
+      <ul>
+        <li><a id="button" href="/">Home</a></li>
+        <li><a id="button" href="../pages/projects.html">Projects</a></li>
+        <li><a id="button" href="../pages/games.html">Games</a></li>
+        <li><a id="button" href="../pages/gallery.html">Gallery</a></li>
+        <li><a id="button" href="../pages/about.html">About</a></li>
+      </ul>
     </nav>
-    <h1>blazztech</h1>
-  </header>
-  <div class="hMenu" onclick="ham()">≡</div>
-  <div id="navb">
-      <a class="navBtn" href="/index.html"> home </a>
-      <a class="navBtn" href="/pages/projects.html"> projects </a>
-      <a class="navBtn" href="/pages/games.html"> games </a>
-      <a class="navBtn" href="/pages/gallery.html"> gallery </a>
-      <a class="navBtn" href="/pages/about.html"> about </a>
-  </div>
-  <main>
-    <div id="largeImgWrapper">
-      <img id="fImg" src="../images/Gallery/spiritlake.jpg" alt="Spirit Lake" />
-      <div id="imgDesc">Spirit Lake</div>
-    </div>
-    <div id="imgwrapper">
-      <img id="gImg" src="../images/Gallery/spiritlake.jpg" alt="Spirit Lake" onclick="changeImg(this)" />
-      <img id="gImg" src="../images/Gallery/nearkamas.jpg" alt="Kamas Mountains" onclick="changeImg(this);" />
-      <img id="gImg" src="../images/Gallery/SunDance.jpg" alt="Sun Dance" onclick="changeImg(this);" />
-      <img id="gImg" src="../images/Gallery/Pompei.jpg" alt="Pompei" onclick="changeImg(this);" />
-      <img id="gImg" src="../images/Gallery/SLIsland.jpg" alt="Spirit Lake Island" onclick="changeImg(this);" />
-      <img id="gImg" src="../images/Gallery/FarShore.jpg" alt="Spirit Lake Shore" onclick="changeImg(this);" />
-      <img id="gImg" src="../images/Gallery/PaysonCanyon.jpg" alt="Payson Canyon" onclick="changeImg(this);" />
-      <img id="gImg" src="../images/Gallery/RockTower.jpg" alt="Rock Tower" onclick="changeImg(this);" />
-    </div>
-  </main>
+    <main>
+      <div id="smallImgContainer">
+        <img
+          id="standardImg"
+          src="../images/Gallery/spiritlake.jpg"
+          alt="Spirit Lake"
+          onclick="window.open(this.src, 'blank')"
+        />
+        <img
+          id="standardImg"
+          src="../images/Gallery/nearkamas.jpg"
+          alt="Kamas Mountains"
+          onclick="window.open(this.src, 'blank')"
+        />
+        <img
+          id="standardImg"
+          src="../images/Gallery/SunDance.jpg"
+          alt="Sun Dance"
+          onclick="window.open(this.src, 'blank')"
+        />
+        <img
+          id="standardImg"
+          src="../images/Gallery/Pompei.jpg"
+          alt="Pompei"
+          onclick="window.open(this.src, 'blank')"
+        />
+        <img
+          id="standardImg"
+          src="../images/Gallery/SLIsland.jpg"
+          alt="Spirit Lake Island"
+          onclick="window.open(this.src, 'blank')"
+        />
+        <img
+          id="standardImg"
+          src="../images/Gallery/FarShore.jpg"
+          alt="Spirit Lake Shore"
+          onclick="window.open(this.src, 'blank')"
+        />
+        <img
+          id="standardImg"
+          src="../images/Gallery/PaysonCanyon.jpg"
+          alt="Payson Canyon"
+          onclick="window.open(this.src, 'blank')"
+        />
+        <img
+          id="standardImg"
+          src="../images/Gallery/RockTower.jpg"
+          alt="Rock Tower"
+          onclick="window.open(this.src, 'blank')"
+        />
+      </div>
+    </main>
 
-  <footer>
-    &copy; <span id="year"></span> | <a id="siteLink" href="/">blazztech</a> | Brock Blazzard
-    <button class="theme-toggle" onclick="toggleTheme()">🌓 Theme</button>
-  </footer>
-  <script src="/js/main.js"></script>
-</body>
-
+    <footer>
+      <p>
+        &copy; <span id="year"></span> | <a id="link" href="/">blazztech</a> |
+        Brock Blazzard
+      </p>
+    </footer>
+    <script src="../js/main.js"></script>
+  </body>
 </html>

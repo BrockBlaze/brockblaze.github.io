@@ -1,0 +1,377 @@
+:root {
+  --primary: #3e414a;
+  --secondary: #535863;
+  --background: #2b2e32;
+  --hover: #4c5059;
+  --active: #888888;
+  --font: #ffffff;
+  --fontTitle: #ffaa00;
+  --border: #757575;
+  --border-hover: #ffaa00;
+  --border-active: #2e2e2e;
+
+  /* Border Radius */
+  --border-radius: 3px;
+
+  /* Shadow */
+  --shadow-default: 0 0 8px 2px black;
+  --shadow-inset: inset 0 0 8px 2px black;
+  --shadow-text: 0 0 5px black;
+
+  /* Transitions */
+  --transition-speed: 0.05s;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--background);
+  font-family: "Monaco", monospace;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  background-color: var(--primary);
+  width: 100%;
+  height: 50px;
+  box-shadow: var(--shadow-default);
+  border-bottom-right-radius: var(--border-radius);
+  border-bottom-left-radius: var(--border-radius);
+}
+
+#hamButton {
+  background-color: var(--secondary);
+  color: var(--font);
+  padding: 8px 12px 8px 12px;
+  cursor: pointer;
+  font-size: 1.5em;
+  border-bottom-left-radius: var(--border-radius);
+}
+
+#hamButton:hover {
+  color: var(--border-hover);
+  background-color: var(--hover);
+  border-bottom-left-radius: var(--border-radius);
+}
+
+#hamButton:active {
+  color: var(--border-active);
+  box-shadow: var(--shadow-inset);
+}
+
+#title {
+  position: fixed;
+  right: 10px;
+  font-size: 1.25em;
+  color: var(--fontTitle);
+  top: 12px;
+}
+
+nav {
+  z-index: 1;
+  background-color: var(--primary);
+  display: block;
+  position: fixed;
+  top: 65px;
+  left: 20px;
+  align-items: center;
+  width: 150px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-default);
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  display: block;
+  text-align: center;
+  margin: 10px;
+  padding: 5px;
+}
+
+main {
+  position: fixed;
+  top: 65px;
+  left: 200px;
+  right: 200px;
+  bottom: 45px;
+  background-color: var(--primary);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-default);
+  padding: 10px;
+  overflow-y: auto;
+}
+
+main h1 {
+  color: var(--font);
+  margin: 10px;
+}
+
+main h2 {
+  color: var(--font);
+  border-bottom: 1px solid var(--hover);
+}
+
+main h3 {
+  color: var(--font);
+  border-bottom: 1px solid var(--border);
+  padding: 0;
+  margin: 0;
+}
+
+main p {
+  color: var(--font);
+  font-size: 1em;
+}
+
+main a {
+  margin: 15px;
+}
+
+#container {
+  width: 100%;
+  display: flex;
+}
+
+#collapseTab {
+  display: none;
+  grid-template-columns: auto auto auto;
+}
+
+.collapseButton {
+  background-color: var(--secondary);
+  color: var(--font);
+  padding: 4px 8px 4px 8px;
+  margin: 0;
+  float: left;
+  cursor: pointer;
+  font-size: 1.25em;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.collapseButton:first-child {
+  border-left: 1px solid var(--border);
+}
+
+.collapseButtonLast {
+  background-color: var(--primary);
+  border-bottom: 1px solid var(--border);
+  width: 100%;
+}
+
+.collapseButton:hover {
+  color: var(--border-hover);
+  background-color: var(--hover);
+}
+
+.collapseButton:active {
+  color: var(--border-active);
+  box-shadow: var(--shadow-inset);
+}
+
+#collapseButtonActive {
+  background-color: var(--primary);
+  border-top: 1px solid var(--border-hover);
+  border-left: 1px solid var(--border-hover);
+  border-right: 1px solid var(--border-hover);
+  border-bottom: none;
+}
+
+#button {
+  background-color: var(--secondary);
+  color: var(--font);
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  width: auto;
+  padding: 5px 0 5px 0;
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-default);
+}
+
+#button:hover {
+  background-color: var(--hover);
+  text-shadow: var(--shadow-text);
+  border: 1px solid var(--border-hover);
+  box-shadow: none;
+  border-radius: var(--border-radius);
+}
+
+#button:active {
+  color: var(--active);
+  border: 1px solid var(--border-active);
+  box-shadow: var(--shadow-inset);
+}
+
+#link {
+  color: var(--font);
+  text-decoration: none;
+}
+
+#link:hover {
+  text-shadow: var(--shadow-text);
+  text-decoration: underline;
+}
+
+#smallImgContainer {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5px;
+  width: 100%;
+  padding: 0;
+  margin: auto;
+  justify-content: center;
+}
+
+#smallImgContainer a {
+  padding: 0;
+  margin: auto;
+  color: var(--fontTitle);
+  text-align: center;
+  font-size: 1em;
+  text-decoration: none;
+  line-height: 25%;
+}
+
+#gameName {
+  height: 0;
+  padding: 2px;
+  background-color: var(--secondary);
+  position: relative;
+  top: -30px;
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-default);
+}
+
+#standardImg,
+iframe {
+  display: block;
+  flex-grow: 1;
+  margin: 5px auto 5px auto;
+  max-width: 225px;
+  height: 175px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-default);
+  border: 1px solid var(--border);
+  text-decoration: none;
+}
+
+#standardImg:hover,
+iframe:hover {
+  cursor: pointer;
+  box-shadow: none;
+  border: 1px solid var(--border-hover);
+  box-shadow: none;
+}
+
+#standardImg:active,
+iframe:focus {
+  border: 1px solid var(--border-active);
+  box-shadow: var(--shadow-inset);
+}
+
+@font-face {
+  font-family: OLFont;
+  src: url("../files/Outlaws-Regular.woff");
+}
+
+.OLBtn {
+  font-family: OLFont;
+}
+
+footer {
+  color: var(--font);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: var(--primary);
+  width: 100%;
+  height: 30px;
+  line-height: 7px;
+  text-align: center;
+  font-size: 0.75em;
+  box-shadow: var(--shadow-default);
+  border-top-left-radius: var(--border-radius);
+  border-top-right-radius: var(--border-radius);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--secoundary);
+  border-radius: var(--border-radius);
+  border-left: 1px solid var(--border-radius);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--font);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-default);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--hover);
+  cursor: grab;
+  box-shadow: var(--shadow-default);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: var(--active);
+  cursor: grabbing;
+}
+
+/* Improved focus states */
+a:focus,
+button:focus,
+iframe:focus,
+#standardImg:focus {
+  outline: 2px solid var(--text-primary);
+  outline-offset: 2px;
+}
+
+@media only screen and (max-aspect-ratio: 1) {
+  nav {
+    display: none;
+    top: 50px;
+    left: 0;
+    width: 50%;
+  }
+  main {
+    left: 0;
+    right: 0;
+    top: 50px;
+    bottom: 30px;
+  }
+  .collapseButton {
+    font-size: 1em;
+  }
+  #standardImg,
+  iframe {
+    margin: 5px;
+    max-width: 150px;
+    height: 125px;
+  }
+}
+
+/* Add transitions to interactive elements */
+a,
+button,
+#hamButton {
+  transition: all var(--transition-speed) ease-in-out;
+}
