@@ -4,39 +4,47 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Date Difference Calculator</title>
-    <link rel="shortcut icon" href="/images/favicons/faviconbt.ico" />
-    <link rel="stylesheet" href="/styles/solace.css" />
+    <link rel="shortcut icon" href="/images/favicons/thunderbolt1.png" />
+    <link rel="stylesheet" href="/styles/style.css" />
     <link rel="stylesheet" href="work.css" />
   </head>
   <body>
     <header>
-    <nav id="nav">
-      <a class="navBtn" href="/index.html"> home </a>
-      <a class="navBtn" href="/pages/projects.html"> projects </a>
-      <a class="navBtn" href="/pages/games.html"> games </a>
-      <a class="navBtn" href="/pages/gallery.html"> gallery </a>
-      <a class="navBtn" href="/pages/about.html"> about </a>
+      <div id="hamButton" onclick="toggleHam()">&#9776;</div>
+      <div id="title">blazztech | Time</div>
+    </header>
+    <nav id="hamMenu">
+      <ul>
+        <li><a id="button" href="/">Home</a></li>
+        <li><a id="button" href="../pages/projects.html">Projects</a></li>
+        <li><a id="button" href="../pages/games.html">Games</a></li>
+        <li><a id="button" href="../pages/gallery.html">Gallery</a></li>
+        <li><a id="button" href="../pages/about.html">About</a></li>
+      </ul>
     </nav>
-    <h1>blazztech</h1>
-  </header>
-  <main>
-    <div class="container">
-      <h2>Date & Time Difference Calculator</h2>
-      <label for="inputDateTime">Enter a date and time:</label>
-      <br />
-      <input type="datetime-local" id="inputDateTime" />
-      <br />
-      <button onclick="saveDate()">Save Date & Calculate Difference</button>
+    <main>
+      <div class="container">
+        <h2>Date & Time Difference Calculator</h2>
+        <label for="inputDateTime">Enter a date and time:</label>
+        <br />
+        <input type="datetime-local" id="inputDateTime" />
+        <br />
+        <button onclick="saveDate()">Save Date & Calculate Difference</button>
 
-      <div class="result" id="result"></div>
-      <div class="mresult" id="mresult"></div>
-    </div>
+        <div class="result" id="result"></div>
+        <div class="mresult" id="mresult"></div>
+      </div>
     </main>
     <footer>
-      &copy; <span id="year"></span> | <a onmouseover="showMoney()" onmouseout="hideMoney()" id="siteLink" href="/">blazztech</a> |
-      Brock Blazzard
+      <p>
+        &copy; <span id="year"></span> |
+        <a onmouseover="showMoney()" onmouseout="hideMoney()" id="link" href="/"
+          >blazztech</a
+        >
+        | Brock Blazzard
+      </p>
     </footer>
+    <script src="work.js"></script>
+    <script src="/js/main.js"></script>
   </body>
-  <script src="work.js"></script>
-  <script src="/js/main.js"></script>
 </html>
