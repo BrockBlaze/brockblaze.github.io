@@ -367,6 +367,10 @@ iframe:focus,
     max-width: 150px;
     height: 125px;
   }
+  #smallImgContainer a {
+  font-size: .75em;
+
+}
 }
 
 /* Add transitions to interactive elements */
