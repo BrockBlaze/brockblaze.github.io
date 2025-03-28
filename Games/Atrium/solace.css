@@ -45,10 +45,6 @@ button:hover {
   flex-direction: column;
 }
 
-.hero {
-  position: relative;
-}
-
 h3 {
   padding: 3px;
   margin: 0;
@@ -118,5 +114,8 @@ main {
 }
 
 #hero img {
-  width: 100%;
+  width: 99%;
+  margin: auto;
+  display: flex;
+  border-radius: 5px;
 }
