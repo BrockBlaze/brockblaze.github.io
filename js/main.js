@@ -1,6 +1,6 @@
 var d = new Date();
 document.getElementById("year").innerHTML = d.getFullYear();
-
+const currentPageURL = window.location.href;
 
 window.onload = startCheck;
 
@@ -33,8 +33,7 @@ function toggleHam() {
 function startCheck() {
   toggleHam();
   checkAspectRatio();
-  const collapseTabs = document.querySelectorAll('#collapseTab');
-  collapseTabs[0].style.display = 'block';
+  startCollapseActive();
 }
 
 function checkAspectRatio() {
@@ -58,8 +57,37 @@ function checkAspectRatio() {
   }
 }
 
+function startCollapseActive() {
+  let startIndex = -1;
+  if (localStorage.getItem("saveProjectIndex") !== null) {
+    if (currentPageURL.includes("projects.html")) {
+      startIndex = localStorage.getItem("saveProjectIndex");
+    }
+  }
+  if (localStorage.getItem("saveAboutIndex") !== null) {
+    if (currentPageURL.includes("about.html")) {
+      startIndex = localStorage.getItem("saveAboutIndex");
+    }
+  }
+  if (startIndex >= 0) {
+    clearCollapseButtonIDs();
+    const collapseButtons = document.querySelectorAll('.collapseButton');
+    const collapseTabs = document.querySelectorAll('#collapseTab');
+    collapseButtons[startIndex].id = 'collapseButtonActive';
+
+    collapseTabs.forEach(tab => {
+      tab.style.display = 'none';
+    })
+    collapseTabs[startIndex].style.display = 'block';
+    reloadCSS();
+  }
+  else {
+    const collapseTabs = document.querySelectorAll('#collapseTab');
+    collapseTabs[0].style.display = 'block';
+  }
+}
+
 function setCollapseButtonActive(element) {
-  reloadCSS();
   clearCollapseButtonIDs();
   let count = 0;
   let indexNum = 0;
@@ -69,12 +97,18 @@ function setCollapseButtonActive(element) {
     if (button === element) {
       indexNum = count;
     }
-    console.log(button.id + " " + count + " " + indexNum);
+    //console.log(button.id + " " + count + " " + indexNum);
     count++;
   })
   collapseTabs.forEach(tab => {
     tab.style.display = 'none';
   })
+  if (currentPageURL.includes("projects.html")) {
+    localStorage.setItem("saveProjectIndex", indexNum);
+  }
+  if (currentPageURL.includes("about.html")) {
+    localStorage.setItem("saveAboutIndex", indexNum);
+  }
   collapseTabs[indexNum].style.display = 'block';
   element.id = 'collapseButtonActive';
 }
@@ -84,6 +118,7 @@ function clearCollapseButtonIDs() {
   collapseButtons.forEach(button => {
     button.id = 'a';
   });
+  reloadCSS();
 }
 
 function reloadCSS() {
@@ -98,6 +133,5 @@ function reloadCSS() {
 
 
 window.addEventListener('resize', function () {
-  console.log('Window resized!');
   checkAspectRatio();
 });

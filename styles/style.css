@@ -82,6 +82,36 @@ header {
   box-shadow: var(--shadow-default);
 }
 
+#subHeader {
+  display: flex;
+  height: 30px;
+  padding: 5px;
+  color: var(--font);
+  border-bottom: 1px solid var(--border);
+  margin: 5px;
+}
+
+#subHeader h2 {
+  position: relative;
+  left: 50%;
+  top: -20px;
+  transform: translateX(-50%);
+  border-bottom: none;
+}
+
+#backButton {
+  cursor: pointer;
+}
+
+#backButton:hover {
+  color: var(--border-hover);
+  text-shadow: var(--shadow-text);
+}
+
+#backButton:active {
+  color: var(--border-active);
+}
+
 nav {
   z-index: 1;
   background-color: var(--primary);
