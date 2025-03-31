@@ -384,6 +384,9 @@ iframe:focus,
 }
 
 @media only screen and (max-aspect-ratio: 1) {
+  h2 {
+    font-size: 1.1em;
+  }
   nav {
     display: none;
     top: 50px;
