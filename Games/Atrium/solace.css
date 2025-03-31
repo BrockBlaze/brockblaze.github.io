@@ -8,14 +8,15 @@ h4 {
 
 button {
   padding: 5px;
-  margin: 5px;
+  margin: 10px;
   width: 250px;
   height: 30px;
   background-color: rgb(65, 75, 85);
-  color: rgb(165, 145, 125);
+  color: rgb(255, 255, 255);
   text-shadow: rgb(165, 145, 125) 0 0 2px;
   font-size: 1.1em;
-  box-shadow: 0 0 5px black;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 2px black;
   border: none;
 }
 
@@ -25,7 +26,8 @@ button {
 }
 
 button:hover {
-  box-shadow: inset 0 0 5px;
+  cursor: pointer;
+  box-shadow: inset 0 0 5px black;
   text-shadow: none;
 }
 
@@ -59,12 +61,11 @@ h3 {
   font-size: 0.8em;
   padding: 5px;
   margin: 0;
-  border-radius: 2px;
+  border-radius: 5px;
   border: 1px solid rgb(165, 145, 125);
-  position: absolute;
+  position: fixed;
   display: block;
-  left: 15%;
-  top: .5vh;
+  top: 87.5px;
   width: 370px;
   z-index: 1;
 }
@@ -77,8 +78,12 @@ h3 {
   column-count: 2;
 }
 
+#gPlayerStats {
+  left: 225px;
+}
+
 #gEnemyStats {
-  left: 65%;
+  right: 225px;
   width: 200px;
 }
 
@@ -98,24 +103,29 @@ h3 {
   font-size: 1.25em;
 }
 
-
-main {
-  top: 24.5vh;
-}
-
-#hero {
-  position: absolute;
-  top: 6vh;
-  left: 10%;
-  right: 10%;
-  padding: 0;
-  height: 18vh;
-  overflow: hidden;
-}
-
-#hero img {
-  width: 99%;
+#heroImage {
+  width: 100%;
   margin: auto;
   display: flex;
   border-radius: 5px;
+}
+
+@media only screen and (max-aspect-ratio: 1) {
+  #gPlayerStats {
+    top: 65px;
+    left: 15px;
+    width: 150px;
+  }
+  #gEnemyStats {
+    top: 65px;
+    right: 15px;
+    width: 100px;
+  }
+  #gSubStats {
+  padding: 0;
+  margin: 0;
+  padding-top: 5px;
+  flex-direction: column;
+  column-count: 1;
+  }
 }
