@@ -1,0 +1,150 @@
+@font-face {
+  font-family: "DOSClassic";
+  src: url(../fonts/MorePerfectDOSVGA.ttf);
+}
+
+:root {
+  --primary: #000000;
+  --secondary: #000000;
+  --background: #000000;
+  --hover: #ffffff;
+  --active: #ff0000;
+  --border: #22ff00;
+  --border-hover: #ffffff;
+  --border-active: #ff0000;
+
+  /* Font */
+  --fontDefault: "DOSClassic";
+  --font-color: #22ff00;
+  --fontTitle-color: #ffffff;
+  --fontActive-color: #ff0000;
+  --fontHover-color: #ffffff;
+  --default-font: 1em;
+  --header-font: 1.5em;
+  --sub-header-font: 1.25em;
+  --sub-font: 0.75em;
+
+  /* Border Radius */
+  --border-radius: 3px;
+
+  /* Shadow */
+  --shadow-default: 0 0 8px 2px black;
+  --shadow-inset: inset 0 0 8px 2px black;
+  --shadow-text: 0 0 5px black;
+
+  /* Transitions */
+  --transition-speed: 0.05s;
+}
+
+/* CRT Scanlines and Color Fringing */
+html::before {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.8) 50%, rgba(0, 0, 0, 1) 50%),
+    linear-gradient(
+      90deg,
+      rgba(255, 0, 0, 0.2),
+      rgba(0, 255, 0, 0.1),
+      rgba(0, 0, 255, 0.2)
+    );
+  background-size: 100% 3px, 5px 100%;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.99;
+  animation: crtFlicker 0.2s infinite alternate;
+}
+
+/* Subtle Screen Distortion */
+body {
+  background: black;
+  filter: contrast(1.2) brightness(1.1);
+  transform: scaleY(1.05) skewX(0.75deg);
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  padding: 10px;
+}
+
+/* CRT Flicker Effect */
+@keyframes crtFlicker {
+  0% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0.45;
+  }
+}
+
+header {
+  color: var(--font-color);
+  font-family: var(--fontDefault);
+  text-shadow: 0 0 5px #22ff00, 0 0 10px #22ff00;
+  letter-spacing: 0.5px;
+  image-rendering: pixelated;
+}
+
+nav {
+  color: var(--font-color);
+  font-family: var(--fontDefault);
+  text-shadow: 0 0 5px #22ff00, 0 0 10px #22ff00;
+  letter-spacing: 0.5px;
+  image-rendering: pixelated;
+  border-bottom: 1px solid #22ff00;
+  margin: auto;
+  margin-right: 50px;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--font-color);
+  font-family: var(--fontDefault);
+  text-shadow: 0 0 5px #22ff00, 0 0 10px #22ff00;
+  letter-spacing: 0.5px;
+  image-rendering: pixelated;
+  padding: 0 10px 0 10px;
+  border-right: 1px solid #22ff00;
+}
+
+nav a:hover {
+  color: var(--fontHover-color);
+  font-family: var(--fontDefault);
+  text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff;
+  letter-spacing: 0.5px;
+  image-rendering: pixelated;
+}
+
+h2 {
+  padding: 0 10px 0 10px;
+  margin: 5px;
+}
+
+/* Green Phosphor Glow */
+main {
+  color: var(--font-color);
+  font-family: var(--fontDefault);
+  text-shadow: 0 0 5px #22ff00, 0 0 10px #22ff00;
+  letter-spacing: 0.5px;
+  image-rendering: pixelated;
+}
+
+main p {
+  margin: 20px;
+  border-bottom: 0.5px solid #22ff00;
+  margin-right: 55px;
+}
+
+footer {
+  color: var(--font-color);
+  font-family: var(--fontDefault);
+  text-shadow: 0 0 5px #22ff00, 0 0 10px #22ff00;
+  letter-spacing: 0.5px;
+  image-rendering: pixelated;
+  position: fixed;
+  bottom: 55px;
+  left: -10px;
+}
