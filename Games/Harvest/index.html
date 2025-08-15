@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Harvest - Base Defense Game</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: black;
+        font-family: "Arial", sans-serif;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+
+      h1 {
+        color: #ffffff;
+        text-align: center;
+        padding: 10px 0;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        font-size: 24px;
+        flex-shrink: 0;
+      }
+
+      #gameLayout {
+        display: flex;
+        flex: 1;
+        min-height: 0;
+      }
+
+      #leftPanel {
+        position: absolute;
+        bottom: 0;
+        top: 0;
+        width: 200px;
+        background: rgba(82, 82, 82, 0.8);
+        color: white;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        flex-shrink: 0;
+        border-right: 3px solid #374571;
+        box-shadow: 0 0 50px rgba(255, 255, 255, 0.3);
+      }
+
+      #gameContainer {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        position: relative;
+      }
+
+      #gameCanvas {
+        background: #3c4d3c;
+        border: 4px solid #374571;
+        box-shadow: 0 0 50px rgba(255, 255, 255, 0.3);
+        max-width: 100%;
+        max-height: 100%;
+      }
+
+      .stat {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: bold;
+        font-size: 16px;
+        padding: 8px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 5px;
+        border: 1px solid #374571;
+      }
+
+      .stat-icon {
+        font-size: 20px;
+        width: 25px;
+        text-align: center;
+      }
+
+      #waveTimer {
+        background: rgba(255, 0, 0, 0.2);
+        border-color: rgba(255, 0, 0, 0.5);
+        text-align: center;
+        font-size: 15px;
+        font-weight: bold;
+        color: #ff6b6b;
+      }
+
+      #controls {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 15px;
+        background: rgba(0, 0, 0, 0.9);
+        padding: 15px 20px;
+        border-radius: 15px;
+        border: 3px solid #374571;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+      }
+
+      button {
+        padding: 12px 20px;
+        background: #417137;
+        border: 2px solid #374571;
+        border-radius: 8px;
+        color: #ffffff;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-size: 14px;
+        min-width: 140px;
+      }
+
+      button:hover {
+        background: #56964a;
+        transform: translateY(-2px);
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+      }
+
+      button:active {
+        transform: translateY(0);
+      }
+
+      button:disabled {
+        background: #555;
+        color: #888;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+      }
+
+      #helpTooltip {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        background: rgba(82, 82, 82, 0.8);
+        color: white;
+        padding: 20px;
+        border-left: 3px solid #374571;
+        box-shadow: 0 0 50px rgba(255, 255, 255, 0.3);
+        max-width: 200px;
+        opacity: 1;
+        pointer-events: auto;
+        z-index: 99;
+        font-size: 14px;
+        line-height: 1.4;
+      }
+
+      .help-section {
+        margin-bottom: 12px;
+        padding: 8px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 5px;
+        border: 1px solid #374571;
+      }
+
+      .help-section strong {
+        color: #ffffff;
+        font-weight: bold;
+      }
+
+      @media (max-width: 1200px) {
+        #leftPanel {
+          width: 180px;
+        }
+
+        button {
+          min-width: 120px;
+          font-size: 12px;
+          padding: 10px 16px;
+        }
+      }
+
+      @media (max-width: 900px) {
+        #leftPanel {
+          width: 160px;
+          padding: 15px;
+          gap: 12px;
+        }
+
+        .stat {
+          font-size: 14px;
+          padding: 6px;
+        }
+
+        button {
+          min-width: 100px;
+          font-size: 11px;
+          padding: 8px 12px;
+        }
+
+        h1 {
+          font-size: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🏰 Harvest - Defend Your Base! 🐺</h1>
+
+    <div id="gameLayout">
+      <div id="leftPanel">
+        <div class="stat">
+          <span class="stat-icon">🌾</span>
+          <span>Resources: <span id="resources">150</span></span>
+        </div>
+
+        <div class="stat">
+          <span class="stat-icon">👨‍🌾</span>
+          <span>Harvesters: <span id="harvesters">0</span></span>
+        </div>
+
+        <div class="stat">
+          <span class="stat-icon">🧑‍🌾</span>
+          <span>Farmers: <span id="farmers">0</span></span>
+        </div>
+
+        <div class="stat">
+          <span class="stat-icon">⚔️</span>
+          <span>Warriors: <span id="warriors">0</span></span>
+        </div>
+
+        <div class="stat">
+          <span class="stat-icon">🏠</span>
+          <span>Base HP: <span id="baseHP">100</span>/100</span>
+        </div>
+
+        <div class="stat">
+          <span class="stat-icon">🌊</span>
+          <span>Wave: <span id="wave">1</span></span>
+        </div>
+
+        <div class="stat" id="waveTimer">
+          Next Wave: <span id="timer">30</span>s
+        </div>
+      </div>
+
+      <div id="gameContainer">
+        <canvas id="gameCanvas"></canvas>
+      </div>
+    </div>
+
+    <div id="controls">
+      <button id="harvesterBtn">👨‍🌾 Hire Harvester (30)</button>
+      <button id="farmerBtn">🧑‍🌾 Hire Farmer (40)</button>
+      <button id="warriorBtn">⚔️ Train Warrior (50)</button>
+    </div>
+
+    <div id="helpTooltip">
+      <div class="help-section">
+        <strong>🎯 Objective:</strong> Defend your base from waves of wolves!
+      </div>
+      <div class="help-section">
+        <strong>👨‍🌾 Harvesters:</strong> Collect resources from existing nodes (5
+        resources every 3 seconds)
+      </div>
+      <div class="help-section">
+        <strong>🧑‍🌾 Farmers:</strong> Plant new resource nodes around your base
+        for long-term growth
+      </div>
+      <div class="help-section">
+        <strong>⚔️ Warriors:</strong> Fight wolves to protect your base
+      </div>
+      <div class="help-section">
+        <strong>🐺 Wolves:</strong> Attack your base every 30 seconds in
+        increasing numbers
+      </div>
+      <div class="help-section">
+        <strong>💡 Strategy:</strong> Balance resource collection, expansion,
+        and defense. More harvesters = more resources, farmers = sustainable
+        growth, warriors = better defense!
+      </div>
+    </div>
+
+    <script>
+      // Make canvas responsive
+      function resizeCanvas() {
+        const container = document.getElementById("gameContainer");
+        const containerRect = container.getBoundingClientRect();
+        const canvas = document.getElementById("gameCanvas");
+
+        // Calculate available space (leaving some padding)
+        const availableWidth = containerRect.width - 20;
+        const availableHeight = containerRect.height - 20;
+
+        // Set aspect ratio (16:10)
+        const aspectRatio = 16 / 10;
+        let canvasWidth = availableWidth;
+        let canvasHeight = canvasWidth / aspectRatio;
+
+        if (canvasHeight > availableHeight) {
+          canvasHeight = availableHeight;
+          canvasWidth = canvasHeight * aspectRatio;
+        }
+
+        // Minimum size constraints
+        canvasWidth = Math.max(800, canvasWidth);
+        canvasHeight = Math.max(500, canvasHeight);
+
+        canvas.width = canvasWidth;
+        canvas.height = canvasHeight;
+      }
+
+      // Initial canvas setup
+      resizeCanvas();
+      window.addEventListener("resize", resizeCanvas);
+
+      const canvas = document.getElementById("gameCanvas");
+      const ctx = canvas.getContext("2d");
+
+      // Game state
+      let resources = 150;
+      let baseHP = 100;
+      let maxBaseHP = 100;
+      let wave = 1;
+      let gameTime = 0;
+      let waveTimer = 30;
+      let gameRunning = true;
+
+      // Arrays for game objects
+      const harvesters = [];
+      const warriors = [];
+      const wolves = [];
+      const farmers = [];
+      const resourceNodes = [];
+      const particles = [];
+
+      // Helper function to check collision with other units
+      function checkCollision(unit, allUnits, minDistance = 20) {
+        for (const other of allUnits) {
+          if (other === unit || (other.hp !== undefined && other.hp <= 0))
+            continue;
+          const distance = Math.hypot(unit.x - other.x, unit.y - other.y);
+          if (distance < minDistance) {
+            return other;
+          }
+        }
+        return null;
+      }
+
+      // Helper function to separate overlapping units
+      function separateUnits(unit, other, minDistance = 20) {
+        const dx = unit.x - other.x;
+        const dy = unit.y - other.y;
+        const distance = Math.hypot(dx, dy);
+
+        if (distance < minDistance && distance > 0) {
+          const overlap = minDistance - distance;
+          const separationX = (dx / distance) * (overlap * 0.5);
+          const separationY = (dy / distance) * (overlap * 0.5);
+
+          unit.x += separationX;
+          unit.y += separationY;
+          other.x -= separationX;
+          other.y -= separationY;
+
+          // Keep units within canvas bounds
+          unit.x = Math.max(15, Math.min(canvas.width - 15, unit.x));
+          unit.y = Math.max(15, Math.min(canvas.height - 15, unit.y));
+          other.x = Math.max(15, Math.min(canvas.width - 15, other.x));
+          other.y = Math.max(15, Math.min(canvas.height - 15, other.y));
+        }
+      }
+
+      // Base position (center of screen)
+      let base = {
+        x: canvas.width / 2,
+        y: canvas.height / 2,
+        radius: 40,
+      };
+
+      // Update base position when canvas resizes
+      function updateBasePosition() {
+        base.x = canvas.width / 2;
+        base.y = canvas.height / 2;
+      }
+
+      // Generate initial resource nodes around the map
+      function generateInitialResources() {
+        resourceNodes.length = 0; // Clear existing nodes
+
+        // Create 8-12 resource nodes with completely random placement
+        const nodeCount = 8 + Math.floor(Math.random() * 5); // 8-12 nodes
+
+        for (let i = 0; i < nodeCount; i++) {
+          let attempts = 0;
+          let validPosition = false;
+          let x, y;
+
+          // Try to find a valid position (not too close to base or other nodes)
+          while (!validPosition && attempts < 50) {
+            // Random angle and distance from base
+            const angle = Math.random() * Math.PI * 2;
+            const minDistance = 80; // Minimum distance from base
+            const maxDistance = Math.min(canvas.width, canvas.height) * 0.35; // Max distance based on canvas size
+            const distance =
+              minDistance + Math.random() * (maxDistance - minDistance);
+
+            x = base.x + Math.cos(angle) * distance;
+            y = base.y + Math.sin(angle) * distance;
+
+            // Make sure it's within canvas bounds with padding
+            const padding = 30;
+            if (
+              x < padding ||
+              x > canvas.width - padding ||
+              y < padding ||
+              y > canvas.height - padding
+            ) {
+              attempts++;
+              continue;
+            }
+
+            // Check distance from base (shouldn't be too close)
+            const baseDistance = Math.hypot(x - base.x, y - base.y);
+            if (baseDistance < 70) {
+              attempts++;
+              continue;
+            }
+
+            // Check distance from other resource nodes (shouldn't overlap)
+            let tooClose = false;
+            for (const existingNode of resourceNodes) {
+              const nodeDistance = Math.hypot(
+                x - existingNode.x,
+                y - existingNode.y
+              );
+              if (nodeDistance < 60) {
+                // Minimum distance between nodes
+                tooClose = true;
+                break;
+              }
+            }
+
+            if (!tooClose) {
+              validPosition = true;
+            } else {
+              attempts++;
+            }
+          }
+
+          // If we found a valid position, add the node
+          if (validPosition) {
+            // Vary the resource amount and size slightly
+            const resourceAmount = 80 + Math.floor(Math.random() * 40); // 80-120 resources
+            const nodeSize = 12 + Math.floor(Math.random() * 6); // 12-18 radius
+
+            resourceNodes.push({
+              x: x,
+              y: y,
+              radius: nodeSize,
+              resources: resourceAmount,
+            });
+          }
+        }
+
+        // Ensure we have at least 6 nodes (fallback if random placement fails)
+        while (resourceNodes.length < 6) {
+          const angle = Math.random() * Math.PI * 2;
+          const distance = 100 + Math.random() * 120;
+          const x = base.x + Math.cos(angle) * distance;
+          const y = base.y + Math.sin(angle) * distance;
+
+          // Simple bounds check
+          if (
+            x > 30 &&
+            x < canvas.width - 30 &&
+            y > 30 &&
+            y < canvas.height - 30
+          ) {
+            resourceNodes.push({
+              x: x,
+              y: y,
+              radius: 15,
+              resources: 100,
+            });
+          }
+        }
+      }
+
+      // Villager classes
+      class Harvester {
+        constructor() {
+          // Try to spawn in a position that doesn't overlap with other units
+          let attempts = 0;
+          do {
+            this.x = base.x + (Math.random() - 0.5) * 80;
+            this.y = base.y + (Math.random() - 0.5) * 80;
+            attempts++;
+          } while (
+            attempts < 20 &&
+            checkCollision(
+              this,
+              [...harvesters, ...farmers, ...warriors.filter((w) => w.hp > 0)],
+              18
+            )
+          );
+
+          this.targetNode = null;
+          this.collecting = false;
+          this.collectTimer = 0;
+          this.speed = 1;
+          this.radius = 8;
+        }
+
+        update() {
+          if (!this.targetNode || this.targetNode.resources <= 0) {
+            // Find nearest resource node
+            let nearestNode = null;
+            let nearestDist = Infinity;
+
+            for (const node of resourceNodes) {
+              if (node.resources > 0) {
+                const dist = Math.hypot(node.x - this.x, node.y - this.y);
+                if (dist < nearestDist) {
+                  nearestDist = dist;
+                  nearestNode = node;
+                }
+              }
+            }
+            this.targetNode = nearestNode;
+          }
+
+          if (this.targetNode) {
+            const dx = this.targetNode.x - this.x;
+            const dy = this.targetNode.y - this.y;
+            const dist = Math.hypot(dx, dy);
+
+            if (dist > this.targetNode.radius + this.radius) {
+              // Move towards resource node
+              const newX = this.x + (dx / dist) * this.speed;
+              const newY = this.y + (dy / dist) * this.speed;
+
+              // Temporarily set new position to check for collisions
+              const oldX = this.x,
+                oldY = this.y;
+              this.x = newX;
+              this.y = newY;
+
+              // Check collision with other units
+              const allUnits = [
+                ...harvesters,
+                ...farmers,
+                ...warriors.filter((w) => w.hp > 0),
+              ];
+              const collision = checkCollision(this, allUnits, 18);
+
+              if (collision) {
+                // Revert position and try to move around obstacle
+                this.x = oldX;
+                this.y = oldY;
+                // Try to move perpendicular to avoid obstacle
+                const perpX = -dy / dist;
+                const perpY = dx / dist;
+                this.x += perpX * this.speed * 0.5;
+                this.y += perpY * this.speed * 0.5;
+              }
+
+              this.collecting = false;
+            } else {
+              // Collect resources
+              this.collecting = true;
+              this.collectTimer++;
+
+              if (this.collectTimer >= 180) {
+                // Collect every 3 seconds
+                if (this.targetNode.resources > 0) {
+                  this.targetNode.resources -= 5;
+                  resources += 5;
+                  this.collectTimer = 0;
+
+                  // Add particle effect
+                  particles.push(new Particle(this.x, this.y, "🌾"));
+                }
+              }
+            }
+          }
+
+          // Separate from other units if too close
+          const allUnits = [
+            ...harvesters,
+            ...farmers,
+            ...warriors.filter((w) => w.hp > 0),
+          ];
+          for (const other of allUnits) {
+            if (other !== this) {
+              separateUnits(this, other, 18);
+            }
+          }
+        }
+
+        draw() {
+          // Draw harvester symbol only
+          ctx.font = "12px Arial";
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle";
+          ctx.fillText("👨‍🌾", this.x, this.y);
+        }
+      }
+
+      class Farmer {
+        constructor() {
+          // Try to spawn in a position that doesn't overlap with other units
+          let attempts = 0;
+          do {
+            this.x = base.x + (Math.random() - 0.5) * 80;
+            this.y = base.y + (Math.random() - 0.5) * 80;
+            attempts++;
+          } while (
+            attempts < 20 &&
+            checkCollision(
+              this,
+              [...harvesters, ...farmers, ...warriors.filter((w) => w.hp > 0)],
+              18
+            )
+          );
+
+          this.targetLocation = null;
+          this.planting = false;
+          this.plantTimer = 0;
+          this.speed = 1.2;
+          this.radius = 8;
+          this.findNewLocation();
+        }
+
+        findNewLocation() {
+          // Find a random spot around the base to plant
+          const angle = Math.random() * Math.PI * 2;
+          const distance = 80 + Math.random() * 150;
+          this.targetLocation = {
+            x: base.x + Math.cos(angle) * distance,
+            y: base.y + Math.sin(angle) * distance,
+          };
+
+          // Make sure it's within canvas bounds
+          this.targetLocation.x = Math.max(
+            30,
+            Math.min(canvas.width - 30, this.targetLocation.x)
+          );
+          this.targetLocation.y = Math.max(
+            30,
+            Math.min(canvas.height - 30, this.targetLocation.y)
+          );
+        }
+
+        update() {
+          if (!this.targetLocation) {
+            this.findNewLocation();
+            return;
+          }
+
+          const dx = this.targetLocation.x - this.x;
+          const dy = this.targetLocation.y - this.y;
+          const dist = Math.hypot(dx, dy);
+
+          if (dist > 10) {
+            // Move towards target location
+            const newX = this.x + (dx / dist) * this.speed;
+            const newY = this.y + (dy / dist) * this.speed;
+
+            // Temporarily set new position to check for collisions
+            const oldX = this.x,
+              oldY = this.y;
+            this.x = newX;
+            this.y = newY;
+
+            // Check collision with other units
+            const allUnits = [
+              ...harvesters,
+              ...farmers,
+              ...warriors.filter((w) => w.hp > 0),
+            ];
+            const collision = checkCollision(this, allUnits, 18);
+
+            if (collision) {
+              // Revert position and try to move around obstacle
+              this.x = oldX;
+              this.y = oldY;
+              // Try to move perpendicular to avoid obstacle
+              const perpX = -dy / dist;
+              const perpY = dx / dist;
+              this.x += perpX * this.speed * 0.5;
+              this.y += perpY * this.speed * 0.5;
+            }
+
+            this.planting = false;
+          } else {
+            // Start planting
+            this.planting = true;
+            this.plantTimer++;
+
+            if (this.plantTimer >= 300) {
+              // Plant every 5 seconds
+              // Check if there's already a resource node too close
+              let canPlant = true;
+              for (const node of resourceNodes) {
+                const nodeDist = Math.hypot(
+                  node.x - this.targetLocation.x,
+                  node.y - this.targetLocation.y
+                );
+                if (nodeDist < 40) {
+                  canPlant = false;
+                  break;
+                }
+              }
+
+              if (canPlant) {
+                // Plant a new resource node
+                resourceNodes.push({
+                  x: this.targetLocation.x,
+                  y: this.targetLocation.y,
+                  radius: 15,
+                  resources: 80,
+                });
+
+                // Add particle effect
+                particles.push(
+                  new Particle(
+                    this.targetLocation.x,
+                    this.targetLocation.y,
+                    "🌱"
+                  )
+                );
+              }
+
+              this.plantTimer = 0;
+              this.findNewLocation(); // Find new location to plant
+            }
+          }
+
+          // Separate from other units if too close
+          const allUnits = [
+            ...harvesters,
+            ...farmers,
+            ...warriors.filter((w) => w.hp > 0),
+          ];
+          for (const other of allUnits) {
+            if (other !== this) {
+              separateUnits(this, other, 18);
+            }
+          }
+        }
+
+        draw() {
+          // Draw farmer symbol
+          ctx.font = "12px Arial";
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle";
+          ctx.fillText("🧑‍🌾", this.x, this.y);
+
+          // Draw planting progress
+          if (this.planting) {
+            const progress = this.plantTimer / 300;
+            const barWidth = 12;
+            const barHeight = 2;
+            const barX = this.x - barWidth / 2;
+            const barY = this.y - 8;
+
+            ctx.fillStyle = "#333";
+            ctx.fillRect(barX, barY, barWidth, barHeight);
+
+            ctx.fillStyle = "#9ACD32";
+            ctx.fillRect(barX, barY, progress * barWidth, barHeight);
+          }
+        }
+      }
+
+      class Warrior {
+        constructor() {
+          // Try to spawn in a position that doesn't overlap with other units
+          let attempts = 0;
+          do {
+            this.x = base.x + (Math.random() - 0.5) * 100;
+            this.y = base.y + (Math.random() - 0.5) * 100;
+            attempts++;
+          } while (
+            attempts < 20 &&
+            checkCollision(
+              this,
+              [...harvesters, ...farmers, ...warriors.filter((w) => w.hp > 0)],
+              18
+            )
+          );
+
+          this.target = null;
+          this.speed = 1.5;
+          this.radius = 10;
+          this.attackCooldown = 0;
+          this.hp = 50;
+          this.maxHP = 50;
+        }
+
+        update() {
+          if (this.hp <= 0) return;
+
+          // Handle target delay for initial spread
+          if (this.targetDelay > 0) {
+            this.targetDelay--;
+            return;
+          }
+
+          // Find wolves within combat range with some randomization
+          const availableWolves = [];
+
+          for (const wolf of wolves) {
+            if (wolf.hp > 0) {
+              const dist = Math.hypot(wolf.x - this.x, wolf.y - this.y);
+              // Consider wolves within reasonable combat range
+              if (dist < 200) {
+                availableWolves.push({ wolf, distance: dist });
+              }
+            }
+          }
+
+          let nearestWolf = null;
+
+          if (availableWolves.length > 0) {
+            // Sort by distance
+            availableWolves.sort((a, b) => a.distance - b.distance);
+
+            // Add some randomization - pick from closest 2-3 wolves
+            const candidateCount = Math.min(
+              Math.max(2, Math.floor(availableWolves.length * 0.5)),
+              availableWolves.length
+            );
+            const randomIndex = Math.floor(Math.random() * candidateCount);
+            nearestWolf = availableWolves[randomIndex].wolf;
+          } else {
+            // Fallback: find absolute nearest wolf if none in range
+            let nearestDist = Infinity;
+
+            for (const wolf of wolves) {
+              if (wolf.hp > 0) {
+                const dist = Math.hypot(wolf.x - this.x, wolf.y - this.y);
+                if (dist < nearestDist) {
+                  nearestDist = dist;
+                  nearestWolf = wolf;
+                }
+              }
+            }
+          }
+
+          if (nearestWolf) {
+            const dx = nearestWolf.x - this.x;
+            const dy = nearestWolf.y - this.y;
+            const dist = Math.hypot(dx, dy);
+
+            if (dist > 30) {
+              // Move towards wolf
+              const newX = this.x + (dx / dist) * this.speed;
+              const newY = this.y + (dy / dist) * this.speed;
+
+              // Temporarily set new position to check for collisions
+              const oldX = this.x,
+                oldY = this.y;
+              this.x = newX;
+              this.y = newY;
+
+              // Check collision with other warriors
+              const collision = checkCollision(
+                this,
+                warriors.filter((w) => w.hp > 0),
+                18
+              );
+
+              if (collision) {
+                // Revert position and try to move around obstacle
+                this.x = oldX;
+                this.y = oldY;
+                // Try to move perpendicular to avoid obstacle
+                const perpX = -dy / dist;
+                const perpY = dx / dist;
+                this.x += perpX * this.speed * 0.5;
+                this.y += perpY * this.speed * 0.5;
+              }
+            } else {
+              // Attack wolf
+              if (this.attackCooldown <= 0) {
+                nearestWolf.hp -= 25;
+                this.attackCooldown = 60; // 1 second cooldown
+                particles.push(
+                  new Particle(nearestWolf.x, nearestWolf.y, "💥")
+                );
+              }
+            }
+          } else {
+            // Return to base if no wolves
+            const dx = base.x - this.x;
+            const dy = base.y - this.y;
+            const dist = Math.hypot(dx, dy);
+
+            if (dist > 50) {
+              const newX = this.x + (dx / dist) * this.speed * 0.5;
+              const newY = this.y + (dy / dist) * this.speed * 0.5;
+
+              // Check collision with other warriors
+              const oldX = this.x,
+                oldY = this.y;
+              this.x = newX;
+              this.y = newY;
+
+              const collision = checkCollision(
+                this,
+                warriors.filter((w) => w.hp > 0),
+                18
+              );
+              if (collision) {
+                this.x = oldX;
+                this.y = oldY;
+              }
+            }
+          }
+
+          // Separate from other warriors if too close
+          for (const other of warriors) {
+            if (other !== this && other.hp > 0) {
+              separateUnits(this, other, 18);
+            }
+          }
+
+          if (this.attackCooldown > 0) this.attackCooldown--;
+        }
+
+        draw() {
+          if (this.hp <= 0) return;
+
+          // Draw warrior symbol
+          ctx.font = "13px Arial";
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle";
+          ctx.fillText("⚔️", this.x, this.y);
+
+          // Health bar
+          const barWidth = 14;
+          const barHeight = 2;
+          const barX = this.x - barWidth / 2;
+          const barY = this.y - 8;
+
+          ctx.fillStyle = "#333";
+          ctx.fillRect(barX, barY, barWidth, barHeight);
+
+          ctx.fillStyle = this.hp > this.maxHP * 0.3 ? "#00FF00" : "#FF0000";
+          ctx.fillRect(
+            barX,
+            barY,
+            (this.hp / this.maxHP) * barWidth,
+            barHeight
+          );
+        }
+      }
+
+      class Wolf {
+        constructor() {
+          // Spawn from random edge
+          const edge = Math.floor(Math.random() * 4);
+          switch (edge) {
+            case 0: // Top
+              this.x = Math.random() * canvas.width;
+              this.y = -20;
+              break;
+            case 1: // Right
+              this.x = canvas.width + 20;
+              this.y = Math.random() * canvas.height;
+              break;
+            case 2: // Bottom
+              this.x = Math.random() * canvas.width;
+              this.y = canvas.height + 20;
+              break;
+            case 3: // Left
+              this.x = -20;
+              this.y = Math.random() * canvas.height;
+              break;
+          }
+
+          this.speed = 0.8 + Math.random() * 0.4;
+          this.radius = 12;
+          this.hp = 30 + wave * 10;
+          this.maxHP = this.hp;
+          this.attackCooldown = 0;
+          this.target = null;
+        }
+
+        update() {
+          if (this.hp <= 0) return;
+
+          // Target priority: Warriors first, then base
+          let target = null;
+          let nearestDist = Infinity;
+
+          // Check for living warriors
+          for (const warrior of warriors) {
+            if (warrior.hp > 0) {
+              const dist = Math.hypot(warrior.x - this.x, warrior.y - this.y);
+              if (dist < nearestDist) {
+                nearestDist = dist;
+                target = warrior;
+              }
+            }
+          }
+
+          // If no warriors, target the base
+          if (!target) {
+            target = base;
+            nearestDist = Math.hypot(base.x - this.x, base.y - this.y);
+          }
+
+          if (target) {
+            const dx = target.x - this.x;
+            const dy = target.y - this.y;
+            const dist = Math.hypot(dx, dy);
+
+            if (dist > (target.radius || 10) + this.radius) {
+              // Move towards target
+              this.x += (dx / dist) * this.speed;
+              this.y += (dy / dist) * this.speed;
+            } else {
+              // Attack target
+              if (this.attackCooldown <= 0) {
+                if (target === base) {
+                  baseHP -= 10;
+                  particles.push(new Particle(base.x, base.y, "💢"));
+                } else {
+                  target.hp -= 15;
+                  particles.push(new Particle(target.x, target.y, "💢"));
+                }
+                this.attackCooldown = 90; // 1.5 second cooldown
+              }
+            }
+          }
+
+          if (this.attackCooldown > 0) this.attackCooldown--;
+        }
+
+        draw() {
+          if (this.hp <= 0) return;
+
+          // Draw wolf symbol
+          ctx.font = "13px Arial";
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle";
+          ctx.fillText("🐺", this.x, this.y);
+
+          // Health bar
+          const barWidth = 16;
+          const barHeight = 2;
+          const barX = this.x - barWidth / 2;
+          const barY = this.y - 8;
+
+          ctx.fillStyle = "#333";
+          ctx.fillRect(barX, barY, barWidth, barHeight);
+
+          ctx.fillStyle = this.hp > this.maxHP * 0.3 ? "#FF4444" : "#AA0000";
+          ctx.fillRect(
+            barX,
+            barY,
+            (this.hp / this.maxHP) * barWidth,
+            barHeight
+          );
+        }
+      }
+
+      class Particle {
+        constructor(x, y, symbol) {
+          this.x = x;
+          this.y = y;
+          this.symbol = symbol;
+          this.life = 60;
+          this.maxLife = 60;
+          this.vx = (Math.random() - 0.5) * 2;
+          this.vy = (Math.random() - 0.5) * 2;
+        }
+
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+          this.life--;
+        }
+
+        draw() {
+          const alpha = this.life / this.maxLife;
+          ctx.globalAlpha = alpha;
+          ctx.font = "9px Arial";
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle";
+          ctx.fillText(this.symbol, this.x, this.y);
+          ctx.globalAlpha = 1;
+        }
+      }
+
+      // Event handlers
+      document.getElementById("harvesterBtn").addEventListener("click", () => {
+        if (resources >= 30) {
+          harvesters.push(new Harvester());
+          resources -= 30;
+        }
+      });
+
+      document.getElementById("warriorBtn").addEventListener("click", () => {
+        if (resources >= 50) {
+          warriors.push(new Warrior());
+          resources -= 50;
+        }
+      });
+
+      document.getElementById("farmerBtn").addEventListener("click", () => {
+        if (resources >= 40) {
+          farmers.push(new Farmer());
+          resources -= 40;
+        }
+      });
+
+      function spawnWave() {
+        const wolfCount = wave * 2 + Math.floor(wave / 3);
+        for (let i = 0; i < wolfCount; i++) {
+          wolves.push(new Wolf());
+        }
+        wave++;
+        waveTimer = 30;
+      }
+
+      function updateUI() {
+        document.getElementById("resources").textContent = resources;
+        document.getElementById("harvesters").textContent = harvesters.length;
+        document.getElementById("warriors").textContent = warriors.filter(
+          (w) => w.hp > 0
+        ).length;
+        document.getElementById("farmers").textContent = farmers.length;
+        document.getElementById("baseHP").textContent = Math.max(0, baseHP);
+        document.getElementById("wave").textContent = wave;
+        document.getElementById("timer").textContent = Math.max(
+          0,
+          Math.ceil(waveTimer)
+        );
+
+        // Update button states
+        document.getElementById("harvesterBtn").disabled = resources < 30;
+        document.getElementById("warriorBtn").disabled = resources < 50;
+        document.getElementById("farmerBtn").disabled = resources < 40;
+      }
+
+      function gameLoop() {
+        if (!gameRunning) return;
+
+        // Clear canvas
+        ctx.fillStyle = "#1a2e1a";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Draw resource nodes
+        for (const node of resourceNodes) {
+          // Only draw the wheat symbol, no circle background
+          ctx.font = "10px Arial";
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle";
+          ctx.fillText("🌾", node.x, node.y);
+        }
+
+        // Draw base
+        ctx.font = "50px Arial";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText("🏰", base.x, base.y);
+
+        // Update and draw game objects
+        [...harvesters, ...warriors, ...farmers, ...wolves].forEach((obj) => {
+          if (obj.update) obj.update();
+          if (obj.draw) obj.draw();
+        });
+
+        // Update particles
+        for (let i = particles.length - 1; i >= 0; i--) {
+          particles[i].update();
+          particles[i].draw();
+          if (particles[i].life <= 0) {
+            particles.splice(i, 1);
+          }
+        }
+
+        // Remove dead wolves and warriors
+        for (let i = wolves.length - 1; i >= 0; i--) {
+          if (wolves[i].hp <= 0) {
+            wolves.splice(i, 1);
+          }
+        }
+
+        for (let i = warriors.length - 1; i >= 0; i--) {
+          if (warriors[i].hp <= 0) {
+            warriors.splice(i, 1);
+          }
+        }
+
+        // Wave timer
+        waveTimer -= 1 / 60;
+        if (waveTimer <= 0) {
+          spawnWave();
+        }
+
+        // Check game over
+        if (baseHP <= 0) {
+          gameRunning = false;
+          ctx.fillStyle = "rgba(0, 0, 0, 0.8)";
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+          ctx.fillStyle = "white";
+          ctx.font = "48px Arial";
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle";
+          ctx.fillText("GAME OVER", canvas.width / 2, canvas.height / 2 - 40);
+
+          ctx.font = "24px Arial";
+          ctx.fillText(
+            `You survived ${wave - 1} waves!`,
+            canvas.width / 2,
+            canvas.height / 2 + 20
+          );
+          ctx.fillText(
+            "Refresh to play again",
+            canvas.width / 2,
+            canvas.height / 2 + 60
+          );
+        }
+
+        updateUI();
+        if (gameRunning) requestAnimationFrame(gameLoop);
+      }
+
+      // Initialize game when canvas is resized
+      window.addEventListener("resize", () => {
+        setTimeout(() => {
+          updateBasePosition();
+          generateInitialResources();
+        }, 100);
+      });
+
+      // Initialize game
+      updateBasePosition();
+      generateInitialResources();
+      gameLoop();
+    </script>
+  </body>
+</html>
