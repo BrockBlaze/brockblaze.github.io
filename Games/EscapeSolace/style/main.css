@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+    font-family: 'Courier New', monospace;
+    overflow: hidden;
+    user-select: none;
+}
+
+#gameContainer {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#gameCanvas {
+    border: 2px solid #333;
+    background-color: #111;
+    cursor: crosshair;
+}
+
+#ui {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+}
+
+#health, #score {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 8px 16px;
+    margin-bottom: 8px;
+    border: 1px solid #444;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+#healthValue {
+    color: #0f0;
+}
+
+#scoreValue {
+    color: #ff0;
+}
+
+.game-over {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 40px;
+    border: 2px solid #f00;
+    border-radius: 8px;
+}
+
+.game-over h1 {
+    color: #f00;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.game-over button {
+    background: #333;
+    color: #fff;
+    border: 2px solid #666;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 20px;
+}
+
+.game-over button:hover {
+    background: #666;
+}
