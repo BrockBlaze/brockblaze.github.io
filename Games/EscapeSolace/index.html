@@ -8,15 +8,25 @@
 </head>
 <body>
     <div id="gameContainer">
-        <canvas id="gameCanvas" width="800" height="600"></canvas>
+        <canvas id="gameCanvas"></canvas>
         <div id="ui">
-            <div id="health">Health: <span id="healthValue">100</span></div>
-            <div id="score">Score: <span id="scoreValue">0</span></div>
+            <div id="healthBar">
+                <div id="healthBarFill"></div>
+                <span id="healthText">100</span>
+            </div>
+            <div id="shieldBar">
+                <div id="shieldBarFill"></div>
+                <span id="shieldText">50</span>
+            </div>
+            <div id="ammo">Ammo: <span id="ammoValue">36/36</span></div>
+            <div id="reloadMessage"></div>
+            <div id="restartMessage">YOU DIED<br>Press R to Restart</div>
         </div>
     </div>
     
     <script src="js/game.js"></script>
     <script src="js/player.js"></script>
+    <script src="js/badguy.js"></script>
     <script src="js/world.js"></script>
     <script src="js/main.js"></script>
 </body>

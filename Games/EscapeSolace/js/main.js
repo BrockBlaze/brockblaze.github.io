@@ -3,11 +3,12 @@ let game;
 
 // Initialize the game when the page loads
 document.addEventListener('DOMContentLoaded', () => {
-    // Set up debug mode (F1 to toggle)
+    // Set up debug mode (F1 to toggle) - starts OFF by default
     window.DEBUG = false;
     
     // Create and start the game
     game = new Game();
+    window.game = game;
     
     console.log('Escape Solace initialized');
     console.log('Controls:');

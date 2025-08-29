@@ -22,33 +22,128 @@ body {
 }
 
 #gameCanvas {
-    border: 2px solid #333;
     background-color: #111;
     cursor: crosshair;
+    display: block;
 }
 
 #ui {
     position: absolute;
-    top: 20px;
-    left: 20px;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
     z-index: 10;
+    pointer-events: none;
 }
 
-#health, #score {
+#healthBar {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid #444;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#shieldBar {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 16px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid #444;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+#healthBarFill {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, #f00 0%, #ff0 50%, #0f0 100%);
+    transition: width 0.3s ease;
+}
+
+#shieldBarFill {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, #004499 0%, #0088ff 50%, #00ccff 100%);
+    transition: width 0.3s ease;
+}
+
+#healthText {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 12px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 1px 1px 2px #000;
+}
+
+#shieldText {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 10px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 1px 1px 2px #000;
+}
+
+#ammo {
+    position: absolute;
+    top: 20px;
+    right: 20px;
     background: rgba(0, 0, 0, 0.8);
     padding: 8px 16px;
-    margin-bottom: 8px;
     border: 1px solid #444;
     border-radius: 4px;
     font-size: 14px;
 }
 
-#healthValue {
-    color: #0f0;
+#ammoValue {
+    color: #ff8800;
 }
 
-#scoreValue {
-    color: #ff0;
+#reloadMessage {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ff8800;
+    text-shadow: 1px 1px 2px #000;
+    display: none;
+}
+
+#restartMessage {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.9);
+    padding: 20px 30px;
+    border: 3px solid #ff0000;
+    border-radius: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff0000;
+    text-align: center;
+    text-shadow: 2px 2px 4px #000;
+    display: none;
 }
 
 .game-over {

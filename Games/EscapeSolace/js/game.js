@@ -3,6 +3,10 @@ class Game {
         this.canvas = document.getElementById('gameCanvas');
         this.ctx = this.canvas.getContext('2d');
         
+        // Set canvas to full window size
+        this.resizeCanvas();
+        window.addEventListener('resize', () => this.resizeCanvas());
+        
         // Game state
         this.isRunning = false;
         this.isPaused = false;
@@ -16,7 +20,7 @@ class Game {
         this.camera = {
             x: 0,
             y: 0,
-            zoom: 1
+            zoom: 1.2
         };
         
         // Game objects
@@ -25,12 +29,53 @@ class Game {
         this.bullets = [];
         this.enemies = [];
         this.particles = [];
+        this.hitEffects = [];
+        this.pickups = [];
+        
+        // Enemy spawning
+        this.maxEnemies = 3;
+        this.enemySpawnTimer = 0;
+        this.enemySpawnInterval = 1000; // 1 second for debugging
+        
+        // Pickup spawning
+        this.pickupSpawnTimer = 0;
+        this.pickupSpawnInterval = 10000; // 10 seconds
+        this.maxPickups = 2;
+        
+        // Weapon system
+        this.isMouseDown = false;
+        this.clipSize = 36;
+        this.currentAmmo = 36;
+        this.fireRate = 900; // rounds per minute
+        this.lastShotTime = 0;
+        this.isReloading = false;
+        this.reloadTime = 1000; // 1 second
+        this.reloadStartTime = 0;
+        
+        // Game state
+        this.gameOver = false;
+        this.showRestartMessage = false;
+        
+        // Recoil animation
+        this.recoilOffset = 0;
+        this.maxRecoil = 5; // pixels
+        this.recoilRecoverySpeed = 40; // pixels per second
         
         // Sprite system
         this.sprites = new Map();
         this.spritesLoaded = false;
         
         this.init();
+    }
+    
+    resizeCanvas() {
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+        // Disable image smoothing for pixel-perfect rendering
+        this.ctx.imageSmoothingEnabled = false;
+        this.ctx.msImageSmoothingEnabled = false;
+        this.ctx.webkitImageSmoothingEnabled = false;
+        this.ctx.mozImageSmoothingEnabled = false;
     }
     
     async init() {
@@ -42,25 +87,189 @@ class Game {
     }
     
     async loadSprites() {
-        // For now, we'll use simple colored rectangles
-        // You can replace this with actual sprite loading later
-        this.spritesLoaded = true;
+        try {
+            // Load player sprites
+            const playerImg = new Image();
+            playerImg.src = 'sprites/player/player.png';
+            await new Promise((resolve, reject) => {
+                playerImg.onload = resolve;
+                playerImg.onerror = reject;
+            });
+            this.sprites.set('player', playerImg);
+            
+            // Load walking sprites
+            const walk1Img = new Image();
+            walk1Img.src = 'sprites/player/playerWalk1.png';
+            await new Promise((resolve, reject) => {
+                walk1Img.onload = resolve;
+                walk1Img.onerror = reject;
+            });
+            this.sprites.set('playerWalk1', walk1Img);
+            
+            const walk2Img = new Image();
+            walk2Img.src = 'sprites/player/playerWalk2.png';
+            await new Promise((resolve, reject) => {
+                walk2Img.onload = resolve;
+                walk2Img.onerror = reject;
+            });
+            this.sprites.set('playerWalk2', walk2Img);
+            
+            // Load weapon sprite
+            const weaponImg = new Image();
+            weaponImg.src = 'sprites/player/playerAR.png';
+            await new Promise((resolve, reject) => {
+                weaponImg.onload = resolve;
+                weaponImg.onerror = reject;
+            });
+            this.sprites.set('playerAR', weaponImg);
+            
+            // Load badguy sprites
+            const badguyImg = new Image();
+            badguyImg.src = 'sprites/badguy/badguy.png';
+            await new Promise((resolve, reject) => {
+                badguyImg.onload = resolve;
+                badguyImg.onerror = reject;
+            });
+            this.sprites.set('badguy', badguyImg);
+            
+            const badguyWalk1Img = new Image();
+            badguyWalk1Img.src = 'sprites/badguy/badguyWalk1.png';
+            await new Promise((resolve, reject) => {
+                badguyWalk1Img.onload = resolve;
+                badguyWalk1Img.onerror = reject;
+            });
+            this.sprites.set('badguyWalk1', badguyWalk1Img);
+            
+            const badguyWalk2Img = new Image();
+            badguyWalk2Img.src = 'sprites/badguy/badguyWalk2.png';
+            await new Promise((resolve, reject) => {
+                badguyWalk2Img.onload = resolve;
+                badguyWalk2Img.onerror = reject;
+            });
+            this.sprites.set('badguyWalk2', badguyWalk2Img);
+            
+            const badguyBlasterImg = new Image();
+            badguyBlasterImg.src = 'sprites/badguy/badguyBlaster.png';
+            await new Promise((resolve, reject) => {
+                badguyBlasterImg.onload = resolve;
+                badguyBlasterImg.onerror = reject;
+            });
+            this.sprites.set('badguyBlaster', badguyBlasterImg);
+            
+            // Load death sprites
+            const playerDeadImg = new Image();
+            playerDeadImg.src = 'sprites/player/playerDead.png';
+            await new Promise((resolve, reject) => {
+                playerDeadImg.onload = resolve;
+                playerDeadImg.onerror = reject;
+            });
+            this.sprites.set('playerDead', playerDeadImg);
+            
+            const badguyDeadImg = new Image();
+            badguyDeadImg.src = 'sprites/badguy/badguyDead.png';
+            await new Promise((resolve, reject) => {
+                badguyDeadImg.onload = resolve;
+                badguyDeadImg.onerror = reject;
+            });
+            this.sprites.set('badguyDead', badguyDeadImg);
+            
+            // Load pickup sprites
+            const shieldPickupImg = new Image();
+            shieldPickupImg.src = 'sprites/pickups/sheildRegenPickup.png';
+            await new Promise((resolve, reject) => {
+                shieldPickupImg.onload = resolve;
+                shieldPickupImg.onerror = reject;
+            });
+            this.sprites.set('shieldPickup', shieldPickupImg);
+            
+            console.log('Loaded player, badguy, and pickup sprites');
+            console.log('Available sprites:', Array.from(this.sprites.keys()));
+        } catch (error) {
+            console.warn('Failed to load player sprites, using placeholder:', error);
+        }
         
-        // Create simple colored rectangles as placeholder sprites
+        // Initialize empty arrays for world generation
+        this.roomSprites = [];
+        this.hallwaySprites = [];
+        
+        // Create other placeholder sprites
         this.createPlaceholderSprites();
+        this.spritesLoaded = true;
+    }
+    
+    // Removed - no longer needed for Doom-style generation
+    
+    analyzeRoomSprite(image, roomNumber, type = 'room') {
+        // Create a hidden canvas to read pixel data
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = image.width;
+        canvas.height = image.height;
+        
+        // Draw the image to extract pixel data
+        ctx.drawImage(image, 0, 0);
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const data = imageData.data;
+        
+        const connectionPoints = [];
+        const walkableAreas = [];
+        
+        // Scan for connection points and walkable areas
+        for (let y = 0; y < canvas.height; y++) {
+            for (let x = 0; x < canvas.width; x++) {
+                const index = (y * canvas.width + x) * 4;
+                const r = data[index];
+                const g = data[index + 1];
+                const b = data[index + 2];
+                const a = data[index + 3];
+                
+                // Check for yellow connection points (type: yellow)
+                if (r > 150 && g > 150 && b < 150 && a > 200) {
+                    connectionPoints.push({ x, y, type: 'yellow' });
+                    if (connectionPoints.filter(p => p.type === 'yellow').length === 1) {
+                        console.log(`Found yellow connection point at (${x}, ${y}) with RGB(${r}, ${g}, ${b})`);
+                    }
+                }
+                
+                // Check for red connection points (type: red)
+                else if (r > 150 && g < 100 && b < 100 && a > 200) {
+                    connectionPoints.push({ x, y, type: 'red' });
+                    if (connectionPoints.filter(p => p.type === 'red').length === 1) {
+                        console.log(`Found red connection point at (${x}, ${y}) with RGB(${r}, ${g}, ${b})`);
+                    }
+                }
+                
+                // Check for walkable areas (non-black pixels that aren't connection points)
+                else if (a > 200 && !(r < 50 && g < 50 && b < 50)) {
+                    walkableAreas.push({ x, y });
+                }
+            }
+        }
+        
+        return {
+            image: image,
+            width: canvas.width,
+            height: canvas.height,
+            connectionPoints: connectionPoints,
+            walkableAreas: walkableAreas,
+            roomNumber: roomNumber,
+            type: type
+        };
     }
     
     createPlaceholderSprites() {
         const spriteSize = 32;
         
-        // Player sprite
-        const playerCanvas = document.createElement('canvas');
-        playerCanvas.width = spriteSize;
-        playerCanvas.height = spriteSize;
-        const playerCtx = playerCanvas.getContext('2d');
-        playerCtx.fillStyle = '#00ff00';
-        playerCtx.fillRect(0, 0, spriteSize, spriteSize);
-        this.sprites.set('player', playerCanvas);
+        // Only create player sprite if not already loaded
+        if (!this.sprites.has('player')) {
+            const playerCanvas = document.createElement('canvas');
+            playerCanvas.width = spriteSize;
+            playerCanvas.height = spriteSize;
+            const playerCtx = playerCanvas.getContext('2d');
+            playerCtx.fillStyle = '#00ff00';
+            playerCtx.fillRect(0, 0, spriteSize, spriteSize);
+            this.sprites.set('player', playerCanvas);
+        }
         
         // Enemy sprite
         const enemyCanvas = document.createElement('canvas');
@@ -82,23 +291,30 @@ class Game {
     }
     
     createWorld() {
-        this.world = new World(2000, 1500);
+        this.world = new World(2000, 1500, this.roomSprites, this.hallwaySprites);
     }
     
     createPlayer() {
         const spawnPoint = this.world.getRandomSpawnPoint();
+        console.log(`Creating player at (${spawnPoint.x}, ${spawnPoint.y})`);
         this.player = new Player(spawnPoint.x, spawnPoint.y);
+        console.log(`Player created:`, this.player);
     }
     
     setupEventListeners() {
-        // Shooting
-        this.canvas.addEventListener('click', (e) => {
+        // Mouse shooting
+        this.canvas.addEventListener('mousedown', (e) => {
             if (this.isRunning && !this.isPaused) {
-                this.shoot();
+                this.isMouseDown = true;
+                this.shoot(); // Fire immediately on click
             }
         });
         
-        // Pause/unpause
+        this.canvas.addEventListener('mouseup', (e) => {
+            this.isMouseDown = false;
+        });
+        
+        // Pause/unpause and other keys
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 this.togglePause();
@@ -108,24 +324,75 @@ class Game {
                 window.DEBUG = !window.DEBUG;
                 e.preventDefault();
             }
+            if (e.key.toLowerCase() === 'r') {
+                if (this.gameOver) {
+                    this.restartGame();
+                } else {
+                    this.startReload();
+                }
+                e.preventDefault();
+            }
         });
     }
     
     shoot() {
-        if (!this.player) return;
+        if (!this.player || this.player.isDead || this.isReloading || this.currentAmmo <= 0) return;
+        
+        const currentTime = performance.now();
+        const timeBetweenShots = 60000 / this.fireRate; // Convert RPM to milliseconds
+        
+        if (currentTime - this.lastShotTime < timeBetweenShots) return;
         
         const bullet = {
             x: this.player.x,
             y: this.player.y,
-            vx: Math.cos(this.player.angle) * 400,
-            vy: Math.sin(this.player.angle) * 400,
-            speed: 400,
+            vx: Math.cos(this.player.angle) * 1000,
+            vy: Math.sin(this.player.angle) * 1000,
+            speed: 1000,
             damage: 25,
             lifetime: 3000,
             age: 0
         };
         
         this.bullets.push(bullet);
+        this.currentAmmo--;
+        this.lastShotTime = currentTime;
+        
+        // Add recoil effect
+        this.recoilOffset = this.maxRecoil;
+    }
+    
+    startReload() {
+        if (this.isReloading || this.currentAmmo === this.clipSize) return;
+        
+        this.isReloading = true;
+        this.reloadStartTime = performance.now();
+        console.log('Reloading...');
+    }
+    
+    updateWeapon(deltaTime) {
+        // Handle automatic firing
+        if (this.isMouseDown && !this.isReloading && this.currentAmmo > 0) {
+            this.shoot();
+        }
+        
+        // Handle reloading
+        if (this.isReloading) {
+            const currentTime = performance.now();
+            if (currentTime - this.reloadStartTime >= this.reloadTime) {
+                this.currentAmmo = this.clipSize;
+                this.isReloading = false;
+                console.log('Reload complete!');
+            }
+        }
+        
+        // Update recoil animation
+        if (this.recoilOffset > 0) {
+            this.recoilOffset -= this.recoilRecoverySpeed * deltaTime;
+            if (this.recoilOffset < 0) {
+                this.recoilOffset = 0;
+            }
+        }
     }
     
     start() {
@@ -167,6 +434,9 @@ class Game {
         // Update player
         this.player.update(deltaTime);
         
+        // Update weapon system
+        this.updateWeapon(deltaTime);
+        
         // Update camera to follow player
         this.updateCamera();
         
@@ -179,28 +449,48 @@ class Game {
         // Update particles
         this.updateParticles(deltaTime);
         
+        // Update hit effects
+        this.updateHitEffects(deltaTime);
+        
+        // Update pickups
+        this.updatePickups(deltaTime);
+        
         // Update UI
         this.updateUI();
         
-        // Check collision with walls
-        this.checkPlayerWallCollision();
+        // Wall collision is now handled in player.update()
     }
     
     updateCamera() {
-        const targetX = this.player.x - this.canvas.width / 2;
-        const targetY = this.player.y - this.canvas.height / 2;
+        if (!this.player) return;
         
-        // Smooth camera following
-        this.camera.x += (targetX - this.camera.x) * 0.1;
-        this.camera.y += (targetY - this.camera.y) * 0.1;
+        const targetX = this.player.x - (this.canvas.width / 2) / this.camera.zoom;
+        const targetY = this.player.y - (this.canvas.height / 2) / this.camera.zoom;
+        
+        // For first frame, snap camera to player
+        if (this.camera.x === 0 && this.camera.y === 0) {
+            this.camera.x = targetX;
+            this.camera.y = targetY;
+            console.log(`Camera initialized at (${this.camera.x}, ${this.camera.y})`);
+        } else {
+            // Smooth camera following
+            this.camera.x += (targetX - this.camera.x) * 0.1;
+            this.camera.y += (targetY - this.camera.y) * 0.1;
+        }
     }
     
     updateBullets(deltaTime) {
         for (let i = this.bullets.length - 1; i >= 0; i--) {
             const bullet = this.bullets[i];
             
-            bullet.x += bullet.vx * deltaTime;
-            bullet.y += bullet.vy * deltaTime;
+            // Store previous position
+            const prevX = bullet.x;
+            const prevY = bullet.y;
+            
+            // Calculate new position
+            const newX = bullet.x + bullet.vx * deltaTime;
+            const newY = bullet.y + bullet.vy * deltaTime;
+            
             bullet.age += deltaTime * 1000;
             
             // Remove old bullets
@@ -209,34 +499,447 @@ class Game {
                 continue;
             }
             
-            // Check wall collision
-            if (this.checkBulletWallCollision(bullet)) {
+            // Check wall collision along the bullet's path
+            const collision = this.checkBulletWallCollisionPath(prevX, prevY, newX, newY);
+            if (collision) {
+                this.createHitEffect(collision.x, collision.y);
                 this.bullets.splice(i, 1);
                 continue;
             }
+            
+            // Check collision with player (for enemy bullets)
+            if (bullet.isEnemyBullet && this.player) {
+                const dx = newX - this.player.x;
+                const dy = newY - this.player.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance < 20) { // Hit player!
+                    console.log(`About to call takeDamage with ${bullet.damage} damage. Current health: ${this.player.health}, shield: ${this.player.shield}`);
+                    const isDead = this.player.takeDamage(bullet.damage);
+                    this.bullets.splice(i, 1);
+                    this.createHitEffect(newX, newY);
+                    console.log(`After takeDamage - Health: ${this.player.health}, Shield: ${this.player.shield}, isDead: ${isDead}`);
+                    
+                    if (isDead) {
+                        console.log('Player died!');
+                        this.gameOver = true;
+                        this.showRestartMessage = true;
+                    }
+                    continue;
+                }
+            }
+            
+            // Update bullet position
+            bullet.x = newX;
+            bullet.y = newY;
         }
     }
     
     updateEnemies(deltaTime) {
-        // Enemy spawning and AI would go here
+        // Update enemy spawn timer
+        this.enemySpawnTimer += deltaTime * 1000;
+        
+        // Spawn new enemies if needed
+        if (this.enemies.length < this.maxEnemies && this.enemySpawnTimer >= this.enemySpawnInterval) {
+            this.spawnEnemy();
+            this.enemySpawnTimer = 0;
+        }
+        
+        // Update existing enemies
+        for (let i = this.enemies.length - 1; i >= 0; i--) {
+            const enemy = this.enemies[i];
+            enemy.update(deltaTime);
+            
+            // Remove dead enemies after death timer expires
+            if (enemy.isDead && enemy.deathTimer >= enemy.deathDuration) {
+                this.enemies.splice(i, 1);
+                continue;
+            }
+            
+            // Award points when enemy first dies
+            if (enemy.health <= 0 && !enemy.isDead) {
+                this.score += 100;
+            }
+            
+            // Check collision with player bullets (only if enemy is alive)
+            if (!enemy.isDead) {
+                for (let j = this.bullets.length - 1; j >= 0; j--) {
+                    const bullet = this.bullets[j];
+                    if (bullet.isEnemyBullet) continue; // Skip enemy bullets
+                    
+                    const dx = bullet.x - enemy.x;
+                    const dy = bullet.y - enemy.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < 20) { // Hit!
+                        const isDead = enemy.takeDamage(bullet.damage);
+                        this.bullets.splice(j, 1);
+                        this.createHitEffect(bullet.x, bullet.y);
+                        
+                        if (isDead) {
+                            this.score += 100; // Award points but don't remove enemy yet
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+    }
+    
+    spawnEnemy() {
+        if (!this.world || !this.player) return;
+        
+        // Try to find a spawn point away from player
+        const minDistance = 200;
+        let attempts = 0;
+        let spawnPoint = null;
+        
+        while (attempts < 20) {
+            const x = Math.random() * (this.world.width - 100) + 50;
+            const y = Math.random() * (this.world.height - 100) + 50;
+            
+            // Check if walkable
+            if (this.world.isWalkable(x, y, 32, 32)) {
+                // Check distance from player
+                const dx = x - this.player.x;
+                const dy = y - this.player.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance >= minDistance) {
+                    spawnPoint = { x, y };
+                    break;
+                }
+            }
+            attempts++;
+        }
+        
+        if (spawnPoint) {
+            const badguy = new Badguy(spawnPoint.x, spawnPoint.y);
+            this.enemies.push(badguy);
+            console.log(`Spawned badguy at (${spawnPoint.x}, ${spawnPoint.y})`);
+        }
     }
     
     updateParticles(deltaTime) {
         // Particle system would go here
     }
     
-    checkPlayerWallCollision() {
-        // Basic wall collision for player
-        // This is simplified - you might want more sophisticated collision detection
+    createHitEffect(x, y) {
+        const effect = {
+            x: x,
+            y: y,
+            particles: [],
+            lifetime: 500, // 0.5 seconds
+            age: 0
+        };
+        
+        // Create small particles for the hit effect
+        for (let i = 0; i < 8; i++) {
+            const angle = (Math.PI * 2 * i) / 8;
+            const speed = 50 + Math.random() * 50;
+            effect.particles.push({
+                x: x,
+                y: y,
+                vx: Math.cos(angle) * speed,
+                vy: Math.sin(angle) * speed,
+                size: (1 + Math.random() * 2) / 3,
+                alpha: 1
+            });
+        }
+        
+        this.hitEffects.push(effect);
     }
     
-    checkBulletWallCollision(bullet) {
-        return !this.world.isWalkable(bullet.x, bullet.y, 4, 4);
+    updateHitEffects(deltaTime) {
+        for (let i = this.hitEffects.length - 1; i >= 0; i--) {
+            const effect = this.hitEffects[i];
+            effect.age += deltaTime * 1000;
+            
+            // Update particles
+            for (let particle of effect.particles) {
+                particle.x += particle.vx * deltaTime;
+                particle.y += particle.vy * deltaTime;
+                particle.vx *= 0.95; // Friction
+                particle.vy *= 0.95;
+                particle.alpha = 1 - (effect.age / effect.lifetime);
+            }
+            
+            // Remove old effects
+            if (effect.age > effect.lifetime) {
+                this.hitEffects.splice(i, 1);
+            }
+        }
+    }
+    
+    checkPlayerWallCollision() {
+        if (!this.player || !this.world) return;
+        
+        // Use smaller collision box - player is 32x32 but let's use a smaller collision area
+        const playerSize = 20; // Reduced from 32 to 20
+        
+        // Check if player position is walkable
+        if (!this.world.isWalkable(this.player.x, this.player.y, playerSize, playerSize)) {
+            // Find a nearby walkable position and move player there
+            this.movePlayerToNearestWalkablePosition();
+        }
+    }
+    
+    movePlayerToNearestWalkablePosition() {
+        const playerSize = 20; // Use same smaller size as collision check
+        const searchRadius = 50;
+        const step = 5;
+        
+        // Search in expanding circles for a walkable position
+        for (let radius = step; radius <= searchRadius; radius += step) {
+            for (let angle = 0; angle < Math.PI * 2; angle += 0.2) {
+                const testX = this.player.x + Math.cos(angle) * radius;
+                const testY = this.player.y + Math.sin(angle) * radius;
+                
+                if (this.world.isWalkable(testX, testY, playerSize, playerSize)) {
+                    this.player.x = testX;
+                    this.player.y = testY;
+                    this.player.vx = 0;
+                    this.player.vy = 0;
+                    return;
+                }
+            }
+        }
+    }
+    
+    circleRectCollision(cx, cy, radius, rx, ry, rw, rh) {
+        // Find closest point on rectangle to circle center
+        const closestX = Math.max(rx, Math.min(cx, rx + rw));
+        const closestY = Math.max(ry, Math.min(cy, ry + rh));
+        
+        // Calculate distance between circle center and closest point
+        const dx = cx - closestX;
+        const dy = cy - closestY;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        
+        return distance < radius;
+    }
+    
+    resolvePlayerWallCollision(wall, playerRadius) {
+        // Calculate overlap and push player out
+        const centerX = wall.x + wall.width / 2;
+        const centerY = wall.y + wall.height / 2;
+        
+        const dx = this.player.x - centerX;
+        const dy = this.player.y - centerY;
+        
+        const absX = Math.abs(dx);
+        const absY = Math.abs(dy);
+        
+        const overlapX = (wall.width / 2 + playerRadius) - absX;
+        const overlapY = (wall.height / 2 + playerRadius) - absY;
+        
+        if (overlapX > 0 && overlapY > 0) {
+            // Push out on the axis with smallest overlap
+            if (overlapX < overlapY) {
+                this.player.x += overlapX * Math.sign(dx);
+                this.player.vx = 0;
+            } else {
+                this.player.y += overlapY * Math.sign(dy);
+                this.player.vy = 0;
+            }
+        }
+    }
+    
+    checkBulletWallCollisionPath(x1, y1, x2, y2) {
+        // Check line segment collision with all walls
+        for (let wall of this.world.walls) {
+            const collision = this.lineRectIntersection(x1, y1, x2, y2, wall.x, wall.y, wall.width, wall.height);
+            if (collision) {
+                return collision;
+            }
+        }
+        return null;
+    }
+    
+    lineRectIntersection(x1, y1, x2, y2, rx, ry, rw, rh) {
+        // Check if line segment intersects with rectangle
+        // Test all four edges of the rectangle
+        
+        const edges = [
+            { x1: rx, y1: ry, x2: rx + rw, y2: ry }, // Top edge
+            { x1: rx + rw, y1: ry, x2: rx + rw, y2: ry + rh }, // Right edge
+            { x1: rx + rw, y1: ry + rh, x2: rx, y2: ry + rh }, // Bottom edge
+            { x1: rx, y1: ry + rh, x2: rx, y2: ry } // Left edge
+        ];
+        
+        let closestIntersection = null;
+        let closestDistance = Infinity;
+        
+        for (let edge of edges) {
+            const intersection = this.lineLineIntersection(x1, y1, x2, y2, edge.x1, edge.y1, edge.x2, edge.y2);
+            if (intersection) {
+                const distance = Math.sqrt((intersection.x - x1) ** 2 + (intersection.y - y1) ** 2);
+                if (distance < closestDistance) {
+                    closestDistance = distance;
+                    closestIntersection = intersection;
+                }
+            }
+        }
+        
+        return closestIntersection;
+    }
+    
+    lineLineIntersection(x1, y1, x2, y2, x3, y3, x4, y4) {
+        // Line 1: (x1,y1) to (x2,y2)
+        // Line 2: (x3,y3) to (x4,y4)
+        
+        const denom = (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4);
+        if (Math.abs(denom) < 1e-10) return null; // Lines are parallel
+        
+        const t = ((x1 - x3) * (y3 - y4) - (y1 - y3) * (x3 - x4)) / denom;
+        const u = -((x1 - x2) * (y1 - y3) - (y1 - y2) * (x1 - x3)) / denom;
+        
+        if (t >= 0 && t <= 1 && u >= 0 && u <= 1) {
+            return {
+                x: x1 + t * (x2 - x1),
+                y: y1 + t * (y2 - y1)
+            };
+        }
+        
+        return null;
+    }
+    
+    updatePickups(deltaTime) {
+        // Update pickup spawn timer
+        this.pickupSpawnTimer += deltaTime * 1000;
+        
+        // Spawn new pickups if needed
+        if (this.pickups.length < this.maxPickups && this.pickupSpawnTimer >= this.pickupSpawnInterval) {
+            this.spawnShieldPickup();
+            this.pickupSpawnTimer = 0;
+        }
+        
+        // Check pickup collection
+        for (let i = this.pickups.length - 1; i >= 0; i--) {
+            const pickup = this.pickups[i];
+            
+            // Check distance to player
+            const dx = pickup.x - this.player.x;
+            const dy = pickup.y - this.player.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            
+            if (distance < 25) { // Close enough to collect
+                if (pickup.type === 'shield') {
+                    this.player.addShield(25); // Restore 25 shield
+                    console.log(`Shield pickup collected! Shield: ${this.player.shield}`);
+                }
+                this.pickups.splice(i, 1);
+                continue;
+            }
+            
+            // Update pickup animation
+            pickup.bobTimer += deltaTime * 1000;
+            pickup.bobOffset = Math.sin(pickup.bobTimer * 0.005) * 3;
+            pickup.rotationAngle += deltaTime * 2; // Slow rotation
+        }
+    }
+    
+    spawnShieldPickup() {
+        if (!this.world || !this.player) return;
+        
+        // Try to find a spawn point
+        let attempts = 0;
+        let spawnPoint = null;
+        
+        while (attempts < 15) {
+            const x = Math.random() * (this.world.width - 100) + 50;
+            const y = Math.random() * (this.world.height - 100) + 50;
+            
+            // Check if walkable
+            if (this.world.isWalkable(x, y, 20, 20)) {
+                spawnPoint = { x, y };
+                break;
+            }
+            attempts++;
+        }
+        
+        if (spawnPoint) {
+            const pickup = {
+                x: spawnPoint.x,
+                y: spawnPoint.y,
+                type: 'shield',
+                size: 12,
+                bobTimer: 0,
+                bobOffset: 0,
+                rotationAngle: 0
+            };
+            this.pickups.push(pickup);
+            console.log(`Spawned shield pickup at (${spawnPoint.x}, ${spawnPoint.y})`);
+        }
+    }
+    
+    restartGame() {
+        // Reset player
+        this.player.health = this.player.maxHealth;
+        this.player.shield = this.player.maxShield;
+        this.player.isDead = false;
+        
+        // Reset player position
+        const spawnPoint = this.world.getRandomSpawnPoint();
+        this.player.x = spawnPoint.x;
+        this.player.y = spawnPoint.y;
+        
+        // Clear enemies and bullets
+        this.enemies = [];
+        this.bullets = [];
+        this.pickups = [];
+        this.hitEffects = [];
+        
+        // Reset weapon state
+        this.currentAmmo = this.clipSize;
+        this.isReloading = false;
+        this.recoilOffset = 0;
+        
+        // Reset game state
+        this.gameOver = false;
+        this.showRestartMessage = false;
+        this.score = 0;
+        
+        // Reset timers
+        this.enemySpawnTimer = 0;
+        this.pickupSpawnTimer = 0;
+        
+        console.log('Game restarted!');
     }
     
     updateUI() {
-        document.getElementById('healthValue').textContent = this.player.health;
-        document.getElementById('scoreValue').textContent = this.score;
+        // Update health bar
+        const healthPercent = (this.player.health / this.player.maxHealth) * 100;
+        document.getElementById('healthBarFill').style.width = healthPercent + '%';
+        document.getElementById('healthText').textContent = Math.round(this.player.health);
+        
+        // Update shield bar
+        const shieldPercent = (this.player.shield / this.player.maxShield) * 100;
+        document.getElementById('shieldBarFill').style.width = shieldPercent + '%';
+        document.getElementById('shieldText').textContent = Math.round(this.player.shield);
+        
+        // Update ammo display
+        document.getElementById('ammoValue').textContent = `${this.currentAmmo}/${this.clipSize}`;
+        
+        // Update reload message
+        const reloadMessage = document.getElementById('reloadMessage');
+        if (this.isReloading) {
+            reloadMessage.textContent = 'Reloading...';
+            reloadMessage.style.display = 'block';
+        } else if (this.currentAmmo === 0) {
+            reloadMessage.textContent = 'Reload';
+            reloadMessage.style.display = 'block';
+        } else {
+            reloadMessage.style.display = 'none';
+        }
+        
+        // Update restart message
+        const restartMessage = document.getElementById('restartMessage');
+        if (this.showRestartMessage) {
+            restartMessage.style.display = 'block';
+        } else {
+            restartMessage.style.display = 'none';
+        }
     }
     
     render() {
@@ -246,6 +949,7 @@ class Game {
         
         // Apply camera transform
         this.ctx.save();
+        this.ctx.scale(this.camera.zoom, this.camera.zoom);
         this.ctx.translate(-this.camera.x, -this.camera.y);
         
         // Render world
@@ -267,6 +971,12 @@ class Game {
         // Render particles
         this.renderParticles();
         
+        // Render hit effects
+        this.renderHitEffects();
+        
+        // Render pickups
+        this.renderPickups();
+        
         this.ctx.restore();
         
         // Render UI elements (not affected by camera)
@@ -274,18 +984,105 @@ class Game {
     }
     
     renderBullets() {
-        this.ctx.fillStyle = '#ffff00';
         for (let bullet of this.bullets) {
-            this.ctx.fillRect(bullet.x - 2, bullet.y - 2, 4, 4);
+            this.ctx.save();
+            
+            // Different colors for player vs enemy bullets
+            if (bullet.isEnemyBullet) {
+                this.ctx.fillStyle = '#00ff00'; // Green for enemy bullets
+            } else {
+                this.ctx.fillStyle = '#ff8800'; // Orange for player bullets
+            }
+            
+            this.ctx.beginPath();
+            this.ctx.arc(bullet.x, bullet.y, 2, 0, Math.PI * 2);
+            this.ctx.fill();
+            
+            this.ctx.restore();
         }
     }
     
     renderEnemies() {
-        // Enemy rendering would go here
+        for (let enemy of this.enemies) {
+            enemy.render(this.ctx);
+        }
     }
     
     renderParticles() {
         // Particle rendering would go here
+    }
+    
+    renderHitEffects() {
+        for (let effect of this.hitEffects) {
+            for (let particle of effect.particles) {
+                this.ctx.save();
+                this.ctx.globalAlpha = particle.alpha;
+                this.ctx.fillStyle = '#ff8800'; // Orange color to match bullets
+                this.ctx.beginPath();
+                this.ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+                this.ctx.fill();
+                this.ctx.restore();
+            }
+        }
+    }
+    
+    renderPickups() {
+        for (let pickup of this.pickups) {
+            this.ctx.save();
+            
+            // Translate to pickup position with bob effect
+            this.ctx.translate(pickup.x, pickup.y + pickup.bobOffset);
+            this.ctx.rotate(pickup.rotationAngle);
+            
+            if (pickup.type === 'shield') {
+                // Try to use sprite first, fallback to drawn shape
+                const shieldSprite = this.sprites.get('shieldPickup');
+                if (shieldSprite && shieldSprite instanceof Image) {
+                    // Enable pixel-perfect rendering
+                    this.ctx.imageSmoothingEnabled = false;
+                    // Draw sprite centered
+                    this.ctx.drawImage(shieldSprite, -pickup.size, -pickup.size, pickup.size * 2, pickup.size * 2);
+                } else {
+                    // Fallback: Draw shield pickup as a blue hexagon
+                    this.ctx.fillStyle = '#00aaff';
+                    this.ctx.strokeStyle = '#0088cc';
+                    this.ctx.lineWidth = 2;
+                    
+                    this.ctx.beginPath();
+                    for (let i = 0; i < 6; i++) {
+                        const angle = (i * Math.PI) / 3;
+                        const x = Math.cos(angle) * pickup.size;
+                        const y = Math.sin(angle) * pickup.size;
+                        if (i === 0) {
+                            this.ctx.moveTo(x, y);
+                        } else {
+                            this.ctx.lineTo(x, y);
+                        }
+                    }
+                    this.ctx.closePath();
+                    this.ctx.fill();
+                    this.ctx.stroke();
+                    
+                    // Add inner highlight
+                    this.ctx.fillStyle = '#66ccff';
+                    this.ctx.beginPath();
+                    for (let i = 0; i < 6; i++) {
+                        const angle = (i * Math.PI) / 3;
+                        const x = Math.cos(angle) * (pickup.size * 0.6);
+                        const y = Math.sin(angle) * (pickup.size * 0.6);
+                        if (i === 0) {
+                            this.ctx.moveTo(x, y);
+                        } else {
+                            this.ctx.lineTo(x, y);
+                        }
+                    }
+                    this.ctx.closePath();
+                    this.ctx.fill();
+                }
+            }
+            
+            this.ctx.restore();
+        }
     }
     
     renderUI() {
