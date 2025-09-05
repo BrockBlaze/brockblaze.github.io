@@ -43,56 +43,53 @@ button:hover {
   box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-/* General container layout */
+/* Label layout for 40mm x 30mm print */
 #result {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
-  gap: 20px;
-  padding: 20px;
+  width: 40mm;
+  height: 30mm;
+  padding: 2mm;
   font-family: Arial, sans-serif;
+  background: white;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 /* Horizontal labels container */
 .labels-container {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: column;
-  gap: 37.5px;
-  font-size: 32px;
-  color: #333;
-  height: 220px;
+  justify-content: flex-start;
+  width: 12mm;
+  height: 25mm;
+  margin-right: 1mm;
 }
 
 /* Style for each individual horizontal label */
 .horizontal-label {
-  padding: 5px 10px;
+  font-size: 8px;
   font-weight: bold;
-  background-color: #ffffff;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  min-width: 200px;
-  min-height: 35px;
-  color: #555;
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  color: #000;
+  text-align: left;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-bottom: 1.5mm;
 }
 
-
-#vertical-label {
-  display: flex;
-  justify-content: center;
-  height: 200px;
-  padding: 10px 10px;
-  background-color: #1F2937;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  color: #fff;
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+/* Company Name (first label) - bigger and aligned to QR code top */
+#labelNameText {
+  font-size: 10px;
+  margin-bottom: 2mm;
+  margin-top: 10px;
 }
 
-#vertical-label img {
-  transform: rotate(270deg);
-  width: 250%;
+.vertical-container {
+  display: none;
 }
 
 /* Style the QR Code canvas */
@@ -100,15 +97,52 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #ccc;
-  width: 200px;
-  height: 200px;
+  width: 25mm;
+  height: 25mm;
   background-color: #ffffff;
-  padding: 10px;
-  border-radius: 4px;
+}
+
+#qrcode {
+  width: 25mm !important;
+  height: 25mm !important;
 }
 
 
 canvas {
   margin-top: 10px;
+}
+
+/* Print styles for label maker */
+@media print {
+  body {
+    margin: 0;
+    padding: 0;
+    background: white;
+  }
+  
+  .container {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  
+  form, h1 {
+    display: none;
+  }
+  
+  #result {
+    width: 40mm;
+    height: 30mm;
+    margin: 0;
+    padding: 2mm;
+    page-break-inside: avoid;
+  }
+  
+  @page {
+    size: 40mm 30mm;
+    margin: 0;
+  }
 }

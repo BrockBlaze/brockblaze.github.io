@@ -4,27 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rithm QR Code Labeler</title>
-  <link rel="stylesheet" href="styes.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="container">
     <h1 id="fTitle">Rithm QR Code Labeler</h1>
     <form id="urlForm">
       <input type="url" id="urlInput" placeholder="Enter a URL" required>
-      <input type="text" id="labelName" placeholder="Name" required>
-      <input type="text" id="labelIP" placeholder="IP Address" required>
-      <input type="text" id="labelEvironment" placeholder="Environment" required>
+      <input type="text" id="labelName" placeholder="Company Name" required>
+      <input type="text" id="labelItem2" placeholder="Item 2">
+      <input type="text" id="labelItem3" placeholder="Item 3">
       <br><button type="submit">Process</button>
     </form>
     <div id="result">
     <!-- Horizontal Labels Section -->
         <div class="labels-container">
-            <div class="horizontal-label" id="labelIPText"></div>
             <div class="horizontal-label" id="labelNameText"></div>
-            <div class="horizontal-label" id="labelEnvironmentText"></div>
+            <div class="horizontal-label" id="labelItem2Text"></div>
+            <div class="horizontal-label" id="labelItem3Text"></div>
         </div>
         <div class="vertical-container">
-            <div id="vertical-label" id="labelIPText">
+            <div id="vertical-label">
                 <img src="white-icon-white-text.svg" alt="Rithm Logo">
             </div>
         </div>

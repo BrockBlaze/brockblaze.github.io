@@ -348,7 +348,12 @@ class Player {
         ctx.translate(Math.round(this.x), Math.round(this.y));
         
         // Draw weapon first (under player) - hide during reload or when dead
-        const weaponSprite = window.game ? window.game.sprites.get('playerAR') : null;
+        let weaponSprite = null;
+        if (window.game && window.game.getCurrentWeapon()) {
+            const currentWeapon = window.game.getCurrentWeapon();
+            const weaponData = window.game.weaponTypes[currentWeapon.type];
+            weaponSprite = window.game.sprites.get(weaponData.sprite);
+        }
         if (weaponSprite && weaponSprite instanceof Image && !this.isDead && !(window.game && window.game.isReloading)) {
             ctx.save();
             ctx.rotate(this.gunAngle); // Gun rotates immediately to mouse
