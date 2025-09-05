@@ -11,7 +11,17 @@ const labelItem3 = document.getElementById('labelItem3Text');
 
 // Function to generate a QR code
 function generateQRCode(url) {
-    QRCode.toCanvas(qrCodeCanvas, url, { width: 96, margin: 1 }, (error) => {
+    QRCode.toCanvas(qrCodeCanvas, url, { 
+        width: 96, 
+        margin: 2,
+        errorCorrectionLevel: 'L',
+        type: 'image/png',
+        quality: 0.92,
+        color: {
+            dark: '#000000',
+            light: '#FFFFFF'
+        }
+    }, (error) => {
         if (error) console.error("Error generating QR code:", error);
     });
 }
